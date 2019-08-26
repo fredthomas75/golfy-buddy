@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @course.name %>
+</p>
+
+<% @course_attachments.each do |att| %>
+  <%= image_tag att.photo_url %>
+  <%= link_to "Edit Attachment", edit_course_course_attachment_path(att) %>
+<% end %>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

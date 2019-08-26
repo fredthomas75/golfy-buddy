@@ -1,0 +1,21 @@
+  <div class="form-inputs">
+    <%= simple_form_for(@course) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :type %>
+    <%= f.input :number_holes, as: :radio_buttons, collection: [['Driving range', '0'], ['9 holes', '1'], ['18 holes', '2']]%>
+    <%= f.input :difficulty, collection: 1..3 %>
+    <%= f.input :address %>
+    <%= f.input :phone %>
+    <%= f.input :website %>
+    <%= f.input :about_course %>
+    <!-- Insert a field for multiple pictures selection -->
+    <%= f.simple_fields_for :course_attachments do |p| %>
+        <%= p.input :photo, input_html: { :multiple => true, name: "course_attachments[photo][]" } %>
+    <% end %>
+    <!-- End of multiple pictures selection -->
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

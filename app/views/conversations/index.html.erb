@@ -1,0 +1,35 @@
+<% page_header "Your Conversations" %>
+
+<p><%= link_to 'Start conversation', new_message_path, class: 'btn btn-lg btn-primary' %></p>
+
+<div class="row">
+  <div class="col-sm-3">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+      <%= mailbox_section 'inbox', @box %>
+      </li>
+      <li class="nav-item">
+      <%= mailbox_section 'sent', @box %>
+      </li>
+      <li class="nav-item">
+      <%= mailbox_section 'trash', @box %>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-sm-9">
+    <ul class="list-group">
+      <%= render partial: 'conversations/conversation', collection: @conversations %>
+    </ul>
+    <div class="col-sm-9">
+      <% if @box == 'trash' %>
+        <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
+                   data: {confirm: 'Are you sure?'} %></p>
+      <% end %>
+    <%= will_paginate %>
+    </div>
+  </div>
+</div>
+
+
+
