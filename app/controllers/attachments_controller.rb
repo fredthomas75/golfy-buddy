@@ -15,6 +15,7 @@ class AttachmentsController < ApplicationController
   # GET /post_attachments/new
   def new
     @course = Course.find(params[:course_id])
+    @game = Game.find(params[:game_id])
     @attachment = Attachment.new
   end
 
