@@ -16,13 +16,13 @@ class CoursesController < ApplicationController
 
   # GET /courses/1
   def show
-    @course_attachments = @course.course_attachments.all
+    @attachments = @course.attachments.all
   end
 
   # GET /courses/new
   def new
     @course = Course.new
-    @course_attachment = @course.course_attachments.build
+    @attachment = @course.attachments.build
   end
 
   # GET /courses/1/edit
@@ -33,8 +33,8 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
       if @course.save
-        params[:course_attachments]['photo'].each do |pic|
-        @course_attachment = @course.course_attachments.create!(:photo => pic, :course_id => @course.id)
+        params[:attachments]['photo'].each do |pic|
+        @attachment = @course.attachments.create!(:photo => pic, :attachable_id => @course.id)
         end
         redirect_to @course, notice: 'Course was successfully created.'
       else
@@ -65,6 +65,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :type, :number_holes, :difficulty, :address, :phone, :webiste, :about_course, course_attachments_attributes: [:id, :course_id, :photo])
+      params.require(:course).permit(:name, :type, :number_holes, :difficulty, :address, :phone, :webiste, :about_course, attachments_attributes: [:id, :attachable_id, :photo])
     end
 end
