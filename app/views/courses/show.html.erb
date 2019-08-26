@@ -5,9 +5,9 @@
   <%= @course.name %>
 </p>
 
-<% @course_attachments.each do |att| %>
+<% @attachments.each do |att| %>
   <%= image_tag att.photo_url %>
-  <%= link_to "Edit Attachment", edit_course_course_attachment_path(att) %>
+  <%= link_to "Edit Attachment", edit_course_attachment_path(att) %>
 <% end %>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |

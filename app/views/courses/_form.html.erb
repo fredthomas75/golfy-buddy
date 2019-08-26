@@ -9,8 +9,8 @@
     <%= f.input :website %>
     <%= f.input :about_course %>
     <!-- Insert a field for multiple pictures selection -->
-    <%= f.simple_fields_for :course_attachments do |p| %>
-        <%= p.input :photo, input_html: { :multiple => true, name: "course_attachments[photo][]" } %>
+    <%= f.simple_fields_for :attachments do |p| %>
+        <%= p.input :photo, input_html: { :multiple => true, name: "attachments[photo][]" } %>
     <% end %>
     <!-- End of multiple pictures selection -->
   </div>
