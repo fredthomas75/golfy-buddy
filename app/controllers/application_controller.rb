@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :first_name, :last_name, :phone, :birth_date, :gender, :country, :handicap, :pro, :about_me, :photo])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :first_name, :last_name, :phone, :birth_date, :gender, :language, :current_city, :handicap, :about_me])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :first_name, :last_name, :phone, :birth_date, :gender, :country, :handicap, :pro, :about_me, :photo])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :first_name, :last_name, :phone, :birth_date, :gender, :language, :current_city, :handicap, :about_me])
   end
 
   rescue_from ActiveRecord::RecordNotFound do
