@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :games do
     resources :attachments
+    resources :guests, only: [:index, :create, :update, :destroy]
   end
   resources :messages, only: [:new, :create]
   resources :conversations, only: [:index, :show, :destroy] do
