@@ -80,6 +80,10 @@ ActiveRecord::Schema.define(version: 2019_08_27_200647) do
     t.index ["user_id"], name: "index_guests_on_user_id"
   end
 
+  create_table "list_prefs", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "mailboxer_conversation_opt_outs", id: :serial, force: :cascade do |t|
     t.string "unsubscriber_type"
     t.integer "unsubscriber_id"
