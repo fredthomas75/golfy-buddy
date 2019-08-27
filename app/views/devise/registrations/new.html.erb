@@ -11,9 +11,9 @@
     OK t.date "birth_date"
     OK t.string "gender"
     OK t.string "language"
-    t.string "current_city"
-    t.float "handicap"
-    t.text "about_me"
+    OK t.string "current_city"
+    OK t.float "handicap"
+    OK t.text "about_me"
  -->
 
   <div class="form-inputs">
@@ -34,6 +34,12 @@
                 required: true,
                 autofocus: true,
                 input_html: { id: "current_city" } %>
+
+    <!-- HANDICAP -->
+    <%= f.input :handicap,
+                as: :float,
+                required: true,
+                autofocus: true %>
 
     <!-- GENDER -->
     <%= f.input :gender,
@@ -59,6 +65,14 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "phone" }%>
+
+    <!-- ABOUT ME -->
+    <%= f.input :about_me,
+                required: true,
+                autofocus: true,
+                as: :text,
+                input_html: { autocomplete: "about_me" }%>
+
     <!-- PASSWORD -->
     <%= f.input :password,
                 required: true,
