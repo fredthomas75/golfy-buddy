@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_184352) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "style"
     t.integer "number_holes"
     t.integer "difficulty"
     t.string "address"

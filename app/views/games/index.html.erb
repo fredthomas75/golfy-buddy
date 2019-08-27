@@ -11,11 +11,15 @@
 
   <tbody>
     <% @games.each do |game| %>
-      <tr>
-        <td><%= link_to 'Show', game %></td>
-        <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <ul>
+        <li><%= game.name %></li>
+
+
+
+        <%= link_to 'Show', game %>
+        <%= link_to 'Edit', edit_game_path(game) %>
+        <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </ul>
     <% end %>
   </tbody>
 </table>
