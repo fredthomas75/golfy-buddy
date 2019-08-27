@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_203833) do
+ActiveRecord::Schema.define(version: 2019_08_27_200647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_203833) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "style"
     t.integer "number_holes"
     t.integer "difficulty"
     t.string "address"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_203833) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+    t.integer "game_price"
     t.index ["course_id"], name: "index_games_on_course_id"
     t.index ["user_id"], name: "index_games_on_user_id"
   end
@@ -146,7 +147,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_203833) do
     t.string "last_name"
     t.string "phone"
     t.date "birth_date"
-    t.integer "gender"
+    t.string "gender"
     t.string "language"
     t.string "current_city"
     t.float "handicap"

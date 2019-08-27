@@ -1,4 +1,68 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Game details</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @game.name %>
+</p>
+<p>
+  <strong>Options:</strong>
+  <%= @game.options %>
+</p>
+<p>
+  <strong>Hosted by:</strong>
+  <a href="/users/<%= @game.user_id %>" > <%= @game.user.first_name %> <%= @game.user.last_name %></a>
+  <%= gravatar_for @game.user%><br>
+  <% unless current_user == @user %>
+    <%= link_to 'Send message', new_message_path(to: @game.user.id), class: 'btn btn-outline-primary btn-sm' %>
+  <% end %>
+</p>
+<p>
+  <strong>Course:</strong>
+  <%= link_to @game.course.name, @game.course %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%= @game.game_price %> $
+</p>
+<p>
+  <strong>Number of players:</strong>
+  <%= @game.number_players %>
+</p>
+<p>
+  <strong>Number of guests:</strong>
+  <%= @game.number_guests %>
+</p>
+<p>
+  <strong>Date:</strong>
+  <%= @game.date %>
+</p>
+<p>
+  <strong>Time:</strong>
+  <%= @game.time.strftime( "%H" + ":" + "%M" ) %>
+</p>
+<p>
+  <strong>Booked:</strong>
+  <% if @game.booked %>
+    <span>Yes</span>
+    <% else %>
+    <span>No</span>
+  <% end %>
+</p>
+<p>
+  <strong>Tournament:</strong>
+  <% if @game.tournament %>
+    <span>Yes</span>
+    <% else %>
+    <span>No</span>
+  <% end %>
+</p>
+
+<% @attachments.each do |att| %>
+  <%= image_tag att.photo_url %>
+  <%= link_to "Edit Attachment", edit_game_attachment_path(att) %>
+<% end %>
+
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>

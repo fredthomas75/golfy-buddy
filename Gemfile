@@ -28,6 +28,7 @@ gem 'webpacker'
 gem 'chosen-rails'
 gem 'jquery-turbolinks'
 gem 'geocoder'
+gem 'faker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
