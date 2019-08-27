@@ -272,6 +272,7 @@ DEPENDENCIES
   font-awesome-sass (~> 5.9.0)
   geocoder
   gravatar_image_tag
+  i18n_data
   jbuilder (~> 2.0)
   jquery-turbolinks
   listen (~> 3.0.5)

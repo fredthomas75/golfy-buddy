@@ -9,4 +9,6 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   # messageable = this Class can use mailboxer gem
   acts_as_messageable
+
+  validates :gender, presence: true
 end

@@ -1,4 +1,4 @@
-// Autc-completion for map
+// Auto-completion for map
 import places from 'places.js';
 
 const initAutocomplete = () => {
