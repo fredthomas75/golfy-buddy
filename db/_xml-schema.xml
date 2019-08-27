@@ -146,7 +146,7 @@
 <row name="name" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
-<row name="type" null="1" autoincrement="0">
+<row name="style" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
 <row name="number_holes" null="1" autoincrement="0">

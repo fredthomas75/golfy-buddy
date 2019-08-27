@@ -2,7 +2,7 @@ class CreateCourses < ActiveRecord::Migration[5.2]
   def change
     create_table :courses do |t|
       t.string :name
-      t.string :type
+      t.string :style
       t.integer :number_holes
       t.integer :difficulty
       t.string :address
