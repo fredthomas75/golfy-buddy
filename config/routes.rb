@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    resources :user_preferences
+    resources :user_personalities
+  end
+  resources :list_prefs
+
+  # resources :buddies, only [:create, :update, :destroy]
+
   resources :courses do
     resources :attachments
   end
