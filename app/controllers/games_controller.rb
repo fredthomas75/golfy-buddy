@@ -8,6 +8,7 @@ class GamesController < ApplicationController
 
   # GET /games/1
   def show
+    @attachments = @game.attachments.all
   end
 
   # GET /games/new
