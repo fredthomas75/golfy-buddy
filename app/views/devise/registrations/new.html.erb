@@ -3,15 +3,77 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
+<!--
+    OK t.string "email", default: "", null: false
+    OK t.string "first_name"
+    OK t.string "last_name"
+    OK t.string "phone"
+    OK t.date "birth_date"
+    OK t.string "gender"
+    OK t.string "language"
+    OK t.string "current_city"
+    OK t.float "handicap"
+    OK t.text "about_me"
+ -->
+
   <div class="form-inputs">
-    <%= f.input :name,
+    <!-- FIRST NAME -->
+    <%= f.input :first_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "name" }%>
+                input_html: { autocomplete: "first_name" }%>
+
+    <!-- LAST NAME -->
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "last_name" }%>
+
+    <!-- CURRENT CITY -->
+    <%= f.input :current_city,
+                required: true,
+                autofocus: true,
+                input_html: { id: "current_city" } %>
+
+    <!-- HANDICAP -->
+    <%= f.input :handicap,
+                as: :float,
+                required: true,
+                autofocus: true %>
+
+    <!-- GENDER -->
+    <%= f.input :gender,
+                :collection => [ "Female", "Male", "Other" ],
+                required: true %>
+
+    <!-- LANGUAGE -->
+    <%= f.input :language,
+                :collection => I18nData.languages.values, selected: "English" %>
+
+    <!-- BIRTH DATE -->
+    <%= f.input :birth_date, as: :date,
+                  start_year: Date.today.year,
+                  order: [:day, :month, :year],
+                  html5: true %>
+    <!-- EMAIL -->
     <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
+    <!-- PHONE NUMBER -->
+    <%= f.input :phone,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "phone" }%>
+
+    <!-- ABOUT ME -->
+    <%= f.input :about_me,
+                required: true,
+                autofocus: true,
+                as: :text,
+                input_html: { autocomplete: "about_me" }%>
+
+    <!-- PASSWORD -->
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
