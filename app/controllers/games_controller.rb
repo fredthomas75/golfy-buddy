@@ -20,6 +20,7 @@ class GamesController < ApplicationController
   def edit
   end
 
+
   # POST /games
   def create
     @game = Game.new(game_params)
