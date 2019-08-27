@@ -7,6 +7,18 @@
   </div>
 
   <div class="form-actions">
+    <%= f.input :name %>
+    <%= f.input :options %>
+    <%= f.input :number_players %>
+    <%= f.input :number_guests %>
+    <%= f.input :date %>
+    <%= f.input :time %>
+    <%= f.input :booked %>
+    <%= f.input :tournament %>
+    <%= f.input :about_game %>
+    <%= f.association :course%>
+
+
     <%= f.button :submit %>
   </div>
 <% end %>
