@@ -67,10 +67,3 @@ class GamesController < ApplicationController
       params.require(:game).permit(:name, :options, :number_players, :number_guests, :date, :time, :game_price, :booked, :tournament, :about_game, :course_id, :user_id)
     end
 end
-
-
-
-
-# Game.select('"users" ON "users"."id" = "games"."user_id" LEFT JOIN "courses" ON "courses"."id" = "games"."course_id" LEFT JOIN "guests" ON "guests"."game_id" = "games"."id" LEFT JOIN "users" "users_guests" ON "users_guests"."id" = "guests"."user_id"').first
-
-
