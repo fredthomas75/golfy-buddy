@@ -42,6 +42,26 @@
             <% end %>
         <% end %>
       <% end %>
+      <h1>My last Games</h1>
+      <% @past_games.each do |game| %>
+        <% if @past_games.empty? %>
+          <tbody>
+            <p>No game</p>
+        <% end %>
+        <% game.guests.each do |guest| %>
+          <% if guest || game.user == current_user %>
+            <ul>
+              <li><%= game.name %></li>
+
+
+
+                  <%= link_to 'Show', game %>
+                  <%= link_to 'Edit', edit_game_path(game) %>
+                  <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </ul>
+            <% end %>
+        <% end %>
+      <% end %>
   </tbody>
 <br>
 
