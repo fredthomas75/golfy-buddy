@@ -22,7 +22,27 @@
       </ul>
     <% end %>
   </tbody>
+    <h1>My upcoming Games</h1>
+      <% @upcoming_games.each do |up_game| %>
+        <% if @upcoming_games.empty? %>
+          <tbody>
+            <p>No game</p>
+        <% end %>
+        <% up_game.guests.each do |guest| %>
+          <% if guest || up_game.user == current_user %>
+            <ul>
+              <li><%= up_game.name %></li>
 
+
+
+                  <%= link_to 'Show', up_game %>
+                  <%= link_to 'Edit', edit_game_path(up_game) %>
+                  <%= link_to 'Destroy', up_game, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </ul>
+            <% end %>
+        <% end %>
+      <% end %>
+  </tbody>
 <br>
 
 <%= link_to 'New Game', new_game_path %>
