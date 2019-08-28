@@ -16,16 +16,17 @@ ListPref.delete_all
 puts "Creating categories and other arrays"
 price = (20..100).to_a
 holes = ['18 holes', '9 holes', 'Driving range']
-d1 = Date.tomorrow
-d2 = Date.new(2019, 9, 2)
-d3 = Date.new(2019, 9, 15)
-t1 = Time.now.utc.strftime( "%H%M%S%N" )
-t2 = Time.now.utc.strftime( "%H%M%S%N" )
-t3 = Time.now.utc.strftime( "%H%M%S%N" )
+d1 = Date.yesterday
+d2 = Date.tomorrow
+d3 = Date.new(2019, 9, 2)
+d4 = Date.new(2019, 9, 15)
+t1 = Time.now
+t2 = Time.now
+t3 = Time.now
 list = %w(Adventurous Helpful Affable Humble Capable Imaginative Charming Impartial Confident Independent Conscientious Keen Cultured Meticulous Dependable Observant)
 
 puts "Creating 10 users"
-10.times { User.create(name: Faker::Name.name, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password, about_me: Faker::Lorem.paragraph, current_city: Faker::Address.city, gender: ['Female', 'Male', 'Other'].sample )}
+10.times { User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password, about_me: Faker::Lorem.paragraph, current_city: Faker::Address.city, gender: ['Female', 'Male', 'Other'].sample )}
 
 puts "Creating 5 courses"
 Course.create(name: 'Club de Golf Metropolitain Anjou', address: '9555 Boulevard Du Golf, Anjou', difficulty: 1, number_holes: 18, style: 'Classic')
@@ -41,8 +42,8 @@ puts "Creating 10 games"
   options: holes.sample,
   number_players: [3, 4].sample,
   number_guests: [1, 2].sample,
-  date: [d1, d2, d3].sample,
-  time: [d1, d2, d3].sample,
+  date: [d1, d2, d3, d4].sample,
+  time: [t1, t2, t3].sample,
   booked: [0, 1].sample,
   tournament: [0, 1].sample,
   about_game: Faker::Lorem.paragraph,

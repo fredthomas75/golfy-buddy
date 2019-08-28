@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :games, dependent: :destroy
+  has_many :guests, dependent: :destroy
   has_many :user_preferences, dependent: :destroy
   has_many :user_personalities, dependent: :destroy
   mount_uploader :photo, PhotoUploader
@@ -11,4 +12,8 @@ class User < ApplicationRecord
   acts_as_messageable
 
   validates :gender, presence: true
+
+  def in_game?(game)
+    Guest.find_by(user: self, game: game)
+  end
 end

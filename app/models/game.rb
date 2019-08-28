@@ -4,7 +4,6 @@ class Game < ApplicationRecord
   has_many :guests, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
   accepts_nested_attributes_for :attachments
-
   include PgSearch::Model
   pg_search_scope :global_search,
     against: [ :name, :options ],
@@ -14,4 +13,5 @@ class Game < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+  validates :number_players, presence: true
 end
