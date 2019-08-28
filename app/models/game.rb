@@ -14,4 +14,11 @@ class Game < ApplicationRecord
       tsearch: { prefix: true }
     }
   validates :number_players, presence: true
+
+    def users
+    users = guests.map do |guest|
+      User.find(guest.user_id).first_name
+    end
+    return users
+  end
 end
