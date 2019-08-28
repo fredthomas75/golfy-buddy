@@ -25,7 +25,7 @@ t3 = Time.now.utc.strftime( "%H%M%S%N" )
 list = %w(Adventurous Helpful Affable Humble Capable Imaginative Charming Impartial Confident Independent Conscientious Keen Cultured Meticulous Dependable Observant)
 
 puts "Creating 10 users"
-10.times { User.create(name: Faker::Name.name, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password, about_me: Faker::Lorem.paragraph, current_city: Faker::Address.city )}
+10.times { User.create(name: Faker::Name.name, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password, about_me: Faker::Lorem.paragraph, current_city: Faker::Address.city, gender: ['Female', 'Male', 'Other'].sample )}
 
 puts "Creating 5 courses"
 Course.create(name: 'Club de Golf Metropolitain Anjou', address: '9555 Boulevard Du Golf, Anjou', difficulty: 1, number_holes: 18, style: 'Classic')
