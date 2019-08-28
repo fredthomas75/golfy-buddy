@@ -1,10 +1,13 @@
 class GamesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
   # GET /games
   def index
     @games = Game.all
     @upcoming_games = Game.where("date >= ?", [Date.today]).order('date ASC, created_at ASC')
+    @past_games = Game.where("date < ?", [Date.today]).order('date DESC, created_at DESC')
+    @guests = Guest.where(game: [@games])
   end
 
   # GET /games/1

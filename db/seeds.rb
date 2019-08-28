@@ -20,9 +20,9 @@ d1 = Date.yesterday
 d2 = Date.tomorrow
 d3 = Date.new(2019, 9, 2)
 d4 = Date.new(2019, 9, 15)
-t1 = Time.now.utc.strftime( "%H%M%S%N" )
-t2 = Time.now.utc.strftime( "%H%M%S%N" )
-t3 = Time.now.utc.strftime( "%H%M%S%N" )
+t1 = Time.now
+t2 = Time.now
+t3 = Time.now
 list = %w(Adventurous Helpful Affable Humble Capable Imaginative Charming Impartial Confident Independent Conscientious Keen Cultured Meticulous Dependable Observant)
 
 puts "Creating 10 users"
