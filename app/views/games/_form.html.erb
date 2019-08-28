@@ -17,6 +17,8 @@
     <%= f.input :booked %>
     <%= f.input :tournament %>
     <%= f.input :about_game %>
+    <p>privacy</p>
+    <%= f.select :privacy, ["public", "private", "public with invite"] %>
     <%= f.association :course %>
 
 
