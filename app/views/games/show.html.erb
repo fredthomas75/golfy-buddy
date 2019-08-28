@@ -64,7 +64,9 @@
   <%= link_to "Edit Attachment", edit_game_attachment_path(att) %>
 <% end %>
 
-<%= link_to 'Join', game_guests_path(@game), method: :post %>
+ <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
+<%= link_to 'Join', game_guests_path(@game), method: :post %> |
+<% end %>
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Delete', game_path(@game), method: :delete %> |
 <%= link_to 'Back', games_path %>
