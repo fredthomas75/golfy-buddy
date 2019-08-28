@@ -4,6 +4,7 @@ class GuestsController < ApplicationController
     @guest = Guest.new
     @guest.user = current_user
     @guest.game = @game
+    @guest.share_of_price = @game.game_price/@game.number_players
     if  @game.number_players > @game.guests.count && !current_user.in_game?(@game)
       @guest.save
     end

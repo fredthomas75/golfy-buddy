@@ -52,9 +52,6 @@
           <% if guest || game.user == current_user %>
             <ul>
               <li><%= game.name %></li>
-
-
-
                   <%= link_to 'Show', game %>
                   <%= link_to 'Edit', edit_game_path(game) %>
                   <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>

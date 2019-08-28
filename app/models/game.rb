@@ -5,4 +5,11 @@ class Game < ApplicationRecord
   has_many :attachments, as: :attachable, dependent: :destroy
   accepts_nested_attributes_for :attachments
   validates :number_players, presence: true
+
+    def users
+    users = guests.map do |guest|
+      User.find(guest.user_id).first_name
+    end
+    return users
+  end
 end

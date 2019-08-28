@@ -63,6 +63,12 @@
   <%= image_tag att.photo_url %>
   <%= link_to "Edit Attachment", edit_game_attachment_path(att) %>
 <% end %>
+<% @game.guests.each do |guest| %>
+  <p>
+    <%= User.find(guest.user_id).first_name %> :
+    <%= guest.share_of_price %>
+  </p>
+<% end %>
 
  <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
 <%= link_to 'Join', game_guests_path(@game), method: :post %> |

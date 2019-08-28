@@ -52,6 +52,8 @@ class GamesController < ApplicationController
       redirect_to games_url, notice: 'Game was successfully destroyed.'
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game
