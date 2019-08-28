@@ -4,6 +4,7 @@ class GamesController < ApplicationController
   # GET /games
   def index
     @games = Game.all
+    @upcoming_games = Game.where("date >= ?", [Date.today]).order('date ASC, created_at ASC')
   end
 
   # GET /games/1
