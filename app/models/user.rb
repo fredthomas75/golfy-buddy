@@ -11,4 +11,8 @@ class User < ApplicationRecord
   acts_as_messageable
 
   validates :gender, presence: true
+
+  def in_game?(game)
+    Guest.find_by(user: self, game: game)
+  end
 end

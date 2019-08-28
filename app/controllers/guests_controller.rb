@@ -5,7 +5,10 @@ class GuestsController < ApplicationController
     @guest = Guest.new
     @guest.user = current_user
     @guest.game = @game
-    @guest.save if  @game.number_guests > @game.guests.count
+
+    if  @game.number_players > @game.guests.count && !current_user.in_game?(@game)
+      @guest.save
+    end
     redirect_to game_path(@game)
   end
 end
