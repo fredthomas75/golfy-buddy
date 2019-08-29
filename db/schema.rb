@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_204732) do
+ActiveRecord::Schema.define(version: 2019_08_29_181132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,18 +22,6 @@ ActiveRecord::Schema.define(version: 2019_08_28_204732) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id"
-  end
-
-  create_table "buddies", force: :cascade do |t|
-    t.string "status"
-    t.bigint "one_user_id"
-    t.bigint "two_user_id"
-    t.bigint "last_action_user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["last_action_user_id"], name: "index_buddies_on_last_action_user_id"
-    t.index ["one_user_id"], name: "index_buddies_on_one_user_id"
-    t.index ["two_user_id"], name: "index_buddies_on_two_user_id"
   end
 
   create_table "courses", force: :cascade do |t|
