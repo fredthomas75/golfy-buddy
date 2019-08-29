@@ -20,16 +20,18 @@
   <tbody>
     <% @games.each do |game| %>
       <ul>
-        <li><%= game.name %></li>
-        <li>Course : <%= game.course.name %></li>
-        <li>By : <%= "#{game.user.first_name} #{game.user.last_name}" %></li>
-        <li>Options : <%= game.options %></li>
-        <li>Number of players : <%= game.number_players %></li>
-        <li>Number of guests : <%= game.number_guests %></li>
+        <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
+          <li><%= game.name %></li>
+          <li>Course : <%= game.course.name %></li>
+          <li>By : <%= "#{game.user.first_name} #{game.user.last_name}" %></li>
+          <li>Options : <%= game.options %></li>
+          <li>Number of players : <%= game.number_players %></li>
+          <li>Number of guests : <%= game.number_guests %></li>
 
-        <%= link_to 'Show', game %>
-        <%= link_to 'Edit', edit_game_path(game) %>
-        <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Show', game %>
+          <%= link_to 'Edit', edit_game_path(game) %>
+          <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
       </ul>
     <% end %>
   </tbody>
