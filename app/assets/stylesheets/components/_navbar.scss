@@ -3,6 +3,10 @@
   background: white;
 }
 
+.navbar-brand {
+  margin-right: 0px;
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
@@ -10,3 +14,27 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-burger-box {
+  display: none;
+}
+
+@media screen and (max-width: 576px) {
+  .navbar-burger-box {
+    display: block;
+  }
+}
+
+
+// .navbar-lewagon {
+//   justify-content: space-between;
+//   background: white;
+// }
+
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
+// }
+
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
