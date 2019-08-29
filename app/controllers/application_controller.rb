@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_back_or(path)
-  redirect_to request.referer || path
+    redirect_to request.referer || path
+  end
+
+  def set_admin_gb
+    @admin = User.find_by(email: 'info@golfybuddy.com')
   end
 end
