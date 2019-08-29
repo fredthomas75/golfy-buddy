@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin_gb
 
   # GET /games
   def index
@@ -36,6 +37,7 @@ class GamesController < ApplicationController
 
       if @game.save
         redirect_to @game, notice: 'Game was successfully created.'
+        @admin.send_message(@game.user.friends, "Your buddy #{@game.user.first_name} just created a new game!", "Would you join #{@game.user.first_name}")
       else
         render :new
       end
@@ -67,5 +69,9 @@ class GamesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
       params.require(:game).permit(:name, :options, :number_players, :number_guests, :privacy, :date, :time, :game_price, :booked, :tournament, :about_game, :course_id, :user_id)
+    end
+    # Set @admin which is used to send messages ans notifications
+    def set_admin_gb
+      @admin = User.find_by(email: 'info@golfybuddy.com')
     end
 end

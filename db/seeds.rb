@@ -25,8 +25,9 @@ t2 = Time.now
 t3 = Time.now
 list = %w(Adventurous Helpful Affable Humble Capable Imaginative Charming Impartial Confident Independent Conscientious Keen Cultured Meticulous Dependable Observant)
 
-puts "Creating 10 users"
+puts "Creating 10 users + 1 admin"
 10.times { User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password, about_me: Faker::Lorem.paragraph, current_city: Faker::Address.city, gender: ['Female', 'Male', 'Other'].sample )}
+User.create(name: 'info GOLFY Buddy', first_name: 'info', last_name: 'GOLFY Buddy', email: 'info@golfybuddy.com', password: '123456', about_me: "I am the admin", current_city: 'Montreal', gender: 'Other')
 
 puts "Creating 5 courses"
 Course.create(name: 'Club de Golf Metropolitain Anjou', address: '9555 Boulevard Du Golf, Anjou', difficulty: 1, number_holes: 18, style: 'Classic')
