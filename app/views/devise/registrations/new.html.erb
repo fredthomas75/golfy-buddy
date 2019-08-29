@@ -1,91 +1,101 @@
-<h2>Sign up</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 offset-sm-2">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+      <h2>Sign up</h2>
 
-<!--
-    OK t.string "email", default: "", null: false
-    OK t.string "first_name"
-    OK t.string "last_name"
-    OK t.string "phone"
-    OK t.date "birth_date"
-    OK t.string "gender"
-    OK t.string "language"
-    OK t.string "current_city"
-    OK t.float "handicap"
-    OK t.text "about_me"
- -->
+      <div class="form-inputs">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <!-- FIRST NAME -->
-    <%= f.input :first_name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "first_name" }%>
+        <form>
+          <div class="row">
+            <div class="col">
+              <!-- FIRST NAME -->
+              <%= f.input :first_name,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "first_name" }%>
+            </div>
+            <div class="col">
+              <!-- LAST NAME -->
+              <%= f.input :last_name,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "last_name" }%>
+            </div>
+          </div>
 
-    <!-- LAST NAME -->
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "last_name" }%>
+          <div class="row">
+            <div class="col">
+              <!-- EMAIL -->
+              <%= f.input :email,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" }%>
+            </div>
+            <div class="col">
+              <!-- PASSWORD -->
+              <%= f.input :password,
+                          required: true,
+                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                          input_html: { autocomplete: "new-password" } %>
+            </div>
+          </div>
 
-    <!-- CURRENT CITY -->
-    <%= f.input :current_city,
-                required: true,
-                autofocus: true,
-                input_html: { id: "current_city" } %>
+          <div class="row">
+            <div class="col">
+              <!-- BIRTH DATE -->
+              <%= f.input :birth_date, as: :date,
+                            start_year: Date.today.year,
+                            order: [:day, :month, :year],
+                            html5: true %>
+            </div>
+            <div class="col">
+              <!-- HANDICAP -->
+              <%= f.input :handicap,
+                          as: :float,
+                          required: false,
+                          autofocus: true %>
+            </div>
+            <div class="col">
+              <!-- GENDER -->
+              <%= f.input :gender,
+                          :collection => [ "Female", "Male", "Other" ],
+                          required: false %>
+            </div>
+          </div>
 
-    <!-- HANDICAP -->
-    <%= f.input :handicap,
-                as: :float,
-                required: true,
-                autofocus: true %>
+          <div class="row">
+            <div class="col">
+              <!-- CURRENT CITY -->
+              <%= f.input :current_city,
+                          required: false,
+                          autofocus: true,
+                          input_html: { id: "current_city" } %>
+            </div>
+            <div class="col">
+              <!-- LANGUAGE -->
+              <%= f.input :language,
+                          :collection => I18nData.languages.values, selected: "English" %>
+            </div>
+          </div>
+            <!-- ABOUT ME -->
+            <%= f.input :about_me,
+                        required: false,
+                        autofocus: true,
+                        as: :text,
+                        input_html: { autocomplete: "about_me" }%>
+        </form>
 
-    <!-- GENDER -->
-    <%= f.input :gender,
-                :collection => [ "Female", "Male", "Other" ],
-                required: true %>
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up" %>
+      </div>
+      <% end %>
 
-    <!-- LANGUAGE -->
-    <%= f.input :language,
-                :collection => I18nData.languages.values, selected: "English" %>
+      <%= render "devise/shared/links" %>
 
-    <!-- BIRTH DATE -->
-    <%= f.input :birth_date, as: :date,
-                  start_year: Date.today.year,
-                  order: [:day, :month, :year],
-                  html5: true %>
-    <!-- EMAIL -->
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <!-- PHONE NUMBER -->
-    <%= f.input :phone,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "phone" }%>
-
-    <!-- ABOUT ME -->
-    <%= f.input :about_me,
-                required: true,
-                autofocus: true,
-                as: :text,
-                input_html: { autocomplete: "about_me" }%>
-
-    <!-- PASSWORD -->
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
