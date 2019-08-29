@@ -17,13 +17,14 @@ class GuestsController < ApplicationController
     end
     redirect_to game_path(@game)
   end
+
   def approve_user
-    # raise
     @guest = Guest.find_by(user_id: params[:id])
     @guest.status = "confirmed"
-    @guest.save
+    if @guest.save
+      @admin.send_message(@guest, "You just joined #{@guest.game.name} !", "#{@guest.game.user.first_name} confirms your participation to #{@guest.game.name}")
+    end
     redirect_to request.referrer
-
   end
 
 end
