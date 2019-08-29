@@ -1,5 +1,34 @@
-<h1>GOLFY Buddy</h1>
-<p>More to come...</p>
+<!-- SECTION 1 -->
 
-<p>See you at the Demo day! (Sept., 6th)</p>
-<p>Made with <i class="fas fa-heart"></i> in Montreal</p>
+<div class="homepage-section first-section ">
+  <div class="home-form">
+    <h1>Play more golf everywhere</h1>
+    <p>Date</p>
+    <p>Location</p>
+    <%= link_to "Let's play!", "#", class: "letsplay-button" %>
+  </div>
+  <div class="img-home">
+    <%= image_tag "golfer_putter.jpg", alt: "Putting golfer" %>
+  </div>
+</div>
+<!-- SECTION 2-->
+<div class="homepage-section second-section">
+  <div class="left-img">
+    <%= image_tag "madame_qui_joue.svg", alt: "alttext" %>
+  </div>
+  <div class="features-container">
+    <h2>Golfing with buddies</h2>
+    <div class="features-cards">
+      <div class="feature-card" style="margin-right: 32px;">
+        <h3>Play soon and have fun</h3>
+        <p>Find upcoming games nearby with people who will enjoy to welcome you</p>
+      </div>
+      <div class="feature-card">
+        <h3>Host a game</h3>
+        <p>Choose when, where and with whom. Find buddies that fits your personnality</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SECTION 3 -->
+<div class="homepage-section games-nearby"></div>

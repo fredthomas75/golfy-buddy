@@ -7,7 +7,7 @@
   </div>
   <!-- MENU GAUCHE -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex: 0 0 33%;">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto menu-left">
         <li class="nav-item active">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
@@ -32,8 +32,10 @@
 
     <!-- AVATAR EXTREME DROITE -->
     <div id="flex-avatar">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav menu-right">
+        <!-- USER IS LOGGED -->
         <% if user_signed_in? %>
+          <%= link_to "Host a game", "#", class: "host-button" %>
           <li class="nav-item dropdown">
             <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <span class="badge"><%= @unread_conversations_count %></span>
@@ -44,7 +46,7 @@
             </div>
           </li>
         <% else %>
-          <!-- LOGIN -->
+          <!-- NEED TO LOGIN -->
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>

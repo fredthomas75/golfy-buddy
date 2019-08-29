@@ -1,6 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  padding: 8px 96px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
 }
 
 .navbar-brand {
@@ -19,8 +25,41 @@
   display: none;
 }
 
+.menu-left {
+  .nav-link {
+    padding-left: 0 !important;
+    padding-right: 64px !important;
+  }
+}
+
+.host-button {
+  border: solid 1px purple;
+  border-radius: 50px;
+  padding: 8px 32px;
+  color: purple;
+  margin-right: 32px;
+}
+
+.host-button:link {
+  text-decoration: none;
+}
+
+.host-button:hover {
+  text-decoration: none;
+  color: white;
+  background: purple;
+}
+
+.menu-right {
+  .nav-link {
+    padding-right: 0 !important;
+    padding-left: 64px !important;
+  }
+}
+
 @media screen and (max-width: 576px) {
   .navbar-burger-box {
     display: block;
   }
 }
+
