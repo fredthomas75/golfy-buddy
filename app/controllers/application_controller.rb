@@ -35,4 +35,9 @@ class ApplicationController < ActionController::Base
   def set_admin_gb
     @admin = User.find_by(email: 'info@golfybuddy.com')
   end
+
+  def set_admin_gb
+      @admin = User.find_by(email: 'info@golfybuddy.com')
+  end
+
 end
