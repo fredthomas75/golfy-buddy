@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 2019_08_28_204732) do
     t.float "longitude"
   end
 
+  create_table "friendships", id: :serial, force: :cascade do |t|
+    t.string "friendable_type"
+    t.integer "friendable_id"
+    t.integer "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "blocker_id"
+    t.integer "status"
+    t.index ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true
+  end
+
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.string "options"

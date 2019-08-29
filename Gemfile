@@ -30,6 +30,8 @@ gem 'chosen-rails'
 gem 'jquery-turbolinks'
 gem 'geocoder'
 gem 'faker'
+gem 'has_friendship'
+gem 'stateful_enum'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
