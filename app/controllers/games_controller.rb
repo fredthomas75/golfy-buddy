@@ -5,12 +5,14 @@ class GamesController < ApplicationController
 
   # GET /games
   def index
-    if params[:query].present?
-      @games = Game.joins(:user, :course).global_search(params[:query])
-    else
-      @games = Game.all
       @upcoming_games = Game.where("date >= ?", [Date.today]).order('date ASC, created_at ASC')
       @past_games = Game.where("date < ?", [Date.today]).order('date DESC, created_at DESC')
+    if params[:query].present?
+      @games = Game.joins(:user, :course).global_search(params[:query])
+      @upcoming_games = @upcoming_games.global_search(params[:query])
+      @past_games = @upcoming_games.global_search(params[:query])
+    else
+      @games = Game.all
       @guests = Guest.where(game: [@games])
     end
   end
@@ -69,9 +71,5 @@ class GamesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
       params.require(:game).permit(:name, :options, :number_players, :number_guests, :privacy, :date, :time, :game_price, :booked, :tournament, :about_game, :course_id, :user_id)
-    end
-    # Set @admin which is used to send messages ans notifications
-    def set_admin_gb
-      @admin = User.find_by(email: 'info@golfybuddy.com')
     end
 end

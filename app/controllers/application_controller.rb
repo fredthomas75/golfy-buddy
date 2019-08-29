@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
     redirect_to request.referer || path
   end
 
+  # Set @admin which is used to send messages ans notifications
   def set_admin_gb
     @admin = User.find_by(email: 'info@golfybuddy.com')
   end
