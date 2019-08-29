@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
   before_action :set_user
+  before_action :set_admin_gb
 
   def request_frd
     current_user.friend_request(@user)
