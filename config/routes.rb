@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     resources :user_personalities
     resources :user_preferences
   end
+  # Routes for HasFriendship
+    post '/user/:id/friendships',    to: 'friendships#request_frd', as: :friendships_request
+    post '/user/:id',   to: 'friendships#confirm_frd', as: :friendships_confirm
+    post '/user/:id',   to: 'friendships#decline_frd', as: :friendships_decline
+    delete '/user/:id',  to: 'friendships#remove_frd', as: :friendships_remove
   resources :list_preferences
   resources :courses do
     resources :attachments
