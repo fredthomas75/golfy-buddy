@@ -1,0 +1,10 @@
+.box-form {
+  input, textarea {
+    border-radius: 8px;
+    &:focus {
+      border-color: #7A6BBD;
+      outline-style:none;
+      box-shadow:none;    }
+  }
+}
+
