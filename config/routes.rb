@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :attachments
     resources :guests, only: [:index, :create, :update, :destroy]
   end
+  get '/games/approve_user/:id', to: 'guests#approve_user', as: :approve_user
   resources :messages, only: [:new, :create]
   resources :conversations, only: [:index, :show, :destroy] do
     member do
