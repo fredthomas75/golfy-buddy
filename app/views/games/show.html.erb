@@ -58,6 +58,11 @@
     <span>No</span>
   <% end %>
 </p>
+<p>
+    <strong>Privacy :</strong>
+    <%= @game.privacy %>
+</p>
+
 
 <% @attachments.each do |att| %>
   <%= image_tag att.photo_url %>
@@ -66,7 +71,7 @@
 <% @game.guests.each do |guest| %>
   <p>
     <%= User.find(guest.user_id).first_name %> :
-    <%= guest.share_of_price %>
+    <%= guest.share_of_price %> $
   </p>
 <% end %>
 
@@ -76,4 +81,6 @@
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Delete', game_path(@game), method: :delete %> |
 <%= link_to 'Back', games_path %>
+
+
 
