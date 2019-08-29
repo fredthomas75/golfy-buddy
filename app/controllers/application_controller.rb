@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_number_unread_messages, if: :user_signed_in?
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
@@ -36,8 +37,7 @@ class ApplicationController < ActionController::Base
     @admin = User.find_by(email: 'info@golfybuddy.com')
   end
 
-  def set_admin_gb
-      @admin = User.find_by(email: 'info@golfybuddy.com')
+  def set_number_unread_messages
+    @unread_conversations_count = current_user.mailbox.conversations.unread(current_user).count
   end
-
 end
