@@ -4,10 +4,14 @@ class GamesController < ApplicationController
 
   # GET /games
   def index
-    @games = Game.all
-    @upcoming_games = Game.where("date >= ?", [Date.today]).order('date ASC, created_at ASC')
-    @past_games = Game.where("date < ?", [Date.today]).order('date DESC, created_at DESC')
-    @guests = Guest.where(game: [@games])
+    if params[:query].present?
+      @games = Game.joins(:user, :course).global_search(params[:query])
+    else
+      @games = Game.all
+      @upcoming_games = Game.where("date >= ?", [Date.today]).order('date ASC, created_at ASC')
+      @past_games = Game.where("date < ?", [Date.today]).order('date DESC, created_at DESC')
+      @guests = Guest.where(game: [@games])
+    end
   end
 
   # GET /games/1
@@ -51,6 +55,8 @@ class GamesController < ApplicationController
     @game.destroy
       redirect_to games_url, notice: 'Game was successfully destroyed.'
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
