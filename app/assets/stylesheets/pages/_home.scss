@@ -1,1 +1,81 @@
 // Specific CSS for your home-page
+
+.homepage-section {
+  padding: 0 96px;
+}
+
+.home-form {
+  padding-left: 64px;
+  width: 500px;
+  // height: 300px;
+  // border: solid 3px green;
+}
+
+.home-form h1 {
+  margin-bottom: 16px;
+  color: purple;
+}
+
+.home-form p {
+  padding-bottom: 32px;
+}
+
+.letsplay-button {
+  margin-top: 32px;
+  border: solid 1px purple;
+  border-radius: 50px;
+  padding: 16px 64px;
+  color: purple;
+}
+
+.letsplay-button:link {
+  text-decoration: none;
+}
+
+.letsplay-button:hover {
+  text-decoration: none;
+  color: white;
+  background: purple;
+}
+
+.img-home img {
+  width: 50vw;
+  margin-top: 24px;
+  max-height: 78vh;
+  object-fit: cover;
+}
+
+.first-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+}
+
+.second-section {
+  position: relative;
+  top: -220px;
+  display: flex;
+  align-items: center;
+  z-index: 0;
+}
+
+.left-img {
+  // border: solid 3px red;
+}
+
+.features-container {
+  position: relative;
+  left: -346px;
+  top: 56px;
+  // border: solid 3px blue;
+}
+
+.features-cards {
+  width: 600px;
+  display: flex;
+  margin-top: 32px;
+  // border: solid 3px blue;
+}
