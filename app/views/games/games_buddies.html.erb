@@ -1,0 +1,11 @@
+        <h1>My buddies games</h1>
+            <% @upcoming_games_buddies.each do |game| %>
+              <ul>
+                <li>
+                  <%= game.user.first_name %> <%= game.user.last_name %>
+                  <%= game.name %>
+                  <%= game.date %>
+                </li>
+                <% end %>
+              </ul>
+
