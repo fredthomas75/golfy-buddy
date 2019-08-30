@@ -1,4 +1,17 @@
 .buddy-card {
-box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 1%;
+box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  color: #7A6BBD;
+  height: 487px;
+  width: 150px;
+  margin: 15px;
+  // margin-right: 15px;
+}
+.buddy-photo {
+  border-radius: 50%;
+  width : 200px;
+  height: 200px;
+}
+.msg_btn {
+  color: #7A6BBD;
 }
