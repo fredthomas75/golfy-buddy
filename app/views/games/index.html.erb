@@ -44,28 +44,28 @@
 
 <h1>My upcoming Games</h1>
   <div class="game-cards-container">
-    <% @upcoming_games.each do |up_game| %>
-      <% if @upcoming_games.empty? %>
-        <p>You don't have any game coming</p>
-      <% end %>
-      <% up_game.guests.each do |guest| %>
-        <% if guest || up_game.user == current_user %>
-          <div class="game-card">
-            <img src="<%= game.course.attachments[0].photo.url %>" />
-            <div class="game-card-infos">
-              <div>
-                <h2><%= game.name %></h2>
-                <p><%= game.date %></p>
-                <p><%= game.time %></p>
-              </div>
+    <% if @upcoming_games.empty? %>
+      <p>You don't have any game coming</p>
+    <% else %>
+      <% @upcoming_games.each do |up_game| %>
+        <% up_game.guests.each do |guest| %>
+          <% if guest || up_game.user == current_user %>
+            <div class="game-card">
+              <img src="<%= up_game.course.attachments[0].photo.url %>" />
+              <div class="game-card-infos">
+                <div>
+                  <h2><%= up_game.name %></h2>
+                  <p><%= up_game.date %></p>
+                  <p><%= up_game.time %></p>
+                </div>
               <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="game-card-user avatar-bordered" />
-
-              <%= link_to 'Show', game %>
-              <%= link_to 'Edit', edit_game_path(game) %>
-              <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Show', up_game %>
+              <%= link_to 'Edit', edit_game_path(up_game) %>
+              <%= link_to 'Destroy', up_game, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
             </div>
-          </div>
           <% end %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
