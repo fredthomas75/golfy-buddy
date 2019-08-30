@@ -1,27 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 offset-sm-2">
+      <%= simple_form_for(@game) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<%= simple_form_for(@game) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <div class="form-actions box-form">
+          <div class="row">
+            <div class="col">
+              <!-- NAME OF THE GAME-->
+              <%= f.input :name %>
+            </div>
+            <div class="col">
+              <!-- BOOKED AND TOURNAMENT-->
+              <%= f.input :booked %>
+              <%= f.select :privacy, ["public", "private", "public with invite"] %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <!-- DATE-->
+              <%= f.input :date %>
+            </div>
+            <div class="col">
+              <!-- TIME-->
+              <%= f.input :time %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <!-- NUMBER OF FORM-->
+              <%= f.input :number_players %>
+            </div>
+            <div class="col">
+              <!-- NUMBER OF GUEST-->
+              <%= f.input :number_guests %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <!-- WHERE-->
+              <%= f.association :course %>
+            </div>
+            <div class="col">
+              <!-- PRICE-->
+              <%= f.input :game_price %>
+            </div>
+          </div>
+            <!-- ABOUT GAME-->
+            <%= f.input :about_game %>
+        </div>
 
-  <div class="form-inputs">
+          <%= f.button :submit %>
+      <% end %>
+
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.input :name %>
-    <%= f.input :options %>
-    <%= f.input :number_players %>
-    <%= f.input :number_guests %>
-    <%= f.input :date %>
-    <%= f.input :time %>
-    <%= f.input :game_price %>
-    <%= f.input :booked %>
-    <%= f.input :tournament %>
-    <%= f.input :about_game %>
-    <p>privacy</p>
-    <%= f.select :privacy, ["public", "private", "public with invite"] %>
-    <%= f.association :course %>
-
-
-    <%= f.button :submit %>
-  </div>
-<% end %>
+</div>
