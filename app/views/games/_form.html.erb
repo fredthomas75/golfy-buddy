@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-8 offset-sm-2">
-      <h1>New Game</h1>
+
+      <h1>Register a Game</h1>
+
       <%= simple_form_for(@game) do |f| %>
         <%= f.error_notification %>
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -11,7 +13,8 @@
             <div class="col">
               <!-- NAME OF THE GAME-->
               <%= f.input :name,
-                          label: "What is the name of your game?"%>
+                          label: "What is the name of your game?",
+                          placeholder: "Be creative..."%>
             </div>
             <div class="col">
               <!-- BOOKED AND PRIVACY-->
@@ -33,15 +36,16 @@
           </div>
           <div class="row">
             <div class="col">
-              <!-- NUMBER OF FORM-->
+              <!-- NUMBER OF PLAYERS-->
               <%= f.input :number_players,
-                          label: "Number of players" %>
+                          label: "Number of players",
+                          placeholder: "Including you (maximum 4 people)" %>
             </div>
             <div class="col">
-              <!-- NUMBER OF GUEST-->
+              <!-- NUMBER OF HOLES-->
               <%= f.input :options,
                           label: "Number of holes",
-                          collection: [ "18 holes", "9 holes", "Driving range"] %>
+                          collection: [ "9 holes", "18 holes", "Driving range"] %>
             </div>
           </div>
           <div class="row">
@@ -57,12 +61,16 @@
           </div>
             <!-- ABOUT GAME-->
             <%= f.input :about_game,
-                        label: "Game Description (optional)" %>
+                        label: "Game Description (optional)",
+                        placeholder: "Describe your game..." %>
         </div>
 
+        <div class="row">
           <%= f.button :submit,
                         value: "Create your Game",
                         id: "btn-form" %>
+        </div>
+
       <% end %>
 
     </div>
