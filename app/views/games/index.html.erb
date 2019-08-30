@@ -1,10 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <div class="search-bar-container">
   <!-- FRIEND GAMES -->
-  <div>
-    <%= link_to 'Show games of your buddies', games_buddies_path, class: "btn-friend-games" %>
-  </div>
+  <%= link_to 'Show games of your buddies', games_buddies_path, class: "btn-friend-games" %>
   <!-- SEARCH BAR -->
   <div>
     <%= form_tag games_path, method: :get do %>
