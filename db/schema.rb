@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_181132) do
+ActiveRecord::Schema.define(version: 2019_08_30_140255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,24 @@ ActiveRecord::Schema.define(version: 2019_08_29_181132) do
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
   end
 
+  create_table "user_personalities", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "list_pref_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_pref_id"], name: "index_user_personalities_on_list_pref_id"
+    t.index ["user_id"], name: "index_user_personalities_on_user_id"
+  end
+
+  create_table "user_preferences", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "list_pref_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_pref_id"], name: "index_user_preferences_on_list_pref_id"
+    t.index ["user_id"], name: "index_user_preferences_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -170,4 +188,8 @@ ActiveRecord::Schema.define(version: 2019_08_29_181132) do
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
+  add_foreign_key "user_personalities", "list_prefs"
+  add_foreign_key "user_personalities", "users"
+  add_foreign_key "user_preferences", "list_prefs"
+  add_foreign_key "user_preferences", "users"
 end
