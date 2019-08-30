@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-post">
+        <h1>Set your preferences</h1>
+         <%= simple_form_for(current_user) do |f| %>
+  <div class="row">
+    <div class="form-group">
+          <label class="control-label check_boxes optional">Preferences</label>
+          <input type="hidden" name="cuurent_user[list_pref_ids][]" value="">
+            <div class="category-choices">
+            <% ListPref.all.each do |list_pref| %>
+      <input type="checkbox" class="hidden" value="<%= list_pref.id %>" name="current_user[list_pref_ids][]" id="current_user_list_pref_ids_<%= list_pref.id %>">
+      <label for="current_user_list_pref_ids_<%= list_pref.id %>">
+        <%= list_pref.name %>
+        <i class="fa fa-check"></i>
+      </label>
+    <% end %>
+   </div>
+</div>
+        </div>
+        <%= f.submit "Save", class: "btn btn-primary"  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
