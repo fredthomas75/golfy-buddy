@@ -1,21 +1,26 @@
 <h1>My buddies</h1>
 
-<ul>
-  <% if @buddies.empty? %>
-    <p>No buddy <i class="fas fa-frown"></i></p>
-  <% end %>
-  <% @buddies.each do |buddy| %>
-    <li>
-      <strong><%= buddy.first_name %> <%= buddy.last_name %></strong>
-        <%= link_to 'Send message', new_message_path(to: buddy.id), class: 'btn btn-outline-primary btn-sm' %>
-    </li>
-  <% end %>
-</ul>
+
+    <ul>
+      <% if @buddies.empty? %>
+        <p>No buddy <i class="fas fa-frown"></i></p>
+      <% end %>
+      <% @buddies.each do |buddy| %>
+        <div class="buddy-card">
+            <li>
+              <strong><%= buddy.first_name %> <%= buddy.last_name %></strong>
+                <%= link_to 'Send message', new_message_path(to: buddy.id), class: 'btn btn-outline-primary btn-sm' %>
+              </li>
+        </div>
+      <% end %>
+    </ul>
 
 <h1>Users</h1>
 
 <ul>
   <% @users.each do |user| %>
+    <div class="buddy-card">
+
     <li>
       <strong><%= user.first_name %> <%= user.last_name %></strong>
       <% unless current_user == user %>
@@ -25,6 +30,7 @@
       <%= link_to 'Add friend', friendships_request_path(user), method: :post, class: 'btn btn-outline-secondary btn-sm'  %>
       <% end %>
     </li>
+    </div>
   <% end %>
 </ul>
 
