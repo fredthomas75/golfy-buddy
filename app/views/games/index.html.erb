@@ -1,88 +1,95 @@
 <p id="notice"><%= notice %></p>
 
-<%= form_tag games_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a game"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+<div class="search-bar-container">
+  <!-- FRIEND GAMES -->
+  <div>
+    <%= link_to 'Show games of your buddies', games_buddies_path, class: "btn-friend-games" %>
+  </div>
+  <!-- SEARCH BAR -->
+  <div>
+    <%= form_tag games_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control search-bar",
+        placeholder: "Find a game"
+      %>
+    <% end %>
+  </div>
+</div>
 
-<h1>Games</h1>
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <%= link_to 'Show games of your buddies', games_buddies_path, class: "btn btn-outline-success btn-sm" %>
-  <tbody>
-    <!-- DEBUT DES GAME CARDS -->
-    <div class="game-cards-container">
-      <% @games.each do |game| %>
-          <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
 
-            <div class="game-card">
-              <img src="<%= game.course.attachments[0].photo.url %>" />
-              <div class="game-card-infos">
-                <div>
-                  <h2><%= game.name %></h2>
-                  <p><%= game.date %></p>
-                  <p><%= game.time %></p>
-                </div>
-                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="game-card-user avatar-bordered" />
+<!-- DEBUT DES GAME CARDS -->
+<div class="game-cards-container">
+  <% @games.each do |game| %>
+      <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
 
-                <%= link_to 'Show', game %>
-                <%= link_to 'Edit', edit_game_path(game) %>
-                <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-              </div>
+        <div class="game-card">
+          <img src="<%= game.course.attachments[0].photo.url %>" />
+          <div class="game-card-infos">
+            <div>
+              <h2><%= game.name %></h2>
+              <p><%= game.date %></p>
+              <p><%= game.time %></p>
             </div>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="game-card-user avatar-bordered" />
 
+            <%= link_to 'Show', game %>
+            <%= link_to 'Edit', edit_game_path(game) %>
+            <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+          </div>
+        </div>
+
+      <% end %>
+  <% end %>
+</div>
+<!-- FIN DES GAME CARDS -->
+
+
+<h1>My upcoming Games</h1>
+  <div class="game-cards-container">
+    <% @upcoming_games.each do |up_game| %>
+      <% if @upcoming_games.empty? %>
+        <p>You don't have any game coming</p>
+      <% end %>
+      <% up_game.guests.each do |guest| %>
+        <% if guest || up_game.user == current_user %>
+          <div class="game-card">
+            <img src="<%= game.course.attachments[0].photo.url %>" />
+            <div class="game-card-infos">
+              <div>
+                <h2><%= game.name %></h2>
+                <p><%= game.date %></p>
+                <p><%= game.time %></p>
+              </div>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="game-card-user avatar-bordered" />
+
+              <%= link_to 'Show', game %>
+              <%= link_to 'Edit', edit_game_path(game) %>
+              <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
           <% end %>
       <% end %>
-    </div>
-    <!-- FIN DES GAME CARDS -->
-  </tbody>
-    <h1>My upcoming Games</h1>
-      <% @upcoming_games.each do |up_game| %>
-        <% if @upcoming_games.empty? %>
-          <tbody>
-            <p>No game</p>
-        <% end %>
-        <% up_game.guests.each do |guest| %>
-          <% if guest || up_game.user == current_user %>
-            <ul>
-              <li><%= up_game.name %></li>
-
-
-
-                  <%= link_to 'Show', up_game %>
-                  <%= link_to 'Edit', edit_game_path(up_game) %>
-                  <%= link_to 'Destroy', up_game, method: :delete, data: { confirm: 'Are you sure?' } %>
-              </ul>
-            <% end %>
-        <% end %>
+    <% end %>
+  </div>
+<h1>My last Games</h1>
+<% @past_games.each do |game| %>
+  <% if @past_games.empty? %>
+    <tbody>
+      <p>No game</p>
+  <% end %>
+  <% game.guests.each do |guest| %>
+    <% if guest || game.user == current_user %>
+      <ul>
+        <li><%= game.name %></li>
+            <%= link_to 'Show', game %>
+            <%= link_to 'Edit', edit_game_path(game) %>
+            <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </ul>
       <% end %>
-      <h1>My last Games</h1>
-      <% @past_games.each do |game| %>
-        <% if @past_games.empty? %>
-          <tbody>
-            <p>No game</p>
-        <% end %>
-        <% game.guests.each do |guest| %>
-          <% if guest || game.user == current_user %>
-            <ul>
-              <li><%= game.name %></li>
-                  <%= link_to 'Show', game %>
-                  <%= link_to 'Edit', edit_game_path(game) %>
-                  <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
-              </ul>
-            <% end %>
-        <% end %>
-      <% end %>
-  </tbody>
+  <% end %>
+<% end %>
 <br>
 
 <%= link_to 'New Game', new_game_path %>
