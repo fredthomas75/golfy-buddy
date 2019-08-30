@@ -38,6 +38,8 @@
             <div class="col">
               <!-- NUMBER OF PLAYERS-->
               <%= f.input :number_players,
+                          collection: [ "1", "2", "3", "4"],
+                          selected: "1",
                           label: "Number of players",
                           placeholder: "Including you (maximum 4 people)" %>
             </div>
@@ -45,7 +47,8 @@
               <!-- NUMBER OF HOLES-->
               <%= f.input :options,
                           label: "Number of holes",
-                          collection: [ "9 holes", "18 holes", "Driving range"] %>
+                          collection: [ "9 holes", "18 holes", "Driving range"],
+                          selected: "9 holes" %>
             </div>
           </div>
           <div class="row">
