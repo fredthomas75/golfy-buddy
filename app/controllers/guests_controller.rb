@@ -1,5 +1,6 @@
 class GuestsController < ApplicationController
   before_action :set_admin_gb
+
   def create
     @game = Game.find(params[:game_id])
     @guest = Guest.new
