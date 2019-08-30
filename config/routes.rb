@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     resources :user_personalities
     resources :user_preferences
   end
+  get '/users/:id/new_preferences', to: 'users#new_preferences', as: :new_preferences
+  patch '/users/:id', to: 'users#set_preferences'
+  get '/users/:id/new_personalities', to: 'users#new_personalities', as: :new_personalities
+  patch '/users/:id', to: 'users#set_personalities'
   # Routes for HasFriendship
     post '/users/:id/friendships',    to: 'friendships#request_frd', as: :friendships_request
     post '/users/:id',   to: 'friendships#confirm_frd', as: :friendships_confirm
