@@ -6,10 +6,10 @@ Rails.application.routes.draw do
     resources :user_preferences
   end
   # Routes for HasFriendship
-    post '/user/:id/friendships',    to: 'friendships#request_frd', as: :friendships_request
-    post '/user/:id',   to: 'friendships#confirm_frd', as: :friendships_confirm
-    post '/user/:id',   to: 'friendships#decline_frd', as: :friendships_decline
-    delete '/user/:id',  to: 'friendships#remove_frd', as: :friendships_remove
+    post '/users/:id/friendships',    to: 'friendships#request_frd', as: :friendships_request
+    post '/users/:id',   to: 'friendships#confirm_frd', as: :friendships_confirm
+    post '/users/:id',   to: 'friendships#decline_frd', as: :friendships_decline
+    delete '/users/:id',  to: 'friendships#remove_frd', as: :friendships_remove
   resources :list_preferences
   resources :courses do
     resources :attachments
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :guests, only: [:index, :create, :update, :destroy]
   end
   get '/games/approve_user/:id', to: 'guests#approve_user', as: :approve_user
+  get '/games_buddies', to: 'games#games_buddies', as: :games_buddies
   resources :messages, only: [:new, :create]
   resources :conversations, only: [:index, :show, :destroy] do
     member do

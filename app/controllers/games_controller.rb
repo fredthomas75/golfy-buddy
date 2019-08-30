@@ -10,7 +10,7 @@ class GamesController < ApplicationController
     if params[:query].present?
       @games = Game.joins(:user, :course).global_search(params[:query])
       @upcoming_games = @upcoming_games.global_search(params[:query])
-      @past_games = @upcoming_games.global_search(params[:query])
+      @past_games = @past_games.global_search(params[:query])
     else
       @games = Game.all
       @guests = Guest.where(game: [@games])
@@ -30,7 +30,6 @@ class GamesController < ApplicationController
   # GET /games/1/edit
   def edit
   end
-
 
   # POST /games
   def create
@@ -60,6 +59,15 @@ class GamesController < ApplicationController
       redirect_to games_url, notice: 'Game was successfully destroyed.'
   end
 
+  def games_buddies
+    upcoming_games = Game.where("date >= ?", [Date.today]).order('date ASC, created_at ASC')
+    @upcoming_games_buddies = []
+    upcoming_games.each do |upgame|
+      if upgame.user.friends_with?(current_user)
+        @upcoming_games_buddies << upgame
+      end
+    end
+  end
 
 
   private
