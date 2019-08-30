@@ -18,22 +18,32 @@
   </thead>
   <%= link_to 'Show games of your buddies', games_buddies_path, class: "btn btn-outline-success btn-sm" %>
   <tbody>
-    <% @games.each do |game| %>
-      <ul>
-        <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
-          <li><%= game.name %></li>
-          <li>Course : <%= game.course.name %></li>
-          <li>By : <%= "#{game.user.first_name} #{game.user.last_name}" %></li>
-          <li>Options : <%= game.options %></li>
-          <li>Number of players : <%= game.number_players %></li>
-          <li>Number of guests : <%= game.number_guests %></li>
+    <!-- DEBUT DES GAME CARDS -->
+    <div class="game-cards-container">
+      <% @games.each do |game| %>
+          <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
 
-          <%= link_to 'Show', game %>
-          <%= link_to 'Edit', edit_game_path(game) %>
-          <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </ul>
-    <% end %>
+            <div class="game-card">
+              <img src="<%= game.course.attachments[0].photo.url %>" />
+              <div class="game-card-infos">
+                <div>
+                  <h2><%= game.name %></h2>
+                  <p><%= game.date %></p>
+                  <p><%= game.time %></p>
+                </div>
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="game-card-user avatar-bordered" />
+
+                <%= link_to 'Show', game %>
+                <%= link_to 'Edit', edit_game_path(game) %>
+                <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+              </div>
+            </div>
+
+          <% end %>
+      <% end %>
+    </div>
+    <!-- FIN DES GAME CARDS -->
   </tbody>
     <h1>My upcoming Games</h1>
       <% @upcoming_games.each do |up_game| %>
