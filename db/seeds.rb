@@ -10,8 +10,10 @@
 puts "Deleting all existing content"
 Game.delete_all
 Course.delete_all
-User.delete_all
+UserPreference.delete_all
+UserPersonality.delete_all
 ListPref.delete_all
+User.delete_all
 
 puts "Creating categories and other arrays"
 price = (20..100).to_a
@@ -26,19 +28,23 @@ t3 = Time.now
 list = %w(Adventurous Helpful Affable Humble Capable Imaginative Charming Impartial Confident Independent Conscientious Keen Cultured Meticulous Dependable Observant)
 
 puts "Creating 10 users + 1 admin"
-10.times { User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password, about_me: Faker::Lorem.paragraph, current_city: Faker::Address.city, gender: ['Female', 'Male', 'Other'].sample )}
-User.create(name: 'info GOLFY Buddy', first_name: 'info', last_name: 'GOLFY Buddy', email: 'info@golfybuddy.com', password: '123456', about_me: "I am the admin", current_city: 'Montreal', gender: 'Other')
+10.times { User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password, about_me: Faker::Lorem.paragraph, current_city: Faker::Address.city, gender: ['Female', 'Male', 'Other'].sample )}
+User.create!(name: 'info GOLFY Buddy', first_name: 'info', last_name: 'GOLFY Buddy', email: 'info@golfybuddy.com', password: '123456', about_me: "I am the admin", current_city: 'Montreal', gender: 'Other')
 
 puts "Creating 5 courses"
-Course.create(name: 'Club de Golf Metropolitain Anjou', address: '9555 Boulevard Du Golf, Anjou', difficulty: 1, number_holes: 18, style: 'Classic')
-Course.create(name: 'Golf Les Iles de Boucherville', address: '255, Ile Sainte-Marguerite, Boucherville', difficulty: 3, number_holes: 18, style: 'Links')
-Course.create(name: 'Golf Dorval', address: '2000 avenue Reverchon, Dorval', difficulty: 3, number_holes: 18, style: 'Championship')
-Course.create(name: 'Golf Ste-Rose', address: '1400 Mattawa Boulevard, Laval', difficulty: 2, number_holes: 18, style: 'Classic')
-Course.create(name: 'Mystic Pines', address: '1500 Route 138, Kahnawake', difficulty: 1, number_holes: 9, style: 'Links')
+Course.create!(name: 'Club de Golf Metropolitain Anjou', address: '9555 Boulevard Du Golf, Anjou', difficulty: 1, number_holes: 18, style: 'Classic')
+Course.create!(name: 'Golf Les Iles de Boucherville', address: '255, Ile Sainte-Marguerite, Boucherville', difficulty: 3, number_holes: 18, style: 'Links')
+Course.create!(name: 'Golf Dorval', address: '2000 avenue Reverchon, Dorval', difficulty: 3, number_holes: 18, style: 'Championship')
+Course.create!(name: 'Golf Ste-Rose', address: '1400 Mattawa Boulevard, Laval', difficulty: 2, number_holes: 18, style: 'Classic')
+Course.create!(name: 'Mystic Pines', address: '1500 Route 138, Kahnawake', difficulty: 1, number_holes: 9, style: 'Links')
 
+courses = Course.all
+courses.map do |course|
+  course.attachments.create!(remote_photo_url: 'https://source.unsplash.com/random/?golf-course')
+end
 
 puts "Creating 10 games"
-10.times { Game.create(
+10.times { Game.create!(
   name: Faker::Restaurant.name,
   options: holes.sample,
   number_players: [3, 4].sample,
@@ -52,5 +58,18 @@ puts "Creating 10 games"
   user: User.all.sample,
   game_price: price.sample
   ) }
+
+puts "Create list of pref"
+list.each do |pref|
+    ListPref.create!(name: pref)
+  end
+
+puts "Attaching pref and perso to users"
+users = User.all
+  users.map do |user|
+    5.times {user.user_preferences.create!(list_pref: ListPref.all.sample) }
+    5.times {user.user_personalities.create!(list_pref: ListPref.all.sample) }
+  end
+
 
 puts "Thank you for your patience!"
