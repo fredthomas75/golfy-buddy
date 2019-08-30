@@ -41,11 +41,13 @@ Course.create!(name: 'Mystic Pines', address: '1500 Route 138, Kahnawake', diffi
 courses = Course.all
 courses.map do |course|
   course.attachments.create!(remote_photo_url: 'https://source.unsplash.com/random/?golf-course')
+  sleep(3)
+  puts 'Dormance de 3 secondes'
 end
 
 puts "Creating 10 games"
 10.times { Game.create!(
-  name: Faker::Restaurant.name,
+  name: Faker::Team.name,
   options: holes.sample,
   number_players: [3, 4].sample,
   number_guests: [1, 2].sample,
