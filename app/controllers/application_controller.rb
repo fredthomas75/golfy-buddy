@@ -38,7 +38,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_number_unread_messages
-    # @unread_conversations_count = current_user.mailbox.conversations.unread(current_user).count
-    @unread_conversations_count = 0
+    @unread_conversations_count = current_user.mailbox.conversations.unread(current_user).count
   end
 end
