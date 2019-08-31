@@ -1,81 +1,83 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 offset-sm-2">
+<div class="background-color-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 offset-sm-2">
 
-      <h1 class="form-h1">Register a Game</h1>
+        <h1 class="form-h1">Register a Game</h1>
 
-      <%= simple_form_for(@game) do |f| %>
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <%= simple_form_for(@game) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-        <div class="form-actions box-form">
-          <div class="row">
-            <div class="col">
-              <!-- NAME OF THE GAME-->
-              <%= f.input :name,
-                          label: "What is the name of your game?",
-                          placeholder: "Be creative..."%>
+          <div class="form-actions box-form">
+            <div class="row">
+              <div class="col">
+                <!-- NAME OF THE GAME-->
+                <%= f.input :name,
+                            label: "What is the name of your game?",
+                            placeholder: "Be creative..."%>
+              </div>
+              <div class="col">
+                <!-- BOOKED AND PRIVACY-->
+                <%= f.input :booked,
+                            label: "Tee Time Pre-Booked?" %>
+                <%= f.select :privacy, ["public", "private", "public with invite"] %>
+              </div>
             </div>
-            <div class="col">
-              <!-- BOOKED AND PRIVACY-->
-              <%= f.input :booked,
-                          label: "Tee Time Pre-Booked?" %>
-              <%= f.select :privacy, ["public", "private", "public with invite"] %>
+            <div class="row">
+              <div class="col">
+                <!-- DATE-->
+                <%= f.input :date,
+                            label: "When do you want to play?" %>
+              </div>
+              <div class="col">
+                <!-- TIME-->
+                <%= f.input :time %>
+              </div>
             </div>
+            <div class="row">
+              <div class="col">
+                <!-- NUMBER OF PLAYERS-->
+                <%= f.input :number_players,
+                            collection: [ "1", "2", "3", "4"],
+                            selected: "1",
+                            label: "Number of players",
+                            placeholder: "Including you (maximum 4 people)" %>
+              </div>
+              <div class="col">
+                <!-- NUMBER OF HOLES-->
+                <%= f.input :options,
+                            label: "Number of holes",
+                            collection: [ "9 holes", "18 holes", "Driving range"],
+                            selected: "9 holes" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <!-- WHERE-->
+                <%= f.association :course,
+                                  label: "Where?" %>
+              </div>
+              <div class="col">
+                <!-- PRICE-->
+                <%= f.input :game_price %>
+              </div>
+            </div>
+              <!-- ABOUT GAME-->
+              <%= f.input :about_game,
+                          label: "Game Description (optional)",
+                          placeholder: "Describe your game..." %>
           </div>
-          <div class="row">
-            <div class="col">
-              <!-- DATE-->
-              <%= f.input :date,
-                          label: "When do you want to play?" %>
-            </div>
-            <div class="col">
-              <!-- TIME-->
-              <%= f.input :time %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <!-- NUMBER OF PLAYERS-->
-              <%= f.input :number_players,
-                          collection: [ "1", "2", "3", "4"],
-                          selected: "1",
-                          label: "Number of players",
-                          placeholder: "Including you (maximum 4 people)" %>
-            </div>
-            <div class="col">
-              <!-- NUMBER OF HOLES-->
-              <%= f.input :options,
-                          label: "Number of holes",
-                          collection: [ "9 holes", "18 holes", "Driving range"],
-                          selected: "9 holes" %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <!-- WHERE-->
-              <%= f.association :course,
-                                label: "Where?" %>
-            </div>
-            <div class="col">
-              <!-- PRICE-->
-              <%= f.input :game_price %>
-            </div>
-          </div>
-            <!-- ABOUT GAME-->
-            <%= f.input :about_game,
-                        label: "Game Description (optional)",
-                        placeholder: "Describe your game..." %>
-        </div>
 
-        <div class="row">
-          <%= f.button :submit,
-                        value: "Create your Game",
-                        id: "btn-form" %>
-        </div>
+          <div class="row">
+            <%= f.button :submit,
+                          value: "Create your Game",
+                          id: "btn-form" %>
+          </div>
 
-      <% end %>
+        <% end %>
 
+      </div>
     </div>
   </div>
 </div>
