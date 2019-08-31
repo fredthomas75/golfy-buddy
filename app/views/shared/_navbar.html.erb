@@ -35,7 +35,7 @@
       <ul class="navbar-nav menu-right">
         <!-- USER IS LOGGED -->
         <% if user_signed_in? %>
-          <%= link_to "Host a game", "#", class: "host-button" %>
+          <%= link_to "Host a game", new_game_path, class: "host-button" %>
           <li class="nav-item dropdown">
             <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <span class="badge"><%= @unread_conversations_count %></span>
