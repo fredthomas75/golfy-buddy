@@ -18,23 +18,24 @@
 <h1>Users</h1>
 
 <div class="container w-90">
-  <div class="row justify-content-between">
+  <div class="row ">
 
 
 
   <% @users.each do |user| %>
+
     <div class="buddy-card col-3 text-center">
       <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo" alt="">
 
       <div class="text-center">
         <strong><%= user.first_name %> <%= user.last_name %></strong>
       </div>
-      <div>
+      <div class="text-secondary">
        <%= user.current_city %>
        <p>Handicap: <%= user.handicap%></p>
        <%= user.language %>
       </div>
-      <div class="text-center">
+      <div class="text-center message">
           <% unless current_user == user %>
             <%= link_to 'Message', new_message_path(to: user.id), class: "msg_btn " %>
           <% end %>
