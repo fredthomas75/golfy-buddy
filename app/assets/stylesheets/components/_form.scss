@@ -8,6 +8,10 @@
   }
 }
 
+.background-color-form {
+    background: rgba(251, 251, 251, 0.6);
+}
+
 abbr {
   text-decoration: none !important;
 }
@@ -25,13 +29,13 @@ label {
   color: white;
 }
 
-h1 {
+.form-h1 {
   color: rgba(122, 107, 189, 0.7);
   text-align: center;
   margin: 20px;
 }
 
-h2 {
+.form-h2 {
   color: rgba(122, 107, 189, 0.7);
   text-align: center;
   margin: 20px;
