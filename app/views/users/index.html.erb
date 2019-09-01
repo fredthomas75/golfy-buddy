@@ -1,31 +1,60 @@
 <h1>My buddies</h1>
 
-<ul>
-  <% if @buddies.empty? %>
-    <p>No buddy <i class="fas fa-frown"></i></p>
-  <% end %>
-  <% @buddies.each do |buddy| %>
-    <li>
-      <strong><%= buddy.first_name %> <%= buddy.last_name %></strong>
-        <%= link_to 'Send message', new_message_path(to: buddy.id), class: 'btn btn-outline-primary btn-sm' %>
-    </li>
-  <% end %>
-</ul>
+
+    <ul>
+      <% if @buddies.empty? %>
+        <p>No buddy <i class="fas fa-frown"></i></p>
+      <% end %>
+      <% @buddies.each do |buddy| %>
+        <div class="buddy-card">
+            <li>
+              <strong><%= buddy.first_name %> <%= buddy.last_name %></strong>
+                <%= link_to 'Send message', new_message_path(to: buddy.id), class: 'btn btn-outline-primary btn-sm' %>
+              </li>
+        </div>
+      <% end %>
+    </ul>
 
 <h1>Users</h1>
 
-<ul>
+<div class="container w-90">
+  <div class="row justify-content-between">
+
+
+
   <% @users.each do |user| %>
-    <li>
-      <strong><%= user.first_name %> <%= user.last_name %></strong>
-      <% unless current_user == user %>
-        <%= link_to 'Send message', new_message_path(to: user.id), class: 'btn btn-outline-primary btn-sm' %>
-      <% end %>
-      <% unless current_user == user || current_user.friends_with?(user) %>
-      <%= link_to 'Add friend', friendships_request_path(user), method: :post, class: 'btn btn-outline-secondary btn-sm'  %>
-      <% end %>
-    </li>
+
+
+    <div class="buddy-card  text-center">
+      <svg class="add_btn" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M30.6377 21.8722H21.2091V31.3008H18.0663V21.8722H8.6377V18.7294H18.0663V9.30078H21.2091V18.7294H30.6377V21.8722Z" fill="#686B6F"/>
+    <rect width="40" height="40" rx="20" fill="#7A7A7A" fill-opacity="0.26"/>
+    </svg>
+      <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo" alt="">
+
+      <div class="text-center pt-2">
+        <strong><%= user.first_name %> <%= user.last_name %></strong>
+      </div>
+      <div class="text-secondary">
+       <div class="pt-2">
+        <%= user.current_city %>
+      </div>
+       <div class="pt-2">
+         Handicap: <%= user.handicap%>
+
+       </div>
+       <p class="pt-2">american</p>
+      </div>
+      <div class="text-center message">
+          <% unless current_user == user %>
+            <%= link_to 'Message', new_message_path(to: user.id), class: "msg_btn " %>
+          <% end %>
+      </div>
+
+    </div>
   <% end %>
-</ul>
+</div>
+  </div>
 
 <%= will_paginate %>
+
