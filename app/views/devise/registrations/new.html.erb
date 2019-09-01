@@ -1,98 +1,100 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 offset-sm-2">
+<div class="background-color-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 offset-sm-2">
 
-      <h2 class="form-h2">Sign up</h2>
+        <h2 class="form-h2">Sign up</h2>
 
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
 
-          <div class="form-inputs box-form">
+            <div class="form-inputs box-form">
 
-              <div class="row">
-                <div class="col">
-                  <!-- FIRST NAME -->
-                  <%= f.input :first_name,
-                              required: true,
-                              autofocus: true,
-                              input_html: { autocomplete: "first_name" }%>
+                <div class="row">
+                  <div class="col">
+                    <!-- FIRST NAME -->
+                    <%= f.input :first_name,
+                                required: true,
+                                autofocus: true,
+                                input_html: { autocomplete: "first_name" }%>
+                  </div>
+                  <div class="col">
+                    <!-- LAST NAME -->
+                    <%= f.input :last_name,
+                                required: true,
+                                autofocus: true,
+                                input_html: { autocomplete: "last_name" }%>
+                  </div>
                 </div>
-                <div class="col">
-                  <!-- LAST NAME -->
-                  <%= f.input :last_name,
-                              required: true,
-                              autofocus: true,
-                              input_html: { autocomplete: "last_name" }%>
-                </div>
-              </div>
 
-              <div class="row">
-                <div class="col">
-                  <!-- EMAIL -->
-                  <%= f.input :email,
-                              required: true,
-                              autofocus: true,
-                              input_html: { autocomplete: "email" }%>
+                <div class="row">
+                  <div class="col">
+                    <!-- EMAIL -->
+                    <%= f.input :email,
+                                required: true,
+                                autofocus: true,
+                                input_html: { autocomplete: "email" }%>
+                  </div>
+                  <div class="col">
+                    <!-- PASSWORD -->
+                    <%= f.input :password,
+                                required: true,
+                                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                                input_html: { autocomplete: "new-password" } %>
+                  </div>
                 </div>
-                <div class="col">
-                  <!-- PASSWORD -->
-                  <%= f.input :password,
-                              required: true,
-                              hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                              input_html: { autocomplete: "new-password" } %>
-                </div>
-              </div>
 
-              <div class="row">
-                <div class="col">
-                  <!-- BIRTH DATE -->
-                  <%= f.input :birth_date, as: :date,
-                                start_year: Date.today.year,
-                                order: [:day, :month, :year],
-                                html5: true %>
+                <div class="row">
+                  <div class="col">
+                    <!-- BIRTH DATE -->
+                    <%= f.input :birth_date, as: :date,
+                                  start_year: Date.today.year,
+                                  order: [:day, :month, :year],
+                                  html5: true %>
+                  </div>
+                  <div class="col">
+                    <!-- HANDICAP -->
+                    <%= f.input :handicap,
+                                as: :float,
+                                required: false,
+                                autofocus: true %>
+                  </div>
+                  <div class="col">
+                    <!-- GENDER -->
+                    <%= f.input :gender,
+                                :collection => [ "Female", "Male", "Other" ],
+                                required: false %>
+                  </div>
                 </div>
-                <div class="col">
-                  <!-- HANDICAP -->
-                  <%= f.input :handicap,
-                              as: :float,
+
+                <div class="row">
+                  <div class="col">
+                    <!-- CURRENT CITY -->
+                    <%= f.input :current_city,
+                                required: false,
+                                autofocus: true,
+                                input_html: { id: "current_city" } %>
+                  </div>
+                  <div class="col">
+                    <!-- LANGUAGE -->
+                    <%= f.input :language,
+                                :collection => I18nData.languages.values, selected: "English" %>
+                  </div>
+                </div>
+                  <!-- ABOUT ME -->
+                  <%= f.input :about_me,
                               required: false,
-                              autofocus: true %>
-                </div>
-                <div class="col">
-                  <!-- GENDER -->
-                  <%= f.input :gender,
-                              :collection => [ "Female", "Male", "Other" ],
-                              required: false %>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col">
-                  <!-- CURRENT CITY -->
-                  <%= f.input :current_city,
-                              required: false,
                               autofocus: true,
-                              input_html: { id: "current_city" } %>
-                </div>
-                <div class="col">
-                  <!-- LANGUAGE -->
-                  <%= f.input :language,
-                              :collection => I18nData.languages.values, selected: "English" %>
-                </div>
-              </div>
-                <!-- ABOUT ME -->
-                <%= f.input :about_me,
-                            required: false,
-                            autofocus: true,
-                            as: :text,
-                            input_html: { autocomplete: "about_me" }%>
+                              as: :text,
+                              input_html: { autocomplete: "about_me" }%>
 
 
-          <div class="form-actions row">
-            <%= f.button :submit, "Sign up", id: "btn-form" %>
-          </div>
-      <% end %>
+            <div class="form-actions row">
+              <%= f.button :submit, "Sign up", id: "btn-form" %>
+            </div>
+        <% end %>
 
+        </div>
       </div>
     </div>
   </div>
