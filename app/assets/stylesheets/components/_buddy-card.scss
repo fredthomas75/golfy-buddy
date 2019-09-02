@@ -6,13 +6,17 @@
   width: 350px;
   margin: 15px;
   position: relative;
+  transition: all .5s ease-in-out;
+
   // margin-right: 15px;
 }
+
+.buddy-card:hover { transform: scale(1.05); }
 .buddy-photo {
   margin-top: 20px;
   border-radius: 50%;
-  width : 200px;
-  height: 200px;
+  width : 150px;
+  height: 150px;
 }
 .msg_btn {
   color: #7A6BBD;
@@ -34,5 +38,10 @@
   position: absolute;
   right: 15px;
   top: 15px;
+   transition: all .2s ease-in-out;
+
+
 
 }
+
+.add_btn:hover { transform: scale(1.1); }

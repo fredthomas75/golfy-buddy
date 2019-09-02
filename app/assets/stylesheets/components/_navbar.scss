@@ -47,8 +47,8 @@
 
 .host-button:hover {
   text-decoration: none;
-  border: solid 2px #7A6BBD;
-  color: #7A6BBD;
+  color: white;
+  background: purple;
 }
 
 .menu-right {
@@ -64,3 +64,7 @@
   }
 }
 
+.dropdown-item:hover {
+  background-color: $green;
+  color: white;
+}
