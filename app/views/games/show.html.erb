@@ -71,9 +71,16 @@
         <%= button_to 'Like', game_likes_path(@game), method: :post %>
       <% end %>
     <% end %>
-
   <p><%= @game.likes.count %> <%= (@game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
+  <% pre_wish = @game.wishgames.find { |wishgame| wishgame.wishlist.user_id == current_user.id} %>
+    <% if pre_wish%>
+      <%= button_to 'Remove from wishlist', game_wishgame_path(@game, pre_wish), method: :delete %>
+    <% else %>
+      <% if user_signed_in? %>
+        <%= button_to 'Add to wishlist', game_wishgames_path(@game), method: :post %>
+      <% end %>
+    <% end %>
 
 <% @attachments.each do |att| %>
   <%= image_tag att.photo_url %>

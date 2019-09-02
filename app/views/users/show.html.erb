@@ -7,6 +7,10 @@
   <%= @user.email %><br>
   <%= gravatar_for @user %><br></p>
 
+  <% if @user != current_user %>
+    <%= link_to 'Request Friend', friendships_request_path(@user), method: :post, class: 'btn btn-outline-success btn-sm' %>
+    <% end %>
+
   <% if @user == current_user %>
     <h2>Friendship requests</h2>
       <% @user.requested_friends.each do |req|%>

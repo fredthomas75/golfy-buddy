@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    resources :wishlists
+  end
   # Routes for HasFriendship
     post '/users/:id/friendships',    to: 'friendships#request_frd', as: :friendships_request
     post '/users/:id',   to: 'friendships#confirm_frd', as: :friendships_confirm
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
     resources :attachments
     resources :guests, only: [:index, :create, :update, :destroy]
     resources :likes
+    resources :wishgames
   end
   get '/games/approve_user/:id', to: 'guests#approve_user', as: :approve_user
   get '/games_buddies', to: 'games#games_buddies', as: :games_buddies
