@@ -15,12 +15,11 @@
       <div class="page-header">
         <h1><%= yield :page_header %></h1>
       </div>
-    <div class="margin-under-navbar"></div>
+
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <!-- <%= render 'shared/flashes' %> Bug when decomment: flash messages display twice -->
-
     <div class="container">
       <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>">
