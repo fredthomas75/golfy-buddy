@@ -1,33 +1,61 @@
-<p id="notice"><%= notice %></p>
-<h1>My personal page</h1>
-<p>
-  <strong>Name:</strong>
-  <%= @user.first_name %> <%= @user.last_name %><br>
-  <strong>Email:</strong>
-  <%= @user.email %><br>
-  <%= gravatar_for @user %><br></p>
+<div class="min-height-container color-test1">
+  <div class="row form-test">
+    <!--PROFILE COLONNES -->
+    <div class="col color-test2">
+      <div class="col color-test3">
 
-  <% if @user != current_user %>
-    <%= link_to 'Request Friend', friendships_request_path(@user), method: :post, class: 'btn btn-outline-success btn-sm' %>
-    <% end %>
+        <p id="notice"><%= notice %></p>
 
-  <% if @user == current_user %>
-    <h2>Friendship requests</h2>
-      <% @user.requested_friends.each do |req|%>
-        <p><%= req.first_name %> <%= req.last_name %> wants to be your buddy</p>
-        <%= link_to 'Accept Friend', friendships_confirm_path(req), method: :post, class: 'btn btn-outline-success btn-sm' %>
-        <%= link_to 'Decline Friend', friendships_decline_path(req), method: :post, class: 'btn btn-outline-warning btn-sm' %>
-            <%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-primary btn-sm' %>
-      <% end %>
+        <p><%= gravatar_for @user %><br></p>
 
-    <h2>Friendship pending</h2>
-      <% @user.pending_friends.each do |pend|%>
-        <p>You ask <%= pend.first_name %> <%= pend.last_name %>to be your buddy</p>
-          <%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-primary btn-sm' %>
-      <% end %><br>
-  <% end %>
+        <strong>Name:</strong>
+        <%= @user.first_name %> <%= @user.last_name %><br>
 
 
+        <%= link_to 'Edit', edit_user_registration_path(@user) %>
+      </div>
+    </div>
 
-<%= link_to 'Edit', edit_user_registration_path(@user) %> |
-<%= link_to 'Back', users_path %>
+    <!-- GAMES COLONNE -->
+    <div class="col color-test4">
+      <div class="row color-test3">
+        <div class="col">
+          <h2>Upcomming Games</h2>
+        </div>
+        <div class="col">
+          <h2>Past Games</h2>
+        </div>
+      </div>
+      <div>
+        <h3 class="buddies-h3">Your Next Game</h3>
+      </div>
+      <div class="card container">
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  # <% if @user != current_user %>
+  #   <%= link_to 'Request Friend', friendships_request_path(@user), method: :post, class: 'btn btn-outline-success btn-sm' %>
+  #   <% end %>
+
+  # <% if @user == current_user %>
+  #   <h2>Friendship requests</h2>
+  #     <% @user.requested_friends.each do |req|%>
+  #       <p><%= req.first_name %> <%= req.last_name %> wants to be your buddy</p>
+  #       <%= link_to 'Accept Friend', friendships_confirm_path(req), method: :post, class: 'btn btn-outline-success btn-sm' %>
+  #       <%= link_to 'Decline Friend', friendships_decline_path(req), method: :post, class: 'btn btn-outline-warning btn-sm' %>
+  #           <%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-primary btn-sm' %>
+  #     <% end %>
+
+  #   <h2>Friendship pending</h2>
+  #     <% @user.pending_friends.each do |pend|%>
+  #       <p>You ask <%= pend.first_name %> <%= pend.last_name %>to be your buddy</p>
+  #         <%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-primary btn-sm' %>
+  #     <% end %><br>
+  # <% end %>
