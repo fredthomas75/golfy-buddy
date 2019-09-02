@@ -13,7 +13,7 @@
 
 .home-form h1 {
   margin-bottom: 16px;
-  color: #7A6BBD;
+  color: $purple;
 }
 
 .home-form p {
@@ -22,10 +22,10 @@
 
 .letsplay-button {
   margin-top: 32px;
-  border: solid 1px #7A6BBD;
+  border: solid 1px $purple;
   border-radius: 50px;
   padding: 16px 64px;
-  color: #7A6BBD;
+  color: $purple;
 }
 
 .letsplay-button:link {
@@ -35,7 +35,7 @@
 .letsplay-button:hover {
   text-decoration: none;
   color: white;
-  background: #7A6BBD;
+  background: $purple;
 }
 
 .img-home img {

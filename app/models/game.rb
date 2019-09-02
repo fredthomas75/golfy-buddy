@@ -4,6 +4,8 @@ class Game < ApplicationRecord
   has_many :guests, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :wishgames, dependent: :destroy
+  has_many :wishlists, through: :wishgames
   accepts_nested_attributes_for :attachments
   include PgSearch::Model
   pg_search_scope :global_search,
