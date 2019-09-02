@@ -69,6 +69,12 @@ class GamesController < ApplicationController
     end
   end
 
+  # GET posts/xlsx
+  def xlsx
+       p = Game.to_xlsx
+       p.serialize('public/downloads/games.xlsx')
+       send_file 'public/downloads/games.xlsx', :type=>"application/xlsx"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

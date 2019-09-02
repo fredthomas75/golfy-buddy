@@ -22,14 +22,14 @@ class LikesController < ApplicationController
     else
       @like.destroy
     end
-    redirect_to post_path(@post)
+    redirect_to game_path(@game)
   end
+
+  private
 
   def find_like
    @like = @game.likes.find(params[:id])
   end
-
-  private
 
   def find_game
     @game = Game.find(params[:game_id])
