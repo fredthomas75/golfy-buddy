@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 8px 96px;
   position: fixed;
   top: 0;
@@ -46,8 +47,8 @@
 
 .host-button:hover {
   text-decoration: none;
-  border: solid 2px #7A6BBD;
-  color: #7A6BBD;
+  color: white;
+  background: purple;
 }
 
 .menu-right {
@@ -63,3 +64,7 @@
   }
 }
 
+.dropdown-item:hover {
+  background-color: $green;
+  color: white;
+}

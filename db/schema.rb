@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_140255) do
+ActiveRecord::Schema.define(version: 2019_09_02_054641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,15 @@ ActiveRecord::Schema.define(version: 2019_08_30_140255) do
     t.integer "share_of_price"
     t.index ["game_id"], name: "index_guests_on_game_id"
     t.index ["user_id"], name: "index_guests_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "game_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_likes_on_game_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "list_prefs", force: :cascade do |t|
@@ -185,6 +194,8 @@ ActiveRecord::Schema.define(version: 2019_08_30_140255) do
   add_foreign_key "games", "users"
   add_foreign_key "guests", "games"
   add_foreign_key "guests", "users"
+  add_foreign_key "likes", "games"
+  add_foreign_key "likes", "users"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"

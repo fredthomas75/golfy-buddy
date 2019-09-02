@@ -4,3 +4,17 @@
   margin-bottom: 1em;
   margin-top: 1em;
 }
+
+.media-body {
+  border-bottom: solid 1px $light-grey;
+}
+
+.media {
+  padding: 4px 0px;
+}
+
+.list-group-item {
+  margin: 6px;
+  border-radius: 6px;
+  background-color: $light-grey;
+}
