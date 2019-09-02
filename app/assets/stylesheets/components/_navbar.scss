@@ -47,7 +47,7 @@
 .host-button:hover {
   text-decoration: none;
   color: white;
-  background: light-purple;
+  background: purple;
 }
 
 .menu-right {
@@ -63,3 +63,7 @@
   }
 }
 
+.dropdown-item:hover {
+  background-color: $green;
+  color: white;
+}

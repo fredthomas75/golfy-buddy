@@ -1,27 +1,28 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  # before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_number_unread_messages, if: :user_signed_in?
 
-  def configure_permitted_parameters
-    # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [
-      :name,
-      :first_name,
-      :last_name,
-      :phone,
-      :birth_date,
-      :gender,
-      :country,
-      :handicap,
-      :pro,
-      :about_me,
-      :photo
-    ])
+  # def configure_permitted_parameters
+  #   # For additional fields in app/views/devise/registrations/new.html.erb
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [
+  #     :name,
+  #     :first_name,
+  #     :last_name,
+  #     :birth_date,
+  #     :gender,
+  #     :handicap,
+  #     :pro,
+  #     :about_me,
+  #     :photo,
+  #     :current_city,
+  #     :language,
+  #     :list_pref_ids
+  #   ])
 
-    # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :first_name, :last_name, :phone, :birth_date, :gender, :country, :handicap, :pro, :about_me, :photo])
-  end
+  #   # For additional in app/views/devise/registrations/edit.html.erb
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:name, :first_name, :last_name, :phone, :birth_date, :gender, :country, :handicap, :pro, :about_me, :photo])
+  # end
 
   rescue_from ActiveRecord::RecordNotFound do
   flash[:warning] = 'Resource not found.'

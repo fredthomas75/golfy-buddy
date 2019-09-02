@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :games, dependent: :destroy
   has_many :guests, dependent: :destroy
   has_many :user_preferences, dependent: :destroy
-  has_many :user_personalities, dependent: :destroy
+  has_many :list_prefs, through: :user_preferences
   mount_uploader :photo, PhotoUploader
   # messageable = this Class can use mailboxer gem
   acts_as_messageable

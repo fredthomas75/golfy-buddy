@@ -35,15 +35,13 @@
       <ul class="navbar-nav menu-right">
         <!-- USER IS LOGGED -->
         <% if user_signed_in? %>
-          <%= link_to "Host a game", "#", class: "host-button" %>
+          <%= link_to "Host a game", new_game_path, class: "host-button" %>
           <li class="nav-item dropdown">
             <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <span class="badge"><%= @unread_conversations_count %></span>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <%= link_to 'Messages', conversations_path, class: "dropdown-item"  %>
               <%= link_to 'Edit your profile', edit_user_registration_path, class: "dropdown-item"  %>
-              <%= link_to 'Set your golf style', new_personalities_path(current_user), class: "dropdown-item"  %>
-              <%= link_to 'Set your preferences', new_preferences_path(current_user), class: "dropdown-item"  %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
