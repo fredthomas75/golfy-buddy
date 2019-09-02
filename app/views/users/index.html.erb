@@ -44,7 +44,11 @@
          Handicap: <%= user.handicap %>
 
        </div>
-       <p class="pt-2"><%= user.language %></p>
+
+       <div class="pt-2">
+        <%= user.language %>
+       </div>
+
       </div>
       <div class="text-center message">
           <% unless current_user == user %>
