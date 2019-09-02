@@ -45,13 +45,13 @@ end
 User.create!(name: 'info GOLFY Buddy', first_name: 'info', last_name: 'GOLFY Buddy', email: 'info@golfybuddy.com', password: '123456', about_me: "I am the admin", current_city: 'Montreal', gender: 'Other')
 
 puts 'Creation de younes@email.com:123456'
-User.create!(name: 'Younes Kamel', first_name: 'Younes', last_name: 'Kamel', email: 'younes@email.com', password: '123456', about_me: "I am Younes", current_city: 'Montreal', gender: 'Other', photo: 'younes.jpg')
+User.create!(name: 'Younes Kamel', first_name: 'Younes', last_name: 'Kamel', email: 'younes@email.com', password: '123456', about_me: "I am Younes", current_city: 'Montreal', gender: 'Other', photo: File.open('./app/assets/images/younes.jpg'))
 puts 'Creation de leo@email.com:123456'
-User.create!(name: 'Leo Beltran', first_name: 'Leo', last_name: 'Beltran', email: 'leo@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', photo: 'leo.jpg')
+User.create!(name: 'Leo Beltran', first_name: 'Leo', last_name: 'Beltran', email: 'leo@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', photo: File.open('./app/assets/images/leo.jpg'))
 puts 'Creation de fred@email.com:123456'
-User.create!(name: 'Frederic Thomas', first_name: 'Frederic', last_name: 'Thomas', email: 'fred@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', photo: 'fred.png')
+User.create!(name: 'Frederic Thomas', first_name: 'Frederic', last_name: 'Thomas', email: 'fred@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', photo: File.open('./app/assets/images/fred.png'))
 puts 'Creation de louis@email.com:123456'
-User.create!(name: 'Louis-Olivier', first_name: 'Louis-Olivier', last_name: 'Pelletier', email: 'guest3@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', photo: 'louis.png')
+User.create!(name: 'Louis-Olivier', first_name: 'Louis-Olivier', last_name: 'Pelletier', email: 'louis@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', photo: File.open('./app/assets/images/louis.png'))
 
 puts "Generating users's wishlist"
 User.all.each do |user|
