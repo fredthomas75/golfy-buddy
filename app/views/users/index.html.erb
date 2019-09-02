@@ -1,19 +1,5 @@
 <h1>My buddies</h1>
-<<<<<<< HEAD
   <%= link_to 'Show my personal page', user_path(current_user), class: "btn-friend-games" %>
-<ul>
-  <% if @buddies.empty? %>
-    <p>No buddy <i class="fas fa-frown"></i></p>
-  <% end %>
-  <% @buddies.each do |buddy| %>
-    <li>
-      <strong><%= buddy.first_name %> <%= buddy.last_name %></strong>
-        <%= link_to 'Send message', new_message_path(to: buddy.id), class: 'btn btn-outline-primary btn-sm' %>
-    </li>
-  <% end %>
-</ul>
-=======
-
 
     <ul>
       <% if @buddies.empty? %>
@@ -28,7 +14,6 @@
         </div>
       <% end %>
     </ul>
->>>>>>> bc7e9da8194864cecd1182b6091952f9240b3ee9
 
 <h1>Users</h1>
 
@@ -55,14 +40,14 @@
         <%= user.current_city %>
       </div>
        <div class="pt-2">
-         Handicap: <%= user.handicap%>
+         Handicap: <%= user.handicap %>
 
        </div>
-       <p class="pt-2">american</p>
+       <p class="pt-2"><%= user.language %></p>
       </div>
       <div class="text-center message">
           <% unless current_user == user %>
-            <%= link_to 'Message', new_message_path(to: user.id), class: "msg_btn " %>
+            <%= link_to '<i class="far fa-envelope fa-lg"></i>'.html_safe, new_message_path(to: user.id), class: "msg_btn " %>
           <% end %>
       </div>
 

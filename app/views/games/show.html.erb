@@ -63,6 +63,17 @@
     <%= @game.privacy %>
 </p>
 
+  <% pre_like = @game.likes.find { |like| like.user_id == current_user.id} %>
+    <% if pre_like %>
+      <%= button_to 'Unlike', game_like_path(@game, pre_like), method: :delete %>
+    <% else %>
+      <% if user_signed_in? %>
+        <%= button_to 'Like', game_likes_path(@game), method: :post %>
+      <% end %>
+    <% end %>
+
+  <p><%= @game.likes.count %> <%= (@game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
 
 <% @attachments.each do |att| %>
   <%= image_tag att.photo_url %>
@@ -86,10 +97,12 @@
   <%= link_to 'Edit', edit_game_path(@game) %> |
   <%= link_to 'Delete', game_path(@game), method: :delete %> |
   <%= link_to 'Back', games_path %>
-<% else %>
-   <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
-      <%= link_to 'Join', game_guests_path(@game), method: :post %> |
-  <% end %>
+    <% else %>
+    <% if user_signed_in? %>
+      <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
+        <%= link_to 'Join', game_guests_path(@game), method: :post %> |
+      <% end %>
+    <% end %>
 <% end %>
 
 

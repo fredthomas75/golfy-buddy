@@ -26,6 +26,7 @@
               <h3><%= game.name %></h3>
               <p><%= game.date %></p>
               <p><%= game.time %></p>
+              <p><%= game.likes.count %> <%= (game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
             </div>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="game-card-user avatar-bordered" />
 
