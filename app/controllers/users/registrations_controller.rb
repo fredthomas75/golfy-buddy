@@ -12,6 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super do |resource|
+      Wishlist.create!(user: resource)
       perso_id = params["user"]["list_pref_ids"]
       list = perso_id.map do |id|
         if !id.blank?

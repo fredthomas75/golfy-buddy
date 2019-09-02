@@ -7,6 +7,13 @@ class GamesController < ApplicationController
   def index
       @upcoming_games = Game.where("date >= ?", [Date.today]).order('date ASC, created_at ASC')
       @past_games = Game.where("date < ?", [Date.today]).order('date DESC, created_at DESC')
+      @wishlist = Wishlist.where(user_id: current_user.id)
+      @wishgames = Wishgame.where(wishlist_id: @wishlist.ids[0])
+      @games_wish = []
+      @wishgames.each do |wish|
+        @games_wish << wish.game
+      end
+
     if params[:query].present?
       @games = Game.joins(:user, :course).global_search(params[:query])
       @upcoming_games = @upcoming_games.global_search(params[:query])
