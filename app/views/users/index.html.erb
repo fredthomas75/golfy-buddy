@@ -1,10 +1,10 @@
-<h1 class="text-center text-warning">My buddies</h1>
+<h1 class="text-center text-warning pt-5">My buddies</h1>
 
   <%= link_to 'Show my personal page', user_path(current_user), class: "btn-friend-games" %>
 
     <ul>
       <% if @buddies.empty? %>
-        <p>No buddy <i class="fas fa-frown text-center text-secondary"></i></p>
+        <p>No buddy <i class="fas fa-frown text-center text-secondary "></i></p>
       <% end %>
       <div class="container w-90">
       <div class="row justify-content-between">
