@@ -1,31 +1,28 @@
 <p id="notice"><%= notice %></p>
-
+<h1>My personal page</h1>
 <p>
   <strong>Name:</strong>
   <%= @user.first_name %> <%= @user.last_name %><br>
   <strong>Email:</strong>
   <%= @user.email %><br>
-  <%= gravatar_for @user %><br>
+  <%= gravatar_for @user %><br></p>
 
-  <% if current_user == @user %>
+  <% if @user == current_user %>
+    <h2>Friendship requests</h2>
       <% @user.requested_friends.each do |req|%>
-        <% if !current_user.friends_with?(req) %>
-        <%= req.first_name %> <%= req.last_name %>
+        <p><%= req.first_name %> <%= req.last_name %> wants to be your buddy</p>
         <%= link_to 'Accept Friend', friendships_confirm_path(req), method: :post, class: 'btn btn-outline-success btn-sm' %>
         <%= link_to 'Decline Friend', friendships_decline_path(req), method: :post, class: 'btn btn-outline-warning btn-sm' %>
-        <% end %>
+            <%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-primary btn-sm' %>
       <% end %>
+
+    <h2>Friendship pending</h2>
+      <% @user.pending_friends.each do |pend|%>
+        <p>You ask <%= pend.first_name %> <%= pend.last_name %>to be your buddy</p>
+          <%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-primary btn-sm' %>
+      <% end %><br>
   <% end %>
 
-  <% if current_user != @user %>
-    <%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-primary btn-sm' %>
-  <% end %>
-  <% if current_user != @user && !current_user.friends_with?(@user) %>
-      <%= link_to 'Add friend', friendships_request_path(@user), method: :post, class: 'btn btn-outline-primary btn-sm'  %>
-  <% elsif current_user != @user && current_user.friends_with?(@user) %>
-      <%= link_to 'Remove friend', friendships_remove_path(@user), method: :delete, class: 'btn btn-outline-danger btn-sm'  %>
-  <% end %>
-</p>
 
 
 <%= link_to 'Edit', edit_user_registration_path(@user) %> |

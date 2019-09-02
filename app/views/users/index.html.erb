@@ -1,5 +1,5 @@
 <h1>My buddies</h1>
-
+  <%= link_to 'Show my personal page', user_path(current_user), class: "btn-friend-games" %>
 <ul>
   <% if @buddies.empty? %>
     <p>No buddy <i class="fas fa-frown"></i></p>

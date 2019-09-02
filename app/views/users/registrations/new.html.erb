@@ -87,6 +87,10 @@
                             as: :text,
                             input_html: { autocomplete: "about_me" }%>
 
+                <!-- GOLF STYLE -->
+                <%= f.association :list_prefs,
+                                  label: 'Golf style' %>
+
 
           <div class="form-actions row">
             <%= f.button :submit, "Sign up", id: "btn-form" %>
