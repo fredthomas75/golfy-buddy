@@ -16,12 +16,11 @@
   </div>
 </div>
 
-
 <!-- DEBUT DES GAME CARDS -->
 <div class="game-cards-container">
   <% @games.each do |game| %>
       <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
-
+        <%= link_to game_path(game), class: "game-card-link" do %>
         <div class="game-card">
           <img src="<%= game.course.attachments[0].photo.url %>" />
           <div class="game-card-infos">
@@ -31,15 +30,38 @@
               <p><%= game.time %></p>
               <p><%= game.likes.count %> <%= (game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
             </div>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="game-card-user avatar-bordered" />
+            <!-- GAME BUDDIES -->
+            <div class="buddies">
+              <!-- GAME HOST -->
+              <img src="<%= game.user.photo %>" class="game-card-user avatar-bordered" id="game-host" />
+              <!-- GAME GUEST 1-->
+              <% if game.guests[0].nil? %>
+                <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-1" %>
+              <% else %>
+                <%= cl_image_tag current_user.photo, class: "game-card-user avatar-bordered", id: "guest-1" %>
+              <% end %>
+              <!-- GAME GUEST 2-->
+              <% if game.guests[1].nil? %>
+                <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-2" %>
+              <% else %>
+                <%= cl_image_tag current_user.photo, class: "game-card-user avatar-bordered", id: "guest-2" %>
+              <% end %>
+              <!-- GAME GUEST 3-->
+              <% if game.guests[2].nil? %>
+                <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-3" %>
+              <% else %>
+                <%= cl_image_tag current_user.photo, class: "game-card-user avatar-bordered", id: "guest-3" %>
+              <% end %>
+            </div>
 
-            <%= link_to 'Show', game %>
-            <%= link_to 'Edit', edit_game_path(game) %>
-            <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+            <%#= link_to 'Show', game %>
+            <%#= link_to 'Edit', edit_game_path(game) %>
+            <%#= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
 
           </div>
         </div>
-
+        <% end %>
       <% end %>
   <% end %>
 </div>

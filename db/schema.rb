@@ -186,6 +186,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_143135) do
     t.float "handicap"
     t.integer "rating"
     t.text "about_me"
+    t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

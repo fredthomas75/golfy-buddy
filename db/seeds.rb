@@ -27,8 +27,29 @@ t3 = Time.now
 list = %w(Adventurous Helpful Affable Humble Capable Imaginative Charming Impartial Confident Independent Conscientious Keen Cultured Meticulous Dependable Observant)
 
 puts "Creating 10 users + 1 admin"
-10.times { User.create!(name: Faker::Name.first_name + Faker::Name.last_name, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password, about_me: Faker::Lorem.paragraph, current_city: Faker::Address.city, gender: ['Female', 'Male', 'Other'].sample )}
+10.times do
+  User.create!(
+  name: Faker::Name.first_name + Faker::Name.last_name,
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password: Faker::Internet.password,
+  about_me: Faker::Lorem.paragraph,
+  current_city: Faker::Address.city,
+  gender: ['Female', 'Male', 'Other'].sample,
+  remote_photo_url: 'https://source.unsplash.com/300x300/?face'
+  )
+  puts 'Dormance de 3 secondes'
+  sleep(3)
+end
 User.create!(name: 'info GOLFY Buddy', first_name: 'info', last_name: 'GOLFY Buddy', email: 'info@golfybuddy.com', password: '123456', about_me: "I am the admin", current_city: 'Montreal', gender: 'Other')
+
+puts 'Creation de guest1@email.com:123456'
+User.create!(name: 'Guest1', first_name: 'Guest', last_name: 'Un', email: 'guest1@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', remote_photo_url: 'https://source.unsplash.com/300x300/?face')
+puts 'Creation de guest2@email.com:123456'
+User.create!(name: 'Guest2', first_name: 'Guest', last_name: 'Deux', email: 'guest2@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', remote_photo_url: 'https://source.unsplash.com/300x300/?face')
+puts 'Creation de guest3@email.com:123456'
+User.create!(name: 'Guest3', first_name: 'Guest', last_name: 'Trois', email: 'guest3@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', remote_photo_url: 'https://source.unsplash.com/300x300/?face')
 
 puts "Creating 5 courses"
 Course.create!(name: 'Club de Golf Metropolitain Anjou', address: '9555 Boulevard Du Golf, Anjou', difficulty: 1, number_holes: 18, style: 'Classic')
@@ -40,8 +61,8 @@ Course.create!(name: 'Mystic Pines', address: '1500 Route 138, Kahnawake', diffi
 courses = Course.all
 courses.map do |course|
   course.attachments.create!(remote_photo_url: 'https://source.unsplash.com/random/?golf-course')
-  sleep(3)
-  puts 'Dormance de 3 secondes'
+  sleep(5)
+  puts 'Dormance de 5 secondes'
 end
 
 puts "Creating 10 games"

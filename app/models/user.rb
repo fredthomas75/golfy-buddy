@@ -15,7 +15,7 @@ class User < ApplicationRecord
   acts_as_messageable
   has_friendship
 
-  validates :gender, presence: true
+  # validates :gender, presence: true
 
   def in_game?(game)
     Guest.find_by(user: self, game: game)
