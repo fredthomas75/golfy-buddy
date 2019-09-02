@@ -11,7 +11,6 @@ puts "Deleting all existing content"
 Game.delete_all
 Course.delete_all
 UserPreference.delete_all
-UserPersonality.delete_all
 ListPref.delete_all
 User.delete_all
 
@@ -70,7 +69,6 @@ puts "Attaching pref and perso to users"
 users = User.all
   users.map do |user|
     5.times {user.user_preferences.create!(list_pref: ListPref.all.sample) }
-    5.times {user.user_personalities.create!(list_pref: ListPref.all.sample) }
   end
 
 
