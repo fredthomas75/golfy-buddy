@@ -27,6 +27,7 @@ class GamesController < ApplicationController
   # GET /games/1
   def show
     @attachments = @game.attachments.all
+    @user = User.find(@game.user.id)
   end
 
   # GET /games/new
