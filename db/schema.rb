@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_054641) do
+ActiveRecord::Schema.define(version: 2019_09_02_143135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,22 @@ ActiveRecord::Schema.define(version: 2019_09_02_054641) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishgames", force: :cascade do |t|
+    t.bigint "game_id"
+    t.bigint "wishlist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_wishgames_on_game_id"
+    t.index ["wishlist_id"], name: "index_wishgames_on_wishlist_id"
+  end
+
+  create_table "wishlists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_wishlists_on_user_id"
+  end
+
   add_foreign_key "games", "courses"
   add_foreign_key "games", "users"
   add_foreign_key "guests", "games"
@@ -203,4 +219,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_054641) do
   add_foreign_key "user_personalities", "users"
   add_foreign_key "user_preferences", "list_prefs"
   add_foreign_key "user_preferences", "users"
+  add_foreign_key "wishgames", "games"
+  add_foreign_key "wishgames", "wishlists"
+  add_foreign_key "wishlists", "users"
 end

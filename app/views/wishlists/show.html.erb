@@ -1,0 +1,26 @@
+<div class="game-cards-container">
+  <% if !@list_games_wish.blank? %>
+  <% @list_games_wish.each do |game| %>
+      <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
+
+        <div class="game-card">
+          <img src="<%= game.course.attachments[0].photo.url %>" />
+          <div class="game-card-infos">
+            <div>
+              <h3><%= game.name %></h3>
+              <p><%= game.date %></p>
+              <p><%= game.time %></p>
+              <p><%= game.likes.count %> <%= (game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+            </div>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="game-card-user avatar-bordered" />
+
+            <%= link_to 'Show', game %>
+            <%= link_to 'Edit', edit_game_path(game) %>
+            <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
