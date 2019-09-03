@@ -4,6 +4,7 @@
   <div class="home-form">
     <h1>Play more golf everywhere</h1>
     <div style="width: 25vw">
+    <span id="locate"class="fas fa-street-view fa-lg"></span>
     <%= render 'form' %>
     </div>
   </div>
@@ -32,3 +33,4 @@
 </div>
 <!-- SECTION 3 -->
 <div class="homepage-section games-nearby"></div>
+<%= javascript_pack_tag("locate") %>
