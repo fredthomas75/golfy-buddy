@@ -17,7 +17,6 @@
 </div>
 
 <!-- DEBUT DES GAME CARDS -->
-<%= link_to "DOWNLOAD PDF", games_path(format: :pdf) %>
 <div class="game-cards-container">
   <% @games.each do |game| %>
     <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
