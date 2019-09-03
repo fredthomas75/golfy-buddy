@@ -1,94 +1,147 @@
 <p id="notice"><%= notice %></p>
 
-  <img src="<%= @game.course.attachments[0].photo.url %>" class="w-100">
+<div style="background-image: url('<%= @game.course.attachments[0].photo.url %>'); background-size:cover; background-position: center; height: 60vh" class="w-100 image-container">
+  <div class="holes text-center">
+    <%= @game.options %>
+  </div>
+</div>
+
+ <!--  <img src="<%= @game.course.attachments[0].photo.url %>" class="w-100"> -->
 <div class="container">
 
 
 
+    <div class="row">
 
+    <div>
+      <h1 class="text-warning text-left pt-4 source-sans-pro" >
 
-  <h1 class="text-warning text-center">
-    <strong Name:</strong>
-    <%= @game.name %>
-  </h1>
+        <%= @game.name %>
+      </h1>
+    </div>
 
-  <div class="buddy-card text-center ">
-          <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo" alt="">
-          <div class="text-center pt-2">
-            <strong><%= @user.first_name %> <%= @user.last_name %></strong>
-          </div>
+    <div class="buddy-card text-center" id="buddy-card-show">
+            <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo" alt="">
+            <div class="text-center pt-2">
+              <strong><%= @user.first_name %> <%= @user.last_name %></strong>
+            </div>
 
-         <div class="pt-4 text-secondary">
-        <svg width="22" class="mr-2" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21 11.0432C21 17.8182 11 27.8182 11 27.8182C11 27.8182 1 17.8182 1 11.0432C1 4.68773 6.16773 1 11 1C15.8323 1 21 4.68773 21 11.0432Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
-          <path d="M11.0004 14.636C13.0087 14.636 14.6367 13.008 14.6367 10.9996C14.6367 8.99134 13.0087 7.36328 11.0004 7.36328C8.99207 7.36328 7.36401 8.99134 7.36401 10.9996C7.36401 13.008 8.99207 14.636 11.0004 14.636Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+           <div class="pt-4 text-secondary">
+          <svg width="22" class="mr-2" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 11.0432C21 17.8182 11 27.8182 11 27.8182C11 27.8182 1 17.8182 1 11.0432C1 4.68773 6.16773 1 11 1C15.8323 1 21 4.68773 21 11.0432Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+            <path d="M11.0004 14.636C13.0087 14.636 14.6367 13.008 14.6367 10.9996C14.6367 8.99134 13.0087 7.36328 11.0004 7.36328C8.99207 7.36328 7.36401 8.99134 7.36401 10.9996C7.36401 13.008 8.99207 14.636 11.0004 14.636Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+          </svg>
+          <% if !@user.current_city || @user.current_city == "" %>
+            NA
+          <% elsif @user.current_city %>
+            <%= @user.current_city %>
+          <% end %>
+        </div>
+
+        <div class="pt-4 text-secondary">
+          <svg width="25" class="mr-2" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.36667 13.975C3.14207 14.79 1 16.2282 1 17.8666C1 20.4073 6.14893 22.4666 12.5 22.4666C18.8511 22.4666 24 20.4073 24 17.8666C24 15.3259 18.8511 13.2666 12.5 13.2666" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10" stroke-linecap="square"/>
+        <path d="M9.43335 17.8667V1L16.3333 4.06667L9.43335 7.13333" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10"/>
         </svg>
-        <% if !@user.current_city || @user.current_city == "" %>
-          NA
-        <% elsif @user.current_city %>
-          <%= @user.current_city %>
-        <% end %>
-      </div>
 
-      <div class="pt-4 text-secondary">
-        <svg width="25" class="mr-2" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6.36667 13.975C3.14207 14.79 1 16.2282 1 17.8666C1 20.4073 6.14893 22.4666 12.5 22.4666C18.8511 22.4666 24 20.4073 24 17.8666C24 15.3259 18.8511 13.2666 12.5 13.2666" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10" stroke-linecap="square"/>
-      <path d="M9.43335 17.8667V1L16.3333 4.06667L9.43335 7.13333" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10"/>
-      </svg>
           <% if @user.handicap %>
-          Handicap: <%= @user.handicap %>
-         <% else %>
-           Handicap : NA
-        <% end %>
+            Handicap: <%= @user.handicap %>
+           <% else %>
+             Handicap : NA
+          <% end %>
 
-         <div class="pt-4">
-        <% if @user.language %>
-            <% if @user.language == "English" %>
-              <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
-            <% else %>
-              <% url =  "https://www.countryflags.io/#{@user.language[0..1].downcase}/flat/32.png" %>
+           <div class="pt-4">
+            <% if @user.language %>
+                <% if @user.language == "English" %>
+                  <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+                <% else %>
+                  <% url =  "https://www.countryflags.io/#{@user.language[0..1].downcase}/flat/32.png" %>
+                <% end %>
             <% end %>
-        <% end %>
-        <img class= "mr-1" src= <%= url %>>
-        <%= @user.language %>
-       </div>
+            <img class= "mr-1" src= <%= url %>>
+            <%= @user.language %>
+         </div>
 
+          <div class="text-center message">
+            <% unless current_user == @user %>
+
+              <%= link_to '<i class="far fa-envelope fa-lg"></i>'.html_safe, new_message_path(to: @user.id), class: "msg_btn " %>
+            <% end %>
+        </div>
       </div>
-
-       </div>
-
-
+    </div>
   </div>
+    </div>
 
-  <div class="text-center">
-      <% if user_signed_in? %>
-        <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
-          <%= link_to 'Join Now', game_guests_path(@game), method: :post, class: "btn btn-success btn-join" %>
-        <% end %>
-      <% end %>
 
-  </div>
 
-  <p>
-    <strong>Options:</strong>
-    <%= @game.options %>
-  </p>
-  <p>
-    <strong>Hosted by:</strong>
-    <a href="/users/<%= @game.user_id %>" > <%= @game.user.first_name %> <%= @game.user.last_name %></a>
-    <%= gravatar_for @game.user%><br>
-    <% unless current_user == @user %>
-      <%= link_to 'Send message', new_message_path(to: @game.user.id), class: 'btn btn-outline-primary btn-sm' %>
+  <div class="container">
+
+    <div class="row">
+
+  <div class="pl-2">
+    <% if @game.booked %>
+      <svg width="25" height="27" viewBox="0 0 25 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.9375 10.125L24.3125 1.6875H4.0625C4.0625 0.675 3.3875 0 2.375 0C1.3625 0 0.6875 0.675 0.6875 1.6875V25.3125C0.6875 26.325 1.3625 27 2.375 27C3.3875 27 4.0625 26.325 4.0625 25.3125V18.5625H24.3125L20.9375 10.125Z" fill="#70B56F"/>
+      </svg>
+
+      <span>Booked</span>
+      <% else %>
+      <svg width="25" height="27" viewBox="0 0 25 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.9375 10.125L24.3125 1.6875H4.0625C4.0625 0.675 3.3875 0 2.375 0C1.3625 0 0.6875 0.675 0.6875 1.6875V25.3125C0.6875 26.325 1.3625 27 2.375 27C3.3875 27 4.0625 26.325 4.0625 25.3125V18.5625H24.3125L20.9375 10.125Z" fill="#E86C60"/>
+      </svg>
+
+
+      <span>To be booked</span>
     <% end %>
-  </p>
+  </div>
+
+    <div class="pl-2">
+      <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21.1966 4.12695H2.35517C1.73073 4.12768 1.13205 4.41779 0.690503 4.93361C0.248957 5.44943 0.000623505 6.14882 0 6.8783V23.845C0.000623505 24.5744 0.248957 25.2738 0.690503 25.7897C1.13205 26.3055 1.73073 26.5956 2.35517 26.5963H21.1966C21.821 26.5956 22.4197 26.3055 22.8612 25.7897C23.3028 25.2738 23.5511 24.5744 23.5517 23.845V6.8783C23.5511 6.14882 23.3028 5.44943 22.8612 4.93361C22.4197 4.41779 21.821 4.12768 21.1966 4.12695ZM21.1966 25.6792H2.35517C1.93875 25.6792 1.53939 25.4859 1.24493 25.142C0.950481 24.798 0.785058 24.3314 0.785058 23.845V10.0882H22.7667V23.845C22.7667 24.3314 22.6013 24.798 22.3068 25.142C22.0124 25.4859 21.613 25.6792 21.1966 25.6792Z" fill="#676767" fill-opacity="0.8"/>
+      <path d="M18.449 3.2099V0.917114C18.449 0.67388 18.3663 0.440609 18.2191 0.268617C18.0719 0.0966243 17.8722 0 17.664 0C17.4558 0 17.2561 0.0966243 17.1088 0.268617C16.9616 0.440609 16.8789 0.67388 16.8789 0.917114V3.2099H18.449Z" fill="#676767" fill-opacity="0.8"/>
+      <path d="M6.67314 3.2099V0.917114C6.67314 0.67388 6.59043 0.440609 6.4432 0.268617C6.29598 0.0966243 6.09629 0 5.88808 0C5.67987 0 5.48019 0.0966243 5.33297 0.268617C5.18574 0.440609 5.10303 0.67388 5.10303 0.917114V3.2099H6.67314Z" fill="#676767" fill-opacity="0.8"/>
+      </svg>
+
+      <%= @game.date %>
+    </div>
+
+  <div class="pl-2">
+    <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M13.4932 0C6.0345 0 0 6.04125 0 13.5C0 20.9587 6.0345 27 13.4932 27C20.952 27 27 20.9587 27 13.5C27 6.04125 20.952 0 13.4932 0ZM13.5 24.3C7.533 24.3 2.7 19.467 2.7 13.5C2.7 7.533 7.533 2.7 13.5 2.7C19.467 2.7 24.3 7.533 24.3 13.5C24.3 19.467 19.467 24.3 13.5 24.3ZM14.175 6.75H12.15V14.85L19.2308 19.1025L20.25 17.442L14.175 13.8375V6.75Z" fill="#676767" fill-opacity="0.8"/>
+    </svg>
+
+    <%= @game.time.strftime( "%H" + ":" + "%M" ) %>
+  </div>
+    </div>
+
   <p>
-    <strong>Course:</strong>
+    <svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M23 12.0475C23 19.5 12 30.5 12 30.5C12 30.5 1 19.5 1 12.0475C1 5.0565 6.6845 1 12 1C17.3155 1 23 5.0565 23 12.0475Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+  <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+</svg>
+
     <%= link_to @game.course.name, @game.course %>
   </p>
-  <p>
-    <strong>Price:</strong>
-    <%= @game.game_price %> $
-  </p>
+
+    <p>
+      <svg width="13" height="24" viewBox="0 0 13 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.99803 10.5333C4.09921 9.74667 3.16699 8.93333 3.16699 7.66667C3.16699 6.21333 4.45678 5.2 6.61493 5.2C8.88801 5.2 9.73084 6.33333 9.80746 8H12.6297C12.5403 5.70667 11.1994 3.6 8.53045 2.92V0H4.69941V2.88C2.222 3.44 0.229862 5.12 0.229862 7.69333C0.229862 10.7733 2.66896 12.3067 6.23183 13.2C9.42436 14 10.0629 15.1733 10.0629 16.4133C10.0629 17.3333 9.43713 18.8 6.61493 18.8C3.98428 18.8 2.9499 17.5733 2.78389 16H2.19214e-07C0.153242 18.92 2.24754 20.56 4.69941 21.1067V24H8.53045V21.1333C11.0206 20.6667 13 19.1333 13 16.4C13 12.6133 9.89686 11.3333 6.99803 10.5333Z" fill="#676767" fill-opacity="0.9"/>
+      </svg>
+        <%= @game.game_price %>
+    </p>
+
+  <div class="text-center">
+        <% if user_signed_in? %>
+          <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
+            <%= link_to 'Join Now', game_guests_path(@game), method: :post, class: "btn btn-success btn-join" %>
+          <% end %>
+        <% end %>
+
+    </div>
+
+
+
   <p>
     <strong>Number of players:</strong>
     <%= @game.number_players %>
@@ -98,21 +151,6 @@
     <%= @game.number_guests %>
   </p>
   <p>
-    <strong>Date:</strong>
-    <%= @game.date %>
-  </p>
-  <p>
-    <strong>Time:</strong>
-    <%= @game.time.strftime( "%H" + ":" + "%M" ) %>
-  </p>
-  <p>
-    <strong>Booked:</strong>
-    <% if @game.booked %>
-      <span>Yes</span>
-      <% else %>
-      <span>No</span>
-    <% end %>
-  </p>
   <p>
     <strong>Tournament:</strong>
     <% if @game.tournament %>
@@ -169,6 +207,7 @@
     <%= link_to 'Back', games_path %>
       <% else %>
   <% end %>
+  </div>
 
 </div>
 </div>
