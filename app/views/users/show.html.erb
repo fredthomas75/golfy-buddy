@@ -12,14 +12,15 @@
         <%= gravatar_for_show @user %>
 
         </div>
+        <div>
           <strong class="grey-color1"> <%= @user.name %> </strong>
-        <br>
-        <p class="grey-color2">
-        <%= image_tag "localisation-golf.png", alt: "alttext" %>
-        <%= @user.current_city %>
-        <br>
-        <%= image_tag "icon-golf.png", alt: "alttext" %>
-        <%= @user.handicap %>
+          <p class="grey-color2">
+          <%= image_tag "localisation-golf.png", alt: "alttext" %>
+          <%= @user.current_city %>
+          <br>
+          <%= image_tag "icon-golf.png", alt: "alttext" %>
+          <%= @user.handicap %>
+        </div>
         <br>
         <%= @user.language %>
         <br>
