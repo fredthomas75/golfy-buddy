@@ -21,57 +21,57 @@
     </div>
 
     <div class="buddy-card text-center" id="buddy-card-show">
-            <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo" alt="">
-            <div class="text-center pt-2">
-              <strong><%= @user.first_name %> <%= @user.last_name %></strong>
-            </div>
+      <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo" alt="">
+      <div class="text-center pt-2">
+        <strong><%= @user.first_name %> <%= @user.last_name %></strong>
+      </div>
 
-           <div class="pt-4 text-secondary">
-          <svg width="22" class="mr-2" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21 11.0432C21 17.8182 11 27.8182 11 27.8182C11 27.8182 1 17.8182 1 11.0432C1 4.68773 6.16773 1 11 1C15.8323 1 21 4.68773 21 11.0432Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
-            <path d="M11.0004 14.636C13.0087 14.636 14.6367 13.008 14.6367 10.9996C14.6367 8.99134 13.0087 7.36328 11.0004 7.36328C8.99207 7.36328 7.36401 8.99134 7.36401 10.9996C7.36401 13.008 8.99207 14.636 11.0004 14.636Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
-          </svg>
-          <% if !@user.current_city || @user.current_city == "" %>
-            NA
-          <% elsif @user.current_city %>
-            <%= @user.current_city %>
-          <% end %>
-        </div>
+      <div class="pt-4 text-secondary">
+        <svg width="22" class="mr-2" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 11.0432C21 17.8182 11 27.8182 11 27.8182C11 27.8182 1 17.8182 1 11.0432C1 4.68773 6.16773 1 11 1C15.8323 1 21 4.68773 21 11.0432Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+          <path d="M11.0004 14.636C13.0087 14.636 14.6367 13.008 14.6367 10.9996C14.6367 8.99134 13.0087 7.36328 11.0004 7.36328C8.99207 7.36328 7.36401 8.99134 7.36401 10.9996C7.36401 13.008 8.99207 14.636 11.0004 14.636Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+        </svg>
+        <% if !@user.current_city || @user.current_city == "" %>
+        NA
+        <% elsif @user.current_city %>
+        <%= @user.current_city %>
+        <% end %>
+      </div>
 
-        <div class="pt-4 text-secondary">
-          <svg width="25" class="mr-2" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6.36667 13.975C3.14207 14.79 1 16.2282 1 17.8666C1 20.4073 6.14893 22.4666 12.5 22.4666C18.8511 22.4666 24 20.4073 24 17.8666C24 15.3259 18.8511 13.2666 12.5 13.2666" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10" stroke-linecap="square"/>
-        <path d="M9.43335 17.8667V1L16.3333 4.06667L9.43335 7.13333" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10"/>
+      <div class="pt-4 text-secondary">
+        <svg width="25" class="mr-2" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.36667 13.975C3.14207 14.79 1 16.2282 1 17.8666C1 20.4073 6.14893 22.4666 12.5 22.4666C18.8511 22.4666 24 20.4073 24 17.8666C24 15.3259 18.8511 13.2666 12.5 13.2666" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10" stroke-linecap="square"/>
+          <path d="M9.43335 17.8667V1L16.3333 4.06667L9.43335 7.13333" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10"/>
         </svg>
 
-          <% if @user.handicap %>
-            Handicap: <%= @user.handicap %>
-           <% else %>
-             Handicap : NA
+        <% if @user.handicap %>
+        Handicap: <%= @user.handicap %>
+        <% else %>
+        Handicap : NA
+        <% end %>
+
+        <div class="pt-4">
+          <% if @user.language %>
+          <% if @user.language == "English" %>
+          <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+          <% else %>
+          <% url =  "https://www.countryflags.io/#{@user.language[0..1].downcase}/flat/32.png" %>
           <% end %>
+          <% end %>
+          <img class= "mr-1" src= <%= url %>>
+          <%= @user.language %>
+        </div>
 
-           <div class="pt-4">
-            <% if @user.language %>
-                <% if @user.language == "English" %>
-                  <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
-                <% else %>
-                  <% url =  "https://www.countryflags.io/#{@user.language[0..1].downcase}/flat/32.png" %>
-                <% end %>
-            <% end %>
-            <img class= "mr-1" src= <%= url %>>
-            <%= @user.language %>
-         </div>
+        <div class="text-center message">
+          <% unless current_user == @user %>
 
-          <div class="text-center message">
-            <% unless current_user == @user %>
-
-              <%= link_to '<i class="far fa-envelope fa-lg"></i>'.html_safe, new_message_path(to: @user.id), class: "msg_btn " %>
-            <% end %>
+          <%= link_to '<i class="far fa-envelope fa-lg"></i>'.html_safe, new_message_path(to: @user.id), class: "msg_btn " %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-    </div>
+</div>
 
 
 
@@ -114,7 +114,7 @@
       <%= @game.time.strftime( "%H" + ":" + "%M" ) %>
     </div>
     </div>
-    <div class="move-left">
+    <div class="class4">
       <div class="pt-2">
         <svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M23 12.0475C23 19.5 12 30.5 12 30.5C12 30.5 1 19.5 1 12.0475C1 5.0565 6.6845 1 12 1C17.3155 1 23 5.0565 23 12.0475Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
@@ -128,7 +128,26 @@
         <svg width="13" height="24" viewBox="0 0 13 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M6.99803 10.5333C4.09921 9.74667 3.16699 8.93333 3.16699 7.66667C3.16699 6.21333 4.45678 5.2 6.61493 5.2C8.88801 5.2 9.73084 6.33333 9.80746 8H12.6297C12.5403 5.70667 11.1994 3.6 8.53045 2.92V0H4.69941V2.88C2.222 3.44 0.229862 5.12 0.229862 7.69333C0.229862 10.7733 2.66896 12.3067 6.23183 13.2C9.42436 14 10.0629 15.1733 10.0629 16.4133C10.0629 17.3333 9.43713 18.8 6.61493 18.8C3.98428 18.8 2.9499 17.5733 2.78389 16H2.19214e-07C0.153242 18.92 2.24754 20.56 4.69941 21.1067V24H8.53045V21.1333C11.0206 20.6667 13 19.1333 13 16.4C13 12.6133 9.89686 11.3333 6.99803 10.5333Z" fill="#676767" fill-opacity="0.9"/>
         </svg>
-          <%= @game.game_price %>
+        <%= @game.game_price %>
+      </div>
+      <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aliquam veniam cupiditate, molestias facere commodi cum mollitia, illo blanditiis suscipit deserunt! Incidunt optio sint, autem eius id ipsam soluta blanditiis?</p>
+
+      <div class="row">
+
+      <% pre_like = @game.likes.find { |like| like.user_id == current_user.id} %>
+        <% if pre_like %>
+            <%= link_to  game_like_path(@game, pre_like), method: :delete do %>
+            <i class="fas fa-heart" style= "color: rgba(122, 107, 189, 0.7);"></i>
+        <% end %>
+        <% else %>
+          <% if user_signed_in? %>
+            <%= link_to  game_likes_path(@game), method: :post do %>
+            <i class="far fa-heart" style= "color: rgba(122, 107, 189, 0.7);"></i>
+
+          <% end %>
+          <% end %>
+          <% end %>
+      <div class="pl-2"><%= @game.likes.count %> <%= (@game.likes.count) == 1 ? 'Like' : 'Likes'%></div>
       </div>
     </div>
 
@@ -137,40 +156,33 @@
 
 
 
+<div class="container">
 
-  <p>
-    <strong>Number of players:</strong>
-    <%= @game.number_players %>
-  </p>
-  <p>
-    <strong>Number of guests:</strong>
-    <%= @game.number_guests %>
-  </p>
-  <p>
-  <p>
-    <strong>Tournament:</strong>
-    <% if @game.tournament %>
-      <span>Yes</span>
-      <% else %>
-      <span>No</span>
+  <div class="row">
+
+  <div>
+    <strong>Players</strong>
+
+     <p class="text-secondary"> <%= @game.number_players%> players maximum</p>
+  </div>
+
+  <div class="guests text-secondary">
+      <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo small" alt="">
+    <% @game.guests.each do |guest|%>
     <% end %>
-  </p>
-  <p>
-      <strong>Privacy :</strong>
-      <%= @game.privacy %>
-  </p>
 
-    <% pre_like = @game.likes.find { |like| like.user_id == current_user.id} %>
-      <% if pre_like %>
-        <%= button_to 'Unlike', game_like_path(@game, pre_like), method: :delete %>
-      <% else %>
-        <% if user_signed_in? %>
-          <%= button_to 'Like', game_likes_path(@game), method: :post %>
-        <% end %>
-      <% end %>
-    <p><%= @game.likes.count %> <%= (@game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+   <p><%= @game.number_guests %> out of <%= @game.number_players %> players have joined the game</p>
+  </div>
+
+
+  </div>
+</div>
+
+
+    <div class="container">
+
+
     <div class="text-center">
-
     <% pre_wish = @game.wishgames.find { |wishgame| wishgame.wishlist.user_id == current_user.id} %>
       <% if pre_wish%>
         <%= button_to 'Remove from wishlist', game_wishgame_path(@game, pre_wish), method: :delete %>
@@ -214,8 +226,11 @@
           <% end %>
         <% end %>
 
+
     </div>
-<div class="line"></div>
+  </div>
+
+
 </div>
 </div>
 
