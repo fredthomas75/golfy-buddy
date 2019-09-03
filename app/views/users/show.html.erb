@@ -8,9 +8,10 @@
         <div class="edit-button">
         <%= link_to 'Edit', edit_user_registration_path(@user) %>
         </div>
+        <div class="avatar">
+        <%= gravatar_for_show @user %>
 
-        <p><%= gravatar_for @user %><br></p>
-
+        </div>
           <strong class="grey-color1"> <%= @user.name %> </strong>
         <br>
         <p class="grey-color2">

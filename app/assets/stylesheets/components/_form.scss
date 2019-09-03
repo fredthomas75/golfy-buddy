@@ -93,3 +93,8 @@ label {
     border-bottom: 1px solid $light-grey;
     // box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
 }
+
+.avatar {
+  position: relative;
+  top: -50px;
+}
