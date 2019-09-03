@@ -131,6 +131,24 @@
         <%= @game.game_price %>
       </div>
       <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aliquam veniam cupiditate, molestias facere commodi cum mollitia, illo blanditiis suscipit deserunt! Incidunt optio sint, autem eius id ipsam soluta blanditiis?</p>
+
+      <div class="row">
+
+      <% pre_like = @game.likes.find { |like| like.user_id == current_user.id} %>
+        <% if pre_like %>
+            <%= link_to  game_like_path(@game, pre_like), method: :delete do %>
+            <i class="fas fa-heart" style= "color: rgba(122, 107, 189, 0.7);"></i>
+        <% end %>
+        <% else %>
+          <% if user_signed_in? %>
+            <%= link_to  game_likes_path(@game), method: :post do %>
+            <i class="far fa-heart" style= "color: rgba(122, 107, 189, 0.7);"></i>
+
+          <% end %>
+          <% end %>
+          <% end %>
+      <div class="pl-2"><%= @game.likes.count %> <%= (@game.likes.count) == 1 ? 'Like' : 'Likes'%></div>
+      </div>
     </div>
 
     <div class="line"></div>
@@ -138,37 +156,33 @@
 
 
 
+<div class="container">
 
-  <p>
-    <strong>Number of players:</strong>
-    <%= @game.number_players %>
-  </p>
-  <p>
-    <strong>Number of guests:</strong>
-    <%= @game.number_guests %>
-  </p>
-  <p>
-  <p>
-    <strong>Tournament:</strong>
-    <% if @game.tournament %>
-      <span>Yes</span>
-      <% else %>
-      <span>No</span>
+  <div class="row">
+
+  <div>
+    <strong>Players</strong>
+
+     <p class="text-secondary"> <%= @game.number_players%> players maximum</p>
+  </div>
+
+  <div class="guests text-secondary">
+      <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo small" alt="">
+    <% @game.guests.each do |guest|%>
     <% end %>
-  </p>
+
+   <p><%= @game.number_guests %> out of <%= @game.number_players %> players have joined the game</p>
+  </div>
 
 
-    <% pre_like = @game.likes.find { |like| like.user_id == current_user.id} %>
-      <% if pre_like %>
-        <%= button_to 'Unlike', game_like_path(@game, pre_like), method: :delete %>
-      <% else %>
-        <% if user_signed_in? %>
-          <%= button_to 'Like', game_likes_path(@game), method: :post %>
-        <% end %>
-      <% end %>
-    <p><%= @game.likes.count %> <%= (@game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+  </div>
+</div>
+
+
+    <div class="container">
+
+
     <div class="text-center">
-
     <% pre_wish = @game.wishgames.find { |wishgame| wishgame.wishlist.user_id == current_user.id} %>
       <% if pre_wish%>
         <%= button_to 'Remove from wishlist', game_wishgame_path(@game, pre_wish), method: :delete %>
@@ -212,7 +226,10 @@
           <% end %>
         <% end %>
 
+
     </div>
+  </div>
+
 
 </div>
 </div>
