@@ -9,9 +9,9 @@ class Game < ApplicationRecord
   accepts_nested_attributes_for :attachments
   include PgSearch::Model
   pg_search_scope :global_search,
-    against: [ :name, :options ],
+    against: [ :name, :options, :date],
     associated_against: {
-      course: [ :name ]
+      course: [ :name, :address ]
     },
     using: {
       tsearch: { prefix: true }
@@ -20,6 +20,7 @@ class Game < ApplicationRecord
   scope :upcoming, -> { where("date >= ?", [Date.today]).order('date ASC, created_at ASC') }
   scope :past, -> { where("date < ?", [Date.today]).order('date DESC, created_at DESC') }
   scope :public_games, -> { where(privacy: 'public') }
+  scope :play_more, -> { where(user: current_user) }
 
     def users
     users = guests.map do |guest|

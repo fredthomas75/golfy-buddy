@@ -5,3 +5,48 @@ border-radius: 15px;
 font-size: 25px;
 color: white;
 }
+
+
+#buddy-card-container {
+  position: relative;
+  background-color: red;
+}
+
+#buddy-card-show {
+position: absolute;
+right: 20px;
+margin-top: 50px;
+}
+
+.source-sans-pro {
+font-family: 'Source Sans Pro', sans-serif;
+font-weight: bold;
+}
+
+.text-warning {
+  opacity: 0.7;
+}
+
+.holes {
+  position: relative;
+  left: 90%;
+  top: 55vh;
+  width:100px;
+  height:30px;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  font-weight: bold;
+
+}
+
+.line{
+    width: 70vh;
+    height: 1px;
+    border-bottom: 1px solid grey;
+    opacity: 0.7;
+    }
+
+
+
+

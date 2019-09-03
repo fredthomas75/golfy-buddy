@@ -91,5 +91,9 @@ label {
 .home-border {
     border: none;
     border-bottom: 1px solid $light-grey;
+    &:focus {
+      outline-style:none;
+      box-shadow:none;
+      border-bottom: 1px solid $light-green;   }
     // box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
 }

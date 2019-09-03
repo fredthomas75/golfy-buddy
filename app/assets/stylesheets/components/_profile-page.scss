@@ -12,10 +12,17 @@
   background-color: yellow;
 }
 
+.grey-color1 {
+  color: #B3B3B3;
+}
+
+.grey-color2 {
+  color: rgba(103, 103, 103, 0.9);
+}
+
 .form-test {
-  padding-top: 40px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .buddies-h3-1 {
@@ -38,6 +45,10 @@
   display: flex;
   align-items: center;
   border-radius: 8px;
+}
+
+.img-rounded {
+  border-radius: 50%;
 }
 
 .card-product img {
@@ -63,4 +74,40 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+.profile {
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.12);
+  background-color: white;
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 100px;
+  padding-bottom: 300px;
+}
+
+.edit-button {
+  a {
+  color: $purple;
+  }
+  text-align: right;
+  position: relative;
+  z-index: 90;
+}
+
+.avatar-profile {
+  position: relative;
+  top: -60px;
+  z-index: 10;
+  // width: 100px;
+  // right: -150px;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.position1 {
+  position: relative;
+  left: 230px;
+}
+
 
