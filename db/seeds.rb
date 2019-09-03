@@ -37,19 +37,26 @@ puts "Creating 10 users + 1 admin"
   about_me: Faker::Lorem.paragraph,
   current_city: Faker::Address.city,
   gender: ['Female', 'Male', 'Other'].sample,
-  remote_photo_url: 'https://source.unsplash.com/300x300/?face'
+  remote_photo_url: 'https://source.unsplash.com/300x300/?face',
   )
   puts 'Dormance de 3 secondes'
   sleep(3)
 end
 User.create!(name: 'info GOLFY Buddy', first_name: 'info', last_name: 'GOLFY Buddy', email: 'info@golfybuddy.com', password: '123456', about_me: "I am the admin", current_city: 'Montreal', gender: 'Other')
 
-puts 'Creation de guest1@email.com:123456'
-User.create!(name: 'Guest1', first_name: 'Guest', last_name: 'Un', email: 'guest1@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', remote_photo_url: 'https://source.unsplash.com/300x300/?face')
-puts 'Creation de guest2@email.com:123456'
-User.create!(name: 'Guest2', first_name: 'Guest', last_name: 'Deux', email: 'guest2@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', remote_photo_url: 'https://source.unsplash.com/300x300/?face')
-puts 'Creation de guest3@email.com:123456'
-User.create!(name: 'Guest3', first_name: 'Guest', last_name: 'Trois', email: 'guest3@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', remote_photo_url: 'https://source.unsplash.com/300x300/?face')
+puts 'Creation de younes@email.com:123456'
+User.create!(name: 'Younes Kamel', first_name: 'Younes', last_name: 'Kamel', email: 'younes@email.com', password: '123456', about_me: "I am Younes", current_city: 'Montreal', gender: 'Other', photo: File.open('./app/assets/images/younes.jpg'))
+puts 'Creation de leo@email.com:123456'
+User.create!(name: 'Leo Beltran', first_name: 'Leo', last_name: 'Beltran', email: 'leo@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', photo: File.open('./app/assets/images/leo.jpg'))
+puts 'Creation de fred@email.com:123456'
+User.create!(name: 'Frederic Thomas', first_name: 'Frederic', last_name: 'Thomas', email: 'fred@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', photo: File.open('./app/assets/images/fred.png'))
+puts 'Creation de louis@email.com:123456'
+User.create!(name: 'Louis-Olivier', first_name: 'Louis-Olivier', last_name: 'Pelletier', email: 'louis@email.com', password: '123456', about_me: "I am a guest", current_city: 'Montreal', gender: 'Other', photo: File.open('./app/assets/images/louis.png'))
+
+puts "Generating users's wishlist"
+User.all.each do |user|
+  Wishlist.create!(user: user)
+end
 
 puts "Creating 5 courses"
 Course.create!(name: 'Club de Golf Metropolitain Anjou', address: '9555 Boulevard Du Golf, Anjou', difficulty: 1, number_holes: 18, style: 'Classic')

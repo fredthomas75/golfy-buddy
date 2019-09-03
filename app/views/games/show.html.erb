@@ -1,116 +1,175 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Game details</h1>
+  <img src="<%= @game.course.attachments[0].photo.url %>" class="w-100">
+<div class="container">
 
-<p>
-  <strong>Name:</strong>
-  <%= @game.name %>
-</p>
-<p>
-  <strong>Options:</strong>
-  <%= @game.options %>
-</p>
-<p>
-  <strong>Hosted by:</strong>
-  <a href="/users/<%= @game.user_id %>" > <%= @game.user.first_name %> <%= @game.user.last_name %></a>
-  <%= gravatar_for @game.user%><br>
-  <% unless current_user == @user %>
-    <%= link_to 'Send message', new_message_path(to: @game.user.id), class: 'btn btn-outline-primary btn-sm' %>
-  <% end %>
-</p>
-<p>
-  <strong>Course:</strong>
-  <%= link_to @game.course.name, @game.course %>
-</p>
-<p>
-  <strong>Price:</strong>
-  <%= @game.game_price %> $
-</p>
-<p>
-  <strong>Number of players:</strong>
-  <%= @game.number_players %>
-</p>
-<p>
-  <strong>Number of guests:</strong>
-  <%= @game.number_guests %>
-</p>
-<p>
-  <strong>Date:</strong>
-  <%= @game.date %>
-</p>
-<p>
-  <strong>Time:</strong>
-  <%= @game.time.strftime( "%H" + ":" + "%M" ) %>
-</p>
-<p>
-  <strong>Booked:</strong>
-  <% if @game.booked %>
-    <span>Yes</span>
-    <% else %>
-    <span>No</span>
-  <% end %>
-</p>
-<p>
-  <strong>Tournament:</strong>
-  <% if @game.tournament %>
-    <span>Yes</span>
-    <% else %>
-    <span>No</span>
-  <% end %>
-</p>
-<p>
-    <strong>Privacy :</strong>
-    <%= @game.privacy %>
-</p>
 
-  <% pre_like = @game.likes.find { |like| like.user_id == current_user.id} %>
-    <% if pre_like %>
-      <%= button_to 'Unlike', game_like_path(@game, pre_like), method: :delete %>
-    <% else %>
+
+
+
+  <h1 class="text-warning text-center">
+    <strong Name:</strong>
+    <%= @game.name %>
+  </h1>
+
+  <div class="buddy-card text-center ">
+          <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo" alt="">
+          <div class="text-center pt-2">
+            <strong><%= @user.first_name %> <%= @user.last_name %></strong>
+          </div>
+
+         <div class="pt-4 text-secondary">
+        <svg width="22" class="mr-2" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 11.0432C21 17.8182 11 27.8182 11 27.8182C11 27.8182 1 17.8182 1 11.0432C1 4.68773 6.16773 1 11 1C15.8323 1 21 4.68773 21 11.0432Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+          <path d="M11.0004 14.636C13.0087 14.636 14.6367 13.008 14.6367 10.9996C14.6367 8.99134 13.0087 7.36328 11.0004 7.36328C8.99207 7.36328 7.36401 8.99134 7.36401 10.9996C7.36401 13.008 8.99207 14.636 11.0004 14.636Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+        </svg>
+        <% if !@user.current_city || @user.current_city == "" %>
+          NA
+        <% elsif @user.current_city %>
+          <%= @user.current_city %>
+        <% end %>
+      </div>
+
+      <div class="pt-4 text-secondary">
+        <svg width="25" class="mr-2" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.36667 13.975C3.14207 14.79 1 16.2282 1 17.8666C1 20.4073 6.14893 22.4666 12.5 22.4666C18.8511 22.4666 24 20.4073 24 17.8666C24 15.3259 18.8511 13.2666 12.5 13.2666" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10" stroke-linecap="square"/>
+      <path d="M9.43335 17.8667V1L16.3333 4.06667L9.43335 7.13333" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10"/>
+      </svg>
+          <% if @user.handicap %>
+          Handicap: <%= @user.handicap %>
+         <% else %>
+           Handicap : NA
+        <% end %>
+
+         <div class="pt-4">
+        <% if @user.language %>
+            <% if @user.language == "English" %>
+              <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+            <% else %>
+              <% url =  "https://www.countryflags.io/#{@user.language[0..1].downcase}/flat/32.png" %>
+            <% end %>
+        <% end %>
+        <img class= "mr-1" src= <%= url %>>
+        <%= @user.language %>
+       </div>
+
+      </div>
+
+       </div>
+
+
+  </div>
+
+  <div class="text-center">
       <% if user_signed_in? %>
-        <%= button_to 'Like', game_likes_path(@game), method: :post %>
+        <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
+          <%= link_to 'Join Now', game_guests_path(@game), method: :post, class: "btn btn-success btn-join" %>
+        <% end %>
       <% end %>
-    <% end %>
-  <p><%= @game.likes.count %> <%= (@game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
-  <% pre_wish = @game.wishgames.find { |wishgame| wishgame.wishlist.user_id == current_user.id} %>
-    <% if pre_wish%>
-      <%= button_to 'Remove from wishlist', game_wishgame_path(@game, pre_wish), method: :delete %>
-    <% else %>
-      <% if user_signed_in? %>
-        <%= button_to 'Add to wishlist', game_wishgames_path(@game), method: :post %>
-      <% end %>
-    <% end %>
+  </div>
 
-<% @attachments.each do |att| %>
-  <%= image_tag att.photo_url %>
-  <%= link_to "Edit Attachment", edit_game_attachment_path(att) %>
-<% end %>
-<% @game.guests.where(status: "confirmed").each do |guest| %>
   <p>
-    <%= User.find(guest.user_id).first_name %> :
-    <%= guest.share_of_price %> $
+    <strong>Options:</strong>
+    <%= @game.options %>
   </p>
+  <p>
+    <strong>Hosted by:</strong>
+    <a href="/users/<%= @game.user_id %>" > <%= @game.user.first_name %> <%= @game.user.last_name %></a>
+    <%= gravatar_for @game.user%><br>
+    <% unless current_user == @user %>
+      <%= link_to 'Send message', new_message_path(to: @game.user.id), class: 'btn btn-outline-primary btn-sm' %>
+    <% end %>
+  </p>
+  <p>
+    <strong>Course:</strong>
+    <%= link_to @game.course.name, @game.course %>
+  </p>
+  <p>
+    <strong>Price:</strong>
+    <%= @game.game_price %> $
+  </p>
+  <p>
+    <strong>Number of players:</strong>
+    <%= @game.number_players %>
+  </p>
+  <p>
+    <strong>Number of guests:</strong>
+    <%= @game.number_guests %>
+  </p>
+  <p>
+    <strong>Date:</strong>
+    <%= @game.date %>
+  </p>
+  <p>
+    <strong>Time:</strong>
+    <%= @game.time.strftime( "%H" + ":" + "%M" ) %>
+  </p>
+  <p>
+    <strong>Booked:</strong>
+    <% if @game.booked %>
+      <span>Yes</span>
+      <% else %>
+      <span>No</span>
+    <% end %>
+  </p>
+  <p>
+    <strong>Tournament:</strong>
+    <% if @game.tournament %>
+      <span>Yes</span>
+      <% else %>
+      <span>No</span>
+    <% end %>
+  </p>
+  <p>
+      <strong>Privacy :</strong>
+      <%= @game.privacy %>
+  </p>
+
+    <% pre_like = @game.likes.find { |like| like.user_id == current_user.id} %>
+      <% if pre_like %>
+        <%= button_to 'Unlike', game_like_path(@game, pre_like), method: :delete %>
+      <% else %>
+        <% if user_signed_in? %>
+          <%= button_to 'Like', game_likes_path(@game), method: :post %>
+        <% end %>
+      <% end %>
+    <p><%= @game.likes.count %> <%= (@game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
+    <% pre_wish = @game.wishgames.find { |wishgame| wishgame.wishlist.user_id == current_user.id} %>
+      <% if pre_wish%>
+        <%= button_to 'Remove from wishlist', game_wishgame_path(@game, pre_wish), method: :delete %>
+      <% else %>
+        <% if user_signed_in? %>
+          <%= button_to 'Add to wishlist', game_wishgames_path(@game), method: :post, class: "btn btn-warning btn-join" %>
+        <% end %>
+      <% end %>
+
+  <% @attachments.each do |att| %>
+    <%= image_tag att.photo_url %>
+    <%= link_to "Edit Attachment", edit_game_attachment_path(att) %>
+  <% end %>
+  <% @game.guests.where(status: "confirmed").each do |guest| %>
+    <p>
+      <%= User.find(guest.user_id).first_name %> :
+      <%= guest.share_of_price %> $
+    </p>
+    <% end %>
+
+  <% if current_user == @game.user   %>
+    <% @game.guests.where(status: "pending").each do |guest| %>
+    <p>
+      <%= User.find(guest.user_id).first_name %>
+      <%= link_to 'Approve', approve_user_path(guest.user_id) %> |
+
+    </p>
+    <% end %>
+    <%= link_to 'Edit', edit_game_path(@game) %> |
+    <%= link_to 'Delete', game_path(@game), method: :delete %> |
+    <%= link_to 'Back', games_path %>
+      <% else %>
   <% end %>
 
-<% if current_user == @game.user   %>
-  <% @game.guests.where(status: "pending").each do |guest| %>
-  <p>
-    <%= User.find(guest.user_id).first_name %>
-    <%= link_to 'Approve', approve_user_path(guest.user_id) %> |
-
-  </p>
-  <% end %>
-  <%= link_to 'Edit', edit_game_path(@game) %> |
-  <%= link_to 'Delete', game_path(@game), method: :delete %> |
-  <%= link_to 'Back', games_path %>
-    <% else %>
-    <% if user_signed_in? %>
-      <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
-        <%= link_to 'Join', game_guests_path(@game), method: :post %> |
-      <% end %>
-    <% end %>
-<% end %>
-
-
+</div>
+</div>
 

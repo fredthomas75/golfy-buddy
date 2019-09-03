@@ -2,7 +2,7 @@
   input, textarea {
     border-radius: 8px;
     &:focus {
-      border-color: #7A6BBD;
+      border-color: $purple;
       outline-style:none;
       box-shadow:none;    }
   }
@@ -23,7 +23,8 @@ label {
 #btn-form {
   width:180px;
   margin: auto;
-  margin-top: 20px;
+  margin-bottom: 50px;
+  // margin-top: 20px;
   border-radius: 32px;
   background: #70B56F;
   color: white;

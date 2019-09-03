@@ -34,10 +34,10 @@
 }
 
 .host-button {
-  border: solid 1px #7A6BBD;
+  border: solid 1px $purple;
   border-radius: 50px;
   padding: 8px 32px;
-  color: #7A6BBD;
+  color: $purple;
   margin-right: 32px;
 }
 
@@ -48,7 +48,7 @@
 .host-button:hover {
   text-decoration: none;
   color: white;
-  background: purple;
+  background: $purple;
 }
 
 .menu-right {

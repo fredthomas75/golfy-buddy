@@ -56,9 +56,6 @@
 
 .game-card .game-card-infos {
   padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
   position: relative;
 
   p {
@@ -68,11 +65,18 @@
 
 .game-card-infos .game-card-user {
   position: absolute;
-  right: 65px;
-  top: 40px;
+  right: 60px;
+  top: 55px;
   width: 40px;
   height: 40px;
   object-fit: cover;
+}
+
+.game-name-game-course {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
 }
 
 #game-host {
@@ -81,15 +85,15 @@
 
 #guest-1 {
   right: 15px;
-  top: 40px;
+  top: 55px;
 }
 
 #guest-2 {
-  right: 65px;
-  top: 90px;
+  right: 60px;
+  top: 100px;
 }
 
 #guest-3 {
   right: 15px;
-  top: 90px;
+  top: 100px;
 }

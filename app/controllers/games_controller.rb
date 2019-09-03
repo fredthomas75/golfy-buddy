@@ -7,11 +7,14 @@ class GamesController < ApplicationController
   def index
       @upcoming_games = Game.where("date >= ?", [Date.today]).order('date ASC, created_at ASC')
       @past_games = Game.where("date < ?", [Date.today]).order('date DESC, created_at DESC')
-      @wishlist = Wishlist.where(user_id: current_user.id)
-      @wishgames = Wishgame.where(wishlist_id: @wishlist.ids[0])
-      @games_wish = []
-      @wishgames.each do |wish|
-        @games_wish << wish.game
+
+      if user_signed_in?
+        @wishlist = Wishlist.where(user_id: current_user.id)
+        @wishgames = Wishgame.where(wishlist_id: @wishlist.ids[0])
+        @games_wish = []
+        @wishgames.each do |wish|
+          @games_wish << wish.game
+        end
       end
 
     if params[:query].present?
@@ -42,6 +45,7 @@ class GamesController < ApplicationController
   # GET /games/1
   def show
     @attachments = @game.attachments.all
+    @user = User.find(@game.user.id)
   end
 
   # GET /games/new

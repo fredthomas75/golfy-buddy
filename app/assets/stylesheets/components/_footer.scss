@@ -3,10 +3,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 60px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.footer.hidden {
+  display: none;
 }
 
 .footer-links {
@@ -30,4 +34,5 @@
   color: #4F4F4F;
   opacity: 0.7;
 }
+
 
