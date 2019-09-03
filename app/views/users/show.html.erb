@@ -1,6 +1,6 @@
-<div class="min-height-container color-test1">
+<div class="min-height-container">
   <div class="row form-test">
-    <!--PROFILE COLONNES -->
+    <!--PROFILE COLONNE -->
     <div class="col color-test2">
       <div class="col color-test3">
 
@@ -20,19 +20,38 @@
     <div class="col color-test4">
       <div class="row color-test3">
         <div class="col">
-          <h2>Upcomming Games</h2>
+          <h3>Upcomming Games</h3>
         </div>
         <div class="col">
-          <h2>Past Games</h2>
+          <h3 class="buddies-h3-1">Past Games</h3>
         </div>
       </div>
       <div>
-        <h3 class="buddies-h3">Your Next Game</h3>
+        <h3 class="buddies-h3-2">Your Next Game</h3>
       </div>
-      <div class="card container">
-
+      <!-- NEXT GAME CARD -->
+      <div class="row">
+        <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-product-infos">
+          <h2 class="buddies-h2">Product name</h2>
+          <p>Product description with <strong>relevant info</strong> only.</p>
+          </div>
+        </div>
       </div>
-
+      <div>
+        <h3 class="buddies-h3-2">Future Game</h3>
+      </div>
+      <!-- FUTURE GAMES CARD -->
+      <div class="row">
+        <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-product-infos">
+          <h2 class="buddies-h2-2">Product name</h2>
+          <p>Product description with <strong>relevant info</strong> only.</p>
+          </div>
+        </div>
+      </div>
 
 
     </div>
@@ -40,6 +59,19 @@
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- CODE EN ATTENTE -->
   # <% if @user != current_user %>
   #   <%= link_to 'Request Friend', friendships_request_path(@user), method: :post, class: 'btn btn-outline-success btn-sm' %>
   #   <% end %>
