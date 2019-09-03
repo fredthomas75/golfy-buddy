@@ -25,6 +25,13 @@
 }
 
 .fa-envelope-open:hover {
-  color: black;
+  color: $purple;
 }
 
+.fa-envelope {
+  color: grey;
+}
+
+.fa-envelope:hover {
+  color: $purple;
+}

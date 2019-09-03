@@ -1,0 +1,21 @@
+  <%= simple_form_for :game, url: games_path, method: :get do |f| %>
+    <%= f.input :date, as: :date,
+                  start_year: Date.today.year,
+                  start_month: Date.today.month,
+                  start_day: Date.tomorrow.day,
+                  order: [:day, :month, :year],
+                  required: false,
+                  html5: true,
+                  label: false,
+                  input_html: {class: "home-border"},
+                  placeholder: 'Game date'%>
+    <%= f.input   :location,
+                  required: false,
+                  autofocus: true,
+                  input_html: { id: "current_city", class: "home-border" },
+                  label: false,
+                  placeholder: 'Location' %>
+  <!-- <div class="letsplay-button" style="width: 200px height: 55px"> -->
+  <%= f.button :submit, value: "Let's play!", class: 'letsplay-button' %>
+  <!-- </div> -->
+  <% end %>

@@ -17,6 +17,9 @@ class Game < ApplicationRecord
       tsearch: { prefix: true }
     }
   validates :number_players, presence: true
+  scope :upcoming, -> { where("date >= ?", [Date.today]).order('date ASC, created_at ASC') }
+  scope :past, -> { where("date < ?", [Date.today]).order('date DESC, created_at DESC') }
+  scope :public_games, -> { where(privacy: 'public') }
 
     def users
     users = guests.map do |guest|

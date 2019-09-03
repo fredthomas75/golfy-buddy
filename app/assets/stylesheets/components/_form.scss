@@ -47,7 +47,6 @@ label {
 .form-post {
   background: white;
   margin-top: 50px;
-  padding: 20px;
   border-radius: 5px;
   h1 {
     text-align: center;
@@ -69,12 +68,11 @@ label {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 20px 0;
 }
 
 .preference-choice {
   background: #b7b7b7;
-  padding: 20px;
+  padding: 10px;
   border-radius: 5px;
   opacity: .4;
   flex: 0 0 30%;
@@ -90,3 +88,8 @@ label {
   }
 }
 
+.home-border {
+    border: none;
+    border-bottom: 1px solid $light-grey;
+    // box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+}
