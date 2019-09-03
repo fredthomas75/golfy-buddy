@@ -1,17 +1,26 @@
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
+const isItAShowPage = () => {
+  if (window.location.href.match(/courses\/\d+/)) {
+    return true;
+  } else if (window.location.href.match(/games\/\d+/)) {
+    return true;
+  } else {
+    return false;
+  };
+};
+
 const mapElement = document.getElementById('map');
 
 const buildMap = () => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   // If href is a courses/show ou games/show
-  if (window.location.href.match(/courses\/\d+/)) {
-    console.log('show de course ou game')
+  if (isItAShowPage() == true) {
     return new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
-      "zoom": 24, // starting zoom
+      zoom: 24, // starting zoom
     });
     // If href is Index of courses
   } else {
@@ -35,11 +44,11 @@ const initMapbox = () => {
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
     // SI INDEX DE COURSE
-    if (!window.location.href.match(/courses\/\d+/)) {
+    if (isItAShowPage() == false) {
       map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
     }
     // IF SHOW DE GAME OR COURSE
-    if (window.location.href.match(/courses\/\d+/)) {
+    if (isItAShowPage() == true) {
       map.scrollZoom.disable();
     }
 
@@ -53,7 +62,7 @@ const addMarkersToMap = (map, markers) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
     // IF INDEX DE COURSES
-    if (!window.location.href.match(/courses\/\d+/)) {
+    if (isItAShowPage() == false) {
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
