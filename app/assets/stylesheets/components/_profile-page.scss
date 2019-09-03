@@ -21,9 +21,8 @@
 }
 
 .form-test {
-  padding-top: 40px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .buddies-h3-1 {
@@ -87,6 +86,24 @@
 }
 
 .edit-button {
-  margin-left: 350px;
+  a {
+  color: $purple;
+  }
+  text-align: right;
 }
+
+.avatar-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -60px;
+  // left: 145px;
+}
+
+.position1 {
+  position: relative;
+  left: 230px;
+}
+
 
