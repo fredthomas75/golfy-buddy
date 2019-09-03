@@ -17,7 +17,11 @@ class CoursesController < ApplicationController
 
   # GET /courses/1
   def show
-    @attachments = @course.attachments.all
+    @marker = [{
+      lat: @course.latitude,
+      lng: @course.longitude,
+      }]
+      @attachments = @course.attachments.all
   end
 
   # GET /courses/new
@@ -66,6 +70,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :type, :number_holes, :difficulty, :address, :phone, :webiste, :about_course, attachments_attributes: [:id, :attachable_id, :photo])
+      params.require(:course).permit(:name, :style, :number_holes, :difficulty, :address, :phone, :website, :about_course, attachments_attributes: [:id, :attachable_id, :photo])
     end
 end
