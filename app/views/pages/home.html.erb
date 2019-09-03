@@ -3,9 +3,9 @@
 <div class="homepage-section first-section ">
   <div class="home-form">
     <h1>Play more golf everywhere</h1>
-    <p>Date</p>
-    <p>Location</p>
-    <%= link_to "Let's play!", "#", class: "letsplay-button" %>
+    <div style="width: 25vw">
+    <%= render 'form' %>
+    </div>
   </div>
   <div class="img-home">
     <%= image_tag "golfer_putter.jpg", alt: "Putting golfer" %>
