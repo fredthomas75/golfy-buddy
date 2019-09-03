@@ -17,6 +17,9 @@ position: absolute;
 right: 20px;
 margin-top: 50px;
 }
+  #buddy-card-show:hover {
+     transform: none;
+  }
 
 .source-sans-pro {
 font-family: 'Source Sans Pro', sans-serif;
@@ -41,12 +44,30 @@ font-weight: bold;
 }
 
 .line{
-    width: 70vh;
+    width: 75vw;
     height: 1px;
     border-bottom: 1px solid grey;
-    opacity: 0.7;
+    opacity: .5;
     }
+.row {
+  padding-left: 15px;
+}
 
+.desc {
+  max-width: 592px;
+}
 
+.class4 {
+  min-height: 430px;
+}
 
+.guests {
+position: absolute;
+right : 75px;
+}
+
+.small {
+width : 30px;
+height: 30px;
+}
 
