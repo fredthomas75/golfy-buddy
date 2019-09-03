@@ -37,7 +37,7 @@
         <% if user_signed_in? %>
           <%= link_to "Host a game", new_game_path, class: "host-button" %>
           <li class="nav-item dropdown">
-            <% if current_user.photo.nil? %>
+            <% if current_user.photo.blank? %>
               <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% else %>
               <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

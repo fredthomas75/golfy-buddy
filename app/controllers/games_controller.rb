@@ -24,6 +24,21 @@ class GamesController < ApplicationController
     end
   end
 
+  def upcoming
+    @games = Game.upcoming
+    render :index
+  end
+
+  def past
+    @games = Game.past
+    render :index
+  end
+
+  def public_games
+    @games = Game.public
+    render :index
+  end
+
   # GET /games/1
   def show
     @attachments = @game.attachments.all
@@ -74,13 +89,6 @@ class GamesController < ApplicationController
         @upcoming_games_buddies << upgame
       end
     end
-  end
-
-  # GET posts/xlsx
-  def xlsx
-       p = Game.to_xlsx
-       p.serialize('public/downloads/games.xlsx')
-       send_file 'public/downloads/games.xlsx', :type=>"application/xlsx"
   end
 
   private

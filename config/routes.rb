@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+  root to: 'games#index'
+  get '/games/upcoming', to: 'games#upcoming', as: :games_upcoming
+  get '/games/past', to: 'games#past', as: :games_past
+  get '/games/public', to: 'games#public_games', as: :games_public
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
