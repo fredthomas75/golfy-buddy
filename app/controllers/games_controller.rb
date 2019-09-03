@@ -17,7 +17,14 @@ class GamesController < ApplicationController
         end
       end
 
-    if params[:query].present?
+    # raise
+    if params[:game_query].present?
+      query_date = params[:game_query][:date]
+      query_location = params[:game_query][:location]
+      @games_by_date = Game.where(date: query_date)
+      @games = @games_by_date.select { |game| ("#{game.course.address} ILIKE %#{query_location}%") }
+    elsif
+      params[:query].present?
       @games = Game.joins(:user, :course).global_search(params[:query])
       @upcoming_games = @upcoming_games.global_search(params[:query])
       @past_games = @past_games.global_search(params[:query])
@@ -38,7 +45,12 @@ class GamesController < ApplicationController
   end
 
   def public_games
-    @games = Game.public
+    @games = Game.public_games
+    render :index
+  end
+
+  def play_more
+    @games = Game.play_more
     render :index
   end
 

@@ -5,18 +5,22 @@
       <div class="col profile">
 
         <p id="notice"><%= notice %></p>
-        <div class="edit-button">
-        <%= link_to 'Edit', edit_user_registration_path(@user) %>
+
+        <div class="edit-button"  >
+          <%= link_to 'Edit', edit_user_registration_path(@user) %>
         </div>
-
-        <p><%= gravatar_for @user %><br></p>
-
-          <strong class="grey-color1"> <%= @user.name %> </strong>
-        <br>
-        <p class="grey-color2">
-        <%= @user.current_city %>
-        <br>
-        <%= @user.handicap %>
+        <div class="avatar-profile">
+        <%= gravatar_for_show @user %>
+        </div>
+        <div class="profile-header">
+          <h3><strong class="grey-color1"> <%= @user.first_name %>  <%= @user.last_name %></strong></h3>
+          <p class="grey-color2">
+          <%= image_tag "localisation-golf.png", alt: "alttext" %>
+          <%= @user.current_city %>
+          <br>
+          <%= image_tag "icon-golf.png", alt: "alttext" %>
+          <%= @user.handicap %>
+        </div>
         <br>
         <%= @user.language %>
         <br>
@@ -30,7 +34,7 @@
     <div class="col color-test4">
       <div class="row color-test3">
         <div class="col">
-          <h3>Upcomming Games</h3>
+          <h3 class="position1">Upcomming Games</h3>
         </div>
         <div class="col">
           <h3 class="buddies-h3-1">Past Games</h3>
@@ -66,4 +70,18 @@
 
     </div>
   </div>
+</div>
+
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+test 1
+  </div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">test 2</div>
 </div>

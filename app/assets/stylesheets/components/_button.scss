@@ -35,3 +35,16 @@
 .fa-envelope:hover {
   color: $purple;
 }
+
+.fa-street-view {
+    float: right;
+    top: 66.5px;
+    right: 40px;
+    position: relative;
+    z-index: 4;
+    color: #CFCFCF;
+}
+
+.fa-street-view:hover {
+  color: #AAAAAA;
+}
