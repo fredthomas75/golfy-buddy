@@ -41,12 +41,22 @@ font-weight: bold;
 }
 
 .line{
-    width: 70vh;
+    width: 75vw;
     height: 1px;
     border-bottom: 1px solid grey;
     opacity: 0.7;
     }
+.row {
+  padding-left: 15px;
+}
 
+.desc {
+  max-width: 592px;
+}
+
+.class4 {
+  min-height: 430px;
+}
 
 
 
