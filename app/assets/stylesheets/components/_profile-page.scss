@@ -90,14 +90,19 @@
   color: $purple;
   }
   text-align: right;
+  position: relative;
+  z-index: 90;
 }
 
 .avatar-profile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
   top: -60px;
+  z-index: 10;
+  // width: 100px;
+  // right: -150px;
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
 
 .position1 {
