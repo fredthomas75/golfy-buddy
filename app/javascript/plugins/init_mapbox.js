@@ -5,10 +5,21 @@ const mapElement = document.getElementById('map');
 
 const buildMap = () => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-  return new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v10'
-  });
+  // If href is a courses/show ou games/show
+  if (window.location.href.match(/courses\/\d+/)) {
+    console.log('show de course ou game')
+    return new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v10',
+      "zoom": 24, // starting zoom
+    });
+    // If href is Index of courses
+  } else {
+    return new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v10'
+    });
+  }
 };
 
 const fitMapToMarkers = (map, markers) => {
@@ -23,7 +34,17 @@ const initMapbox = () => {
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
-    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
+    // SI INDEX DE COURSE
+    if (!window.location.href.match(/courses\/\d+/)) {
+      map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
+    }
+    // IF SHOW DE GAME OR COURSE
+    if (window.location.href.match(/courses\/\d+/)) {
+      map.scrollZoom.disable();
+    }
+
+    // Controller - + de Zoom
+    map.addControl(new mapboxgl.NavigationControl());
   }
 };
 
@@ -31,10 +52,18 @@ const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
-    new mapboxgl.Marker()
-      .setLngLat([ marker.lng, marker.lat ])
-      .setPopup(popup)
-      .addTo(map);
+    // IF INDEX DE COURSES
+    if (!window.location.href.match(/courses\/\d+/)) {
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
+        .addTo(map);
+    } else {
+      // ELSE SHOW D'UN COURSE
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map);
+    }
   });
 };
 

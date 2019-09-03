@@ -1,0 +1,36 @@
+.course-name {
+  color: $purple;
+}
+
+.main-container {
+  display: flex;
+}
+
+.carousel-container {
+  width: 50%;
+  height: calc(100vh - 66px);
+}
+
+.carousel-inner img {
+  object-fit: cover;
+}
+
+.info-map {
+  width: 50%;
+  height: calc(100vh - 66px);
+}
+
+.course-info {
+  padding-top: 16px;
+  padding-left: 16px;
+  height: 60%;
+}
+
+.course-info p {
+  color: $dimgray;
+}
+
+.course-map {
+  height: 40%;
+  background: red;
+}
