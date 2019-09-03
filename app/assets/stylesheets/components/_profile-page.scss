@@ -12,6 +12,14 @@
   background-color: yellow;
 }
 
+.grey-color1 {
+  color: #B3B3B3;
+}
+
+.grey-color2 {
+  color: rgba(103, 103, 103, 0.9);
+}
+
 .form-test {
   padding-top: 40px;
   padding-left: 40px;
@@ -62,5 +70,11 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.profile {
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.12);
+  background-color: white;
+  text-align: center;
 }
 

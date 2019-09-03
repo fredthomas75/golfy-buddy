@@ -2,17 +2,25 @@
   <div class="row form-test">
     <!--PROFILE COLONNE -->
     <div class="col color-test2">
-      <div class="col color-test3">
+      <div class="col profile">
 
         <p id="notice"><%= notice %></p>
+        <%= link_to 'Edit', edit_user_registration_path(@user) %>
 
         <p><%= gravatar_for @user %><br></p>
 
-        <strong>Name:</strong>
-        <%= @user.first_name %> <%= @user.last_name %><br>
+          <strong class="grey-color1"> <%= @user.name %> </strong>
+        <br>
+        <p class="grey-color2">
+        <%= @user.current_city %>
+        <br>
+        <%= @user.handicap %>
+        <br>
+        <%= @user.language %>
+        <br>
+        <%= @user.about_me %>
+        </p>
 
-
-        <%= link_to 'Edit', edit_user_registration_path(@user) %>
       </div>
     </div>
 
@@ -40,7 +48,7 @@
         </div>
       </div>
       <div>
-        <h3 class="buddies-h3-2">Future Game</h3>
+        <h3 class="grey-color">Future Game</h3>
       </div>
       <!-- FUTURE GAMES CARD -->
       <div class="row">
