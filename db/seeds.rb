@@ -10,6 +10,7 @@
 puts "Deleting all existing content"
 Game.delete_all
 Course.delete_all
+Wishlist.delete_all
 UserPreference.delete_all
 ListPref.delete_all
 User.delete_all
