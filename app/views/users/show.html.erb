@@ -52,17 +52,20 @@
         <div class="card-product">
           <img src="<%= @next_game.course.attachments[0].photo.url %>" />
           <div class="card-product-infos">
-            <h2 class="game-name"><%= @next_game.name %></h2>
-            <p><%= @next_game.course.name %>
-              <br>
-              <%= @next_game.date %>
-              <%= @next_game.time %>
+            <h3 class="game-name"><%= @next_game.name %></h3>
+              <p>
+                <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 10px" %>
+                <%= @next_game.course.name %>
+                <br>
+                <%= @next_game.time %>
+              </p>
+
               <%= link_to game_path(@next_game) do%>
               <div class="btn btn-success">
                 <p>View Game</p>
               </div>
               <% end %>
-            </p>
+
           </div>
         </div>
       </div>
@@ -78,10 +81,9 @@
         <div class="card-product">
           <img src="<%= game.course.attachments[0].photo.url %>" />
           <div class="card-product-infos">
-            <h2 class="game-name"><%= game.name %></h2>
+            <h3 class="game-name"><%= game.name %></h3>
             <p><%= game.course.name %>
               <br>
-              <%= game.date %>
               <%= game.time %>
               <%= link_to game_path(game) do%>
               <div class="btn btn-success">

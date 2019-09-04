@@ -89,6 +89,8 @@
 }
 .game-name {
   color: #676767;
+  position: relative;
+  top: -30px;
 }
 .card-product {
   overflow: hidden;
@@ -148,6 +150,11 @@
   .avatar-profile img {
     width: 90px;
   }
+  .game-name {
+  color: #676767;
+  position: relative;
+  top: 5px;
+}
 }
 
 
