@@ -1,8 +1,51 @@
+// .search-bar-container {
+//   margin: 0 96px;
+//   display: flex;
+//   justify-content: flex-end;
+// }
+
 .search-bar-container {
-  margin: 0 96px;
-  display: flex;
-  justify-content: flex-end;
+  margin: 0 5vw;
+  display: grid;
+  // justify-content: flex-end;
+  grid-template-columns: 1fr;
+  // grid-gap: 24px;
 }
+
+// // Smallest device
+// @media (min-width: 100px) and (max-width: 575px) {
+//   .search-bar-container {
+//     grid-template-columns: 1fr;
+//   }
+// }
+
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) {
+//   .search-bar-container {
+//     grid-template-columns: 1fr;
+//   }
+// }
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) {
+//   .search-bar-container {
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) {
+//   .search-bar-container {
+//     grid-template-columns: 1fr 1fr 1fr;
+//   }
+// }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {
+//   .search-bar-container {
+//     grid-template-columns: 1fr 1fr 1fr;
+//   }
+// }
 
 .search-bar {
   margin-top: 16px;

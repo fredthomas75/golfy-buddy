@@ -9,8 +9,8 @@ class CoursesController < ApplicationController
       {
         lat: course.latitude,
         lng: course.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { course: course })
-        # image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS') --> to update with a custom marker: club, golf ball, ...
+        infoWindow: render_to_string(partial: "info_window", locals: { course: course }),
+        image_url: helpers.asset_url('marker-gb.png')
       }
     end
   end
@@ -20,6 +20,7 @@ class CoursesController < ApplicationController
     @marker = [{
       lat: @course.latitude,
       lng: @course.longitude,
+      image_url: helpers.asset_url('marker-gb.png')
       }]
       @attachments = @course.attachments.all
   end
