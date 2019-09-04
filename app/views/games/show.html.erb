@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <div style="background-image: url('<%= @game.course.attachments[0].photo.url %>'); background-size:cover; background-position: center; height: 60vh" class="w-100 image-container">
   <div class="holes text-center">
@@ -228,7 +228,11 @@
 
     </div>
   </div>
-
-
 </div>
 </div>
+<div
+    id="map"
+    style="width: 100%; height: 300px; margin-top: 32px;"
+    data-markers="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
