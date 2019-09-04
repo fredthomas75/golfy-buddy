@@ -78,7 +78,6 @@ puts "Creating 10 games"
   name: Faker::Team.name,
   options: holes.sample,
   number_players: [3, 4].sample,
-  number_guests: [1, 2].sample,
   date: [d1, d2, d3, d4].sample,
   time: [t1, t2, t3].sample,
   booked: [0, 1].sample,

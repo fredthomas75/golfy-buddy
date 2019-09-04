@@ -124,7 +124,7 @@
       <%= @game.time.strftime( "%H" + ":" + "%M" ) %>
     </div>
     </div>
-    <div class="class4">
+    <div class="class4 ">
       <div class="pt-2">
         <svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M23 12.0475C23 19.5 12 30.5 12 30.5C12 30.5 1 19.5 1 12.0475C1 5.0565 6.6845 1 12 1C17.3155 1 23 5.0565 23 12.0475Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
@@ -176,11 +176,12 @@
   </div>
 
   <div class="guests text-secondary">
-      <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo small" alt="">
+
     <% @game.guests.each do |guest|%>
+      <img src="<%= User.find(guest.user_id).photo %>" class="buddy-photo small" alt="">
     <% end %>
 
-   <p><%= @game.number_guests %> out of <%= @game.number_players %> players have joined the game</p>
+   <p><%= @game.guests.size %> out of <%= @game.number_players %> players have joined the game</p>
   </div>
 
 
