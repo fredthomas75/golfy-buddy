@@ -13,7 +13,7 @@ color: white;
 }
 
 #buddy-card-show {
-position: absolute;
+// position: absolute;
 height: 400px;
 right: 20px;
 margin-top: 50px;
@@ -45,10 +45,9 @@ font-weight: bold;
 }
 
 .line{
-    width: 75vw;
-    height: 1px;
-    border-bottom: 1px solid grey;
-    opacity: .5;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $info;
+
     }
 .row {
   padding-left: 15px;
@@ -58,17 +57,16 @@ font-weight: bold;
   max-width: 592px;
 }
 
-.class4 {
-  min-height: 430px;
-}
+
 
 .guests {
-position: absolute;
+// position: absolute;
 right : 75px;
 }
 
 .small {
 width : 30px;
 height: 30px;
+margin-top: 0;
 }
 
