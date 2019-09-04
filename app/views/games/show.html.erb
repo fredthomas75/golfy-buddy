@@ -170,8 +170,6 @@
      <!--  <div class="line"></div>
  -->
 
-
-
   <div class="container">
 
     <div class="row justify-content-between">
@@ -181,13 +179,13 @@
          <p class="text-secondary"> <%= @game.number_players%> players maximum</p>
       </div>
 
-      <div class="guests text-secondary col-md-3 col-sm-12">
+      <div class="guests text-secondary col-md-4 col-sm-12">
 
         <% @game.guests.each do |guest|%>
           <img src="<%= User.find(guest.user_id).photo %>" class="buddy-photo small" alt="">
         <% end %>
 
-       <p><%= @game.guests.size %> out of <%= @game.number_players %> players have joined the game</p>
+        <p><%= @game.guests.size %> buddies out of <%= @game.number_players - 1 %> have joined the game</p>
       </div>
 
 
