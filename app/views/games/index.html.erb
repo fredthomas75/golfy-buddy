@@ -1,18 +1,17 @@
+<!-- SEARCH BAR -->
 <div class="search-bar-container">
-  <!-- FRIEND GAMES -->
-
-  <!-- SEARCH BAR -->
   <div>
     <%= form_tag games_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control search-bar",
-        placeholder: "Find a game" %>
-    <% end %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control search-bar",
+      placeholder: "Find a game" %>
+      <% end %>
+
   </div>
 </div>
 
-<!-- DEBUT DES GAME CARDS -->
+  <!-- DEBUT DES GAME CARDS -->
 <div class="game-cards-container">
   <% @games.each do |game| %>
     <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
@@ -20,52 +19,47 @@
         <div class="game-card">
           <img src="<%= game.course.attachments[0].photo.url %>" />
           <div class="game-card-infos">
+
             <div class="game-name-game-course">
               <h3><%= game.name %></h3>
               <h4><%= game.course.name %></h4>
             </div>
+
             <div class="date-time-buddies">
               <div class="date-time">
-                <p><%= game.date %></p>
-                <p><%= game.time %></p>
-                <p><%= game.likes.count %> <%= (game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+              <p><%= game.date %></p>
+              <p><%= game.time %></p>
+              <p><%= game.likes.count %> <%= (game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
               </div>
-               <!-- GAME BUDDIES -->
+              <!-- GAME BUDDIES -->
               <div class="buddies">
-              <!-- GAME HOST -->
-              <img src="<%= game.user.photo %>" class="game-card-user avatar-bordered" id="game-host" />
-              <!-- GAME GUEST 1-->
-              <% if game.guests[0].nil? %>
-                <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-1" %>
-              <% else %>
-                <%= cl_image_tag game.guests[0].user.photo, class: "game-card-user avatar-bordered", id: "guest-1" %>
-              <% end %>
-              <!-- GAME GUEST 2-->
-              <% if game.guests[1].nil? %>
-                <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-2" %>
-              <% else %>
-                <%= cl_image_tag game.guests[1].user.photo, class: "game-card-user avatar-bordered", id: "guest-2" %>
-              <% end %>
-              <!-- GAME GUEST 3-->
-              <% if game.guests[2].nil? %>
-                <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-3" %>
-              <% else %>
-                <%= cl_image_tag game.guests[2].user.photo, class: "game-card-user avatar-bordered", id: "guest-3" %>
-              <% end %>
+            <!-- GAME HOST -->
+            <img src="<%= game.user.photo %>" class="game-card-user avatar-bordered" id="game-host" />
+            <!-- GAME GUEST 1-->
+            <% if game.guests[0].nil? %>
+            <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-1" %>
+            <% else %>
+            <%= cl_image_tag game.guests[0].user.photo, class: "game-card-user avatar-bordered", id: "guest-1" %>
+            <% end %>
+            <!-- GAME GUEST 2-->
+            <% if game.guests[1].nil? %>
+            <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-2" %>
+            <% else %>
+            <%= cl_image_tag game.guests[1].user.photo, class: "game-card-user avatar-bordered", id: "guest-2" %>
+            <% end %>
+            <!-- GAME GUEST 3-->
+            <% if game.guests[2].nil? %>
+            <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-3" %>
+            <% else %>
+            <%= cl_image_tag game.guests[2].user.photo, class: "game-card-user avatar-bordered", id: "guest-3" %>
+            <% end %>
               </div>
             </div>
 
-
-
-            <%#= link_to 'Show', game %>
-            <%#= link_to 'Edit', edit_game_path(game) %>
-            <%#= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %>
-
           </div>
         </div>
-        <% end %>
       <% end %>
+    <% end %>
   <% end %>
 </div>
-
 <!-- FIN DES GAME CARDS -->
