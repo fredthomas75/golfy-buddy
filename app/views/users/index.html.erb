@@ -61,8 +61,7 @@
         <% if user.language %>
           <% if user.language == "English" %>
             <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
-          <% elsif user.language == "French" %>
-            <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+
           <% elsif user.language == "Spanish" %>
             <% url =  "https://www.countryflags.io/es/flat/32.png" %>
           <% else %>
@@ -142,7 +141,21 @@
             <path d="M9.43335 17.8667V1L16.3333 4.06667L9.43335 7.13333" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10"/>
           </svg>
           <% if user.handicap %>
+
             Handicap: <%= user.handicap %>
+         <% else %>
+           Handicap : NA
+        <% end %>
+
+       </div>
+
+       <div class="pt-4">
+        <% if user.language %>
+          <% if user.language == "English" %>
+            <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+
+          <% elsif user.language == "Spanish" %>
+            <% url =  "https://www.countryflags.io/es/flat/32.png" %>
           <% else %>
             Handicap : NA
           <% end %>
@@ -174,6 +187,7 @@
     </div>
   <% end %>
 </div>
+
 
 <%= will_paginate %>
 
