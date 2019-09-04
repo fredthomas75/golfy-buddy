@@ -6,9 +6,9 @@
 
 .search-bar-container {
   margin: 0 5vw;
-  display: grid;
-  // justify-content: flex-end;
-  grid-template-columns: 1fr;
+  display: flex;
+  justify-content: flex-end;
+  // grid-template-columns: 1fr;
   // grid-gap: 24px;
 }
 
