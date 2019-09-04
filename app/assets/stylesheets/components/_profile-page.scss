@@ -11,9 +11,24 @@
 }
 .grey-color1 {
   color: #B3B3B3;
+  position: relative;
+  top: -50px;
 }
 .grey-color2 {
   color: rgba(103, 103, 103, 0.9);
+  position: relative;
+  top: -30px;
+}
+.grey-color3 {
+  color: rgba(103, 103, 103, 0.9);
+  text-align: left;
+}
+.grey-color4 {
+  color: rgba(103, 103, 103, 0.9);
+  position: relative;
+  top: 40px;
+  word-break: break-word;
+  text-align: justify;
 }
 .form-test {
   padding-top: 60px;

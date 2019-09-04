@@ -12,8 +12,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @next_game = @user.games.upcoming.first
-    @future_games = @user.games.upcoming.drop(1)
+
+  #{ where("date >= ?", [Date.today]).order('date ASC, created_at ASC') }
+    @next_game = @user.upcoming_games.first
+
+    @future_games = @user.upcoming_games.drop(1)
   end
 
   private

@@ -26,4 +26,14 @@ class User < ApplicationRecord
 
 
   end
+
+  def all_games
+   self.games  + self.guests.map { |g| g.game }
+  end
+
+  def upcoming_games
+    games = self.all_games.select { |game|  game.date >= Date.today }
+
+    games.sort { |game|  game.time }
+  end
 end

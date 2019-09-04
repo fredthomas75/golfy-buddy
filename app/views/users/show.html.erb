@@ -15,14 +15,20 @@
           <p class="grey-color2">
           <%= image_tag "localisation-golf.png", alt: "alttext" %>
           <%= @user.current_city %>
-          <br>
-          <%= image_tag "icon-golf.png", alt: "alttext" %>
-          <%= @user.handicap %>
+          </div>
+          <div>
+            <%= image_tag "icon-golf.png", alt: "alttext" %>
+            <%= @user.handicap %>
         </div>
-        <br>
-        <%= @user.language %>
-        <br>
-        <%= @user.about_me %>
+        <div class="grey-color3">
+          Prefered language: <%= @user.language %>
+        </div>
+        <div class="grey-color3">
+          About me:
+        </div>
+        <div class="grey-color4">
+          <%= @user.about_me %>
+        </div>
         </p>
       </div>
     </div>
@@ -70,14 +76,14 @@
       <% @future_games.each do |game| %>
       <div class="row">
         <div class="card-product">
-          <img src="<%= @game.course.attachments[0].photo.url %>" />
+          <img src="<%= game.course.attachments[0].photo.url %>" />
           <div class="card-product-infos">
             <h2 class="buddies-h2-2"><%= game.name %></h2>
             <p><%= game.course.name %>
               <br>
-              <%= @next_game.date %>
-              <%= @next_game.time %>
-              <%= link_to game_path(@next_game) do%>
+              <%= game.date %>
+              <%= game.time %>
+              <%= link_to game_path(game) do%>
               <div class="btn btn-success">
                 <p>View Game</p>
               </div>
