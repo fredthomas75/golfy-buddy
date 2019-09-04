@@ -59,19 +59,23 @@
   text-align: left;
 }
 
-.upcoming-games {
+.upcoming-games-h4 {
   text-align: right;
   position: relative;
   right: 20px;
 }
 
-.past-games {
+.past-games-h4 {
   color: rgba(103, 103, 103, 0.9);
 }
 
-.next-game {
+.next-game-h3 {
   color: $purple;
 }
+
+// .next_game {
+//   padding-bottom: 20px;
+// }
 
 .color-test2 {
   background-color: orange;
@@ -83,7 +87,7 @@
 .color-test4 {
   background-color: yellow;
 }
-.buddies-h2 {
+.game-name {
   color: #676767;
 }
 .card-product {
@@ -118,8 +122,16 @@
   padding: 16px;
 }
 
+.space-btw-card {
+  padding-bottom: 20px;
+}
+
 .img-rounded {
   border-radius: 50%;
+}
+.future-games {
+  padding-top: 20px;
+  color: #B3B3B3;
 }
 
 @media screen and (min-width: 764px) {
