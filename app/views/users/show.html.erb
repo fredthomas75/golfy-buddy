@@ -1,7 +1,7 @@
 <div class="min-height-container">
   <div class="row form-test">
     <!--PROFILE COLONNE -->
-    <div class="col color-test2">
+    <div class="col-xs-12 col-sm-4 color-test2">
       <div class="col profile">
         <p id="notice"><%= notice %></p>
         <div class="edit-button"  >
@@ -15,19 +15,26 @@
           <p class="grey-color2">
           <%= image_tag "localisation-golf.png", alt: "alttext" %>
           <%= @user.current_city %>
-          <br>
-          <%= image_tag "icon-golf.png", alt: "alttext" %>
-          <%= @user.handicap %>
+          </div>
+          <div>
+            <%= image_tag "icon-golf.png", alt: "alttext" %>
+            <%= @user.handicap %>
         </div>
-        <br>
-        <%= @user.language %>
-        <br>
-        <%= @user.about_me %>
+        <div class="grey-color3">
+          Prefered language: <%= @user.language %>
+        </div>
+        <div class="grey-color3">
+          About me:
+        </div>
+        <div class="grey-color4">
+          <%= @user.about_me %>
+        </div>
         </p>
       </div>
     </div>
+
     <!-- GAMES COLONNE -->
-    <div class="col color-test4">
+    <div class="col-xs-12 col-sm-8 color-test4">
       <div class="row color-test3">
         <div class="col">
           <h3 class="position1">Upcomming Games</h3>
@@ -40,28 +47,52 @@
         <h3 class="buddies-h3-2">Your Next Game</h3>
       </div>
       <!-- NEXT GAME CARD -->
+      <% unless @next_game.nil? %>
       <div class="row">
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <img src="<%= @next_game.course.attachments[0].photo.url %>" />
           <div class="card-product-infos">
-          <h2 class="buddies-h2">Product name</h2>
-          <p>Product description with <strong>relevant info</strong> only.</p>
+            <h2 class="buddies-h2"><%= @next_game.name %></h2>
+            <p><%= @next_game.course.name %>
+              <br>
+              <%= @next_game.date %>
+              <%= @next_game.time %>
+              <%= link_to game_path(@next_game) do%>
+              <div class="btn btn-success">
+                <p>View Game</p>
+              </div>
+              <% end %>
+            </p>
           </div>
         </div>
       </div>
+      <% else %>
+        <p>No games</p>
+      <% end %>
       <div>
         <h3 class="grey-color">Future Game</h3>
       </div>
       <!-- FUTURE GAMES CARD -->
+      <% @future_games.each do |game| %>
       <div class="row">
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <img src="<%= game.course.attachments[0].photo.url %>" />
           <div class="card-product-infos">
-          <h2 class="buddies-h2-2">Product name</h2>
-          <p>Product description with <strong>relevant info</strong> only.</p>
+            <h2 class="buddies-h2-2"><%= game.name %></h2>
+            <p><%= game.course.name %>
+              <br>
+              <%= game.date %>
+              <%= game.time %>
+              <%= link_to game_path(game) do%>
+              <div class="btn btn-success">
+                <p>View Game</p>
+              </div>
+              <% end %>
+            </p>
           </div>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
