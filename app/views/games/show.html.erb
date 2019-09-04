@@ -182,7 +182,12 @@
       <div class="guests text-secondary col-md-4 col-sm-12">
 
         <% @game.guests.each do |guest|%>
-          <img src="<%= User.find(guest.user_id).photo %>" class="buddy-photo small" alt="">
+          <% if guest.user.photo == false %>
+                <%= image_tag gravatar_image_url(guest.email), class: "game-card-user avatar-bordered", id: "guest-1" %>
+                <% raise %>
+          <% else %>
+              <img src="<%= guest.user.photo %>" class="buddy-photo small" alt="">
+          <% end %>
         <% end %>
 
         <p><%= @game.guests.size %> buddies out of <%= @game.number_players - 1 %> have joined the game</p>
@@ -202,7 +207,7 @@
             <% if pre_wish%>
               <%= button_to 'Remove from wishlist', game_wishgame_path(@game, pre_wish), method: :delete %>
             <% else %>
-              <%= button_to 'Add to wishlist', game_wishgames_path(@game), method: :post, class: "btn btn-warning btn-join" %>
+              <%= button_to 'Add to wishlist', game_wishgames_path(@game), method: :post, class: "btn btn-warning btn-join col-6" %>
             <% end %>
           <% end %>
       </div>
@@ -236,7 +241,7 @@
     <div class="text-center pt-2">
           <% if user_signed_in? %>
             <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
-              <%= link_to 'Join Now', game_guests_path(@game), method: :post, class: "btn btn-success btn-join" %>
+              <%= link_to 'Join Now', game_guests_path(@game), method: :post, class: "btn btn-success btn-join col-6" %>
             <% end %>
           <% end %>
 

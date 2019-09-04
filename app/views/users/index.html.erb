@@ -65,8 +65,7 @@
         <% if user.language %>
           <% if user.language == "English" %>
             <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
-          <% elsif user.language == "French" %>
-            <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+
           <% elsif user.language == "Spanish" %>
             <% url =  "https://www.countryflags.io/es/flat/32.png" %>
           <% else %>
@@ -99,6 +98,8 @@
 
 
 
+
+<% end %>
   <% @users.each do |user| %>
 
 
@@ -167,8 +168,7 @@
         <% if user.language %>
           <% if user.language == "English" %>
             <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
-          <% elsif user.language == "French" %>
-            <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+
           <% elsif user.language == "Spanish" %>
             <% url =  "https://www.countryflags.io/es/flat/32.png" %>
           <% else %>
@@ -188,8 +188,7 @@
       </div>
 
     </div>
-  <% end %>
-</div>
+  </div>
   </div>
 
 <%= will_paginate %>
