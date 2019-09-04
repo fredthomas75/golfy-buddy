@@ -58,6 +58,10 @@ class GamesController < ApplicationController
   def show
     @attachments = @game.attachments.all
     @user = User.find(@game.user.id)
+    @marker = [{
+      lat: @game.course.latitude,
+      lng: @game.course.longitude,
+      }]
   end
 
   # GET /games/new
