@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" style="display: flex;">
+<div class="navbar navbar-expand-lg navbar-light navbar-lewagon" style="display: flex;">
   <!-- COLLAPSING MENU -->
   <div class="navbar-burger-box" style="flex: 0 0 33%;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,13 +8,25 @@
   <!-- MENU GAUCHE -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex: 0 0 33%;">
     <ul class="navbar-nav mr-auto menu-left">
-        <li class="nav-item active">
+      <% if params[:controller] == 'pages' %>
+        <li class="nav-item tab-underlined active">
+      <% else %>
+        <li class="nav-item tab-underlined">
+      <% end %>
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
-        <li class="nav-item active">
+      <% if params[:controller] == 'games' %>
+        <li class="nav-item tab-underlined active">
+      <% else %>
+        <li class="nav-item tab-underlined">
+      <% end %>
           <%= link_to "Games", games_path, class: "nav-link" %>
         </li>
-        <li class="nav-item active">
+      <% if params[:controller] == 'users' %>
+        <li class="nav-item tab-underlined active">
+      <% else %>
+        <li class="nav-item tab-underlined">
+      <% end %>
           <%= link_to "Buddies", users_path, class: "nav-link" %>
         </li>
     </ul>

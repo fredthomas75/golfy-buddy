@@ -1,0 +1,13 @@
+.tab-underlined {
+  color: $gray;
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+}
+
+.tab-underlined.active {
+  opacity: 0.9;
+  border-bottom: 2px solid $light-grey;
+}

@@ -58,10 +58,24 @@
   }
 }
 
-@media screen and (max-width: 576px) {
+.navbar-burger-box {
+    display: none;
+  }
+
+@media screen and (max-width: 540px) {
+}
+
+
+@media only screen and (max-width: 992px) {
   .navbar-burger-box {
     display: block;
   }
+    .host-button, .img-home, .navbar-collapse {
+        display: none;
+    }
+    .second-section {
+      flex-direction: column;
+    }
 }
 
 .dropdown-item:hover {
