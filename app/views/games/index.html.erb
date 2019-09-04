@@ -40,31 +40,17 @@
                   <%= image_tag gravatar_image_url(game.user.email), class: "game-card-user avatar-bordered", id: "game-host" %>
                 <% end %>
 
-                <!-- GAME GUEST 1-->
-                <% if game.guests[0].nil? %>
-                  <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-1" %>
-                <% elsif !game.guests[0].user.photo.blank? %>
-                  <%= cl_image_tag game.guests[0].user.photo, class: "game-card-user avatar-bordered", id: "guest-1" %>
-                <% else %>
-                  <%= image_tag gravatar_image_url(game.guests[0].user.email), class: "game-card-user avatar-bordered", id: "guest-1" %>
-                <% end %>
+                <%= game.guests.size %> buddies out of <%= game.number_players - 1 %>
 
-                <!-- GAME GUEST 2-->
-                <% if game.guests[1].nil? %>
-                  <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-2" %>
-                <% elsif !game.guests[1].user.photo.blank? %>
-                  <%= cl_image_tag game.guests[1].user.photo, class: "game-card-user avatar-bordered", id: "guest-2" %>
-                <% else %>
-                  <%= image_tag gravatar_image_url(game.guests[1].user.email), class: "game-card-user avatar-bordered", id: "guest-2" %>
-                <% end %>
-
-                <!-- GAME GUEST 3-->
-                <% if game.guests[2].nil? %>
-                  <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-3" %>
-                <% elsif !game.guests[2].user.photo.blank? %>
-                  <%= cl_image_tag game.guests[2].user.photo, class: "game-card-user avatar-bordered", id: "guest-3" %>
-                <% else %>
-                  <%= image_tag gravatar_image_url(game.guests[2].user.email), class: "game-card-user avatar-bordered", id: "guest-3" %>
+                <!-- LOOP DES GUESTS ET DU NOMBRE DE PLAYERS -->
+                <% (game.number_players - 1).times do |i| %>
+                  <% if game.guests[i].nil? %>
+                    <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-#{(i + 1)}" %>
+                  <% elsif !game.guests[i].user.photo.blank? %>
+                    <%= cl_image_tag game.guests[i].user.photo, class: "game-card-user avatar-bordered", id: "guest-#{(i + 1)}" %>
+                  <% else %>
+                    <%= image_tag gravatar_image_url(game.guests[i].user.email), class: "game-card-user avatar-bordered", id: "guest-#{(i + 1)}" %>
+                  <% end %>
                 <% end %>
               </div>
             </div>
