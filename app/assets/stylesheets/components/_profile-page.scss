@@ -31,6 +31,7 @@
 .card-product {
   overflow: hidden;
   height: 120px;
+  min-width: 90%;
   background: white;
   box-shadow: 2px 3px 1px rgba(0, 0, 0, 0.05);
   display: flex;
@@ -89,5 +90,16 @@
 }
 .position1 {
   text-align: right;
+}
+
+@media screen and (min-width: 764px) {
+    .card-product {
+    height: 240px;
+  }
+
+  .card-product img {
+    width: 240px;
+  }
+
 }
 
