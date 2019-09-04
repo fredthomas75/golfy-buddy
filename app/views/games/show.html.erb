@@ -174,22 +174,21 @@
 
   <div class="container">
 
-    <div class="row">
+    <div class="row justify-content-between">
 
-    <div class="col-3 col-sm-12">
-      <strong>Players</strong>
+      <div class="col-md-3 col-sm-12">
+        <strong>Players</strong>
+         <p class="text-secondary"> <%= @game.number_players%> players maximum</p>
+      </div>
 
-       <p class="text-secondary"> <%= @game.number_players%> players maximum</p>
-    </div>
+      <div class="guests text-secondary col-md-3 col-sm-12">
 
-    <div class="guests text-secondary col-3 col-sm-12">
+        <% @game.guests.each do |guest|%>
+          <img src="<%= User.find(guest.user_id).photo %>" class="buddy-photo small" alt="">
+        <% end %>
 
-      <% @game.guests.each do |guest|%>
-        <img src="<%= User.find(guest.user_id).photo %>" class="buddy-photo small" alt="">
-      <% end %>
-
-     <p><%= @game.guests.size %> out of <%= @game.number_players %> players have joined the game</p>
-    </div>
+       <p><%= @game.guests.size %> out of <%= @game.number_players %> players have joined the game</p>
+      </div>
 
 
     </div>
