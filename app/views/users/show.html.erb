@@ -1,5 +1,5 @@
 <div class="min-height-container">
-  <div class="row form-test">
+  <div class="row background">
     <!--PROFILE COLONNE -->
     <div class="col-xs-12 col-sm-4 color-test2">
       <div class="col profile">
@@ -13,10 +13,10 @@
         <div class="profile-header">
           <h3><strong class="name"> <%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></strong></h3>
           <p class="location-handicap">
-            <%= image_tag "localisation-golf.png", alt: "alttext" %>
+            <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 14px" %>
             <%= @user.current_city %>
             <br>
-            <%= image_tag "icon-golf.png", alt: "alttext" %>
+            <%= image_tag "icon-golf.png", alt: "alttext", style: "width: 14px" %>
             Handicap: <%= @user.handicap %>
           </p>
         </div>
