@@ -1,17 +1,20 @@
 .buddy-card {
-  box-shadow: 0 1px 15px rgba(0,0,0,0.2);
-  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 1%;
   color: #7A6BBD;
   height: 450px;
   width: 350px;
   margin: 15px;
   position: relative;
-  transition: all .5s ease-in-out;
+  transition: all .2s ease-in-out;
 
   // margin-right: 15px;
 }
 
-.buddy-card:hover { transform: scale(1.05); }
+.buddy-card:hover {
+  box-shadow: 0 0 3px rgba(81, 141, 63, 1);
+  }
+
 .buddy-photo {
   margin-top: 20px;
   border-radius: 50%;
@@ -38,11 +41,13 @@
   position: absolute;
   right: 15px;
   top: 15px;
-   transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  opacity: 0.7;
 }
 
 .add_btn:hover {
  transform: scale(1.1);
+ opacity: 1;
 }
 
 .btn-cancel {
@@ -51,7 +56,5 @@
   top: 15px;
    transition: all .2s ease-in-out;
    border-radius: 15px;
-
    font-size: 12px;
-
 }

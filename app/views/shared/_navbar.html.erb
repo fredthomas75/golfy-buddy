@@ -15,7 +15,7 @@
       <% end %>
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
-      <% if params[:controller] == 'games' %>
+      <% if params[:controller] == 'games' || params[:controller] == 'courses' %>
         <li class="nav-item tab-underlined active">
       <% else %>
         <li class="nav-item tab-underlined">

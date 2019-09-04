@@ -1,12 +1,54 @@
+// .game-cards-container {
+//   margin: 0 96px;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
+// }
+
 .game-cards-container {
-  margin: 0 96px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  margin: 2vw 5vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 32px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .game-cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .game-cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .game-cards-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .game-cards-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .game-cards-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .game-card-link {
-  width: 46%;
+  width: 100%;
   color: gray;
 
   h3 {
@@ -19,21 +61,47 @@
     }
 }
 
+// .game-card-link {
+//   width: 46%;
+//   color: gray;
 
+//   h3 {
+//     color: green;
+//   }
+
+//   &:hover {
+//     text-decoration: none;
+//     color: dimgray;
+//     }
+// }
 
 .game-card {
   // margin: 16px;
-  margin: 16px 0;
+  // margin: 16px 0;
+  height: 80vh;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 1%;
 
   &:hover {
-    box-shadow: 0 0 5px rgba(81, 141, 63, 1);
+    box-shadow: 0 0 3px rgba(81, 141, 63, 1);
   }
-
 }
+
+// .game-card {
+//   // margin: 16px;
+//   margin: 16px 0;
+//   overflow: hidden;
+//   background: white;
+//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+//   border-radius: 1%;
+
+//   &:hover {
+//     box-shadow: 0 0 5px rgba(81, 141, 63, 1);
+//   }
+
+// }
 
 .game-card > img {
   height: 300px;
@@ -61,8 +129,11 @@
   p {
     font-size: 16px;
   }
-}
 
+  h4 {
+  font-size: 16px;
+  }
+}
 .game-card-infos .game-card-user {
   position: absolute;
   right: 60px;

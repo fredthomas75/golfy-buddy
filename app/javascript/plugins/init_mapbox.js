@@ -19,13 +19,13 @@ const buildMap = () => {
   if (isItAShowPage() == true) {
     return new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10',
+      style: 'mapbox://styles/mapbox/light-v10',
     });
     // If href is Index of courses
   } else {
     return new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/mapbox/light-v10',
     });
   }
 };
@@ -64,15 +64,22 @@ const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
-    // IF INDEX DE COURSES
+    const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url('${marker.image_url}')`;
+    element.style.backgroundSize = 'contain';
+    element.style.width = '25px';
+    element.style.height = '25px';
+
+    // If map display on games index
     if (isItAShowPage() == false) {
-      new mapboxgl.Marker()
+      new mapboxgl.Marker(element)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(map);
     } else {
-      // ELSE SHOW D'UN COURSE
-      new mapboxgl.Marker()
+      // Else if map display on another page
+      new mapboxgl.Marker(element)
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(map);
     }

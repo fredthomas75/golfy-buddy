@@ -5,8 +5,8 @@
       <% if @buddies.empty? %>
         <p class="text-secondary text-center">No buddy <i class="fas fa-frown text-center text-secondary "></i></p>
       <% end %>
-      <div class="container w-90">
-      <div class="row justify-content-between">
+      <div class="buddy-container">
+      <!-- <div class="row justify-content-between"> -->
       <% @buddies.each do |user| %>
         <div class="buddy-card  text-center">
 
@@ -53,6 +53,10 @@
         <% if user.language %>
           <% if user.language == "English" %>
             <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+          <% elsif user.language == "French" %>
+            <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+          <% elsif user.language == "Spanish" %>
+            <% url =  "https://www.countryflags.io/es/flat/32.png" %>
           <% else %>
             <% url =  "https://www.countryflags.io/#{user.language[0..1].downcase}/flat/32.png" %>
           <% end %>
@@ -78,8 +82,8 @@
 
 <h1 class="text-center text-warning">Users</h1>
 
-<div class="container w-90">
-  <div class="row justify-content-between">
+<div class="buddy-container w-90">
+  <!-- <div class="row justify-content-between"> -->
 
 
 
@@ -139,6 +143,10 @@
         <% if user.language %>
           <% if user.language == "English" %>
             <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+          <% elsif user.language == "French" %>
+            <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+          <% elsif user.language == "Spanish" %>
+            <% url =  "https://www.countryflags.io/es/flat/32.png" %>
           <% else %>
             <% url =  "https://www.countryflags.io/#{user.language[0..1].downcase}/flat/32.png" %>
           <% end %>

@@ -133,20 +133,19 @@
       <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aliquam veniam cupiditate, molestias facere commodi cum mollitia, illo blanditiis suscipit deserunt! Incidunt optio sint, autem eius id ipsam soluta blanditiis?</p>
 
       <div class="row">
-
+      <% if user_signed_in? %>
       <% pre_like = @game.likes.find { |like| like.user_id == current_user.id} %>
         <% if pre_like %>
             <%= link_to  game_like_path(@game, pre_like), method: :delete do %>
-            <i class="fas fa-heart" style= "color: rgba(122, 107, 189, 0.7);"></i>
+              <i class="fas fa-heart" style= "color: rgba(122, 107, 189, 0.7);"></i>
+            <% end %>
+          <% else %>
+              <%= link_to  game_likes_path(@game), method: :post do %>
+                <i class="far fa-heart" style= "color: rgba(122, 107, 189, 0.7);"></i>
+              <% end %>
         <% end %>
-        <% else %>
-          <% if user_signed_in? %>
-            <%= link_to  game_likes_path(@game), method: :post do %>
-            <i class="far fa-heart" style= "color: rgba(122, 107, 189, 0.7);"></i>
+      <% end %>
 
-          <% end %>
-          <% end %>
-          <% end %>
       <div class="pl-2"><%= @game.likes.count %> <%= (@game.likes.count) == 1 ? 'Like' : 'Likes'%></div>
       </div>
     </div>
@@ -183,14 +182,14 @@
 
 
     <div class="text-center">
-    <% pre_wish = @game.wishgames.find { |wishgame| wishgame.wishlist.user_id == current_user.id} %>
-      <% if pre_wish%>
-        <%= button_to 'Remove from wishlist', game_wishgame_path(@game, pre_wish), method: :delete %>
-      <% else %>
-        <% if user_signed_in? %>
-          <%= button_to 'Add to wishlist', game_wishgames_path(@game), method: :post, class: "btn btn-warning btn-join" %>
+      <% if user_signed_in? %>
+        <% pre_wish = @game.wishgames.find { |wishgame| wishgame.wishlist.user_id == current_user.id} %>
+          <% if pre_wish%>
+            <%= button_to 'Remove from wishlist', game_wishgame_path(@game, pre_wish), method: :delete %>
+          <% else %>
+            <%= button_to 'Add to wishlist', game_wishgames_path(@game), method: :post, class: "btn btn-warning btn-join" %>
+          <% end %>
         <% end %>
-      <% end %>
     </div>
 
   <% @attachments.each do |att| %>

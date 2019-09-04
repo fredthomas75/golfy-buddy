@@ -7,7 +7,6 @@
     class: "form-control search-bar",
       placeholder: "Find a game" %>
       <% end %>
-
   </div>
 </div>
 
@@ -28,7 +27,7 @@
             <div class="date-time-buddies">
               <div class="date-time">
               <p><%= game.date %></p>
-              <p><%= game.time %></p>
+              <p><%= game.time.strftime("%H:%M") %></p>
               <p><%= game.likes.count %> <%= (game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
               </div>
               <!-- GAME BUDDIES -->
