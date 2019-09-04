@@ -181,7 +181,7 @@
         <img src="<%= User.find(guest.user_id).photo %>" class="buddy-photo small" alt="">
       <% end %>
 
-     <p><%= @game.guests.size %> out of <%= @game.number_players %> players have joined the game</p>
+     <p><%= @game.guests.size %> out of <%= @game.number_players - 1 %> buddies have joined the game</p>
     </div>
 
 
