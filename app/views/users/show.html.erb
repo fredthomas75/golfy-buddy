@@ -37,14 +37,14 @@
     <div class="col-xs-12 col-sm-8 color-test4">
       <div class="row color-test3">
         <div class="col">
-          <h3 class="position1">Upcomming Games</h3>
+          <h4 class="upcoming-games-h4">Upcoming Games</h4>
         </div>
         <div class="col">
-          <h3 class="buddies-h3-1">Past Games</h3>
+          <h4 class="past-games-h4">Past Games</h4>
         </div>
       </div>
       <div>
-        <h3 class="buddies-h3-2">Your Next Game</h3>
+        <h3 class="next-game-h3">Your Next Game</h3>
       </div>
       <!-- NEXT GAME CARD -->
       <% unless @next_game.nil? %>
@@ -52,36 +52,38 @@
         <div class="card-product">
           <img src="<%= @next_game.course.attachments[0].photo.url %>" />
           <div class="card-product-infos">
-            <h2 class="buddies-h2"><%= @next_game.name %></h2>
-            <p><%= @next_game.course.name %>
-              <br>
-              <%= @next_game.date %>
-              <%= @next_game.time %>
+            <h3 class="game-name"><%= @next_game.name %></h3>
+              <p>
+                <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 10px" %>
+                <%= @next_game.course.name %>
+                <br>
+                <%= @next_game.time %>
+              </p>
+
               <%= link_to game_path(@next_game) do%>
               <div class="btn btn-success">
                 <p>View Game</p>
               </div>
               <% end %>
-            </p>
+
           </div>
         </div>
       </div>
       <% else %>
-        <p>No games</p>
+        <p>Your are not registered on a game yet...</p>
       <% end %>
       <div>
-        <h3 class="grey-color">Future Game</h3>
+        <h3 class="future-games">Future Games</h3>
       </div>
       <!-- FUTURE GAMES CARD -->
       <% @future_games.each do |game| %>
-      <div class="row">
+      <div class="row space-btw-card">
         <div class="card-product">
           <img src="<%= game.course.attachments[0].photo.url %>" />
           <div class="card-product-infos">
-            <h2 class="buddies-h2-2"><%= game.name %></h2>
+            <h3 class="game-name"><%= game.name %></h3>
             <p><%= game.course.name %>
               <br>
-              <%= game.date %>
               <%= game.time %>
               <%= link_to game_path(game) do%>
               <div class="btn btn-success">
