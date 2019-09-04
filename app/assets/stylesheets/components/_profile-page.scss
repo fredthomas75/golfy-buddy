@@ -1,6 +1,5 @@
 .color-test2 {
   background-color: orange;
-  // max-width: 35%;
 }
 .color-test3 {
   background-color: red;
@@ -9,26 +8,32 @@
 .color-test4 {
   background-color: yellow;
 }
-.grey-color1 {
+.name {
   color: #B3B3B3;
   position: relative;
   top: -50px;
 }
-.grey-color2 {
+
+.location-handicap {
   color: rgba(103, 103, 103, 0.9);
   position: relative;
   top: -30px;
+  left: 90px;
+  text-align: justify;
 }
-.grey-color3 {
+
+.language {
   color: rgba(103, 103, 103, 0.9);
   text-align: left;
+  padding-bottom: 20px;
 }
-.grey-color4 {
+
+.about-me {
   color: rgba(103, 103, 103, 0.9);
   position: relative;
-  top: 40px;
+  top: 10px;
   word-break: break-word;
-  text-align: justify;
+  text-align: left;
 }
 .form-test {
   padding-top: 60px;
