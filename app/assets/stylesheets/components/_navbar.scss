@@ -58,23 +58,21 @@
   }
 }
 
-.navbar-burger-box {
-    display: none;
-  }
-
-@media screen and (max-width: 540px) {
-}
-
-
 @media only screen and (max-width: 992px) {
   .navbar-burger-box {
     display: block;
   }
-    .host-button, .img-home, .navbar-collapse {
+
+ .host-button, .img-home {
         display: none;
     }
+
     .second-section {
       flex-direction: column;
+    }
+
+    .navbar-lewagon {
+      padding: 6px 16px;
     }
 }
 
