@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @next_game = @user.games.upcoming.first
+    @future_games = @user.games.upcoming.drop(1)
   end
 
   private

@@ -20,4 +20,10 @@ class User < ApplicationRecord
   def in_game?(game)
     Guest.find_by(user: self, game: game)
   end
+
+  def next_game
+
+
+
+  end
 end
