@@ -101,8 +101,10 @@
 
 
   <% @users.each do |user| %>
+  <% if user != current_user && user != User.find_by(email: "info@golfybuddy.com") %>
 
 
+    <!-- Buddy card STARTS -->
     <div class="buddy-card  text-center">
 
       <% if current_user.pending_friends.include?(user)  %>
@@ -188,6 +190,8 @@
       </div>
 
     </div>
+    <% end %>
+    <!-- BUDDY CARD END -->
     <% end %>
   </div>
   </div>
