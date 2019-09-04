@@ -24,34 +24,48 @@
               <h4><%= game.course.name %></h4>
             </div>
 
+
             <div class="date-time-buddies">
               <div class="date-time">
-              <p><%= game.date %></p>
-              <p><%= game.time.strftime("%H:%M") %></p>
-              <p><%= game.likes.count %> <%= (game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+                <p><%= game.date %></p>
+                <p><%= game.time.strftime("%H:%M") %></p>
+                <p><%= game.likes.count %> <%= (game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
               </div>
               <!-- GAME BUDDIES -->
               <div class="buddies">
-            <!-- GAME HOST -->
-            <img src="<%= game.user.photo %>" class="game-card-user avatar-bordered" id="game-host" />
-            <!-- GAME GUEST 1-->
-            <% if game.guests[0].nil? %>
-            <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-1" %>
-            <% else %>
-            <%= cl_image_tag game.guests[0].user.photo, class: "game-card-user avatar-bordered", id: "guest-1" %>
-            <% end %>
-            <!-- GAME GUEST 2-->
-            <% if game.guests[1].nil? %>
-            <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-2" %>
-            <% else %>
-            <%= cl_image_tag game.guests[1].user.photo, class: "game-card-user avatar-bordered", id: "guest-2" %>
-            <% end %>
-            <!-- GAME GUEST 3-->
-            <% if game.guests[2].nil? %>
-            <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-3" %>
-            <% else %>
-            <%= cl_image_tag game.guests[2].user.photo, class: "game-card-user avatar-bordered", id: "guest-3" %>
-            <% end %>
+                <!-- GAME HOST -->
+                <% if !game.user.photo.blank? %>
+                  <img src="<%= game.user.photo %>" class="game-card-user avatar-bordered" id="game-host" />
+                <% else %>
+                  <%= image_tag gravatar_image_url(game.user.email), class: "game-card-user avatar-bordered", id: "game-host" %>
+                <% end %>
+
+                <!-- GAME GUEST 1-->
+                <% if game.guests[0].nil? %>
+                  <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-1" %>
+                <% elsif !game.guests[0].user.photo.blank? %>
+                  <%= cl_image_tag game.guests[0].user.photo, class: "game-card-user avatar-bordered", id: "guest-1" %>
+                <% else %>
+                  <%= image_tag gravatar_image_url(game.guests[0].user.email), class: "game-card-user avatar-bordered", id: "guest-1" %>
+                <% end %>
+
+                <!-- GAME GUEST 2-->
+                <% if game.guests[1].nil? %>
+                  <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-2" %>
+                <% elsif !game.guests[1].user.photo.blank? %>
+                  <%= cl_image_tag game.guests[1].user.photo, class: "game-card-user avatar-bordered", id: "guest-2" %>
+                <% else %>
+                  <%= image_tag gravatar_image_url(game.guests[1].user.email), class: "game-card-user avatar-bordered", id: "guest-2" %>
+                <% end %>
+
+                <!-- GAME GUEST 3-->
+                <% if game.guests[2].nil? %>
+                  <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-3" %>
+                <% elsif !game.guests[2].user.photo.blank? %>
+                  <%= cl_image_tag game.guests[2].user.photo, class: "game-card-user avatar-bordered", id: "guest-3" %>
+                <% else %>
+                  <%= image_tag gravatar_image_url(game.guests[2].user.email), class: "game-card-user avatar-bordered", id: "guest-3" %>
+                <% end %>
               </div>
             </div>
 
