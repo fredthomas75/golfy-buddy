@@ -173,7 +173,6 @@
   </div>
 
 
-
   <div class="container">
 
     <div class="row justify-content-between">
@@ -185,16 +184,25 @@
 
       <div class="guests text-secondary col-md-4 col-sm-12">
 
+
         <% @game.guests.each do |guest|%>
-          <% if guest.user.photo == false %>
+          <% if !guest.user.photo.present? %>
                 <%= image_tag gravatar_image_url(guest.email), class: "game-card-user avatar-bordered", id: "guest-1" %>
-                <% raise %>
+                <%# raise %>
           <% else %>
+          <div id="buddy-small-pic">
               <img src="<%= guest.user.photo %>" class="buddy-photo small" alt="">
+          </div>
           <% end %>
         <% end %>
 
-        <p><%= @game.guests.size %> buddies out of <%= @game.number_players - 1 %> have joined the game</p>
+
+        <div id="buddy-small-pic">
+
+        </div>
+        <div id="js-guests">
+          <p><%= @game.guests.size %> buddies out of <%= @game.number_players - 1 %> have joined the game</p>
+        </div>
       </div>
 
 
@@ -220,7 +228,7 @@
             <div class="text-center pt-2">
                   <% if user_signed_in? %>
                     <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
-                      <%= link_to 'Join Now', game_guests_path(@game), method: :post, class: "btn btn-success btn-join col-6" %>
+                      <%= link_to 'Join Now', game_guests_path(@game), remote: true, method: :post, class: "btn btn-success btn-join col-6" %>
                     <% end %>
                   <% end %>
             </div>
@@ -264,3 +272,4 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
 </div>
+

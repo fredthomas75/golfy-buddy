@@ -15,8 +15,11 @@ class GuestsController < ApplicationController
     end
     if  @game.number_players > @game.guests.count && !current_user.in_game?(@game)
       @guest.save
+      respond_to do |format|
+        format.js
+      end
     end
-    redirect_to game_path(@game)
+
   end
 
   def approve_user
@@ -29,3 +32,6 @@ class GuestsController < ApplicationController
   end
 
 end
+
+
+
