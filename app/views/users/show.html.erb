@@ -1,5 +1,5 @@
 <div class="min-height-container">
-  <div class="row form-test">
+  <div class="row background">
     <!--PROFILE COLONNE -->
     <div class="col-xs-12 col-sm-4 color-test2">
       <div class="col profile">
@@ -11,25 +11,25 @@
         <%= gravatar_for_show @user %>
         </div>
         <div class="profile-header">
-          <h3><strong class="grey-color1"> <%= @user.first_name %>  <%= @user.last_name %></strong></h3>
-          <p class="grey-color2">
-          <%= image_tag "localisation-golf.png", alt: "alttext" %>
-          <%= @user.current_city %>
-          </div>
-          <div>
-            <%= image_tag "icon-golf.png", alt: "alttext" %>
-            <%= @user.handicap %>
+          <h3><strong class="name"> <%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></strong></h3>
+          <p class="location-handicap">
+            <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 14px" %>
+            <%= @user.current_city %>
+            <br>
+            <%= image_tag "icon-golf.png", alt: "alttext", style: "width: 16px" %>
+            Handicap: <%= @user.handicap %>
+          </p>
         </div>
-        <div class="grey-color3">
+        <div class="language">
           Prefered language: <%= @user.language %>
         </div>
-        <div class="grey-color3">
-          About me:
+        <div class="about-me">
+          <p>
+            About me:
+            <br>
+            <%= @user.about_me %>
+          </p>
         </div>
-        <div class="grey-color4">
-          <%= @user.about_me %>
-        </div>
-        </p>
       </div>
     </div>
 

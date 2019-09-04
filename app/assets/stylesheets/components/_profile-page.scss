@@ -1,6 +1,33 @@
+.name {
+  color: #B3B3B3;
+  position: relative;
+  top: -50px;
+}
+
+.location-handicap {
+  color: rgba(103, 103, 103, 0.9);
+  text-align: justify;
+  width: 100%;
+  text-align: center;
+}
+
+.language {
+  color: rgba(103, 103, 103, 0.9);
+  text-align: left;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.about-me {
+  color: rgba(103, 103, 103, 0.9);
+  position: relative;
+  top: 10px;
+  word-break: break-word;
+  text-align: left;
+}
+
 .color-test2 {
   background-color: orange;
-  // max-width: 35%;
 }
 .color-test3 {
   background-color: red;
@@ -9,30 +36,9 @@
 .color-test4 {
   background-color: yellow;
 }
-.grey-color1 {
-  color: #B3B3B3;
-  position: relative;
-  top: -50px;
-}
-.grey-color2 {
-  color: rgba(103, 103, 103, 0.9);
-  position: relative;
-  top: -30px;
-}
-.grey-color3 {
-  color: rgba(103, 103, 103, 0.9);
-  text-align: left;
-}
-.grey-color4 {
-  color: rgba(103, 103, 103, 0.9);
-  position: relative;
-  top: 40px;
-  word-break: break-word;
-  text-align: justify;
-}
-.form-test {
-  padding-top: 60px;
-  padding-bottom: 60px;
+.background {
+  padding-top: 50px;
+  padding-bottom: 40px;
 }
 .buddies-h3-1 {
   color: rgba(103, 103, 103, 0.9);
@@ -83,7 +89,7 @@
   width: 90%;
   margin: auto;
   margin-top: 100px;
-  padding-bottom: 300px;
+  padding-bottom: 200px;
 }
 .edit-button {
   a {
@@ -97,8 +103,6 @@
   position: relative;
   top: -60px;
   z-index: 10;
-  // width: 100px;
-  // right: -150px;
   display: flex;
   justify-content: center;
   align-items: center
@@ -115,6 +119,11 @@
   .card-product img {
     width: 240px;
   }
+}
 
+@media screen and (max-width: 764px) {
+  .avatar-profile img {
+    width: 90px;
+  }
 }
 
