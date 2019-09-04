@@ -6,7 +6,7 @@ class CreateGames < ActiveRecord::Migration[5.2]
       t.integer :number_players
       t.integer :number_guests
       t.date :date
-      t.time :time
+      t.datetime :time
       t.float :price
       t.boolean :booked
       t.boolean :tournament

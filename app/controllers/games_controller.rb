@@ -5,8 +5,8 @@ class GamesController < ApplicationController
 
   # GET /games
   def index
-      @upcoming_games = Game.where("date >= ?", [Date.today]).order('date ASC, created_at ASC')
-      @past_games = Game.where("date < ?", [Date.today]).order('date DESC, created_at DESC')
+      @upcoming_games = Game.where("date >= ?", [Date.today]).order('time ASC, created_at ASC')
+      @past_games = Game.where("date < ?", [Date.today]).order('time DESC, created_at DESC')
 
       if user_signed_in?
         @wishlist = Wishlist.where(user_id: current_user.id)

@@ -1,6 +1,6 @@
 .color-test2 {
   background-color: orange;
-  max-width: 35%;
+  // max-width: 35%;
 }
 .color-test3 {
   background-color: red;
@@ -11,9 +11,24 @@
 }
 .grey-color1 {
   color: #B3B3B3;
+  position: relative;
+  top: -50px;
 }
 .grey-color2 {
   color: rgba(103, 103, 103, 0.9);
+  position: relative;
+  top: -30px;
+}
+.grey-color3 {
+  color: rgba(103, 103, 103, 0.9);
+  text-align: left;
+}
+.grey-color4 {
+  color: rgba(103, 103, 103, 0.9);
+  position: relative;
+  top: 40px;
+  word-break: break-word;
+  text-align: justify;
 }
 .form-test {
   padding-top: 60px;
@@ -31,6 +46,7 @@
 .card-product {
   overflow: hidden;
   height: 120px;
+  min-width: 90%;
   background: white;
   box-shadow: 2px 3px 1px rgba(0, 0, 0, 0.05);
   display: flex;
@@ -88,7 +104,17 @@
   align-items: center
 }
 .position1 {
-  position: relative;
-  left: 230px;
+  text-align: right;
+}
+
+@media screen and (min-width: 764px) {
+    .card-product {
+    height: 240px;
+  }
+
+  .card-product img {
+    width: 240px;
+  }
+
 }
 
