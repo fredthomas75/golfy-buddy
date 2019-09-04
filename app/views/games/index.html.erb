@@ -29,7 +29,7 @@
               <div class="date-time">
                 <p><%= game.date %></p>
                 <p><%= game.time.strftime("%H:%M") %></p>
-                <p><%= game.likes.count %> <%= (game.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+                <p><b><%= game.likes.count %> <%= (game.likes.count) > 1 ? 'Likes' : 'Like'%></b></p>
               </div>
               <!-- GAME BUDDIES -->
               <div class="buddies">
@@ -39,8 +39,6 @@
                 <% else %>
                   <%= image_tag gravatar_image_url(game.user.email), class: "game-card-user avatar-bordered", id: "game-host" %>
                 <% end %>
-
-                <%= game.guests.size %> buddies out of <%= game.number_players - 1 %>
 
                 <!-- LOOP DES GUESTS ET DU NOMBRE DE PLAYERS -->
                 <% (game.number_players - 1).times do |i| %>
