@@ -5,15 +5,20 @@ class LikesController < ApplicationController
   def create
     if already_liked?
       flash[:notice] = "You can't like more than once"
+      users_like.destroy
     else
       @game.likes.create(user_id: current_user.id)
     end
-    redirect_to game_path(@game)
+    @users_like = users_like
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def already_liked?
-    Like.where(user_id: current_user.id, game_id:
-    params[:game_id]).exists?
+    !Like.find_by(user_id: current_user.id, game_id:
+    params[:game_id]).nil?
   end
 
   def destroy
@@ -22,10 +27,16 @@ class LikesController < ApplicationController
     else
       @like.destroy
     end
-    redirect_to game_path(@game)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
+
+  def users_like
+    Like.find_by(user_id: current_user.id, game_id: params[:game_id])
+  end
 
   def find_like
    @like = @game.likes.find(params[:id])
