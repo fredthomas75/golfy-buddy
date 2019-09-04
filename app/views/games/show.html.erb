@@ -11,81 +11,18 @@
 
 
 
-      <div class="row">
+      <div class="row line">
 
-      <div>
-        <h1 class="text-warning text-left pt-4 source-sans-pro" >
 
-          <%= @game.name %>
-        </h1>
-      </div>
+      <!-- GAME INFO STARTS HERE -->
+      <div class="game-info col-lg-8 col-sm-12">
+        <div>
+          <h1 class="text-warning text-left pt-4 source-sans-pro" >
 
-      <div class="buddy-card text-center" id="buddy-card-show">
-      <%= link_to user_path(@game.user_id) do%>
-        <% if @game.user.photo %>
-          <div>
-            <img src= "<%= @game.user.photo%>", class="buddy-photo" alt="">
-          </div>
-        <% else %>
-          <div class="buddy-photo">
-          <%= gravatar_for_show(@game.user) %>
-          </div>
-        <% end %>
-        <div class="text-center text-warning pt-1">
-          <strong><%= @user.first_name %> <%= @user.last_name %></strong>
+            <%= @game.name %>
+          </h1>
         </div>
-        <% end %>
-
-        <div class="pt-2 text-secondary">
-          <svg width="22" class="mr-2" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21 11.0432C21 17.8182 11 27.8182 11 27.8182C11 27.8182 1 17.8182 1 11.0432C1 4.68773 6.16773 1 11 1C15.8323 1 21 4.68773 21 11.0432Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
-            <path d="M11.0004 14.636C13.0087 14.636 14.6367 13.008 14.6367 10.9996C14.6367 8.99134 13.0087 7.36328 11.0004 7.36328C8.99207 7.36328 7.36401 8.99134 7.36401 10.9996C7.36401 13.008 8.99207 14.636 11.0004 14.636Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
-          </svg>
-          <% if !@user.current_city || @user.current_city == "" %>
-          NA
-          <% elsif @user.current_city %>
-          <%= @user.current_city %>
-          <% end %>
-        </div>
-
-        <div class="pt-2 text-secondary">
-          <svg width="25" class="mr-2" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.36667 13.975C3.14207 14.79 1 16.2282 1 17.8666C1 20.4073 6.14893 22.4666 12.5 22.4666C18.8511 22.4666 24 20.4073 24 17.8666C24 15.3259 18.8511 13.2666 12.5 13.2666" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10" stroke-linecap="square"/>
-            <path d="M9.43335 17.8667V1L16.3333 4.06667L9.43335 7.13333" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10"/>
-          </svg>
-
-          <% if @user.handicap %>
-          Handicap: <%= @user.handicap %>
-          <% else %>
-          Handicap : NA
-          <% end %>
-
-          <div class="pt-2">
-            <% if @user.language %>
-            <% if @user.language == "English" %>
-            <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
-            <% else %>
-            <% url =  "https://www.countryflags.io/#{@user.language[0..1].downcase}/flat/32.png" %>
-            <% end %>
-            <% end %>
-            <img class= "mr-1" src= <%= url %>>
-            <%= @user.language %>
-          </div>
-
-          <div class="text-center message">
-            <% unless current_user == @user %>
-
-            <%= link_to '<i class="far fa-envelope fa-lg"></i>'.html_safe, new_message_path(to: @user.id), class: "msg_btn " %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-    <div class="container">
+        <div class="container">
 
       <div class="row">
 
@@ -159,29 +96,96 @@
         <div class="pl-2"><%= @game.likes.count %> <%= (@game.likes.count) == 1 ? 'Like' : 'Likes'%></div>
         </div>
       </div>
+      </div>
 
-      <div class="line"></div>
+    </div>
+<!-- GAME INFO ENDS HERE -->
+<!-- BUDDY CARD STARTS HERE -->
+  <div class="col-lg-4 col-sm-12 text-center">
 
+      <div class="buddy-card text-center" id="buddy-card-show">
+        <%= link_to user_path(@game.user_id) do%>
+          <% if @game.user.photo %>
+            <div>
+              <img src= "<%= @game.user.photo%>", class="buddy-photo" alt="">
+            </div>
+          <% else %>
+            <div class="buddy-photo">
+            <%= gravatar_for_show(@game.user) %>
+            </div>
+          <% end %>
+          <div class="text-center text-warning pt-1">
+            <strong><%= @user.first_name %> <%= @user.last_name %></strong>
+          </div>
+          <% end %>
 
+          <div class="pt-2 text-secondary">
+            <svg width="22" class="mr-2" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 11.0432C21 17.8182 11 27.8182 11 27.8182C11 27.8182 1 17.8182 1 11.0432C1 4.68773 6.16773 1 11 1C15.8323 1 21 4.68773 21 11.0432Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+              <path d="M11.0004 14.636C13.0087 14.636 14.6367 13.008 14.6367 10.9996C14.6367 8.99134 13.0087 7.36328 11.0004 7.36328C8.99207 7.36328 7.36401 8.99134 7.36401 10.9996C7.36401 13.008 8.99207 14.636 11.0004 14.636Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+            </svg>
+            <% if !@user.current_city || @user.current_city == "" %>
+            NA
+            <% elsif @user.current_city %>
+            <%= @user.current_city %>
+            <% end %>
+          </div>
 
+          <div class="pt-2 text-secondary">
+            <svg width="25" class="mr-2" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.36667 13.975C3.14207 14.79 1 16.2282 1 17.8666C1 20.4073 6.14893 22.4666 12.5 22.4666C18.8511 22.4666 24 20.4073 24 17.8666C24 15.3259 18.8511 13.2666 12.5 13.2666" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10" stroke-linecap="square"/>
+              <path d="M9.43335 17.8667V1L16.3333 4.06667L9.43335 7.13333" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10"/>
+            </svg>
+
+            <% if @user.handicap %>
+            Handicap: <%= @user.handicap %>
+            <% else %>
+            Handicap : NA
+            <% end %>
+
+            <div class="pt-2">
+              <% if @user.language %>
+              <% if @user.language == "English" %>
+              <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+              <% else %>
+              <% url =  "https://www.countryflags.io/#{@user.language[0..1].downcase}/flat/32.png" %>
+              <% end %>
+              <% end %>
+              <img class= "mr-1" src= <%= url %>>
+              <%= @user.language %>
+            </div>
+
+            <div class="text-center message">
+              <% unless current_user == @user %>
+
+              <%= link_to '<i class="far fa-envelope fa-lg"></i>'.html_safe, new_message_path(to: @user.id), class: "msg_btn " %>
+              <% end %>
+            </div>
+        </div>
+      </div>
+  </div>
+        <!-- BUDDY CARD ENDS HERE -->
+  </div>
+
+     <!--  <div class="line"></div>
+ -->
 
   <div class="container">
 
-    <div class="row">
+    <div class="row justify-content-between">
 
-    <div>
-      <strong>Players</strong>
+      <div class="col-md-3 col-sm-12">
+        <strong>Players</strong>
+         <p class="text-secondary"> <%= @game.number_players%> players maximum</p>
+      </div>
 
-       <p class="text-secondary"> <%= @game.number_players%> players maximum</p>
-    </div>
+      <div class="guests text-secondary col-md-3 col-sm-12">
 
-    <div class="guests text-secondary">
+        <% @game.guests.each do |guest|%>
+          <img src="<%= User.find(guest.user_id).photo %>" class="buddy-photo small" alt="">
+        <% end %>
 
-      <% @game.guests.each do |guest|%>
-        <img src="<%= User.find(guest.user_id).photo %>" class="buddy-photo small" alt="">
-      <% end %>
-
-     <p><%= @game.guests.size %> out of <%= @game.number_players - 1 %> buddies have joined the game</p>
+            <p><%= @game.guests.size %> out of <%= @game.number_players - 1 %> buddies have joined the game</p>
     </div>
 
 
