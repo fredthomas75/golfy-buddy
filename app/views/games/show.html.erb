@@ -21,10 +21,20 @@
     </div>
 
     <div class="buddy-card text-center" id="buddy-card-show">
-      <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo" alt="">
-      <div class="text-center pt-2">
+    <%= link_to user_path(@game.user_id) do%>
+      <% if @game.user.photo %>
+        <div>
+          <img src= "<%= @game.user.photo%>", class="buddy-photo" alt="">
+        </div>
+      <% else %>
+        <div class="buddy-photo">
+        <%= gravatar_for_show(@game.user) %>
+        </div>
+      <% end %>
+      <div class="text-center text-warning pt-2">
         <strong><%= @user.first_name %> <%= @user.last_name %></strong>
       </div>
+      <% end %>
 
       <div class="pt-4 text-secondary">
         <svg width="22" class="mr-2" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">

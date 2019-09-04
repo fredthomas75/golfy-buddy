@@ -19,11 +19,23 @@
 
 
 
-      <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo" alt="">
+     <%= link_to user_path(user.id) do%>
+      <% if user.photo %>
+        <div>
+          <img src= "<%= user.photo%>", class="buddy-photo" alt="">
+        </div>
+      <% else %>
+        <div class="buddy-photo">
+        <%= gravatar_for_show(user) %>
+        </div>
+      <% end %>
 
-      <div class="text-center pt-2">
-        <strong><%= user.first_name %> <%= user.last_name %></strong>
+      <div class="text-center text-warning pt-2">
+        <strong><%= @user.first_name %> <%= @user.last_name %></strong>
       </div>
+      <% end %>
+
+
       <div class="text-secondary text-left pl-3 ml-5">
        <div class="pt-4">
         <svg width="22" class="mr-2" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,11 +117,23 @@
 
 
 
-      <img src="https://source.unsplash.com/1600x900/?golfer" class="buddy-photo" alt="">
+      <%= link_to user_path(user.id) do%>
+      <% if user.photo %>
+        <div>
+          <img src= "<%= user.photo%>", class="buddy-photo" alt="">
+        </div>
+      <% else %>
+        <div class="buddy-photo">
+        <%= gravatar_for_show(user) %>
+        </div>
+      <% end %>
 
-      <div class="text-center pt-2">
+      <div class="text-center text-warning pt-2">
         <strong><%= user.first_name %> <%= user.last_name %></strong>
       </div>
+      <% end %>
+
+
       <div class="text-secondary text-left pl-3 ml-5">
        <div class="pt-4">
         <svg width="22" class="mr-2" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">
