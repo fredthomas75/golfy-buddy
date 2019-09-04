@@ -26,6 +26,7 @@
         </p>
       </div>
     </div>
+
     <!-- GAMES COLONNE -->
     <div class="col-xs-12 col-sm-8 color-test4">
       <div class="row color-test3">
@@ -45,18 +46,17 @@
         <div class="card-product">
           <img src="<%= @next_game.course.attachments[0].photo.url %>" />
           <div class="card-product-infos">
-          <h2 class="buddies-h2"><%= @next_game.name %></h2>
-          <p><%= @next_game.about_game %>
-            <br>
-            <%= @next_game.date %>
-            <%= @next_game.time %>
-            <%= link_to game_path(@next_game) do%>
-          <div class="btn btn-success">
-            <p>View Game</p>
-          </div>
-          <% end %>
-          </p>
-
+            <h2 class="buddies-h2"><%= @next_game.name %></h2>
+            <p><%= @next_game.course.name %>
+              <br>
+              <%= @next_game.date %>
+              <%= @next_game.time %>
+              <%= link_to game_path(@next_game) do%>
+              <div class="btn btn-success">
+                <p>View Game</p>
+              </div>
+              <% end %>
+            </p>
           </div>
         </div>
       </div>
@@ -70,10 +70,19 @@
       <% @future_games.each do |game| %>
       <div class="row">
         <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <img src="<%= @game.course.attachments[0].photo.url %>" />
           <div class="card-product-infos">
-          <h2 class="buddies-h2-2"><%= game.name %></h2>
-          <p><%= game.about_game %></p>
+            <h2 class="buddies-h2-2"><%= game.name %></h2>
+            <p><%= game.course.name %>
+              <br>
+              <%= @next_game.date %>
+              <%= @next_game.time %>
+              <%= link_to game_path(@next_game) do%>
+              <div class="btn btn-success">
+                <p>View Game</p>
+              </div>
+              <% end %>
+            </p>
           </div>
         </div>
       </div>
