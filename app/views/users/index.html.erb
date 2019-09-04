@@ -15,19 +15,15 @@
       <path d="M30 13.5772L16.2857 27L10 20.8479L11.6114 19.2707L16.2857 23.8345L28.3886 12L30 13.5772Z" fill="white"/>
       </svg>
 
-
-
-
-
-     <%= link_to user_path(user.id) do%>
-      <% if user.photo %>
-        <div>
-          <img src= "<%= user.photo%>", class="buddy-photo" alt="">
-        </div>
-      <% else %>
-        <div class="buddy-photo">
-        <%= gravatar_for_show(user) %>
-        </div>
+      <%= link_to user_path(user.id) do%>
+        <% if user.photo %>
+          <div>
+            <img src= "<%= user.photo %>", class="buddy-photo" alt="<%= @user.first_name %> <%= @user.last_name %>">
+          </div>
+        <% else %>
+          <div class="buddy-photo">
+            <%= gravatar_for_show(user) %>
+          </div>
       <% end %>
 
       <div class="text-center text-warning pt-2">
@@ -97,69 +93,62 @@
   <!-- <div class="row justify-content-between"> -->
 
 
-
-
-
+  <!-- DEBUT DES BUDDY CARDS - TOUT LE MONDE -->
   <% @users.each do |user| %>
+
   <% if user != current_user && user != User.find_by(email: "info@golfybuddy.com") %>
 
 
     <!-- Buddy card STARTS -->
+
     <div class="buddy-card  text-center">
 
-      <% if current_user.pending_friends.include?(user)  %>
-      <div class="btn btn-info btn-cancel">Cancel request</div>
-
+      <% if current_user.pending_friends.include?(user) %>
+        <div class="btn btn-info btn-cancel">Cancel request</div>
       <% else %>
-
         <%= link_to  friendships_request_path(user.id), method: :post do %>
-        <svg class="add_btn" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M30.6377 21.8722H21.2091V31.3008H18.0663V21.8722H8.6377V18.7294H18.0663V9.30078H21.2091V18.7294H30.6377V21.8722Z" fill="#686B6F"/>
-      <rect width="40" height="40" rx="20" fill="#7A7A7A" fill-opacity="0.26"/>
-      </svg>
-
+          <svg class="add_btn" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30.6377 21.8722H21.2091V31.3008H18.0663V21.8722H8.6377V18.7294H18.0663V9.30078H21.2091V18.7294H30.6377V21.8722Z" fill="#686B6F"/>
+            <rect width="40" height="40" rx="20" fill="#7A7A7A" fill-opacity="0.26"/>
+          </svg>
         <% end %>
       <% end %>
 
-
-
-
+      <!-- PHOTO -->
       <%= link_to user_path(user.id) do%>
-      <% if user.photo %>
-        <div>
-          <img src= "<%= user.photo%>", class="buddy-photo" alt="">
-        </div>
-      <% else %>
-        <div class="buddy-photo">
-        <%= gravatar_for_show(user) %>
+        <% if !user.photo.blank? %>
+          <div>
+            <img src= "<%= user.photo%>", class="buddy-photo" alt="">
+          </div>
+        <% else %>
+            <%= image_tag gravatar_image_url(user.email), class: "buddy-photo" %>
+        <% end %>
+
+        <div class="text-center text-warning pt-2">
+          <strong><%= user.first_name %> <%= user.last_name %></strong>
         </div>
       <% end %>
-
-      <div class="text-center text-warning pt-2">
-        <strong><%= user.first_name %> <%= user.last_name %></strong>
-      </div>
-      <% end %>
-
 
       <div class="text-secondary text-left pl-3 ml-5">
-       <div class="pt-4">
-        <svg width="22" class="mr-2" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21 11.0432C21 17.8182 11 27.8182 11 27.8182C11 27.8182 1 17.8182 1 11.0432C1 4.68773 6.16773 1 11 1C15.8323 1 21 4.68773 21 11.0432Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
-          <path d="M11.0004 14.636C13.0087 14.636 14.6367 13.008 14.6367 10.9996C14.6367 8.99134 13.0087 7.36328 11.0004 7.36328C8.99207 7.36328 7.36401 8.99134 7.36401 10.9996C7.36401 13.008 8.99207 14.636 11.0004 14.636Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
-        </svg>
-        <% if !user.current_city || user.current_city == "" %>
-          NA
-        <% elsif user.current_city %>
-          <%= user.current_city %>
-        <% end %>
-      </div>
-       <div class="pt-4">
-        <svg width="25" class="mr-2" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6.36667 13.975C3.14207 14.79 1 16.2282 1 17.8666C1 20.4073 6.14893 22.4666 12.5 22.4666C18.8511 22.4666 24 20.4073 24 17.8666C24 15.3259 18.8511 13.2666 12.5 13.2666" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10" stroke-linecap="square"/>
-      <path d="M9.43335 17.8667V1L16.3333 4.06667L9.43335 7.13333" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10"/>
-      </svg>
+        <div class="pt-4">
+          <svg width="22" class="mr-2" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 11.0432C21 17.8182 11 27.8182 11 27.8182C11 27.8182 1 17.8182 1 11.0432C1 4.68773 6.16773 1 11 1C15.8323 1 21 4.68773 21 11.0432Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+            <path d="M11.0004 14.636C13.0087 14.636 14.6367 13.008 14.6367 10.9996C14.6367 8.99134 13.0087 7.36328 11.0004 7.36328C8.99207 7.36328 7.36401 8.99134 7.36401 10.9996C7.36401 13.008 8.99207 14.636 11.0004 14.636Z" stroke="#676767" stroke-opacity="0.8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"/>
+          </svg>
+          <% if !user.current_city || user.current_city == "" %>
+            NA
+          <% elsif user.current_city %>
+            <%= user.current_city %>
+          <% end %>
+        </div>
+        <div class="pt-4">
+          <svg width="25" class="mr-2" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.36667 13.975C3.14207 14.79 1 16.2282 1 17.8666C1 20.4073 6.14893 22.4666 12.5 22.4666C18.8511 22.4666 24 20.4073 24 17.8666C24 15.3259 18.8511 13.2666 12.5 13.2666" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10" stroke-linecap="square"/>
+            <path d="M9.43335 17.8667V1L16.3333 4.06667L9.43335 7.13333" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10"/>
+          </svg>
           <% if user.handicap %>
-          Handicap: <%= user.handicap %>
+
+            Handicap: <%= user.handicap %>
          <% else %>
            Handicap : NA
         <% end %>
@@ -174,27 +163,41 @@
           <% elsif user.language == "Spanish" %>
             <% url =  "https://www.countryflags.io/es/flat/32.png" %>
           <% else %>
-            <% url =  "https://www.countryflags.io/#{user.language[0..1].downcase}/flat/32.png" %>
+            Handicap : NA
           <% end %>
-        <img src=<%= url %> class="mr-1">
-        <% end %>
-        <%= user.language %>
-       </div>
+        </div>
+
+        <div class="pt-4">
+          <% if user.language %>
+            <% if user.language == "English" %>
+              <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+            <% elsif user.language == "French" %>
+              <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
+            <% elsif user.language == "Spanish" %>
+              <% url =  "https://www.countryflags.io/es/flat/32.png" %>
+            <% else %>
+              <% url =  "https://www.countryflags.io/#{user.language[0..1].downcase}/flat/32.png" %>
+            <% end %>
+            <img src=<%= url %> class="mr-1">
+          <% end %>
+          <%= user.language %>
+        </div>
 
       </div>
+
       <div class="text-center message">
-          <% unless current_user == user %>
-
-            <%= link_to '<i class="far fa-envelope fa-lg"></i>'.html_safe, new_message_path(to: user.id), class: "msg_btn " %>
-          <% end %>
+        <% unless current_user == user %>
+          <%= link_to '<i class="far fa-envelope fa-lg"></i>'.html_safe, new_message_path(to: user.id), class: "msg_btn " %>
+        <% end %>
       </div>
-
     </div>
+
     <% end %>
     <!-- BUDDY CARD END -->
     <% end %>
   </div>
   </div>
+
 
 <%= will_paginate %>
 
