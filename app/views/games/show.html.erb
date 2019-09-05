@@ -187,7 +187,7 @@
 
         <% @game.guests.each do |guest|%>
           <% if !guest.user.photo.present? %>
-                <%= image_tag gravatar_image_url(guest.email), class: "game-card-user avatar-bordered", id: "guest-1" %>
+                <%= image_tag gravatar_image_url(guest.user.email), class: "game-card-user avatar-bordered", id: "guest-1" %>
                 <%# raise %>
           <% else %>
           <div id="buddy-small-pic">
