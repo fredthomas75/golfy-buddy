@@ -30,6 +30,7 @@ class GamesController < ApplicationController
       @past_games = @past_games.global_search(params[:query])
     else
       @games = Game.all
+      @games = @games.paginate(page: params[:page], per_page: 12)
       @guests = Guest.where(game: [@games])
     end
   end
