@@ -89,7 +89,7 @@
 .game-name {
   color: #676767;
   position: relative;
-  top: -30px;
+  top: -15px;
 }
 .card-product {
   overflow: hidden;
@@ -115,13 +115,21 @@
   margin: 0;
 }
 .card-product p {
-  font-size: 12px;
-  line-height: 1.4;
+  font-size: 20px;
+  line-height: 2.2;
   margin-bottom: 0;
   margin-top: 4px;
 }
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.view-button {
+  border-radius: 32px;
+  width: 170px;
+  position: relative;
+  top: 15px;
+  left: 20px;
 }
 
 .space-btw-card {
@@ -136,12 +144,6 @@
   color: #B3B3B3;
 }
 
-
-.nav-tabs .nav-link {
-  // position: relative;
-  // left: 215px;
-}
-
 .row.color-test3 {
   padding-left: 0px;
 }
@@ -153,7 +155,6 @@
 .nav-tabs {
   width: 100%;
   justify-content: space-around;
-  // background-color: white;
   border: none;
   margin-left: 10vw;
   margin-right: 10vw;
@@ -166,16 +167,11 @@
   a {
     text-decoration: none;
     color: black;
-    // margin-right: 10px;
-    // margin-left: 10px;
   }
 
   a:hover {
-    // text-decoration: none;
-    // color: #aaa;
     border: none;
     cursor: pointer !important;
-    // opacity: 0.8;
   }
 
   .active {
@@ -183,14 +179,6 @@
     border: none;
     border-bottom: 3px solid $purple !important;
   }
-}
-
-.view-button {
-  border-radius: 32px;
-  width: 170px;
-  position: relative;
-  top: 50px;
-  left: 20px;
 }
 
 .view-button p{
