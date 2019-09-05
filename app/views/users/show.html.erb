@@ -4,16 +4,18 @@
     <div class="col-xs-12 col-sm-4">
       <div class="col profile">
         <div class="edit-button"  >
+          <% if current_user== @user%>
           <%= link_to 'Edit', edit_user_registration_path(@user) %>
+          <% end %>
         </div>
         <div class="avatar-profile">
         <%= gravatar_for_show @user %>
         </div>
         <div class="profile-header">
           <h3><strong class="name"> <%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></strong></h3>
-
-
-
+          <% if current_user.requested_friends.include?(@user) %>
+          <%= link_to 'Accept request', friendships_confirm_path(@user), method: :post, class: "btn btn-success" %>
+          <% end %>
           <p class="location-handicap">
             <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 14px; margin-right: 6px" %>
             <%= @user.current_city %>

@@ -15,6 +15,7 @@
               <div class="col">
                 <!-- NAME OF THE GAME-->
                 <%= f.input :name,
+                            maxlength: 30,
                             label: "What is the name of your game?",
                             placeholder: "Be creative..."%>
               </div>
@@ -69,6 +70,7 @@
             <div class="row">
               <div class="col">
                 <%= f.input :about_game,
+                            maxlength: 150,
                             label: "Game Description (optional)",
                             placeholder: "Describe your game..." %>
               </div>
