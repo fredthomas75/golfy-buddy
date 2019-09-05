@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_184007) do
     t.integer "number_players"
     t.integer "number_guests"
     t.date "date"
-    t.time "time"
+    t.datetime "time"
     t.boolean "booked"
     t.boolean "tournament"
     t.text "about_game"

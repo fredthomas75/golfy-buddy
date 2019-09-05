@@ -17,6 +17,8 @@ class UsersController < ApplicationController
     @next_game = @user.upcoming_games.first
 
     @future_games = @user.upcoming_games.drop(1)
+
+    @past_games = @user.past_games
   end
 
   private
