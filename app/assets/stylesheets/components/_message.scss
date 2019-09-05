@@ -147,7 +147,7 @@
 }
 
 .message-left {
-  flex: 0 0 30%;
+  flex: 0 0 15%;
     a {
    text-decoration: none;
     color: $dimgray;
@@ -170,7 +170,7 @@
 
 .message-right {
   display: flex;
-  flex: 0 0 70%;
+  flex: 0 0 85%;
   flex-direction: column;
   padding-left: 24px;
     a {
@@ -226,8 +226,9 @@
 }
 
 .input-message {
-  width: 90%;
+  width: 85%;
   padding-top: 12px;
+  text-align: right;
 }
 
 .inbox-back {

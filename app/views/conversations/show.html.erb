@@ -5,12 +5,7 @@
     <h4><%= link_to '<i class="fas fa-inbox fa-lg"></i> Back to inbox'.html_safe, conversations_path%></h4>
     </div>
 
-    <%= form_tag reply_conversation_path(@conversation), method: :post do %>
-    <div class="input-message">
-      <%= text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true %>
-      <%= submit_tag "Send Message", class: 'send-button' %>
-    </div>
-    <% end %>
+
   </div>
 
   <div class="message-right">
@@ -21,6 +16,12 @@
       <% end %>
       <% end %> </h1>
       <h2><%= @conversation.subject %></h2>
+      <%= form_tag reply_conversation_path(@conversation), method: :post do %>
+        <div class="input-message">
+          <%= text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true %>
+          <%= submit_tag "Send Message", class: 'send-button-right' %>
+        </div>
+    <% end %>
 
       <% @conversation.receipts_for(current_user).sort.reverse.each do |receipt| %>
         <div class="<%= receipt.message.sender == current_user ? 'message-byme' : 'message-byother' %> ">
