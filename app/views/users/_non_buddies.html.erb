@@ -1,13 +1,12 @@
   <!-- USERS BEGIN-->
-<h1 class="text-center text-warning">Users</h1>
 
-<div class="buddy-container w-90">
+<div class="buddy-container min-height-container w-90">
   <!-- <div class="row justify-content-between"> -->
 
 
   <!-- DEBUT DES BUDDY CARDS - TOUT LE MONDE -->
   <% @users.each do |user| %>
-      <% if user != current_user && user != User.find_by(email: "info@golfybuddy.com") %>
+      <% if user != current_user && (user != User.find_by(email: "info@golfybuddy.com") && !user.friends_with?(current_user) )%>
         <div class="buddy-card  text-center">
 
 
@@ -23,6 +22,7 @@
         <% end %>
 
         <!-- PHOTO -->
+
         <%= link_to user_path(user.id) do%>
           <% if !user.photo.blank? %>
             <div>
