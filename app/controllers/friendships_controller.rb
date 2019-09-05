@@ -4,9 +4,9 @@ class FriendshipsController < ApplicationController
 
   def request_frd
     current_user.friend_request(@user)
-    redirect_to user_path(current_user), notice: "Buddy request successfully sent."
+    redirect_to user_path(@user), notice: "Buddy request successfully sent."
     #send a message to @user to inform that someone wants to be its friend
-    @admin.send_message(@user, "This is a notif - Request", "#{current_user.first_name} #{current_user.last_name} wants to be your buddy")
+    current_user.send_message(@user, "Accept it? Decline it? Go to profile page of #{current_user.first_name}", "#{current_user.first_name} #{current_user.last_name} wants to be your buddy!")
   end
 
   def confirm_frd
@@ -14,7 +14,7 @@ class FriendshipsController < ApplicationController
     current_user.accept_request(@user)
     redirect_to user_path(current_user), notice: "Buddy request successfully accepted."
     #send a message to @user to inform that someone wants to be its friend
-    @admin.send_message(@user, "This is a notif - Confirm", "#{current_user.first_name} #{current_user.last_name} confirms your buddy-ship!")
+    @admin.send_message(@user, "#{current_user.first_name} #{current_user.last_name} confirms your buddy-ship!", "GOLFY Buddy-ship confirmed!")
   end
 
   def decline_frd
