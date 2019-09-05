@@ -1,13 +1,10 @@
-
-
-  <% if @buddies.empty? %>
-    <p class="text-secondary text-center min-height-container">No buddy <i class="fas fa-frown text-center text-secondary "></i></p>
+<% if @users.requested_friends.empty? %>
+    <p class="text-secondary text-center min-height-container">No request <i class="fas fa-frown text-center text-secondary "></i></p>
   <% end %>
   <div class="buddy-container w-90">
   <!-- <div class="row justify-content-between"> -->
-    <% @buddies.each do |user| %>
-      <% unless user.email == "info@golfybuddy.com" %>
-
+    <% @users.each do |user| %>
+      <% if true %>
 
         <div class="buddy-card  text-center">
           <svg width="40" class="add_btn" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -77,4 +74,3 @@
       <% end %>
     <% end %>
   </div>
-
