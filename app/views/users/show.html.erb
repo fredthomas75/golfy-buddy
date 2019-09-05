@@ -13,10 +13,10 @@
         <div class="profile-header">
           <h3><strong class="name"> <%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></strong></h3>
           <p class="location-handicap">
-            <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 14px" %>
+            <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 14px; margin-right: 6px" %>
             <%= @user.current_city %>
             <br>
-            <%= image_tag "icon-golf.png", alt: "alttext", style: "width: 16px" %>
+            <%= image_tag "icon-golf.png", alt: "alttext", style: "width: 16px; margin-right: 6px" %>
             Handicap: <%= @user.handicap %>
           </p>
         </div>
@@ -52,14 +52,17 @@
           <% unless @next_game.nil? %>
           <div class="row">
             <div class="card-product">
-              <img src="<%= @next_game.course.attachments[0].photo.url %>" />
+              <img class="course-img" src="<%= @next_game.course.attachments[0].photo.url %>" />
               <div class="card-product-infos">
                 <h3 class="game-name"><%= @next_game.name %></h3>
                   <p>
-                    <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 15px" %>
+                    <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 15px; margin-right: 6px"%>
                     <%= @next_game.course.name %>
                     <br>
-                    <%= @next_game.time %>
+                    <span class="space-btw-info"><%= image_tag "calendar.png", alt: "alttext", style: "width: 14px; margin-right: 6px" %> <%= @next_game.time.strftime("%d/%m/%Y") %>
+
+                    </span>
+                    <span> <%= image_tag "clock.png", alt: "alttext", style: "width: 15px; margin-right: 6px"%><%= @next_game.time.strftime("%I:%M %p") %></span>
                   </p>
 
                   <%= link_to game_path(@next_game) do%>
@@ -81,12 +84,14 @@
           <% @future_games.each do |game| %>
           <div class="row space-btw-card">
             <div class="card-product">
-              <img src="<%= game.course.attachments[0].photo.url %>" />
+              <img class="course-img" src="<%= game.course.attachments[0].photo.url %>" />
               <div class="card-product-infos">
                 <h3 class="game-name"><%= game.name %></h3>
-                <p><%= game.course.name %>
+                <p><%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 15px; margin-right: 6px"%><%= game.course.name %>
                   <br>
-                  <%= game.time %>
+                  <span class="space-btw-info"><%= image_tag "calendar.png", alt: "alttext", style: "width: 14px; margin-right: 6px" %> <%= game.time.strftime("%d/%m/%Y") %>
+                    </span>
+                    <span> <%= image_tag "clock.png", alt: "alttext", style: "width: 15px; margin-right: 6px"%><%= game.time.strftime("%I:%M %p") %></span>
                   <%= link_to game_path(game) do%>
                   <div class="btn btn-success view-button">
                     <p>View Game</p>
@@ -99,16 +104,18 @@
           <% end %>
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-
+          <!-- PAST GAMES -->
           <% @past_games.each do |game| %>
           <div class="row space-btw-card">
             <div class="card-product">
-              <img src="<%= game.course.attachments[0].photo.url %>" />
+              <img class="course-img" src="<%= game.course.attachments[0].photo.url %>" />
               <div class="card-product-infos">
                 <h3 class="game-name"><%= game.name %></h3>
-                <p><%= game.course.name %>
+                <p><%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 15px; margin-right: 6px"%><%= game.course.name %>
                   <br>
-                  <%= game.time %>
+                  <span class="space-btw-info"><%= image_tag "calendar.png", alt: "alttext", style: "width: 14px; margin-right: 6px" %> <%= game.time.strftime("%d/%m/%Y") %>
+                    </span>
+                    <span> <%= image_tag "clock.png", alt: "alttext", style: "width: 15px; margin-right: 6px"%><%= game.time.strftime("%I:%M %p") %></span>
                   <%= link_to game_path(game) do%>
                   <div class="btn btn-success view-button">
                     <p>View Game</p>

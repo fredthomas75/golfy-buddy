@@ -103,7 +103,7 @@
   margin: auto;
 
 }
-.card-product img {
+.card-product .course-img {
   height: 100%;
   width: 120px;
   border-radius: 16px;
@@ -195,12 +195,16 @@
   }
 }
 
+.space-btw-info {
+  margin-right: 44px;
+}
+
 @media screen and (min-width: 764px) {
     .card-product {
     height: 240px;
   }
 
-  .card-product img {
+  .card-product .course-img {
     width: 290px;
   }
 }
