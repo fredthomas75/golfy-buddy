@@ -96,3 +96,12 @@ label {
       border-bottom: 1px solid $light-green;   }
     // box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
 }
+
+.select2-container .select2-selection--single {
+    height: 38px !important;
+}
+
+.select2-container--default .select2-selection--single {
+    border-radius: 8px !important;
+    border: 1px solid #ced4da !important;
+}
