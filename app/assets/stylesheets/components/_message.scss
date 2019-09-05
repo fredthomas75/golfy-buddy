@@ -191,10 +191,10 @@
   align-self: center;
   text-decoration: none;
   list-style-type: none;
-  margin-top: 24px;
-  margin-bottom: 12px;
+  margin-top: 12px;
+  margin-bottom: 6px;
   padding: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
   border-radius: 8px;
   width: 70%;
   align-items: right;
@@ -204,17 +204,17 @@
 }
 
 .message-byother {
-  background-color: $super-light-purple;
+  background-color: $light-grey;
   display: grid;
   grid-template-columns: 10% 90%;
   align-self: end;
   border: 1px solid $light-grey;
   text-decoration: none;
   list-style-type: none;
-  margin-top: 24px;
-  margin-bottom: 12px;
+  margin-top: 12px;
+  margin-bottom: 6px;
   padding: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
   border-radius: 8px;
   width: 70%;
   align-items: left;
