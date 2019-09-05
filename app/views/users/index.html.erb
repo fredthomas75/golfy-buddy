@@ -18,7 +18,7 @@
       <%= link_to user_path(user.id) do%>
         <% if user.photo %>
           <div>
-            <img src= "<%= user.photo %>", class="buddy-photo" alt="<%= @user.first_name %> <%= @user.last_name %>">
+            <img src= "<%= user.photo %>", class="buddy-photo" alt="<%= user.first_name %> <%= user.last_name %>">
           </div>
         <% else %>
           <div class="buddy-photo">
@@ -61,7 +61,8 @@
         <% if user.language %>
           <% if user.language == "English" %>
             <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
-
+          <% elsif user.language == "French" %>
+            <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
           <% elsif user.language == "Spanish" %>
             <% url =  "https://www.countryflags.io/es/flat/32.png" %>
           <% else %>
@@ -95,12 +96,6 @@
 
   <!-- DEBUT DES BUDDY CARDS - TOUT LE MONDE -->
   <% @users.each do |user| %>
-
-  <% if user != current_user && user != User.find_by(email: "info@golfybuddy.com") %>
-
-
-    <!-- Buddy card STARTS -->
-
     <div class="buddy-card  text-center">
 
       <% if current_user.pending_friends.include?(user) %>
@@ -147,21 +142,7 @@
             <path d="M9.43335 17.8667V1L16.3333 4.06667L9.43335 7.13333" stroke="#676767" stroke-opacity="0.9" stroke-miterlimit="10"/>
           </svg>
           <% if user.handicap %>
-
             Handicap: <%= user.handicap %>
-         <% else %>
-           Handicap : NA
-        <% end %>
-
-       </div>
-
-       <div class="pt-4">
-        <% if user.language %>
-          <% if user.language == "English" %>
-            <% url =  "https://www.countryflags.io/gb/flat/32.png" %>
-
-          <% elsif user.language == "Spanish" %>
-            <% url =  "https://www.countryflags.io/es/flat/32.png" %>
           <% else %>
             Handicap : NA
           <% end %>
@@ -191,13 +172,7 @@
         <% end %>
       </div>
     </div>
-
-    <% end %>
-    <!-- BUDDY CARD END -->
-    <% end %>
-  </div>
-  </div>
-
+  <% end %>
+</div>
 
 <%= will_paginate %>
-
