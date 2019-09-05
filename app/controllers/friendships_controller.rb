@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
 
   def request_frd
     current_user.friend_request(@user)
-    redirect_to user_path(@user), notice: "Buddy request successfully sent."
+    redirect_to users_path, notice: "Buddy request successfully sent."
     #send a message to @user to inform that someone wants to be its friend
     current_user.send_message(@user, "Accept it? Decline it? Go to profile page of #{current_user.first_name}", "#{current_user.first_name} #{current_user.last_name} wants to be your buddy!")
   end
