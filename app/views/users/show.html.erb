@@ -6,9 +6,17 @@
         <div class="edit-button"  >
           <%= link_to 'Edit', edit_user_registration_path(@user) %>
         </div>
-        <div class="avatar-profile">
-        <%= gravatar_for_show @user %>
-        </div>
+
+        <% if !@user.photo.blank? %>
+          <div class="avatar-profile">
+            <img src= "<%= @user.photo %>", class="rounded-circle" style="height: 140px; width: 140px;" alt="">
+          </div>
+        <% else %>
+          <div class="avatar-profile">
+            <%= gravatar_for_show @user %>
+          </div>
+        <% end %>
+
         <div class="profile-header">
           <h3><strong class="name"> <%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></strong></h3>
 
