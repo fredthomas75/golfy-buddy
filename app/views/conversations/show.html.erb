@@ -16,18 +16,15 @@
   <div class="message-right">
     <h1>Chatting with <% @conversation.participants.each do |participant| %>
       <% unless participant == current_user %>
-      <%= participant.first_name %>
+      <%= link_to participant.first_name, user_path(participant) %>
       <%= gravatar_for participant %><br>
       <% end %>
       <% end %> </h1>
       <h2><%= @conversation.subject %></h2>
 
       <% @conversation.receipts_for(current_user).sort.reverse.each do |receipt| %>
-      <% if receipt.message.sender == current_user %>
-      <div class="message-byme">
-        <% else %>
-        <div class="message-byother">
-          <% end %>
+        <div class="<%= receipt.message.sender == current_user ? 'message-byme' : 'message-byother' %> ">
+
           <% message = receipt.message %>
           <%= gravatar_for message.sender, 30 %>
           <span style="font-weight: lighter; font-size: small;"><%= message.created_at.strftime("%-D, %H:%M") %></span>
