@@ -6,20 +6,18 @@
 
   <!-- DEBUT DES BUDDY CARDS - TOUT LE MONDE -->
   <% @users.each do |user| %>
-      <% if user != current_user && (user != User.find_by(email: "info@golfybuddy.com") && !user.friends_with?(current_user) )%>
+      <% if user != current_user && (user != User.find_by(email: "info@golfybuddy.com") && (!user.friends_with?(current_user) && !current_user.requested_friends.include?(user)) )%>
         <div class="buddy-card  text-center">
 
 
-        <% if current_user.pending_friends.include?(user) %>
-          <div class="btn btn-info btn-cancel">Cancel request</div>
-        <% else %>
+
           <%= link_to  friendships_request_path(user.id), method: :post do %>
             <svg class="add_btn" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M30.6377 21.8722H21.2091V31.3008H18.0663V21.8722H8.6377V18.7294H18.0663V9.30078H21.2091V18.7294H30.6377V21.8722Z" fill="#686B6F"/>
               <rect width="40" height="40" rx="20" fill="#7A7A7A" fill-opacity="0.26"/>
             </svg>
           <% end %>
-        <% end %>
+
 
         <!-- PHOTO -->
 
