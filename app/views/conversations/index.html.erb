@@ -1,35 +1,32 @@
-<% page_header "Your Conversations" %>
 
-<p><%= link_to 'Start conversation', new_message_path, class: 'btn btn-lg btn-primary' %></p>
-
-<div class="row col-10">
-  <div class="">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-      <%= mailbox_section 'inbox', @box %>
+<div class="conversation-container">
+  <div class="conversation-left">
+    <h1 style="color:rgba(122, 107, 189, 0.7);
+">Messages</h1>
+<%= link_to '<i class="fas fa-plus-circle fa-2x"></i>'.html_safe, new_message_path %></span>
+    <ul class="list-mailbox">
+      <li class='nav-mailbox <%= 'active' if params[:box] == 'inbox' %>'>
+        <%= link_to 'Inbox', conversations_path(box: :inbox)%>
       </li>
-      <li class="nav-item">
-      <%= mailbox_section 'sent', @box %>
+      <li class='nav-mailbox <%= 'active' if params[:box] == 'sent' %>'>
+        <%= link_to 'Sent', conversations_path(box: :sent)%>
       </li>
-      <li class="nav-item">
-      <%= mailbox_section 'trash', @box %>
+      <li class='nav-mailbox <%= 'active' if params[:box] == 'trash' %>'>
+        <%= link_to 'Trash', conversations_path(box: :trash)%>
       </li>
     </ul>
   </div>
 
-  <div class="col-sm-9">
-    <ul class="list-group">
+  <div class="conversation-right">
+    <% if @box == 'trash' %>
+    <p><%= link_to '<i class="fas fa-recycle"></i> Empty trash'.html_safe, empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
+    data: {confirm: 'Are you sure?'} %></p>
+    <% end %>
+    <ul class="list-mail-group">
       <%= render partial: 'conversations/conversation', collection: @conversations %>
     </ul>
-    <div class="col-sm-9">
-      <% if @box == 'trash' %>
-        <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
-                   data: {confirm: 'Are you sure?'} %></p>
-      <% end %>
     <%= will_paginate %>
-    </div>
   </div>
 </div>
-
 
 
