@@ -22,7 +22,7 @@
         <div class="profile-header">
           <h3><strong class="name"> <%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></strong></h3>
           <% if current_user.requested_friends.include?(@user) %>
-          <%= link_to 'Accept request', friendships_confirm_path(@user), method: :post, class: "btn btn-success" %>
+          <%= link_to 'Accept request', friendships_confirm_path(@user), method: :post, class: "btn btn-success request-button" %>
           <% end %>
           <p class="location-handicap">
             <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 14px; margin-right: 6px" %>
