@@ -3,7 +3,6 @@
     <!--PROFILE COLONNE -->
     <div class="col-xs-12 col-sm-4">
       <div class="col profile">
-        <p id="notice"><%= notice %></p>
         <div class="edit-button"  >
           <%= link_to 'Edit', edit_user_registration_path(@user) %>
         </div>
@@ -12,7 +11,9 @@
         </div>
         <div class="profile-header">
           <h3><strong class="name"> <%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></strong></h3>
-          <% link_to %>
+
+
+
           <p class="location-handicap">
             <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 14px; margin-right: 6px" %>
             <%= @user.current_city %>
@@ -36,7 +37,7 @@
 
     <!-- GAMES COLONNE -->
     <div class="col-xs-12 col-sm-8 color-test4">
-      <div class="row color-test3">
+      <div class="row games">
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Upcoming Games</a>
             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Past Games</a>
@@ -105,7 +106,7 @@
           <% end %>
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-          <!-- PAST GAMES -->
+          <!-- PAST GAMES CARD -->
           <% @past_games.each do |game| %>
           <div class="row space-btw-card">
             <div class="card-product">
