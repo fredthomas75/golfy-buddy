@@ -29,13 +29,10 @@
             <!-- DATE/TIME/NUM.OF.PLAYERS/NUM.OF.HOLES -->
             <div class="row">
               <div class="col">
-                <!-- DATE-->
-                <%= f.input :date,
-                            label: "When do you want to play?" %>
-              </div>
-              <div class="col">
                 <!-- TIME-->
-                <%= f.input :time, :minute_step => 15 %>
+                <%= f.input :time,
+                            label: "When do you want to play?",
+                            :minute_step => 15 %>
               </div>
             </div>
             <div class="row">
