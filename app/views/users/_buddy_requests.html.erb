@@ -9,7 +9,7 @@
 
         <div class="buddy-card  text-center">
 
-          <%= link_to 'Accept request', friendships_confirm_path(user), method: :post, class: "btn btn-success btn-accept" %>
+          <%= link_to 'Accept', friendships_confirm_path(user), method: :post, class: "btn btn-success btn-accept" %>
 
           <%= link_to user_path(user.id) do%>
             <% if !user.photo.blank? %>
