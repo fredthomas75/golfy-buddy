@@ -57,11 +57,13 @@ class GamesController < ApplicationController
   # GET /games/1
   def show
     @attachments = @game.attachments.all
+    @guest = @game.guests.find_by(user: current_user)
     @user = User.find(@game.user.id)
     @marker = [{
       lat: @game.course.latitude,
       lng: @game.course.longitude,
-      }]
+      image_url: helpers.asset_url('marker-gb.png')
+    }]
   end
 
   # GET /games/new

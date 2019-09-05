@@ -31,6 +31,12 @@ class GuestsController < ApplicationController
     redirect_to request.referrer
   end
 
+  def destroy
+    @guest = Guest.find(params[:id])
+    @guest.destroy
+    redirect_to game_path(@guest.game)
+  end
+
 end
 
 
