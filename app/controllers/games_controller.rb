@@ -19,9 +19,9 @@ class GamesController < ApplicationController
 
     # raise
     if params[:game_query].present?
-      query_date = params[:game_query][:date]
+      query_date = Date.parse(params[:game_query][:date])
       query_location = params[:game_query][:location]
-      @games_by_date = Game.where(date: query_date)
+      @games_by_date = Game.where("time > ? AND time < ?", query_date, query_date + 1)
       @games = @games_by_date.select { |game| ("#{game.course.address} ILIKE %#{query_location}%") }
     elsif
       params[:query].present?
