@@ -12,6 +12,7 @@
         </div>
         <div class="profile-header">
           <h3><strong class="name"> <%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></strong></h3>
+          <% link_to %>
           <p class="location-handicap">
             <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 14px; margin-right: 6px" %>
             <%= @user.current_city %>
