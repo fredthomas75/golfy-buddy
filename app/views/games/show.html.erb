@@ -228,11 +228,13 @@
             <div class="text-center pt-2">
                   <% if user_signed_in? %>
                     <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
-                      <div id="btn-disapear">
-                        <%= link_to 'Join Now', game_guests_path(@game), remote: true, method: :post, class: "btn btn-success btn-join col-6" %>
-                      </div>
-                      <% elsif current_user.in_game?(@game) %>
-                        <%= link_to 'Leave game', guest_path(@guest), method: :delete, class: "btn btn-info btn-join col-6" %>
+                      <%= link_to game_guests_path(@game), remote: true, method: :post  do %>
+                        <button id='joinButton' class="btn btn-success btn-join col-6">Join Game</button>
+                      <% end %>
+                    <% else %>
+                      <%= link_to game_guests_path(@game), remote: true, method: :post  do %>
+                        <button id='joinButton' class="btn btn-info btn-join col-6">Leave Game</button>
+                      <% end %>
                     <% end %>
                   <% end %>
             </div>
