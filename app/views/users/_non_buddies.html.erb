@@ -6,7 +6,7 @@
 
   <!-- DEBUT DES BUDDY CARDS - TOUT LE MONDE -->
   <% @users.each do |user| %>
-      <% if user != current_user && (user != User.find_by(email: "info@golfybuddy.com") && (!user.friends_with?(current_user) && !current_user.requested_friends.include?(user)) )%>
+      <% if user != current_user && (user != User.find_by(email: "info@golfybuddy.com") && (!user.friends_with?(current_user) && (!current_user.requested_friends.include?(user) && !user.requested_friends.include?(current_user) )) )%>
         <div class="buddy-card  text-center">
 
 
