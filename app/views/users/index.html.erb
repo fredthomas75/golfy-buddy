@@ -1,6 +1,6 @@
-<h1 class="text-center text-warning pt-5">My buddies</h1>
 
-
+<!-- BUDDIES BEGIN -->
+<h1 class="text-center text-warning pt-5 active" >My buddies</h1>
     <ul>
       <% if @buddies.empty? %>
         <p class="text-secondary text-center">No buddy <i class="fas fa-frown text-center text-secondary "></i></p>
@@ -84,7 +84,9 @@
   </div>
 </div>
 </div>
+<!-- BUDDIES END -->
 
+  <!-- USERS BEGIN-->
 <h1 class="text-center text-warning">Users</h1>
 
 <div class="buddy-container w-90">
@@ -173,5 +175,7 @@
     <% end %>
   <% end %>
 </div>
-
 <%= will_paginate %>
+<!-- USERS END -->
+
+
