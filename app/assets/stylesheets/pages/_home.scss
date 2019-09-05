@@ -81,14 +81,20 @@
   // border: solid 3px blue;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1200px) {
     .second-section {
       flex-direction: column;
-    }
+      }
     .features-container {
       position: relative;
       left: 0px;
       top: 0px;
-  // border: solid 3px blue;
+      // border: solid 3px blue;
+      }
+    .features-cards {
+      width: 70vw;
+      display: flex;
+      margin-top: 32px;
+      // border: solid 3px blue;
       }
     }
