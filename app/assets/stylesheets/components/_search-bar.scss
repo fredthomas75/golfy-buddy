@@ -7,9 +7,22 @@
 .search-bar-container {
   margin: 0 5vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   // grid-template-columns: 1fr;
   // grid-gap: 24px;
+}
+
+.params {
+  display: flex;
+  // align-self: flex-end;
+  align-items: baseline;
+  padding-right: 12px;
+}
+
+.params-all {
+  margin-top: 16px;
+  display: flex;
+  // align-self: flex-end;
 }
 
 // // Smallest device
