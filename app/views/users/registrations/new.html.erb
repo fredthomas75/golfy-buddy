@@ -84,6 +84,7 @@
                   <!-- ABOUT ME -->
                   <%= f.input :about_me,
                               required: false,
+                              maxlength: 250,
                               autofocus: true,
                               as: :text,
                               input_html: { autocomplete: "about_me" }%>
