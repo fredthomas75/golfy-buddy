@@ -6,6 +6,5 @@ class PagesController < ApplicationController
       @city = request.location.city
       @games = Game.all
       @upcoming_games_nearby = Game.upcoming.joins(:course).where("address ILIKE '%#{@city}%'").limit(5).order(:date)
-      raise
     end
 end
