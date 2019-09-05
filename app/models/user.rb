@@ -36,4 +36,10 @@ class User < ApplicationRecord
 
     games.sort { |game|  game.time }
   end
+
+  def past_games
+    games = self.all_games.select { |game|  game.date < Date.today }
+
+    games.sort { |game|  game.time }
+  end
 end

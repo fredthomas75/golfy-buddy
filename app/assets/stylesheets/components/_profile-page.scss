@@ -78,12 +78,12 @@
 // }
 
 .color-test3 {
-  background-color: red;
+  // background-color: red;
   margin-bottom: 20px;
 }
 
 .color-test4 {
-  background-color: yellow;
+  // background-color: yellow;
 }
 
 .game-name {
@@ -100,6 +100,8 @@
   display: flex;
   align-items: center;
   border-radius: 16px;
+  margin: auto;
+
 }
 .card-product img {
   height: 100%;
@@ -136,8 +138,51 @@
 
 
 .nav-tabs .nav-link {
-  position: relative;
-  left: 215px;
+  // position: relative;
+  // left: 215px;
+}
+
+.row.color-test3 {
+  padding-left: 0px;
+}
+
+.row.background {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+.nav-tabs {
+  width: 100%;
+  justify-content: space-around;
+  // background-color: white;
+  border: none;
+  margin-left: 10vw;
+  margin-right: 10vw;
+
+  .row {
+    width: 100%;
+
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+    // margin-right: 10px;
+    // margin-left: 10px;
+  }
+
+  a:hover {
+    // text-decoration: none;
+    // color: #aaa;
+    border: none;
+    cursor: pointer !important;
+    // opacity: 0.8;
+  }
+
+  .active {
+    background: none !important;
+    border: none;
+    border-bottom: 3px solid $purple !important;
+  }
 }
 
 .view-button {
