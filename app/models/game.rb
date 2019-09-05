@@ -17,8 +17,8 @@ class Game < ApplicationRecord
       tsearch: { prefix: true }
     }
   validates :number_players, presence: true
-  scope :upcoming, -> { where("date >= ?", [Date.today]).order('date ASC, created_at ASC') }
-  scope :past, -> { where("date < ?", [Date.today]).order('date DESC, created_at DESC') }
+  scope :upcoming, -> { where("time>= ?", [Date.today]).order('date ASC, created_at ASC') }
+  scope :past, -> { where("time < ?", [Date.today]).order('date DESC, created_at DESC') }
   scope :public_games, -> { where(privacy: 'public') }
   scope :play_more, -> { where(user: current_user) }
 
