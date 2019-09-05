@@ -143,11 +143,22 @@
 
 .container-message {
   display: flex;
-  margin: 36px 12px;
+  margin: 24px 12px;
 }
 
 .message-left {
   flex: 0 0 30%;
+    a {
+   text-decoration: none;
+    color: $dimgray;
+    }
+    a:hover {
+  color: black;
+    }
+}
+
+.message-left-compose {
+  flex: 0 0 20%;
     a {
    text-decoration: none;
     color: $dimgray;
@@ -165,10 +176,11 @@
 }
 
 .message-right-compose {
-  display: flex;
+  // display: flex;
   flex: 0 0 80%;
   flex-direction: column;
-  // padding-right: 24px;
+  padding-right: 48px;
+  width: 85%;
 }
 
 .message-byme {
