@@ -1,26 +1,35 @@
-<% page_header "Start Conversation" %>
+<div class="container-message">
 
-<%= form_tag messages_path, method: :post do %>
-  <div class="form-group">
-    <%= label_tag 'message[subject]', 'Subject' %>
-    <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
+  <div class="message-left">
+    <h4><%= link_to '<i class="fas fa-inbox fa-lg"></i> Back to inbox'.html_safe, conversations_path%></h4>
   </div>
 
-  <div class="form-group">
-    <%= label_tag 'message[body]', 'Message' %>
-    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
-  </div>
+  <div class="message-right-compose">
+    <h1 style="color: rgba(122, 107, 189, 0.7);">Compose your message</h1>
 
-  <!-- If you start a conversation form scratch - not from a game or a user page -->
-  <% if @chosen_recipient.nil? %>
+    <%= form_tag messages_path, method: :post do %>
     <div class="form-group">
-  <% else %>
-  <!-- If you start a conversation from a game or a user page, no need to display the recipient -->
-    <div class="form-group" style="display: none;">
-  <% end %>
-      <%= label_tag 'recipients', 'Choose recipients' %>
-      <%= select_tag 'recipients', recipients_options(@chosen_recipient), multiple: true, class: 'form-control chosen-it' %>
+      <%= label_tag 'message[subject]', 'Subject' %>
+      <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
     </div>
 
-  <%= submit_tag 'Send', class: 'btn btn-primary' %>
-<% end %>
+    <div class="form-group">
+      <%= label_tag 'message[body]', 'Message' %>
+      <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
+    </div>
+
+    <!-- If you start a conversation form scratch - not from a game or a user page -->
+    <% if @chosen_recipient.nil? %>
+    <div class="form-group">
+      <% else %>
+      <!-- If you start a conversation from a game or a user page, no need to display the recipient -->
+      <div class="form-group" style="display: none;">
+        <% end %>
+        <%= label_tag 'recipients', 'Choose recipients' %>
+        <%= select_tag 'recipients', recipients_options(@chosen_recipient), multiple: true, class: 'form-control chosen-it' %>
+      </div>
+
+      <%= submit_tag 'Send message', class: 'send-button' %>
+      <% end %>
+    </div>
+  </div>

@@ -11,4 +11,8 @@ module ApplicationHelper
   def gravatar_for_show(user, size = 100, title = user.name)
     image_tag gravatar_image_url(user.email, size: size), title: title, class: 'rounded-circle'
   end
+
+  def gravatar_for_message(user, size = 40, title = user.name)
+    image_tag gravatar_image_url(user.email, size: size), title: title, class: 'rounded-circle'
+  end
 end
