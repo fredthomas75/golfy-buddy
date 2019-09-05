@@ -185,16 +185,16 @@
       <div class="guests text-secondary col-md-4 col-sm-12">
 
 
-        <% @game.guests.each do |guest|%>
-          <% if !guest.user.photo.present? %>
-                <%= image_tag gravatar_image_url(guest.user.email), class: "game-card-user avatar-bordered", id: "guest-1" %>
-                <%# raise %>
-          <% else %>
           <div id="buddy-small-pic">
-              <img src="<%= guest.user.photo %>" class="buddy-photo small" alt="">
+            <% @game.guests.each do |guest|%>
+              <% if !guest.user.photo.present? %>
+                    <%= image_tag gravatar_image_url(guest.user.email), class: "game-card-user avatar-bordered", id: "guest-1" %>
+                    <%# raise %>
+              <% else %>
+                  <img src="<%= guest.user.photo %>" class="buddy-photo small" alt="">
+              <% end %>
+            <% end %>
           </div>
-          <% end %>
-        <% end %>
 
 
         <div id="buddy-small-pic">
@@ -228,7 +228,11 @@
             <div class="text-center pt-2">
                   <% if user_signed_in? %>
                     <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
-                      <%= link_to 'Join Now', game_guests_path(@game), remote: true, method: :post, class: "btn btn-success btn-join col-6" %>
+                      <div id="btn-disapear">
+                        <%= link_to 'Join Now', game_guests_path(@game), remote: true, method: :post, class: "btn btn-success btn-join col-6" %>
+                      </div>
+                      <% elsif current_user.in_game?(@game) %>
+                        <%= link_to 'Leave game', guest_path(@guest), method: :delete, class: "btn btn-info btn-join col-6" %>
                     <% end %>
                   <% end %>
             </div>
@@ -265,6 +269,7 @@
     </div>
   </div>
   </div>
+
   <div
       id="map"
       style="width: 100%; height: 500px; margin-top: 32px;"

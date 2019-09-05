@@ -12,6 +12,7 @@
     <%= image_tag "golfer_putter.jpg", alt: "Putting golfer" %>
   </div>
 </div>
+
 <!-- SECTION 2-->
 <div class="homepage-section second-section">
   <!-- LA MADAME QUI JOUE AU GOLF -->
@@ -34,5 +35,58 @@
   </div>
 </div>
 <!-- SECTION 3 -->
-<div class="homepage-section games-nearby"></div>
+<div class="homepage-section games-nearby">
+<!-- TEST LOCATION -->
+  <!-- DEBUTS DES CARDS NEARBY-GAMES -->
+  <h2> Featured games nearby <%= request.location.city %></h2>
+  <div class="game-cards-container">
+    <% @upcoming_games_nearby.each do |game| %>
+      <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
+        <%= link_to game_path(game), class: "game-card-link" do %>
+          <div class="game-card">
+            <img src="<%= game.course.attachments[0].photo.url %>" />
+            <div class="game-card-infos">
+
+              <div class="game-name-game-course">
+                <h3><%= game.name %></h3>
+                <h4><%= game.course.name %></h4>
+              </div>
+
+
+              <div class="date-time-buddies">
+                <div class="date-time">
+                  <p><%= game.date %></p>
+                  <p><%= game.time.strftime("%H:%M") %></p>
+                  <p><b><%= game.likes.count %> <%= (game.likes.count) > 1 ? 'Likes' : 'Like'%></b></p>
+                </div>
+                <!-- GAME BUDDIES -->
+                <div class="buddies">
+                  <!-- GAME HOST -->
+                  <% if !game.user.photo.blank? %>
+                    <img src="<%= game.user.photo %>" class="game-card-user avatar-bordered" id="game-host" />
+                  <% else %>
+                    <%= image_tag gravatar_image_url(game.user.email), class: "game-card-user avatar-bordered", id: "game-host" %>
+                  <% end %>
+
+                  <!-- LOOP DES GUESTS ET DU NOMBRE DE PLAYERS -->
+                  <% (game.number_players - 1).times do |i| %>
+                    <% if game.guests[i].nil? %>
+                      <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-#{(i + 1)}" %>
+                    <% elsif !game.guests[i].user.photo.blank? %>
+                      <%= cl_image_tag game.guests[i].user.photo, class: "game-card-user avatar-bordered", id: "guest-#{(i + 1)}" %>
+                    <% else %>
+                      <%= image_tag gravatar_image_url(game.guests[i].user.email), class: "game-card-user avatar-bordered", id: "guest-#{(i + 1)}" %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
 <%= javascript_pack_tag("locate") %>

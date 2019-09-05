@@ -21,10 +21,12 @@ Rails.application.routes.draw do
   end
   resources :games do
     resources :attachments
-    resources :guests, only: [:index, :create, :update, :destroy]
+    resources :guests, only: [:index, :create, :update]
     resources :likes
     resources :wishgames
   end
+
+  resources :guests, only: [:destroy]
   get '/games/approve_user/:id', to: 'guests#approve_user', as: :approve_user
   get '/games_buddies', to: 'games#games_buddies', as: :games_buddies
   resources :messages, only: [:new, :create]
