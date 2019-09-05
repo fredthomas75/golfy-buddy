@@ -37,6 +37,12 @@
   top: -50px;
 }
 
+.message-icon {
+  position: relative;
+  top: -30px;
+  font-size: 20px;
+}
+
 .location-handicap {
   color: rgba(103, 103, 103, 0.9);
   text-align: justify;
@@ -48,7 +54,8 @@
   color: rgba(103, 103, 103, 0.9);
   text-align: left;
   padding-top: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  text-align: center;
 }
 
 .about-me {
@@ -56,7 +63,8 @@
   position: relative;
   top: 10px;
   word-break: break-word;
-  text-align: left;
+  text-align: justify;
+  // text-align: center;
 }
 
 .upcoming-games-h4 {

@@ -21,8 +21,8 @@
 
         <div class="profile-header">
           <h3><strong class="name"> <%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></strong></h3>
-          <% if current_user.requested_friends.include?(@user) %>
-          <%= link_to 'Accept request', friendships_confirm_path(@user), method: :post, class: "btn btn-success request-button" %>
+          <%= link_to  new_message_path(to: @user.id), class: "message-icon" do %>
+                <i class="far fa-envelope fa-lg"></i>
           <% end %>
           <p class="location-handicap">
             <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 14px; margin-right: 6px" %>
@@ -33,7 +33,7 @@
           </p>
         </div>
         <div class="language">
-          Prefered language: <%= @user.language %>
+          <%= image_tag "speaker.png", alt: "alttext", style: "width: 20px; margin-right: 6px" %>Prefered language: <%= @user.language %>
         </div>
         <div class="about-me">
           <p>
@@ -58,7 +58,7 @@
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
           <div>
-            <h3 class="next-game-h3">Your Next Game</h3>
+            <h3 class="next-game-h3">Next Game</h3>
           </div>
           <!-- NEXT GAME CARD -->
           <% unless @next_game.nil? %>
