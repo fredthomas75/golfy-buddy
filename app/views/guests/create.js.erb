@@ -1,0 +1,12 @@
+console.log("hello hello")
+
+
+const image = document.getElementById("buddy-small-pic")
+const textBuddies = document.getElementById("js-guests")
+
+image.innerHTML = '<%= @game.guests.map { |guest| "<img src=\"#{guest.user.photo}\" class=\"buddy-photo small\" alt=\"\">" }.join.html_safe %>'
+
+
+textBuddies.innerHTML = "<p> <%= @game.guests.size %> buddies out of <%= @game.number_players - 1 %> have joined the game </p>"
+
+

@@ -3,13 +3,14 @@
     <div class="row">
       <div class="col-xs-12 col-sm-8 offset-sm-2">
 
-        <h1 class="form-h1">Register a Game</h1>
+        <h1 class="form-h1">Host a Game</h1>
 
         <%= simple_form_for(@game) do |f| %>
           <%= f.error_notification %>
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
           <div class="form-actions box-form">
+            <!-- NAME/BOOKED AND PRIVACY -->
             <div class="row">
               <div class="col">
                 <!-- NAME OF THE GAME-->
@@ -24,6 +25,8 @@
                 <%= f.select :privacy, ["public", "private", "public with invite"] %>
               </div>
             </div>
+
+            <!-- DATE/TIME/NUM.OF.PLAYERS/NUM.OF.HOLES -->
             <div class="row">
               <div class="col">
                 <!-- DATE-->
@@ -32,17 +35,16 @@
               </div>
               <div class="col">
                 <!-- TIME-->
-                <%= f.input :time %>
+                <%= f.input :time, :minute_step => 15 %>
               </div>
             </div>
             <div class="row">
               <div class="col">
                 <!-- NUMBER OF PLAYERS-->
                 <%= f.input :number_players,
-                            collection: [ "1", "2", "3", "4"],
-                            selected: "1",
-                            label: "Number of players",
-                            placeholder: "Including you (maximum 4 people)" %>
+                            collection: [ "2", "3", "4"],
+                            selected: "2",
+                            label: "Number of players (including you)" %>
               </div>
               <div class="col">
                 <!-- NUMBER OF HOLES-->
@@ -52,21 +54,28 @@
                             selected: "9 holes" %>
               </div>
             </div>
+
+            <!-- WHERE/PRICE -->
             <div class="row">
               <div class="col">
                 <!-- WHERE-->
                 <%= f.association :course,
-                                  label: "Where?" %>
-              </div>
+                                  label: 'Where?' %>
+                </div>
               <div class="col">
                 <!-- PRICE-->
                 <%= f.input :game_price %>
               </div>
             </div>
-              <!-- ABOUT GAME-->
-              <%= f.input :about_game,
-                          label: "Game Description (optional)",
-                          placeholder: "Describe your game..." %>
+
+            <!-- ABOUT GAME-->
+            <div class="row">
+              <div class="col">
+                <%= f.input :about_game,
+                            label: "Game Description (optional)",
+                            placeholder: "Describe your game..." %>
+              </div>
+            </div>
           </div>
 
           <div class="row">

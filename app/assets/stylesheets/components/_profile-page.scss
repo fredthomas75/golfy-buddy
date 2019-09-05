@@ -1,6 +1,84 @@
+.background {
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+
+.edit-button {
+  a {
+  color: $purple;
+  }
+  text-align: right;
+  position: relative;
+  z-index: 90;
+}
+
+.avatar-profile {
+  position: relative;
+  top: -60px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.profile {
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.12);
+  background-color: white;
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 100px;
+  padding-bottom: 200px;
+}
+
+.name {
+  color: #B3B3B3;
+  position: relative;
+  top: -50px;
+}
+
+.location-handicap {
+  color: rgba(103, 103, 103, 0.9);
+  text-align: justify;
+  width: 100%;
+  text-align: center;
+}
+
+.language {
+  color: rgba(103, 103, 103, 0.9);
+  text-align: left;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.about-me {
+  color: rgba(103, 103, 103, 0.9);
+  position: relative;
+  top: 10px;
+  word-break: break-word;
+  text-align: left;
+}
+
+.upcoming-games-h4 {
+  text-align: right;
+  position: relative;
+  right: 20px;
+}
+
+.past-games-h4 {
+  color: rgba(103, 103, 103, 0.9);
+}
+
+.next-game-h3 {
+  color: $purple;
+}
+
+// .next_game {
+//   padding-bottom: 20px;
+// }
+
 .color-test2 {
   background-color: orange;
-  max-width: 35%;
 }
 .color-test3 {
   background-color: red;
@@ -9,40 +87,25 @@
 .color-test4 {
   background-color: yellow;
 }
-.grey-color1 {
-  color: #B3B3B3;
-}
-.grey-color2 {
-  color: rgba(103, 103, 103, 0.9);
-}
-.form-test {
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
-.buddies-h3-1 {
-  color: rgba(103, 103, 103, 0.9);
-}
-.buddies-h2 {
+.game-name {
   color: #676767;
-}
-.buddies-h3-2 {
-  color: $purple;
+  position: relative;
+  top: -30px;
 }
 .card-product {
   overflow: hidden;
   height: 120px;
+  min-width: 90%;
   background: white;
   box-shadow: 2px 3px 1px rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
-  border-radius: 8px;
-}
-.img-rounded {
-  border-radius: 50%;
+  border-radius: 16px;
 }
 .card-product img {
   height: 100%;
   width: 120px;
+  border-radius: 16px;
   object-fit: cover;
 }
 .card-product h2 {
@@ -60,35 +123,38 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
-.profile {
-  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.12);
-  background-color: white;
-  text-align: center;
-  width: 90%;
-  margin: auto;
-  margin-top: 100px;
-  padding-bottom: 300px;
+
+.space-btw-card {
+  padding-bottom: 20px;
 }
-.edit-button {
-  a {
-  color: $purple;
+
+.img-rounded {
+  border-radius: 50%;
+}
+.future-games {
+  padding-top: 20px;
+  color: #B3B3B3;
+}
+
+@media screen and (min-width: 764px) {
+    .card-product {
+    height: 240px;
   }
-  text-align: right;
-  position: relative;
-  z-index: 90;
+
+  .card-product img {
+    width: 290px;
+  }
 }
-.avatar-profile {
+
+@media screen and (max-width: 764px) {
+  .avatar-profile img {
+    width: 90px;
+  }
+  .game-name {
+  color: #676767;
   position: relative;
-  top: -60px;
-  z-index: 10;
-  // width: 100px;
-  // right: -150px;
-  display: flex;
-  justify-content: center;
-  align-items: center
+  top: 5px;
 }
-.position1 {
-  position: relative;
-  left: 230px;
 }
+
 

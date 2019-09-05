@@ -1,0 +1,11 @@
+
+document.getElementById("like-txt").innerHTML = "<%= @game.likes.count %> <%= (@game.likes.count) == 1 ? 'Like' : 'Likes'%>"
+<% if !@users_like.nil?  %>
+    document.getElementById("heart").innerHTML = '<i class="fas fa-heart" style= "color: rgba(122, 107, 189, 0.7);"></i>'
+
+<% else %>
+    document.getElementById("heart").innerHTML =  '<i class="far fa-heart" style= "color: rgba(122, 107, 189, 0.7);"></i>'
+
+
+<% end %>
+

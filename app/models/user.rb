@@ -20,4 +20,20 @@ class User < ApplicationRecord
   def in_game?(game)
     Guest.find_by(user: self, game: game)
   end
+
+  def next_game
+
+
+
+  end
+
+  def all_games
+   self.games  + self.guests.map { |g| g.game }
+  end
+
+  def upcoming_games
+    games = self.all_games.select { |game|  game.date >= Date.today }
+
+    games.sort { |game|  game.time }
+  end
 end

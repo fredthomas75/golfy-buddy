@@ -27,18 +27,18 @@
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
+@media (min-width: 780px) {
   .game-cards-container {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .game-cards-container {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
+// @media (min-width: 992px) {
+//   .game-cards-container {
+//     grid-template-columns: 1fr 1fr 1fr;
+//   }
+// }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
@@ -76,9 +76,7 @@
 // }
 
 .game-card {
-  // margin: 16px;
-  // margin: 16px 0;
-  height: 80vh;
+  margin: 16px;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -104,7 +102,7 @@
 // }
 
 .game-card > img {
-  height: 300px;
+  height: 200px;
   width: 100%;
   object-fit: cover;
 }
