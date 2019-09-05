@@ -1,27 +1,37 @@
-<li class="list-group-item clearfix">
-  <%= link_to conversation.subject, conversation_path(conversation) %>
+<% if conversation.is_unread?(current_user)%>
+  <div class='list-conversation-item active'>
+<% else %>
+  <div class='list-conversation-item'>
+<% end %>
 
-<div class="btn-group-vertical pull-right btn-group-sm">
-  <% if conversation.is_trashed?(current_user) %>
-    <%= link_to 'Restore', restore_conversation_path(conversation),
-                class: 'btn btn-info', method: :post %>
-  <% else %>
-    <div>
-    <%= link_to '<i class="fas fa-trash"></i>'.html_safe, conversation_path(conversation),
-                class: 'btn', method: :delete,
-                data: {confirm: 'Are you sure?'} %>
-    <% if conversation.is_unread?(current_user) %>
-      <%= link_to '<i class="far fa-envelope-open"></i>'.html_safe, mark_as_read_conversation_path(conversation),
-                  class: 'btn', method: :post %>
-    <% end %>
+  <div class="list-conversation-left-index">
+    <%= render 'conversations/participant', conversation: conversation %>
+  </div>
+
+  <div class="list-conversation-middle-index">
+    <h4><%= link_to conversation.subject, conversation_path(conversation) %></h4>
+    <span></span>
+    <p><%= conversation.last_message.body %></p>
+    </span>
+  </div>
+
+  <div class="list-conversation-right-index">
+    <div class="conv-right-up">
+      <small><span class="text-muted"><%= conversation.last_message.created_at.strftime("%-D, %H:%M") %></span></small>
     </div>
-  <% end %>
+    <div class="conv-right-down">
+      <% if conversation.is_trashed?(current_user) %>
+      <%= link_to '<i class="fas fa-trash-restore-alt"></i>'.html_safe, restore_conversation_path(conversation), method: :post %>
+      <% else %>
+      <%= link_to '<i class="fas fa-trash"></i>'.html_safe, conversation_path(conversation), method: :delete,
+                  data: {confirm: 'Are you sure?'} %>
+      <% if conversation.is_unread?(current_user) %>
+        <%= link_to '<i class="far fa-envelope-open"></i>'.html_safe, mark_as_read_conversation_path(conversation), method: :post %>
+      <% end %>
+    <% end %>
+  </div>
+  </div>
+  </li>
 </div>
-
-  <p><%= render 'conversations/participant', conversation: conversation %></p>
-
-  <p><%= conversation.last_message.body %>
-    <small>(<span class="text-muted"><%= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S") %></span>)</small></p>
-</li>
 
 
