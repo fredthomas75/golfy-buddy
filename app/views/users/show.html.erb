@@ -36,65 +36,78 @@
     <!-- GAMES COLONNE -->
     <div class="col-xs-12 col-sm-8 color-test4">
       <div class="row color-test3">
-        <div class="col">
+        <!-- <div class="col">
           <h4 class="upcoming-games-h4">Upcoming Games</h4>
         </div>
         <div class="col">
           <h4 class="past-games-h4">Past Games</h4>
-        </div>
-      </div>
-      <div>
-        <h3 class="next-game-h3">Your Next Game</h3>
-      </div>
-      <!-- NEXT GAME CARD -->
-      <% unless @next_game.nil? %>
-      <div class="row">
-        <div class="card-product">
-          <img src="<%= @next_game.course.attachments[0].photo.url %>" />
-          <div class="card-product-infos">
-            <h3 class="game-name"><%= @next_game.name %></h3>
-              <p>
-                <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 10px" %>
-                <%= @next_game.course.name %>
-                <br>
-                <%= @next_game.time %>
-              </p>
-
-              <%= link_to game_path(@next_game) do%>
-              <div class="btn btn-success">
-                <p>View Game</p>
-              </div>
-              <% end %>
-
+        </div> -->
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Upcoming Games</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Past Games</a>
           </div>
-        </div>
+        </nav>
       </div>
-      <% else %>
-        <p>Your are not registered on a game yet...</p>
-      <% end %>
-      <div>
-        <h3 class="future-games">Future Games</h3>
-      </div>
-      <!-- FUTURE GAMES CARD -->
-      <% @future_games.each do |game| %>
-      <div class="row space-btw-card">
-        <div class="card-product">
-          <img src="<%= game.course.attachments[0].photo.url %>" />
-          <div class="card-product-infos">
-            <h3 class="game-name"><%= game.name %></h3>
-            <p><%= game.course.name %>
-              <br>
-              <%= game.time %>
-              <%= link_to game_path(game) do%>
-              <div class="btn btn-success">
-                <p>View Game</p>
-              </div>
-              <% end %>
-            </p>
+
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+          <div>
+            <h3 class="next-game-h3">Your Next Game</h3>
           </div>
+          <!-- NEXT GAME CARD -->
+          <% unless @next_game.nil? %>
+          <div class="row">
+            <div class="card-product">
+              <img src="<%= @next_game.course.attachments[0].photo.url %>" />
+              <div class="card-product-infos">
+                <h3 class="game-name"><%= @next_game.name %></h3>
+                  <p>
+                    <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 10px" %>
+                    <%= @next_game.course.name %>
+                    <br>
+                    <%= @next_game.time %>
+                  </p>
+
+                  <%= link_to game_path(@next_game) do%>
+                  <div class="btn btn-success">
+                    <p>View Game</p>
+                  </div>
+                  <% end %>
+
+              </div>
+            </div>
+          </div>
+          <% else %>
+            <p>Your are not registered on a game yet...</p>
+          <% end %>
+          <div>
+            <h3 class="future-games">Future Games</h3>
+          </div>
+          <!-- FUTURE GAMES CARD -->
+          <% @future_games.each do |game| %>
+          <div class="row space-btw-card">
+            <div class="card-product">
+              <img src="<%= game.course.attachments[0].photo.url %>" />
+              <div class="card-product-infos">
+                <h3 class="game-name"><%= game.name %></h3>
+                <p><%= game.course.name %>
+                  <br>
+                  <%= game.time %>
+                  <%= link_to game_path(game) do%>
+                  <div class="btn btn-success">
+                    <p>View Game</p>
+                  </div>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <% end %>
         </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">test 2</div>
       </div>
-      <% end %>
     </div>
   </div>
 </div>
@@ -102,15 +115,16 @@
 
 
 
-<nav>
+<!-- <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
   </div>
 </nav>
-<div class="tab-content" id="nav-tabContent">
+ -->
+<!-- <div class="tab-content" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 test 1
   </div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">test 2</div>
-</div>
+</div> -->
