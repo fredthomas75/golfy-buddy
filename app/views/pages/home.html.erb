@@ -40,7 +40,7 @@
   <!-- DEBUTS DES CARDS NEARBY-GAMES -->
   <h2> Featured games nearby <%= request.location.city %></h2>
   <div class="game-cards-container">
-    <% @upcoming_games_nearby.each do |game| %>
+    <% @upcoming_games_nearby.first(3).each do |game| %>
       <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
         <%= link_to game_path(game), class: "game-card-link" do %>
           <div class="game-card">
