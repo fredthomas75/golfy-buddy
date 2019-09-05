@@ -10,6 +10,50 @@
 
   // margin-right: 15px;
 }
+.zmar {
+  .zmar:hover {
+    text-decoration: none;
+  }
+}
+
+.tab-title {
+  font-size : 40px;
+}
+.nav-tabs {
+
+  border: none;
+
+  .row {
+    width: 100%;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  a:hover {
+    border: none;
+    cursor: pointer !important;
+  }
+  .active {
+    color: red;
+    background: none !important;
+    border: none;
+    border-bottom: 3px solid $purple !important;
+  }
+}
+
+.btn-accept {
+   position: absolute;
+  right: 15px;
+  top: 15px;
+  transition: all .2s ease-in-out;
+  opacity: 0.7;
+
+}
+
+
+
+
 
 .buddy-card:hover {
   box-shadow: 0 0 3px rgba(81, 141, 63, 1);

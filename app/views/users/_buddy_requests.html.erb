@@ -1,19 +1,15 @@
-
-
-  <% if @buddies.empty? %>
-    <p class="text-secondary text-center min-height-container">No buddy <i class="fas fa-frown text-center text-secondary "></i></p>
+<% if current_user.requested_friends.empty? %>
+    <p class="text-secondary text-center min-height-container">No request <i class="fas fa-frown text-center text-secondary "></i></p>
   <% end %>
   <div class="buddy-container w-90">
   <!-- <div class="row justify-content-between"> -->
-    <% @buddies.each do |user| %>
-      <% unless user.email == "info@golfybuddy.com" %>
+    <% current_user.requested_friends.each do |user| %>
+
 
 
         <div class="buddy-card  text-center">
-          <svg width="40" class="add_btn" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="40" height="40" rx="20" fill="#72C472"/>
-          <path d="M30 13.5772L16.2857 27L10 20.8479L11.6114 19.2707L16.2857 23.8345L28.3886 12L30 13.5772Z" fill="white"/>
-          </svg>
+
+          <%= link_to 'Accept request', friendships_confirm_path(user), method: :post, class: "btn btn-success btn-accept" %>
 
           <%= link_to user_path(user.id) do%>
             <% if !user.photo.blank? %>
@@ -74,7 +70,6 @@
             <% end %>
           </div>
         </div>
-      <% end %>
+
     <% end %>
   </div>
-
