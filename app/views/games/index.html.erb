@@ -29,7 +29,7 @@
 </div>
 
   <!-- DEBUT DES GAME CARDS -->
-<div class="game-cards-container">
+<div class="game-cards-container min-height-container">
   <% @games.each do |game| %>
     <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
       <%= link_to game_path(game), class: "game-card-link" do %>
