@@ -28,7 +28,7 @@
   width: 90%;
   margin: auto;
   margin-top: 100px;
-  padding-bottom: 200px;
+  padding-bottom: 50px;
 }
 
 .name {
@@ -77,9 +77,6 @@
 //   padding-bottom: 20px;
 // }
 
-.color-test2 {
-  background-color: orange;
-}
 .color-test3 {
   background-color: red;
   margin-bottom: 20px;
@@ -134,6 +131,11 @@
   padding-top: 20px;
   color: #B3B3B3;
 }
+
+
+.nav-tabs .nav-link {
+  position: relative;
+  left: 215px;
 
 .view-button {
   border-radius: 32px;
