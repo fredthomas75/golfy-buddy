@@ -1,9 +1,9 @@
 
 
   <% if @buddies.empty? %>
-    <p class="text-secondary text-center min-height-container">No buddy <i class="fas fa-frown text-center text-secondary "></i></p>
+    <p class="text-secondary text-center ">No buddy <i class="fas fa-frown text-center text-secondary "></i></p>
   <% end %>
-  <div class="buddy-container w-90">
+  <div class="buddy-container min-height-container w-90">
   <!-- <div class="row justify-content-between"> -->
     <% @buddies.each do |user| %>
       <% unless user.email == "info@golfybuddy.com" %>
