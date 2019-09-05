@@ -5,7 +5,7 @@
       <% if @buddies.empty? %>
         <p class="text-secondary text-center">No buddy <i class="fas fa-frown text-center text-secondary "></i></p>
       <% end %>
-      <div class="buddy-container">
+      <div class="buddy-container w-90">
       <!-- <div class="row justify-content-between"> -->
       <% @buddies.each do |user| %>
         <div class="buddy-card  text-center">
@@ -16,19 +16,17 @@
       </svg>
 
       <%= link_to user_path(user.id) do%>
-        <% if user.photo %>
+        <% if !user.photo.blank? %>
           <div>
-            <img src= "<%= user.photo %>", class="buddy-photo" alt="<%= user.first_name %> <%= user.last_name %>">
+            <img src= "<%= user.photo%>", class="buddy-photo" alt="">
           </div>
         <% else %>
-          <div class="buddy-photo">
-            <%= gravatar_for_show(user) %>
-          </div>
-      <% end %>
+            <%= image_tag gravatar_image_url(user.email), class: "buddy-photo" %>
+        <% end %>
 
-      <div class="text-center text-warning pt-2">
-        <strong><%= user.first_name %> <%= user.last_name %></strong>
-      </div>
+        <div class="text-center text-warning pt-2">
+          <strong><%= user.first_name %> <%= user.last_name %></strong>
+        </div>
       <% end %>
 
 
