@@ -8,6 +8,7 @@
 
 # delete_all
 puts "Deleting all existing content"
+Guest.delete_all
 Game.delete_all
 Course.delete_all
 Wishlist.delete_all
