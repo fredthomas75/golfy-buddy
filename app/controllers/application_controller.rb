@@ -41,4 +41,8 @@ class ApplicationController < ActionController::Base
   def set_number_unread_messages
     @unread_conversations_count = current_user.mailbox.conversations.unread(current_user).count
   end
+
+  def default_url_options
+  { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end
