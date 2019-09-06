@@ -12,10 +12,10 @@
     <h4><%= link_to conversation.subject, conversation_path(conversation) %></h4>
     <span></span>
     <p><%= conversation.last_message.body %>
-        <% if current_user.friends_with?(conversation.last_message.sender) %>
-        <% elsif current_user.requested_friends.include?(conversation.last_message.sender) %>
-          <%= link_to 'Accept request', friendships_confirm_path(conversation.last_message.sender), method: :post, class: "btn btn-success" %>
-          <%= link_to 'Decline request', friendships_decline_path(conversation.last_message.sender), method: :post, class: "btn btn-danger" %>
+
+        <% if conversation.last_message.subject.match(/wants to be your buddy/) %>
+                <%= link_to 'Accept request', friendships_confirm_path(conversation.last_message.sender), method: :post, class: "btn btn-success" %>
+                <%= link_to 'Decline request', friendships_decline_path(conversation.last_message.sender), method: :post, class: "btn btn-danger" %>
       <% end %>
     </span></p>
   </div>
