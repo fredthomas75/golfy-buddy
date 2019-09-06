@@ -79,7 +79,7 @@
 
         <div class="text-center message">
           <% unless current_user == user %>
-            <%= link_to '<i class="far fa-envelope fa-lg"></i>'.html_safe, new_message_path(to: user.id), class: "msg_btn " %>
+            <%= link_to '<i class="far fa-envelope fa-lg"></i>'.html_safe, new_message_path(to: user), class: "msg_btn " %>
           <% end %>
         </div>
       </div>
