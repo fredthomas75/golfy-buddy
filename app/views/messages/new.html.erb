@@ -9,6 +9,7 @@
 
     <%= form_tag messages_path, method: :post do %>
     <div class="form-group">
+    <input type="text" style="display: none" name="recipients" value="<%= @chosen_recipient.id %>"></input>
       <%= label_tag 'message[subject]', 'Subject' %>
       <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
     </div>
