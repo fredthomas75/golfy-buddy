@@ -84,6 +84,14 @@
                   </div>
                   <% end %>
 
+                  <% unless @next_game.user == current_user || current_user.in_game?(@next_game) %>
+                  <%= link_to game_guests_path(@next_game), method: :post do %>
+                  <div class="btn btn-info join-button">
+                    <p>Join game</p>
+                  </div>
+                  <% end %>
+                  <% end %>
+
               </div>
             </div>
           </div>
@@ -110,6 +118,15 @@
                     <p>View Game</p>
                   </div>
                   <% end %>
+
+                  <% unless @next_game.user == current_user || current_user.in_game?(@next_game) %>
+                  <%= link_to game_guests_path(@next_game), method: :post do %>
+                  <div class="btn btn-info join-button">
+                    <p>Join game</p>
+                  </div>
+                  <% end %>
+                  <% end %>
+
                 </p>
               </div>
             </div>
@@ -134,6 +151,8 @@
                     <p>View Game</p>
                   </div>
                   <% end %>
+
+
                 </p>
               </div>
             </div>
