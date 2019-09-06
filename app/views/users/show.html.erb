@@ -21,7 +21,7 @@
 
         <div class="profile-header">
           <h3><strong class="name"> <%= @user.first_name.capitalize %>  <%= @user.last_name.capitalize %></strong></h3>
-          <%= link_to  new_message_path(to: @user.id), class: "message-icon" do %>
+          <%= link_to  new_message_path(to: @user), class: "message-icon" do %>
                 <i class="far fa-envelope fa-lg"></i>
           <% end %>
           <p class="profile-info">
