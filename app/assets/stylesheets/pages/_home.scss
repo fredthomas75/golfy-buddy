@@ -81,6 +81,11 @@
   // border: solid 3px blue;
 }
 
+.games-nearby {
+  position: relative;
+  top: -150px;
+}
+
 @media only screen and (max-width: 1200px) {
     .second-section {
       flex-direction: column;
