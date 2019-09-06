@@ -20,6 +20,9 @@ class GuestsController < ApplicationController
     end
 
     respond_to do |format|
+      format.html
+        flash[:success] = "Congratulations, you just joined this game!"
+        redirect_to @game
       format.js
     end
 

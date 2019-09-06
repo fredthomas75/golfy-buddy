@@ -129,6 +129,34 @@
   left: 20px;
 }
 
+.join-button {
+  background-color: $purple;
+  border: $purple;
+  border-radius: 32px;
+  width: 170px;
+  position: relative;
+  top: 15px;
+  left: 20px;
+  opacity: 0.8;
+}
+
+.join-button p {
+  font-size: 20px;
+  position: relative;
+  top: -3px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.join-button:hover {
+  a {
+  text-decoration: none;
+  }
+  background-color: $purple;
+  border: $purple;
+  opacity: 1;
+}
+
 .space-btw-card {
   padding-bottom: 20px;
 }
