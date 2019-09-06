@@ -81,3 +81,16 @@
 .fa-trash-restore-alt:hover {
     color: black;
 }
+
+.send-button-small {
+  margin-top: 6px;
+  border: solid 1px grey;
+  border-radius: 50px;
+  padding: 3px 12px;
+  color: grey;
+}
+
+.send-button-small:hover {
+  text-decoration: none;
+  color: $purple;
+}
