@@ -60,6 +60,8 @@
                   <% url = "https://www.countryflags.io/gb/flat/32.png" %>
                 <% elsif user.language == "Spanish" %>
                   <% url =  "https://www.countryflags.io/es/flat/32.png" %>
+                  <% elsif user.language == "French" %>
+                  <% url =  "https://www.countryflags.io/fr/flat/32.png" %>
                 <% else %>
                   <% url =  "https://www.countryflags.io/#{user.language[0..1].downcase}/flat/32.png" %>
                 <% end %>
