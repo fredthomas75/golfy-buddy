@@ -11,7 +11,7 @@
 
 
 
-      <div class="row line">
+      <div class="row ">
 
 
       <!-- GAME INFO STARTS HERE -->
@@ -142,11 +142,11 @@
 
 
       <div class="buddy-card text-center" id="buddy-card-show">
-        <h2 class="pt-2">Host</h2>
+        <h2 class="pt-3">Host</h2>
         <%= link_to user_path(@game.user_id) do%>
           <% if @game.user.photo %>
             <div>
-              <img src= "<%= @game.user.photo%>", class="buddy-photo" alt="">
+              <img src= "<%= @game.user.photo%>", class="buddy-photo" id="okok" alt="">
             </div>
           <% else %>
             <div class="buddy-photo">
@@ -226,7 +226,7 @@
 
 
     <% if current_user != @game.user %>
-            <div class="text-center pt-2">
+            <div class="text-center pt-4">
                   <% if user_signed_in? %>
                     <% if  @game.number_players > @game.guests.count && !current_user.in_game?(@game) %>
                       <%= link_to game_guests_path(@game), remote: true, method: :post  do %>
