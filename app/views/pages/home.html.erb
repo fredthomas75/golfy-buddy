@@ -55,7 +55,7 @@
 
               <div class="date-time-buddies">
                 <div class="date-time">
-                  <p><%= game.date %></p>
+                  <p><%= game.time.strftime("%d/%m/%Y") %></p>
                   <p><%= game.time.strftime("%H:%M") %></p>
                   <p><b><%= game.likes.count %> <%= (game.likes.count) > 1 ? 'Likes' : 'Like'%></b></p>
                 </div>
