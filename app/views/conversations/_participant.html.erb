@@ -1,6 +1,10 @@
 <% conversation.participants.each do |participant| %>
   <% unless participant == current_user %>
-    <%= gravatar_for participant %>
+    <% if !participant.photo.blank? %>
+      <img src="<%= participant.photo %>" class="avatar-bordered"/>
+    <% else %>
+      <%= gravatar_for participant %>
+    <% end %>
     <h5><%= participant.first_name %></h5>
   <% end %>
 <% end %>
