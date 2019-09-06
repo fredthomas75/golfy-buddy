@@ -24,16 +24,17 @@
           <%= link_to  new_message_path(to: @user.id), class: "message-icon" do %>
                 <i class="far fa-envelope fa-lg"></i>
           <% end %>
-          <p class="location-handicap">
+          <p class="profile-info">
             <%= image_tag "localisation-golf.png", alt: "alttext", style: "width: 14px; margin-right: 6px" %>
             <%= @user.current_city %>
             <br>
             <%= image_tag "icon-golf.png", alt: "alttext", style: "width: 16px; margin-right: 6px" %>
             Handicap: <%= @user.handicap %>
+            <br>
+          <% if @user.language %>
+          <%= image_tag "speaker.png", alt: "alttext", style: "width: 20px; margin-right: 6px" %><%= @user.language %>
+          <% end %>
           </p>
-        </div>
-        <div class="language">
-          <%= image_tag "speaker.png", alt: "alttext", style: "width: 20px; margin-right: 6px" %>Prefered language: <%= @user.language %>
         </div>
         <div class="about-me">
           <p>
