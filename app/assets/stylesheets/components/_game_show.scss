@@ -17,9 +17,15 @@ height: 400px;
 right: 20px;
 margin-top: 20px;
 }
+
 #buddy-card-show:hover {
      transform: none;
   }
+
+#js-guests {
+  width: max-content;
+  float: right;
+}
 
 .source-sans-pro {
 font-family: 'Source Sans Pro', sans-serif;
