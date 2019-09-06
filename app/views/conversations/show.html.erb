@@ -11,28 +11,35 @@
   <div class="message-right">
     <h1>Chatting with <% @conversation.participants.each do |participant| %>
       <% unless participant == current_user %>
-      <%= link_to participant.first_name, user_path(participant) %>
-      <%= gravatar_for participant %><br>
+        <%= link_to participant.first_name, user_path(participant) %>
+        <% if !participant.photo.blank? %>
+            <img src="<%= participant.photo %>" class="avatar-bordered img-rounded"/>
+        <% else %>
+          <%= gravatar_for participant %><br>
+        <% end %>
       <% end %>
-      <% end %> </h1>
-      <h2><%= @conversation.subject %></h2>
-      <%= form_tag reply_conversation_path(@conversation), method: :post do %>
-        <div class="input-message">
-          <%= text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true %>
-          <%= submit_tag "Send Message", class: 'send-button-right' %>
-        </div>
+    <% end %> </h1>
+    <h2><%= @conversation.subject %></h2>
+    <%= form_tag reply_conversation_path(@conversation), method: :post do %>
+      <div class="input-message">
+        <%= text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true %>
+        <%= submit_tag "Send Message", class: 'send-button-right' %>
+      </div>
     <% end %>
 
-      <% @conversation.receipts_for(current_user).sort.reverse.each do |receipt| %>
-        <div class="<%= receipt.message.sender == current_user ? 'message-byme' : 'message-byother' %> ">
-
-          <% message = receipt.message %>
+    <% @conversation.receipts_for(current_user).sort.reverse.each do |receipt| %>
+      <div class="<%= receipt.message.sender == current_user ? 'message-byme' : 'message-byother' %> ">
+        <% message = receipt.message %>
+        <% if !message.sender.photo.blank? %>
+          <img src="<%= message.sender.photo %>" class="avatar-bordered img-rounded"/>
+        <% else %>
           <%= gravatar_for message.sender, 30 %>
-          <span style="font-weight: lighter; font-size: small;"><%= message.created_at.strftime("%-D, %H:%M") %></span>
-          <strong><%= message.sender.first_name %></strong>
-          <%= message.body %></span>
-        </div>
         <% end %>
+        <span style="font-weight: lighter; font-size: small;"><%= message.created_at.strftime("%-D, %H:%M") %></span>
+          <strong><%= message.sender.first_name %></strong>
+        <span style="align-self: self-end;"><%= message.body %></span>
+      </div>
+    <% end %>
 
       </div>
     </div>

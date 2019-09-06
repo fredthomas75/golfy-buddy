@@ -190,7 +190,7 @@
 .message-byme {
   background-color: $super-light-green;
   display: grid;
-  grid-template-columns: 90% 10%;
+  grid-template-columns: 80% 20%;
   border: 1px solid $light-grey;
   align-self: center;
   text-decoration: none;
@@ -204,13 +204,18 @@
   align-items: right;
     .img-rounded{
       order: 2;
-  }
+      justify-self: self-end;
+    }
+
+    strong {
+      justify-self: self-end;
+    }
 }
 
 .message-byother {
   background-color: $light-grey;
   display: grid;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 20% 80%;
   align-self: end;
   border: 1px solid $light-grey;
   text-decoration: none;
