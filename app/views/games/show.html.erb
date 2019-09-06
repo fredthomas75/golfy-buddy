@@ -260,12 +260,6 @@
       <%= image_tag att.photo_url %>
       <%= link_to "Edit Attachment", edit_game_attachment_path(att) %>
     <% end %>
-    <% @game.guests.where(status: "confirmed").each do |guest| %>
-      <p>
-        <%= User.find(guest.user_id).first_name %> :
-        <%= guest.share_of_price %> $
-      </p>
-      <% end %>
 
     <% if current_user == @game.user   %>
       <% @game.guests.where(status: "pending").each do |guest| %>
