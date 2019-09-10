@@ -17,7 +17,6 @@ class GamesController < ApplicationController
         end
       end
 
-    # raise
     if params[:game_query].present?
       query_date = Date.parse(params[:game_query][:date])
       query_location = params[:game_query][:location]

@@ -15,7 +15,7 @@
                   label: false,
                   input_html: { id: "current_city", class: "home-border" },
                   placeholder: 'Location' %>
-  <!-- <div class="letsplay-button" style="width: 200px height: 55px"> -->
-  <%= f.button :submit, value: "Let's play!", class: 'letsplay-button' %>
-  <!-- </div> -->
+
+  <%= f.button :submit, value: "Let's play!", class: 'letsplay-button', data: {"disable-with" => "Searching..."} %>
+
   <% end %>
