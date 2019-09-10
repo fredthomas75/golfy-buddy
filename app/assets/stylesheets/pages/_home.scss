@@ -4,6 +4,10 @@
   padding: 0 96px;
 }
 
+.form-style {
+  width: 25vw;
+}
+
 .home-form {
   padding-left: 64px;
   width: 500px;
@@ -103,3 +107,15 @@
       // border: solid 3px blue;
       }
     }
+
+@media only screen and (max-width: 764px) {
+  .home-form {
+    padding-left: 0px;
+    width: 500px;
+    position: relative;
+    top: -90px;
+  }
+  .form-style {
+  width: 50vw;
+}
+}
