@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <h3 class="modal-title" id="myModalLabel">New message</h4>
+</div>
+
+<div class="modal-body">
+    <%= form_tag messages_path, method: :post do %>
+    <div class="form-group">
+      <% if @user %>
+        <input type="text" style="display: none" name="recipients" value="<%= @user.id %>"></input>
+      <% end %>
+      <% if params[:to] %>
+        <input type="text" style="display: none" name="recipients" value="<%= User.find_by(id: params[:to].to_i) %>"></input>
+      <% end %>
+      <%= label_tag 'message[subject]', 'Subject' %>
+      <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag 'message[body]', 'Message' %>
+      <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
+    </div>
+
+    <!-- If you start a conversation form scratch - not from a game or a user page -->
+    <% if params[:to] || @user %>
+      <div class="form-group" style="display: none;">
+      <% else %>
+    <div class="form-group">
+        <% end %>
+      <!-- If you start a conversation from a game or a user page, no need to display the recipient -->
+        <%= label_tag 'recipients', 'Choose recipients' %>
+        <%= select_tag 'recipients', recipients_options(@chosen_recipient), multiple: true, class: 'form-control chosen-it' %>
+      </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="close-button" data-dismiss="modal">Close</button>
+  <%= submit_tag 'Send message', class: 'send-button' %>
+      <% end %>
+</div>
