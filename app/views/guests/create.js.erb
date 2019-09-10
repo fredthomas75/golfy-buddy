@@ -1,6 +1,3 @@
-console.log("hello hello")
-
-
 var image = document.getElementById("buddy-small-pic")
 var textBuddies = document.getElementById("js-guests")
 var joinBtn = document.getElementById("joinButton")
@@ -12,6 +9,7 @@ if (joinBtn.classList.contains('btn-success')) {
   joinBtn.classList.remove('btn-success');
   joinBtn.classList.add('btn-info');
   joinBtn.innerText = 'Leave Game';
+  $('.alert-info').html("<%= render 'shared/flashes'%>");
 } else if (joinBtn.classList.contains('btn-info')) {
   joinBtn.classList.remove('btn-info');
   joinBtn.classList.add('btn-success');

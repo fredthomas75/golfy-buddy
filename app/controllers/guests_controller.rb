@@ -1,11 +1,17 @@
 class GuestsController < ApplicationController
   before_action :set_admin_gb
+  before_action :find_guest, only: [:destroy]
+  before_action :find_game, only: [:create, :approve_user]
 
   def create
-    @game = Game.find(params[:game_id])
-    if @game.guests.find_by(user: current_user)
-      @game.guests.find_by(user: current_user).destroy!
-    elsif  @game.number_players > @game.guests.count && !current_user.in_game?(@game)
+
+    respond_to do |format|
+      format.js {flash.now[:success] = "Congrats! You just joined the game: #{@game.name}"}
+    end
+    if already_guest?
+      user_guest.destroy
+    else
+      @game.number_players > @game.guests.count && !current_user.in_game?(@game)
       @guest = Guest.new
       @guest.user = current_user
       @guest.game = @game
@@ -17,19 +23,15 @@ class GuestsController < ApplicationController
         @guest.status = "confirmed"
       end
       @guest.save
+      # flash.now[:success] = "Congrats! You just joined the game: #{@game.name}"
     end
-
-    respond_to do |format|
-      format.html
-        flash[:success] = "Congratulations, you just joined this game!"
-        redirect_to @game
-      format.js
-    end
-
   end
 
+    def already_guest?
+      !Guest.find_by(user_id: current_user.id, game_id: params[:game_id]).nil?
+    end
+
   def approve_user
-    @guest = Guest.find_by(user_id: params[:id])
     @guest.status = "confirmed"
     if @guest.save
       @admin.send_message(@guest, "You just joined #{@guest.game.name} !", "#{@guest.game.user.first_name} confirms your participation to #{@guest.game.name}")
@@ -38,9 +40,24 @@ class GuestsController < ApplicationController
   end
 
   def destroy
-    @guest = Guest.find(params[:id])
     @guest.destroy
-    redirect_to game_path(@guest.game)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  private
+
+  def user_guest
+    Guest.find_by(user_id: current_user.id, game_id: params[:game_id])
+  end
+
+  def find_guest
+   @guest = @game.guests.find(params[:id])
+  end
+
+  def find_game
+    @game = Game.find(params[:game_id])
   end
 
 end
