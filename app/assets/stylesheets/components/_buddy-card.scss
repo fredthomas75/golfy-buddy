@@ -1,3 +1,15 @@
+.buddy-titles {
+  font-size: 1.75rem;
+}
+
+.buddy-body {
+  text-align: center;
+  position: relative;
+  top: 10vh;
+  font-size: 1rem;
+  color: #6c757d;
+}
+
 .buddy-card {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 1%;
@@ -40,9 +52,7 @@
     cursor: pointer !important;
   }
   .active {
-    color: red;
     background: none !important;
-    border: none;
     border-bottom: 3px solid $purple !important;
   }
 }
@@ -120,3 +130,10 @@
   height: 70px;
   padding: 1px;
 }
+
+@media only screen and (max-width: 764px) {
+  .buddy-titles {
+    font-size: 1.35rem;
+  }
+}
+
