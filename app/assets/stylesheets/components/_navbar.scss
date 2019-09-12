@@ -1,83 +1,37 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 8px 96px;
+.navbar {
+  background-color: white;
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  z-index: 10000;
+  height: 66px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  z-index: 1000;
 }
 
-.navbar-brand {
-  margin-right: 0px;
+.logo {
+  position: absolute;
+  right: 50vw;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.menu-left1 {
+  margin-left: 60px;
+  padding-right: 60px;
 }
 
-.navbar-lewagon .navbar-brand img {
-  height: 40px;
-}
-
-.navbar-burger-box {
-  display: none;
-}
-
-.menu-left {
-  .nav-link {
-    padding-left: 0 !important;
-    padding-right: 64px !important;
-  }
+.menu-left2 {
+  padding-right: 60px;
 }
 
 .host-button {
-  border: solid 1px $purple;
   border-radius: 50px;
-  padding: 8px 32px;
+  border: solid 1px $purple;
   color: $purple;
-  margin-right: 32px;
+  padding: 8px 32px;
 }
 
-.host-button:link {
-  text-decoration: none;
+.avatar1 {
+  background-color: red;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
-
-.host-button:hover {
-  text-decoration: none;
-  color: white;
-  background: $purple;
-}
-
-.menu-right {
-  .nav-link {
-    padding-right: 0 !important;
-    padding-left: 64px !important;
-  }
-}
-
-@media only screen and (max-width: 992px) {
-  .navbar-burger-box {
-    display: block;
-  }
-
- .host-button, .img-home {
-        display: none;
-    }
-
-    .second-section {
-      flex-direction: column;
-    }
-
-    .navbar-lewagon {
-      padding: 6px 16px;
-    }
-}
-
-.dropdown-item:hover {
-  background-color: $green;
-  color: white;
-}
-
