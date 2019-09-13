@@ -1,0 +1,29 @@
+<%# app/views/courses/_list.html.erb %>
+<div id="filterrific_results">
+<div id="results">
+  <div>
+    <%= page_entries_info courses %>
+  </div>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Difficulty</th>
+      <th>Address</th>
+      <th>Country</th>
+      <th>Style</th>
+    </tr>
+    <% courses.each do |course| %>
+      <tr>
+        <td><%= link_to(course.name, course_path(course)) %></td>
+        <td><%= course.difficulty %></td>
+        <td><%= course.address %></td>
+        <td><%= course.country %></td>
+        <td><%= course.style %></td>
+      </tr>
+    <% end %>
+  </table>
+<%= will_paginate courses %>
+</div>
+</div>
+

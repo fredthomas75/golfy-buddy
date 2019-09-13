@@ -35,6 +35,7 @@ class GamesController < ApplicationController
 
   def upcoming
     @games = Game.upcoming
+    @games = @games.paginate(page: params[:page])
     render :index
   end
 

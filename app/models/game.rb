@@ -21,6 +21,7 @@ class Game < ApplicationRecord
   scope :past, -> { where("time < ?", [Date.today]).order('date DESC, created_at DESC') }
   scope :public_games, -> { where(privacy: 'public') }
   scope :play_more, -> { where(user: current_user) }
+  self.per_page = 12
 
     def users
     users = guests.map do |guest|
