@@ -20,7 +20,7 @@ gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'pundit'
 gem 'mailboxer'
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 gem 'gravatar_image_tag'
 gem 'i18n_data'
 
