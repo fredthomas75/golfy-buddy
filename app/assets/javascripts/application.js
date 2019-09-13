@@ -1,8 +1,8 @@
 //= require jquery
-//= require bootstrap
 //= require turbolinks
+//= require_tree .
 //= require filterrific/filterrific-jquery
-// = require rails-ujs
-// = require_tree .
-// = require chosen-jquery
-// = require messages
+//= require rails-ujs
+//= require jquery.turbolinks
+//= require chosen-jquery
+//= require messages
