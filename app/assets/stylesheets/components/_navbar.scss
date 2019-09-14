@@ -13,13 +13,21 @@
   right: 50vw;
 }
 
-.menu-left1 {
+.menu-left {
+  padding-left: 20px;
+}
+
+.home-btn {
   margin-left: 60px;
   padding-right: 60px;
 }
 
-.menu-left2 {
+.games-btn {
   padding-right: 60px;
+}
+
+.menu-right {
+  padding-right: 20px;
 }
 
 .host-button {
@@ -27,6 +35,8 @@
   border: solid 1px $purple;
   color: $purple;
   padding: 8px 32px;
+  position: absolute;
+  right: 10vw;
 }
 
 .avatar1 {
