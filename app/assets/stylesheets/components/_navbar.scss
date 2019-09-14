@@ -8,24 +8,20 @@
   z-index: 1000;
 }
 
-.logo {
-  position: absolute;
-  right: 50vw;
-}
-
 .menu-left {
+  display: flex;
   padding-left: 20px;
 }
 
-.home-btn {
+.menu-left > div {
   margin-left: 60px;
-  padding-right: 60px;
+  text-align: center;
 }
 
-.games-btn {
-  padding-right: 60px;
+.logo {
+  position: relative;
+  right: 10vw;
 }
-
 .menu-right {
   padding-right: 20px;
 }
