@@ -24,9 +24,36 @@
 }
 
 .menu-right {
-  display: flex;
-  padding-right: 50px;
+  padding-right: 10px;
 }
+
+
+
+.menu-right-test{
+  padding-left: 40px;
+  background-color: orange;
+  padding-right: 60px;
+}
+
+.button-test {
+  background-color: red;
+  border: solid 1px $purple;
+  color: $purple;
+  border-radius: 50px;
+  padding: 8px 32px;
+}
+
+.avatar-test {
+  background-color: blue;
+  margin-left: 60px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+
+}
+
+
+
 
 .host-button {
   border-radius: 50px;
