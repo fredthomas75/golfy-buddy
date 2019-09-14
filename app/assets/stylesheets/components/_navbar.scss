@@ -19,11 +19,13 @@
 }
 
 .logo {
-  position: relative;
-  right: 10vw;
+  // position: relative;
+  // right: 10vw;
 }
+
 .menu-right {
-  padding-right: 20px;
+  display: flex;
+  padding-right: 50px;
 }
 
 .host-button {
@@ -36,7 +38,7 @@
 }
 
 .avatar1 {
-  background-color: red;
+  background-color: $purple;
   height: 40px;
   width: 40px;
   border-radius: 50%;
