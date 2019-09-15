@@ -19,6 +19,7 @@
 }
 
 .logo {
+  margin: auto;
   // position: relative;
   // right: 10vw;
 }
@@ -27,46 +28,25 @@
   padding-right: 10px;
 }
 
-
-
-.menu-right-test{
+.menu-right{
+  // background-color: orange;
   padding-left: 40px;
-  background-color: orange;
   padding-right: 65px;
 }
 
-.button-test {
-  background-color: red;
+.button-host {
+  // background-color: red;
   border: solid 1px $purple;
   color: $purple;
   border-radius: 50px;
   padding: 8px 32px;
 }
 
-.avatar-test {
-  background-color: blue;
+.avatar1 {
+  background-color: $purple;
   margin-left: 40px;
   height: 40px;
   width: 40px;
   border-radius: 50%;
 
 }
-
-
-
-
-// .host-button {
-//   border-radius: 50px;
-//   border: solid 1px $purple;
-//   color: $purple;
-//   padding: 8px 32px;
-//   position: absolute;
-//   right: 10vw;
-// }
-
-// .avatar1 {
-//   background-color: $purple;
-//   height: 40px;
-//   width: 40px;
-//   border-radius: 50%;
-// }
