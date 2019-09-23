@@ -27,18 +27,33 @@
   </div>
 
   <div class="logo">
-    <%= image_tag "Logo_GolfyBuddy_v2.png", alt: "alttext", style: "width: 85px;" %>
+    <%= link_to root_path do %>
+      <%= image_tag "Logo_GolfyBuddy_v2.png",  style: "width: 85px;"%>
+    <% end %>
+
+
   </div>
 
   <div class="row menu-right">
     <div class="button-host">
       <% if user_signed_in? %>
-        Host a game
-        <% end %>
+        <%= link_to "Host a game", new_game_path, class: "host-button" %>
+      <% end %>
     </div>
 
     <div class="avatar1">
-      bla
+      <% if current_user.photo.blank? %>
+        <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% else %>
+        <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
+
+      <!-- NOTIFICATION SUR AVATAR -->
+      <% if @unread_conversations_count > 0 %>
+        <span class="badge">
+          <%= @unread_conversations_count %>
+        </span>
+      <% end %>
     </div>
   </div>
 

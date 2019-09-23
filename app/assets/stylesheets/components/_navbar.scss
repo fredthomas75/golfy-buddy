@@ -52,14 +52,24 @@
 
 .button-host {
   // background-color: red;
+  a {
+    color: $purple;
+  }
   border: solid 1px $purple;
-  color: $purple;
   border-radius: 50px;
   padding: 8px 32px;
 }
 
-.avatar1 {
+.button-host:hover {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  color: white;
   background-color: $purple;
+}
+
+.avatar1 {
   margin-left: 40px;
   height: 40px;
   width: 40px;
