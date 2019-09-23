@@ -9,25 +9,40 @@
 }
 
 .menu-left1 {
-  display: flex;
+  // display: flex;
+  list-style-type: none;
+  padding-left: 50px;
   a {
     color: rgba(0,0,0,0.9);
   }
 
   a:hover {
     color: rgba(0,0,0,0.9);
+    text-decoration: none;
   }
 }
 
-.menu-left1 > div {
-  margin-left: 60px;
-  text-align: center;
+.menu-left-home {
+  padding-right: 60px;
 }
+
+.menu-left-games {
+  padding-right: 60px;
+}
+
+.menu-left-buddies {
+  padding-right: 20px;
+}
+// .menu-left1 > div {
+//   margin-left: 60px;
+//   text-align: center;
+// }
 
 .menu-left2 {
   display: flex;
   a {
     color: rgba(0,0,0,0.5);
+    text-decoration: none;
   }
   a:hover {
     color: rgba(0,0,0,0.6);
@@ -91,7 +106,7 @@
   padding: 0.5rem 0;
   min-width: 10rem;
   z-index: 1000;
-  // visibility: hidden;
+  visibility: hidden;
 }
 
 .drop-menu-text {
