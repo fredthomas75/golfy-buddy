@@ -14,8 +14,16 @@
       <% else %>
         <li class="menu-left2">
       <% end %>
-      <%= link_to "Games", games_upcoming_path, class: "nav-link" %></div>
-    <div><%= link_to "Buddies", users_path, class: "nav-link" %></div>
+      <%= link_to "Games", games_upcoming_path, class: "nav-link" %>
+    </div>
+    <div>
+      <% if params[:controller] == 'users' %>
+        <li class="menu-left1">
+      <% else %>
+        <li class="menu-left2">
+      <% end %>
+      <%= link_to "Buddies", users_path, class: "nav-link" %>
+    </div>
   </div>
 
   <div class="logo">
@@ -24,7 +32,9 @@
 
   <div class="row menu-right">
     <div class="button-host">
-      Host a game
+      <% if user_signed_in? %>
+        Host a game
+        <% end %>
     </div>
 
     <div class="avatar1">
