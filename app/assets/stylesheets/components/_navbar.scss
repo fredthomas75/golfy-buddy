@@ -8,20 +8,36 @@
   z-index: 1000;
 }
 
-.menu-left {
+.menu-left1 {
   display: flex;
   padding-left: 20px;
+  a {
+    color: rgba(0,0,0,0.9);
+  }
+
+  a:hover {
+    color: rgba(0,0,0,0.9);
+  }
 }
 
-.menu-left > div {
+.menu-left1 > div {
   margin-left: 60px;
   text-align: center;
 }
 
+.menu-left2 {
+  display: flex;
+  padding-left: 20px;
+  a {
+    color: rgba(0,0,0,0.5);
+  }
+  a:hover {
+    color: rgba(0,0,0,0.6);
+  }
+}
+
 .logo {
   margin: auto;
-  // position: relative;
-  // right: 10vw;
 }
 
 .menu-right {

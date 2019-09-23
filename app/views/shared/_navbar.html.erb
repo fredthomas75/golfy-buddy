@@ -1,8 +1,20 @@
 <div class="navbar">
-  <div class="menu-left">
-    <div><%= link_to "Home", root_path, class: "nav-link" %>
+  <div class="menu-left1">
+    <div>
+      <% if params[:controller] == 'pages' %>
+        <li class="menu-left1">
+      <% else %>
+        <li class="menu-left2">
+      <% end %>
+      <%= link_to "Home", root_path, class: "nav-link" %>
     </div>
-    <div><%= link_to "Games", games_upcoming_path, class: "nav-link" %></div>
+    <div>
+      <% if params[:controller] == 'games' || params[:controller] == 'courses' %>
+        <li class="menu-left1">
+      <% else %>
+        <li class="menu-left2">
+      <% end %>
+      <%= link_to "Games", games_upcoming_path, class: "nav-link" %></div>
     <div><%= link_to "Buddies", users_path, class: "nav-link" %></div>
   </div>
 
