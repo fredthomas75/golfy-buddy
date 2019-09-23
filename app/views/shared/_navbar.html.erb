@@ -40,18 +40,20 @@
     </div>
 
     <div class="avatar1">
-      <% if current_user.photo.blank? %>
-        <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-      <% else %>
-        <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% if user_signed_in?  %>
+        <% if current_user.photo.blank? %>
+          <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% else %>
+          <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+        <!-- NOTIFICATION SUR AVATAR -->
+        <% if @unread_conversations_count > 0 %>
+          <span class="badge">
+            <%= @unread_conversations_count %>
+          </span>
+        <% end %>
       <% end %>
 
-      <!-- NOTIFICATION SUR AVATAR -->
-      <% if @unread_conversations_count > 0 %>
-        <span class="badge">
-          <%= @unread_conversations_count %>
-        </span>
-      <% end %>
     </div>
   </div>
     <!-- DROPDOWN MENU -->

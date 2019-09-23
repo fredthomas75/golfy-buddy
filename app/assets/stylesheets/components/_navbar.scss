@@ -10,7 +10,6 @@
 
 .menu-left1 {
   display: flex;
-  padding-left: 20px;
   a {
     color: rgba(0,0,0,0.9);
   }
@@ -27,7 +26,6 @@
 
 .menu-left2 {
   display: flex;
-  padding-left: 20px;
   a {
     color: rgba(0,0,0,0.5);
   }
@@ -37,7 +35,9 @@
 }
 
 .logo {
-  margin: auto;
+  // margin: auto;
+  position: absolute;
+  right: 50vw;
 }
 
 .menu-right {
@@ -46,8 +46,10 @@
 
 .menu-right{
   // background-color: orange;
-  padding-left: 40px;
-  padding-right: 65px;
+  // padding-left: 40px;
+  // padding-right: 80px;
+  position: absolute;
+  right: 7vw;
 }
 
 .button-host {
@@ -85,10 +87,11 @@
   border-radius: 2px;
   position: absolute;
   right: 10vw;
-  bottom: -60px;
+  bottom: -120px;
   padding: 0.5rem 0;
   min-width: 10rem;
   z-index: 1000;
+  // visibility: hidden;
 }
 
 .drop-menu-text {
