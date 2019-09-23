@@ -5,7 +5,7 @@
   width: 100%;
   height: 66px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  z-index: 1000;
+  z-index: 100;
 }
 
 .menu-left1 {
@@ -74,5 +74,31 @@
   height: 40px;
   width: 40px;
   border-radius: 50%;
+}
 
+.drop-menu {
+  a {
+    color: rgba(0,0,0,0.9);
+  }
+  background-color: white;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 2px;
+  position: absolute;
+  right: 10vw;
+  bottom: -60px;
+  padding: 0.5rem 0;
+  min-width: 10rem;
+  z-index: 1000;
+}
+
+.drop-menu-text {
+  padding: 0.25rem 1.5rem;
+}
+
+.drop-menu-text:hover {
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  background-color: $green;
 }
