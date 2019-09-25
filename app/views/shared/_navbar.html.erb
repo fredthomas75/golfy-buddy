@@ -33,14 +33,14 @@
   </div>
 
   <div class="row menu-right">
-    <div class="button-host">
-      <% if user_signed_in? %>
-        <%= link_to "Host a game", new_game_path, class: "host-button" %>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="button-host">
+          <%= link_to "Host a game", new_game_path, class: "host-button" %>
+      </div>
+
 
     <div class="avatar1">
-      <% if user_signed_in?  %>
+
         <% if current_user.photo.blank? %>
           <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
@@ -52,23 +52,25 @@
             <%= @unread_conversations_count %>
           </span>
         <% end %>
-      <% end %>
+    <% end %>
 
     </div>
   </div>
     <!-- DROPDOWN MENU -->
-    <div class="drop-menu">
-      <div class="drop-menu-text">
-      <%= link_to 'Messages', conversations_path %>
-      </div>
+    <% if user_signed_in? %>
+      <div class="drop-menu">
+        <div class="drop-menu-text">
+        <%= link_to 'Messages', conversations_path %>
+        </div>
 
-      <div class="drop-menu-text">
-      <%= link_to 'My profile', user_path(current_user) %>
-      </div>
+        <div class="drop-menu-text">
+        <%= link_to 'My profile', user_path(current_user) %>
+        </div>
 
-      <div class="drop-menu-text">
-      <%= link_to "Log out", destroy_user_session_path %>
-      </div>
+        <div class="drop-menu-text">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        </div>
 
-    </div>
+      </div>
+    <% end %>
 </div>
