@@ -44,9 +44,23 @@
   }
 }
 
+.burgerleft {
+  background-color: red;
+}
+
 .logo {
   position: absolute;
   right: 50vw;
+}
+
+.login-button {
+  a {
+    color: rgba(0,0,0,0.5);
+  }
+  a:hover {
+    color: rgba(0,0,0,0.8);
+    text-decoration: none;
+  }
 }
 
 .menu-right {
@@ -118,10 +132,14 @@
   .logo {
   position: absolute;
   right: 40vw;
-}
+  }
 }
 
-
+@media screen and (min-width: 764px) {
+  .burgerleft {
+    display: none;
+  }
+}
 
 
 
