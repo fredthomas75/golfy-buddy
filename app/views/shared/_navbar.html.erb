@@ -27,9 +27,20 @@
   </div>
 
   <!-- TEST BURGER DROPDOWN -->
-  <div class="burgerleft">
-    this is a burger
+  <div class="burgerleft" onclick="myFunction(this)">
+
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+
+
+    <script>
+    function myFunction(x) {
+      x.classList.toggle("change");
+    }
+    </script>
   </div>
+
 
 
   <!-- FIN -->
