@@ -156,12 +156,15 @@
 }
 
 @media screen and (max-width: 764px) {
-  .menu-left1 {
+  .menu-left {
     display: none;
   }
   .logo {
   position: absolute;
   right: 40vw;
+  }
+  .button-host {
+    display: none;
   }
 }
 
