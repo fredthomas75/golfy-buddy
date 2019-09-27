@@ -1,5 +1,5 @@
 <div class="navbar">
-  <div class="menu-left1 row">
+  <div class="menu-left row">
     <div class="menu-left-home">
       <% if params[:controller] == 'pages' %>
         <li class="menu-left1">
@@ -25,14 +25,11 @@
       <%= link_to "Buddies", users_path %>
     </div>
   </div>
-
-  <!-- TEST BURGER DROPDOWN -->
+  <!-- BURGER DROPDOWN -->
   <div class="burgerleft" onclick="myFunction(this)">
-
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
 
     <script>
     function myFunction(x) {
@@ -41,9 +38,21 @@
     </script>
   </div>
 
+  <div class="drop-menu-left">
+        <div class="drop-menu-text">
+        <%= link_to "Home", root_path %>
+        </div>
 
+        <div class="drop-menu-text">
+        <%= link_to "Games", games_upcoming_path %>
+        </div>
 
-  <!-- FIN -->
+        <div class="drop-menu-text">
+        <%= link_to "Buddies", users_path %>
+        </div>
+
+  </div>
+  <!-- LOGO -->
   <div class="logo">
     <%= link_to root_path do %>
       <%= image_tag "Logo_GolfyBuddy_v2.png", style: "width: 85px;"%>
@@ -56,7 +65,6 @@
       <div class="button-host">
           <%= link_to "Host a game", new_game_path, class: "host-button" %>
       </div>
-
 
     <div class="avatar1">
         <!-- AVATAR -->
@@ -82,7 +90,7 @@
   </div>
     <!-- DROPDOWN MENU -->
     <% if user_signed_in? %>
-      <div class="drop-menu">
+      <div class="drop-menu-right">
         <div class="drop-menu-text">
         <%= link_to 'Messages', conversations_path %>
         </div>

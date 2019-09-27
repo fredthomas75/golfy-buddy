@@ -8,9 +8,13 @@
   z-index: 100;
 }
 
-.menu-left1 {
+.menu-left {
+  padding-left: 80px;
   list-style-type: none;
-  padding-left: 50px;
+}
+
+.menu-left1 {
+  // padding-left: 50px;
   a {
     color: rgba(0,0,0,0.9);
   }
@@ -22,19 +26,19 @@
 }
 
 .menu-left-home {
-  padding-right: 60px;
+  padding-right: 80px;
 }
 
 .menu-left-games {
-  padding-right: 60px;
+  padding-right: 80px;
 }
 
 .menu-left-buddies {
-  padding-right: 20px;
+  // padding-right: 20px;
 }
 
 .menu-left2 {
-  display: flex;
+  // display: flex;
   a {
     color: rgba(0,0,0,0.5);
     text-decoration: none;
@@ -43,7 +47,7 @@
     color: rgba(0,0,0,0.6);
   }
 }
-
+ // BURGER
 .burgerleft {
   // background-color: red;
   border: 1px solid rgba(0,0,0,0.2);
@@ -53,6 +57,27 @@
   padding-right: 8px;
 }
 
+.bar1, .bar2, .bar3 {
+  width: 25px;
+  height: 2px;
+  background-color: rgba(0,0,0,0.5);
+  margin: 6px 4px;
+  transition: 0.4s;
+  border-radius: 1px;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-6px, 5px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-6px, -6px);
+}
+//END
 .logo {
   position: absolute;
   right: 50vw;
@@ -102,7 +127,7 @@
   border-radius: 50%;
 }
 
-.drop-menu {
+.drop-menu-left {
   a {
     color: rgba(0,0,0,0.9);
   }
@@ -110,8 +135,24 @@
   border: 1px solid rgba(0,0,0,0.15);
   border-radius: 2px;
   position: absolute;
-  right: 10vw;
-  bottom: -120px;
+  left: 16px;
+  bottom: -105px;
+  padding: 0.5rem 0;
+  min-width: 10rem;
+  z-index: 1000;
+  // visibility: hidden;
+}
+
+.drop-menu-right {
+  a {
+    color: rgba(0,0,0,0.9);
+  }
+  background-color: white;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 2px;
+  position: absolute;
+  right: 7vw;
+  bottom: -105px;
   padding: 0.5rem 0;
   min-width: 10rem;
   z-index: 1000;
@@ -130,46 +171,24 @@
   background-color: $green;
 }
 
-@media screen and (max-width: 764px) {
-  .menu-left1 {
+@media screen and (max-width: 770px) {
+  .menu-left {
     display: none;
   }
   .logo {
   position: absolute;
   right: 40vw;
   }
-}
-
-@media screen and (min-width: 764px) {
-  .burgerleft {
+  .button-host {
     display: none;
   }
 }
 
-// TEST
-.container {
-  display: inline-block;
-  cursor: pointer;
+@media screen and (min-width: 770px) {
+  .burgerleft {
+    display: none;
+  }
+  .drop-menu-left {
+    display: none;
+  }
 }
-
-.bar1, .bar2, .bar3 {
-  width: 25px;
-  height: 2px;
-  background-color: rgba(0,0,0,0.5);
-  margin: 6px 4px;
-  transition: 0.4s;
-  border-radius: 1px;
-}
-
-.change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-  transform: rotate(-45deg) translate(-6px, 5px);
-}
-
-.change .bar2 {opacity: 0;}
-
-.change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-8px, -8px);
-  transform: rotate(45deg) translate(-6px, -6px);
-}
-
