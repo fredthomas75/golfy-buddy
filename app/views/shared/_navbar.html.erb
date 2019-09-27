@@ -85,38 +85,13 @@
           <%= link_to "Host a game", new_game_path, class: "host-button" %>
       </div>
 
-    <div class="avatar1" onclick="myFunction1()">
+    <div class="avatar1">
         <!-- AVATAR -->
-
-        <div id="dropRight" class="drop-menu-right">
-        <div class="drop-menu-text">
-        <%= link_to 'Messages', conversations_path %>
-        </div>
-
-        <div class="drop-menu-text">
-        <%= link_to 'My profile', user_path(current_user) %>
-        </div>
-
-        <div class="drop-menu-text">
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </div>
-        </div>
-        <script>
-      function myFunction1() {
-        document.getElementById("dropRight").classList.toggle("show");
-      }
-    </script>
-
         <% if current_user.photo.blank? %>
           <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
           <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% end %>
-
-
-
-
-
         <!-- NOTIFICATION SUR AVATAR -->
         <% if @unread_conversations_count > 0 %>
           <span class="badge">
@@ -129,8 +104,6 @@
         <%= link_to "Login", new_user_session_path %>
       </div>
     <% end %>
-
-
     </div>
   </div>
     <!-- DROPDOWN MENU -->
