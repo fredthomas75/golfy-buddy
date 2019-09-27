@@ -26,28 +26,30 @@
     </div>
   </div>
   <!-- BURGER DROPDOWN -->
-  <div class="burgerleft" onclick="myFunction(this)">
+  <div class="burgerleft" onclick="myFunction(this)" >
     <div class="bar1"></div>
     <div class="bar2"></div>
     <div class="bar3"></div>
+
+    <div id="burgerDrop" class="drop-menu-left" >
+      <div class="drop-menu-text">
+      <%= link_to "Home", root_path %>
+      </div>
+      <div class="drop-menu-text">
+      <%= link_to "Games", games_upcoming_path %>
+      </div>
+      <div class="drop-menu-text">
+      <%= link_to "Buddies", users_path %>
+      </div>
+    </div>
+
     <script>
-    function myFunction(x) {
-      x.classList.toggle("change");
-    }
+      function myFunction(x) {
+        x.classList.toggle("change");
+        document.getElementById("burgerDrop").classList.toggle("show");
+      }
     </script>
   </div>
-  <div class="drop-menu-left">
-    <div class="drop-menu-text">
-    <%= link_to "Home", root_path %>
-    </div>
-    <div class="drop-menu-text">
-    <%= link_to "Games", games_upcoming_path %>
-    </div>
-    <div class="drop-menu-text">
-    <%= link_to "Buddies", users_path %>
-    </div>
-  </div>
-
 
   <!-- LOGO -->
   <div class="logo">
