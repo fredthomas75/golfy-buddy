@@ -48,6 +48,26 @@
         x.classList.toggle("change");
         document.getElementById("burgerDrop").classList.toggle("show");
       }
+      window.onclick = function(event) {
+        if (!event.target.matches('.burgerleft')) {
+          var dropdowns = document.getElementsByClassName("drop-menu-left");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+          }
+          var dropdowns = document.getElementsByClassName("burgerleft");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('change')) {
+                openDropdown.classList.remove('change');
+              }
+          }
+        }
+      }
     </script>
   </div>
 
