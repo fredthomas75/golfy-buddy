@@ -8,9 +8,13 @@
   z-index: 100;
 }
 
-.menu-left1 {
+.menu-left {
+  padding-left: 80px;
   list-style-type: none;
-  padding-left: 50px;
+}
+
+.menu-left1 {
+  // padding-left: 50px;
   a {
     color: rgba(0,0,0,0.9);
   }
@@ -22,19 +26,19 @@
 }
 
 .menu-left-home {
-  padding-right: 60px;
+  padding-right: 80px;
 }
 
 .menu-left-games {
-  padding-right: 60px;
+  padding-right: 80px;
 }
 
 .menu-left-buddies {
-  padding-right: 20px;
+  // padding-right: 20px;
 }
 
 .menu-left2 {
-  display: flex;
+  // display: flex;
   a {
     color: rgba(0,0,0,0.5);
     text-decoration: none;
