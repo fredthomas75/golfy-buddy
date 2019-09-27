@@ -104,12 +104,11 @@
         <%= link_to "Login", new_user_session_path %>
       </div>
     <% end %>
-
     </div>
   </div>
     <!-- DROPDOWN MENU -->
     <% if user_signed_in? %>
-      <div class="drop-menu-right">
+      <div id="dropRight" class="drop-menu-right">
         <div class="drop-menu-text">
         <%= link_to 'Messages', conversations_path %>
         </div>
@@ -123,5 +122,11 @@
         </div>
 
       </div>
+      <script>
+        function Function2() {
+        document.getElementById("dropRight").classList.toggle("show2");
+      }
+      </script>
+
     <% end %>
 </div>
