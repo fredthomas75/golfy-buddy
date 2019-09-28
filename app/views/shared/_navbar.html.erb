@@ -88,7 +88,7 @@
     <div class="avatar1">
         <!-- AVATAR -->
         <% if current_user.photo.blank? %>
-          <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", onclick:"Function2()", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
           <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% end %>
@@ -122,11 +122,11 @@
         </div>
 
       </div>
-      <script>
+      <!-- <script>
         function Function2() {
-        document.getElementById("dropRight").classList.toggle("show2");
+        document.getElementById("dropRight").classList.toggle("show");
       }
-      </script>
+      </script> -->
 
     <% end %>
 </div>
