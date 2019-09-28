@@ -138,7 +138,7 @@
 }
 
 .show {display: block;}
-.show2 {display: block;}
+// .show2 {display: block;}
 .drop-menu-right {
   a {
     color: rgba(0,0,0,0.9);
@@ -152,7 +152,7 @@
   padding: 0.5rem 0;
   min-width: 10rem;
   z-index: 1000;
-  // display: none;
+  display: none;
 }
 
 .drop-menu-text {
