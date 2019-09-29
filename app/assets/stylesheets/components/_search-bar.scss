@@ -38,7 +38,13 @@
 @media (min-width: 100px) and (max-width: 575px) {
   .params-all {
       justify-content: space-around;
-      grid-template-columns: 1fr
+      grid-template-columns: 1fr 1fr;
+  }
+    #search_games_field{
+    display: none;
+  }
+  #sorted_games_dropdown {
+    display: none
   }
 }
 
@@ -46,21 +52,30 @@
 @media (min-width: 576px) and (max-width: 767px) {
   .params-all  {
     justify-content: space-around;
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr 1fr;
+  }
+  #search_games_field{
+    display: none;
+  }
+  #sorted_games_dropdown {
+    display: none;
   }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .params-all  {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .params-all  {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  #sorted_games_dropdown {
+    display: true;
   }
 }
 
