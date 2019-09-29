@@ -1,1 +1,1 @@
-document.getElementById("like-txt").innerHTML = "<%= @game.likes.count %> <%= (@game.likes.count) == 1 ? 'Like' : 'Likes'%>"
+document.getElementById("like-txt").innerHTML = "<%= @game.likes.count %> <%= (@game.likes.count) < 2 ? 'Like' : 'Likes'%>"

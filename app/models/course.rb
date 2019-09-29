@@ -8,13 +8,13 @@ class Course < ApplicationRecord
   filterrific :default_filter_params => { :sorted_by => 'created_at_desc' },
               :available_filters => %w[
               sorted_by
-              search_query
+              search_query_course
               with_country
             ]
 
   self.per_page = 12
 
-  scope :search_query, ->(query) {
+  scope :search_query_course, ->(query) {
     return nil  if query.blank?
     # condition query, parse into individual keywords
     terms = query.downcase.split(/\s+/)
@@ -26,11 +26,12 @@ class Course < ApplicationRecord
     # configure number of OR conditions for provision
     # of interpolation arguments. Adjust this if you
     # change the number of OR conditions.
-    num_or_conditions = 1
+    num_or_conditions = 2
     where(
       terms.map {
         or_clauses = [
           "LOWER(courses.name) LIKE ?",
+          "LOWER(courses.address) LIKE ?",
         ].join(' OR ')
         "(#{ or_clauses })"
       }.join(' AND '),
@@ -62,7 +63,7 @@ class Course < ApplicationRecord
     where(:country => [*country])
   }
 
-  delegate :name, :to => :country, :prefix => true
+  # delegate :name, :to => :country, :prefix => true
 
   def self.options_for_sorted_by
     [
@@ -78,4 +79,11 @@ class Course < ApplicationRecord
     courses = Course.arel_table
     order(courses[:country].lower).pluck(:country).uniq
   end
+
+  def self.options_for_select_course
+    courses = Course.arel_table
+    order(courses[:name].lower).pluck(:name, :id).uniq
+  end
+
+
 end

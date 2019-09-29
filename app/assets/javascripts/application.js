@@ -1,7 +1,8 @@
 //= require jquery
 //= require turbolinks
-//= require_tree .
+//= require_tree.
 //= require filterrific/filterrific-jquery
+//= require components/datepicker
 //= require rails-ujs
 //= require jquery.turbolinks
 //= require chosen-jquery

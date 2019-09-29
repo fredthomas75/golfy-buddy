@@ -1,15 +1,15 @@
-  <%= simple_form_for :game_query, url: games_path, method: :get do |f| %>
-    <%= f.input :date, as: :date,
-                  start_year: Date.today.year,
-                  start_month: Date.today.month,
+  <%= simple_form_for :filterrific, url: games_path, method: :get do |f| %>
+    <%= f.input :with_date, as: :date,
                   start_day: Date.tomorrow.day,
+                  start_month: Date.today.month,
+                  start_year: Date.today.year,
                   order: [:day, :month, :year],
                   required: false,
                   html5: true,
                   label: false,
                   input_html: {class: "home-border"},
                   placeholder: 'Game date'%>
-    <%= f.input   :location,
+    <%= f.input   :search_location,
                   required: false,
                   autofocus: true,
                   label: false,

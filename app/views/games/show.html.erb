@@ -101,7 +101,7 @@
             <% end %>
           <% end %>
 
-          <div class="pl-2" id="like-txt"><%= @game.likes.count %> <%= @game.likes.count == 0 || 1 ? 'Like' : 'Likes'%></div>
+          <div class="pl-2" id="like-txt"><%= @game.likes.count %> <%= @game.likes.count < 2 ? 'Like' : 'Likes'%></div>
         </div>
       </div>
       <div class="row bottom justify-content-between">

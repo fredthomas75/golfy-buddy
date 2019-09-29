@@ -1,0 +1,58 @@
+<!-- DEBUT DES GAME CARDS -->
+  <div id="filterrific_results_games">
+  <div class="game-cards-container min-height-container">
+    <% if !@filterrific.with_date.nil? && @filterrific.with_date.to_date < Date.today %>
+    <p style='text-align: center'>Please, choose a date in the future, not in the past (you know playing with Bobby Jones is impossible, right?)</p>
+    <% elsif @games.blank? %>
+    <p style='text-align: center'>Sorry, no game matches your search</p>
+    <% end %>
+    <% @games.each do |game| %>
+    <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
+    <%= link_to game_path(game), class: "game-card-link" do %>
+    <div class="game-card">
+      <img src="<%= game.course.attachments[0].photo.url %>" />
+      <div class="game-card-infos">
+
+        <div class="game-name-game-course">
+          <h3><%= game.name %></h3>
+          <h4><%= game.course.name %></h4>
+        </div>
+
+
+        <div class="date-time-buddies">
+          <div class="date-time">
+            <p><%= game.time.strftime("%d/%m/%Y") %></p>
+            <p><%= game.time.strftime("%H:%M") %></p>
+            <p><b><%= game.likes.count %> <%= (game.likes.count) < 2 ? 'Like' : 'Likes'%></b></p>
+          </div>
+          <!-- GAME BUDDIES -->
+          <div class="buddies">
+            <!-- GAME HOST -->
+            <% if !game.user.photo.blank? %>
+            <img src="<%= game.user.photo %>" class="game-card-user avatar-bordered" id="game-host" />
+            <% else %>
+            <%= image_tag gravatar_image_url(game.user.email), class: "game-card-user avatar-bordered", id: "game-host" %>
+            <% end %>
+
+            <!-- LOOP DES GUESTS ET DU NOMBRE DE PLAYERS -->
+            <% (game.number_players - 1).times do |i| %>
+            <% if game.guests[i].nil? %>
+            <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-#{(i + 1)}" %>
+            <% elsif !game.guests[i].user.photo.blank? %>
+            <%= cl_image_tag game.guests[i].user.photo, class: "game-card-user avatar-bordered", id: "guest-#{(i + 1)}" %>
+            <% else %>
+            <%= image_tag gravatar_image_url(game.guests[i].user.email), class: "game-card-user avatar-bordered", id: "guest-#{(i + 1)}" %>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+  <!-- FIN DES GAME CARDS -->
+

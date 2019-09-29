@@ -6,59 +6,70 @@
 
 .search-bar-container {
   margin: 0 5vw;
-  display: flex;
+  // display: flex;
   justify-content: space-between;
-  // grid-template-columns: 1fr;
   // grid-gap: 24px;
 }
 
 .params {
-  display: flex;
+  // display: inline-flex;
   // align-self: flex-end;
-  align-items: baseline;
-  padding-right: 12px;
+  align-items: center;
+  margin: 0px 24px;
+  font-size: small;
 }
+
+#params-reset {
+  align-items: flex-end;
+  margin: 0px 24px;
+  align-self: center;
+  font-size: small;
+}
+
 
 .params-all {
   margin-top: 16px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   // align-self: flex-end;
 }
 
-// // Smallest device
-// @media (min-width: 100px) and (max-width: 575px) {
-//   .search-bar-container {
-//       justify-content: space-around;
-//   }
-// }
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .params-all {
+      justify-content: space-around;
+      grid-template-columns: 1fr
+  }
+}
 
-// // Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) and (max-width: 767px) {
-//   .search-bar-container {
-//     justify-content: space-around;
-//   }
-// }
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767px) {
+  .params-all  {
+    justify-content: space-around;
+    grid-template-columns: 1fr
+  }
+}
 
-// // Medium devices (tablets, 768px and up)
-// @media (min-width: 768px) {
-//   .search-bar-container {
-//     grid-template-columns: 1fr 1fr;
-//   }
-// }
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .params-all  {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
-// // Large devices (desktops, 992px and up)
-// @media (min-width: 992px) {
-//   .search-bar-container {
-//     grid-template-columns: 1fr 1fr 1fr;
-//   }
-// }
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .params-all  {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
 
-// // Extra large devices (large desktops, 1200px and up)
-// @media (min-width: 1200px) {
-//   .search-bar-container {
-//     grid-template-columns: 1fr 1fr 1fr;
-//   }
-// }
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .params-all  {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
 
 .search-bar {
   margin-top: 16px;

@@ -5,37 +5,61 @@ class GamesController < ApplicationController
 
   # GET /games
   def index
-      @upcoming_games = Game.where("date >= ?", [Date.today]).order('time ASC, created_at ASC')
-      @past_games = Game.where("date < ?", [Date.today]).order('time DESC, created_at DESC')
+    # @games = Game.upcoming
+      # @upcoming_games = Game.where("date >= ?", [Date.today]).order('time ASC, created_at ASC')
+      # @past_games = Game.where("date < ?", [Date.today]).order('time DESC, created_at DESC')
 
-      if user_signed_in?
-        @wishlist = Wishlist.where(user_id: current_user.id)
-        @wishgames = Wishgame.where(wishlist_id: @wishlist.ids[0])
-        @games_wish = []
-        @wishgames.each do |wish|
-          @games_wish << wish.game
-        end
+      # if user_signed_in?
+      #   @wishlist = Wishlist.where(user_id: current_user.id)
+      #   @wishgames = Wishgame.where(wishlist_id: @wishlist.ids[0])
+      #   @games_wish = []
+      #   @wishgames.each do |wish|
+      #     @games_wish << wish.game
+      #   end
+      # end
+
+    # if params[:game_query].present?
+    #   query_date = Date.parse(params[:game_query][:date])
+    #   # query_location = params[:game_query][:location]
+    #   @games_by_date = Game.where("time > ? AND time < ?", query_date, query_date + 1)
+    #   # @games = @games_by_date.select { |game| ("#{game.course.address} ILIKE %#{query_location}%") }
+
+    # # elsif params[:query].present?
+    # #   @games = Game.joins(:user, :course).global_search(params[:query])
+    # #   @upcoming_games = @upcoming_games.global_search(params[:query])
+    # #   @past_games = @past_games.global_search(params[:query])
+    # else
+      (@filterrific = initialize_filterrific(
+        Game,
+        params[:filterrific],
+        select_options: {
+          sorted_by: Game.options_for_sorted_by,
+          with_course_id: Course.options_for_select_course,
+          with_date: Game.options_for_select,
+        },
+        )) || return
+          @games = @filterrific.find.page(params[:page]).where('time >= ?', [Date.today])
+      respond_to do |format|
+        format.html
+        format.js
       end
-
-    if params[:game_query].present?
-      query_date = Date.parse(params[:game_query][:date])
-      query_location = params[:game_query][:location]
-      @games_by_date = Game.where("time > ? AND time < ?", query_date, query_date + 1)
-      @games = @games_by_date.select { |game| ("#{game.course.address} ILIKE %#{query_location}%") }
-    elsif
-      params[:query].present?
-      @games = Game.joins(:user, :course).global_search(params[:query])
-      @upcoming_games = @upcoming_games.global_search(params[:query])
-      @past_games = @past_games.global_search(params[:query])
-    else
-      @games = Game.all
-      @guests = Guest.where(game: [@games])
-    end
+      # @guests = Guest.where(game: [@games])
+    # end
   end
 
   def upcoming
-    @games = Game.upcoming
-    @games = @games.paginate(page: params[:page])
+    @games = Game.upcoming.map do |game|
+      unless game.number_guests.nil?
+      game.guests.size < game.number_guests
+      end
+    end
+    # @games = @games.paginate(page: params[:page])
+    render :index
+  end
+
+
+  def with_address
+    @games = Game.with_address
     render :index
   end
 
@@ -79,7 +103,8 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     @game.user = current_user
-
+    @game.location = @game.course.address
+    @game.country = @game.course.country
       if @game.save
         redirect_to @game, notice: 'Game was successfully created.'
         @admin.send_message(@game.user.friends, "Your buddy #{@game.user.first_name} just created a new game!", "Would you join #{@game.user.first_name}")
@@ -91,6 +116,9 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1
   def update
       if @game.update(game_params)
+      @game.location = @game.course.address
+      @game.country = @game.course.country
+      @game.save
         redirect_to @game, notice: 'Game was successfully updated.'
       else
         render :edit
@@ -121,6 +149,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:name, :options, :number_players, :number_guests, :privacy, :date, :time, :game_price, :booked, :tournament, :about_game, :course_id, :user_id)
+      params.require(:game).permit(:name, :options, :number_players, :number_guests, :privacy, :date, :time, :game_price, :booked, :tournament, :about_game, :course_id, :user_id, :location, :country)
     end
 end
