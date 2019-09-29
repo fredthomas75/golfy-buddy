@@ -1,20 +1,19 @@
-<!-- SEARCH BAR -->
-<div class="search-bar-container">
-  <% if params[:game_query].present? %>
+<!-- SEARCH BAR
+ <% if params[:game_query].present? %>
   <div class="params-all">
-  <div class="params">
-    <p>Date&nbsp&nbsp</p>
-    <div class=" send-button-query">
-      <%= params[:game_query][:date] %>
+    <div class="params">
+      <p>Date&nbsp&nbsp</p>
+      <div class=" send-button-query">
+        <%= params[:game_query][:date] %>
+      </div>
     </div>
-  </div>
 
- <div class="params">
-    <p>Location&nbsp&nbsp</p>
-    <div class=" send-button-query">
-      <%= params[:game_query][:location] %>
+    <div class="params">
+      <p>Location&nbsp&nbsp</p>
+      <div class=" send-button-query">
+        <%= params[:game_query][:location] %>
+      </div>
     </div>
-  </div>
   </div>
   <% end %>
 
@@ -25,57 +24,76 @@
     class: "form-control search-bar",
       placeholder: "Find a game" %>
       <% end %>
-</div>
-</div>
+    </div>
+  -->
 
-  <!-- DEBUT DES GAME CARDS -->
-<div class="game-cards-container min-height-container">
-  <% @games.each do |game| %>
-    <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>
-      <%= link_to game_path(game), class: "game-card-link" do %>
-        <div class="game-card">
-          <img src="<%= game.course.attachments[0].photo.url %>" />
-          <div class="game-card-infos">
+  <!-- NEW SEARCH BAR -->
+  <div class="search-bar-container">
 
-            <div class="game-name-game-course">
-              <h3><%= game.name %></h3>
-              <h4><%= game.course.name %></h4>
-            </div>
-
-
-            <div class="date-time-buddies">
-              <div class="date-time">
-                <p><%= game.time.strftime("%d/%m/%Y") %></p>
-                <p><%= game.time.strftime("%H:%M") %></p>
-                <p><b><%= game.likes.count %> <%= (game.likes.count) > 1 ? 'Likes' : 'Like'%></b></p>
-              </div>
-              <!-- GAME BUDDIES -->
-              <div class="buddies">
-                <!-- GAME HOST -->
-                <% if !game.user.photo.blank? %>
-                  <img src="<%= game.user.photo %>" class="game-card-user avatar-bordered" id="game-host" />
-                <% else %>
-                  <%= image_tag gravatar_image_url(game.user.email), class: "game-card-user avatar-bordered", id: "game-host" %>
-                <% end %>
-
-                <!-- LOOP DES GUESTS ET DU NOMBRE DE PLAYERS -->
-                <% (game.number_players - 1).times do |i| %>
-                  <% if game.guests[i].nil? %>
-                    <%= image_tag asset_path("available_spot.png"), class: "game-card-user avatar-bordered", id: "guest-#{(i + 1)}" %>
-                  <% elsif !game.guests[i].user.photo.blank? %>
-                    <%= cl_image_tag game.guests[i].user.photo, class: "game-card-user avatar-bordered", id: "guest-#{(i + 1)}" %>
-                  <% else %>
-                    <%= image_tag gravatar_image_url(game.guests[i].user.email), class: "game-card-user avatar-bordered", id: "guest-#{(i + 1)}" %>
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
-
+    <%= form_for_filterrific @filterrific do |f| %>
+    <div class="params-all">
+      <div class="params">
+        Search by name <br>
+        <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+        <%= f.text_field(
+          :search_query,
+          class: 'filterrific-periodically-observed',
+            placeholder: 'Game, Buddy,...'
+            ) %>
           </div>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
 
-<!-- FIN DES GAME CARDS -->
+          <div class="params">
+            Location <br>
+            <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+            <%= f.text_field(
+              :search_location,
+              class: 'filterrific-periodically-observed',
+                placeholder: 'City, Country,...'
+                ) %>
+              </div>
+
+              <%# date %>
+          <div class="params">
+            Date <br>
+            <%= f.text_field(:with_date,
+              'id' => 'filterrific_with_date',
+              'class' => 'datepicker datetimepicker-input',
+              'data-target' => '#filterrific_with_date',
+              'data-toggle' => 'datepicker')
+              %>
+            </div>
+
+            <div class="params">
+              Sorted games by <br>
+              <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+            </div>
+    <!--
+    <div class="params">
+       Filter by course <br>
+      <%= f.select(:with_course_id, @filterrific.select_options[:with_course_id], { :include_blank => '- Any -' }) %>
+    </div>
+  -->
+            <div id="params-reset">
+              <%= link_to(
+                'Reset filters',
+                reset_filterrific_url,
+                ) %>
+              </div>
+              <%# add an automated spinner to your form when the list is refreshed %>
+              <div class="params">
+                <%= render_filterrific_spinner %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+    <%= render(
+  partial: 'games/list',
+  locals: { games: @games}
+) %>
+
+   <script type="text/javascript">
+    $('[data-toggle="datepicker"]').datepicker({
+        zIndex: 2048,
+    });
+  </script>
+<%= javascript_pack_tag("datepicker") %>
