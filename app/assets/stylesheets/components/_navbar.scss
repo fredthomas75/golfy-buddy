@@ -1,83 +1,191 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 8px 96px;
+.navbar {
+  background-color: white;
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  z-index: 10000;
-}
-
-.navbar-brand {
-  margin-right: 0px;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  height: 40px;
-}
-
-.navbar-burger-box {
-  display: none;
+  height: 66px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  z-index: 100;
 }
 
 .menu-left {
-  .nav-link {
-    padding-left: 0 !important;
-    padding-right: 64px !important;
+  padding-left: 80px;
+  list-style-type: none;
+}
+
+.menu-left1 {
+  a {
+    color: rgba(0,0,0,0.9);
+  }
+
+  a:hover {
+    color: rgba(0,0,0,0.9);
+    text-decoration: none;
   }
 }
 
-.host-button {
-  border: solid 1px $purple;
-  border-radius: 50px;
-  padding: 8px 32px;
-  color: $purple;
-  margin-right: 32px;
+.menu-left-home {
+  padding-right: 80px;
 }
 
-.host-button:link {
-  text-decoration: none;
+.menu-left-games {
+  padding-right: 80px;
 }
 
-.host-button:hover {
-  text-decoration: none;
-  color: white;
-  background: $purple;
+.menu-left2 {
+  // display: flex;
+  a {
+    color: rgba(0,0,0,0.5);
+    text-decoration: none;
+  }
+  a:hover {
+    color: rgba(0,0,0,0.6);
+  }
+}
+ // BURGER
+.burgerleft {
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 2px;
+  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 25px;
+  height: 2px;
+  background-color: rgba(0,0,0,0.5);
+  margin: 6px 4px;
+  transition: 0.4s;
+  border-radius: 1px;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-6px, 5px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-6px, -6px);
+}
+//END
+.logo {
+  position: absolute;
+  right: 50vw;
+}
+
+.login-button {
+  a {
+    color: rgba(0,0,0,0.5);
+  }
+  a:hover {
+    color: rgba(0,0,0,0.8);
+    text-decoration: none;
+  }
 }
 
 .menu-right {
-  .nav-link {
-    padding-right: 0 !important;
-    padding-left: 64px !important;
-  }
+  padding-right: 10px;
 }
 
-@media only screen and (max-width: 992px) {
-  .navbar-burger-box {
-    display: block;
-  }
-
- .host-button, .img-home {
-        display: none;
-    }
-
-    .second-section {
-      flex-direction: column;
-    }
-
-    .navbar-lewagon {
-      padding: 6px 16px;
-    }
+.menu-right{
+  position: absolute;
+  right: 7vw;
 }
 
-.dropdown-item:hover {
-  background-color: $green;
+.button-host {
+  a {
+    color: $purple;
+  }
+  border: solid 1px $purple;
+  border-radius: 50px;
+  padding: 8px 32px;
+}
+
+.button-host:hover {
+  a {
+    color: white;
+    text-decoration: none;
+  }
   color: white;
+  background-color: $purple;
+}
+
+.avatar1 {
+  margin-left: 40px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.drop-menu-left {
+  a {
+    color: rgba(0,0,0,0.9);
+  }
+  background-color: white;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 2px;
+  position: absolute;
+  left: 16px;
+  bottom: -105px;
+  padding: 0.5rem 0;
+  min-width: 10rem;
+  z-index: 1000;
+  display: none;
+}
+
+.show {display: block;}
+// .show2 {display: block;}
+.drop-menu-right {
+  a {
+    color: rgba(0,0,0,0.9);
+  }
+  background-color: white;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 2px;
+  position: absolute;
+  right: 7vw;
+  bottom: -105px;
+  padding: 0.5rem 0;
+  min-width: 10rem;
+  z-index: 1000;
+  display: none;
+}
+
+.drop-menu-text {
+  padding: 0.25rem 1.5rem;
+}
+
+.drop-menu-text:hover {
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  background-color: $green;
+}
+
+@media screen and (max-width: 770px) {
+  .menu-left {
+    display: none;
+  }
+  .logo {
+  position: absolute;
+  right: 40vw;
+  }
+  .button-host {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 770px) {
+  .burgerleft {
+    display: none;
+  }
+  .drop-menu-left {
+    display: none;
+  }
 }
 

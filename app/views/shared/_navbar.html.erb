@@ -1,80 +1,127 @@
-<div class="navbar navbar-expand-lg navbar-light navbar-lewagon">
-  <!-- COLLAPSING MENU -->
-  <div class="navbar-burger-box" style="flex: 0 0 33%;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-  <!-- MENU GAUCHE -->
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex: 0 0 33%;">
-    <ul class="navbar-nav mr-auto menu-left">
+<div class="navbar">
+  <div class="menu-left row">
+    <div class="menu-left-home">
       <% if params[:controller] == 'pages' %>
-        <li class="nav-item tab-underlined active">
+        <li class="menu-left1">
       <% else %>
-        <li class="nav-item tab-underlined">
+        <li class="menu-left2">
       <% end %>
-          <%= link_to "Home", root_path, class: "nav-link" %>
-        </li>
+      <%= link_to "Home", root_path %>
+    </div>
+    <div class="menu-left-games">
       <% if params[:controller] == 'games' || params[:controller] == 'courses' %>
-        <li class="nav-item tab-underlined active">
+        <li class="menu-left1">
       <% else %>
-        <li class="nav-item tab-underlined">
+        <li class="menu-left2">
       <% end %>
-          <%= link_to "Games", games_path, class: "nav-link" %>
-        </li>
+      <%= link_to "Games", games_path %>
+    </div>
+    <div class="menu-left-buddies">
+
       <% if params[:controller] == 'users' %>
-        <li class="nav-item tab-underlined active">
+        <li class="menu-left1">
       <% else %>
-        <li class="nav-item tab-underlined">
+        <li class="menu-left2">
       <% end %>
-          <%= link_to "Buddies", users_path, class: "nav-link" %>
-        </li>
-    </ul>
-  </div>
-
-  <!-- LOGO AU CENTRE -->
-  <div style="display: flex; justify-content: center; flex: 0 0 33%;">
-    <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag asset_path("Logo_GolfyBuddy_v2.png") %>
-      <% end %>
-  </div>
-
-  <!-- LOGIN OU AVARTAR DROITE -->
-  <div style="display: flex; justify-content: flex-end; flex: 0 0 33%;">
-
-    <!-- AVATAR EXTREME DROITE -->
-    <div id="flex-avatar">
-      <ul class="navbar-nav menu-right">
-        <!-- USER IS LOGGED -->
-        <% if user_signed_in? %>
-          <%= link_to "Host a game", new_game_path, class: "host-button" %>
-          <li class="nav-item dropdown">
-            <% if current_user.photo.blank? %>
-              <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
-            <!-- NOTIFICATION SUR AVATAR -->
-            <% if @unread_conversations_count > 0 %>
-              <span class="badge">
-                <%= @unread_conversations_count %>
-              </span>
-            <% end %>
-            <!-- DROPDOWN MENU -->
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to 'Messages', conversations_path, class: "dropdown-item"  %>
-              <%= link_to 'My profile', user_path(current_user), class: "dropdown-item"  %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <!-- NEED TO LOGIN -->
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+      <%= link_to "Buddies", users_path %>
     </div>
   </div>
+  <!-- BURGER DROPDOWN -->
+  <div class="burgerleft"  onclick="myFunction(this)">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
 
+    <div id="burgerDrop" class="drop-menu-left" >
+      <div class="drop-menu-text">
+      <%= link_to "Home", root_path %>
+      </div>
+      <div class="drop-menu-text">
+      <%= link_to "Games", games_upcoming_path %>
+      </div>
+      <div class="drop-menu-text">
+      <%= link_to "Buddies", users_path %>
+      </div>
+    </div>
+
+    <script>
+      function myFunction(x) {
+        x.classList.toggle("change");
+        document.getElementById("burgerDrop").classList.toggle("show");
+      }
+      window.onclick = function(event) {
+        if (!event.target.matches('.burgerleft')) {
+          var dropdowns = document.getElementsByClassName("drop-menu-left");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+          }
+          var dropdowns = document.getElementsByClassName("burgerleft");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('change')) {
+                openDropdown.classList.remove('change');
+              }
+          }
+        }
+      }
+    </script>
+  </div>
+
+  <!-- LOGO -->
+  <div class="logo">
+    <%= link_to root_path do %>
+      <%= image_tag "Logo_GolfyBuddy_v2.png", style: "width: 85px;"%>
+    <% end %>
+  </div>
+
+  <div class="row menu-right">
+    <% if user_signed_in? %>
+      <!-- HOST BUTTON -->
+      <div class="button-host">
+          <%= link_to "Host a game", new_game_path, class: "host-button" %>
+      </div>
+
+    <div class="avatar1">
+        <!-- AVATAR -->
+        <% if current_user.photo.blank? %>
+          <%= image_tag gravatar_image_url(current_user.email), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% else %>
+          <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+        <!-- NOTIFICATION SUR AVATAR -->
+        <% if @unread_conversations_count > 0 %>
+          <span class="badge">
+            <%= @unread_conversations_count %>
+          </span>
+        <% end %>
+    <% else %>
+    <!-- LOGIN BUTTON -->
+      <div class="login-button">
+        <%= link_to "Login", new_user_session_path %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+    <!-- DROPDOWN MENU -->
+    <% if user_signed_in? %>
+      <div id="dropRight" class="drop-menu-right">
+        <div class="drop-menu-text">
+        <%= link_to 'Messages', conversations_path %>
+        </div>
+
+        <div class="drop-menu-text">
+        <%= link_to 'My profile', user_path(current_user) %>
+        </div>
+
+        <div class="drop-menu-text">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        </div>
+
+      </div>
+    <% end %>
 </div>
