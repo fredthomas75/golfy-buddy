@@ -32,7 +32,7 @@
 
     <%= form_for_filterrific @filterrific do |f| %>
     <div class="params-all">
-      <div class="params">
+      <div class="params" id="search_games_field">
         Search by name <br>
         <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
         <%= f.text_field(
@@ -63,9 +63,11 @@
               %>
             </div>
 
-            <div class="params">
+            <div class="params" id="sorted_games_dropdown">
               Sorted games by <br>
-              <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+              <%= f.select(:sorted_by,
+                @filterrific.select_options[:sorted_by]
+              )%>
             </div>
     <!--
     <div class="params">
