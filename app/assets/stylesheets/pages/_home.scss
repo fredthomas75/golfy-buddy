@@ -122,3 +122,27 @@
     display: none;
   }
 }
+
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+  .home-form {
+    position: relative;
+    top: -320px;
+    left: -20px;
+  }
+  .img-home {
+    position: relative;
+    top: -90px;
+  }
+  .left-img {
+    position: relative;
+    top: -120px;
+  }
+  .features-container {
+    position: relative;
+    top: -100px;
+  }
+  .homepage-section.games-nearby {
+    position: relative;
+    top: -220px;
+  }
+}
