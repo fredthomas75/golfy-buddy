@@ -12,8 +12,6 @@
   padding-left: 64px;
   width: 500px;
   position: relative;
-  // height: 300px;
-  // border: solid 3px green;
 }
 
 .home-form h1 {
@@ -75,14 +73,12 @@
   position: relative;
   left: -20vw;
   top: 56px;
-  // border: solid 3px blue;
 }
 
 .features-cards {
   width: 30vw;
   display: flex;
   margin-top: 32px;
-  // border: solid 3px blue;
 }
 
 .games-nearby {
@@ -98,13 +94,11 @@
       position: relative;
       left: 0px;
       top: 0px;
-      // border: solid 3px blue;
       }
     .features-cards {
       width: 70vw;
       display: flex;
       margin-top: 32px;
-      // border: solid 3px blue;
       }
     }
 
@@ -122,8 +116,8 @@
     display: none;
   }
 }
-
-@media only screen and (max-width: 1024px) and (min-width: 768px) {
+//Ipad Pro
+@media only screen and (max-width: 1024px) and (min-width: 1024px) {
   .home-form {
     position: relative;
     top: -320px;
@@ -135,14 +129,39 @@
   }
   .left-img {
     position: relative;
-    top: -120px;
+    top: -300px;
   }
   .features-container {
     position: relative;
-    top: -100px;
+    top: -300px;
+  }
+  .homepage-section.games-nearby {
+    position: relative;
+    top: -360px;
+  }
+}
+//Ipad
+@media only screen and (max-width: 768px) and (min-width: 768px) {
+  .home-form {
+    position: relative;
+    top: -200px;
+    left: -50px;
+  }
+  .img-home {
+    position: relative;
+    top: -70px;
+  }
+  .left-img {
+    position: relative;
+    top: -160px;
+  }
+  .features-container {
+    position: relative;
+    top: -150px;
   }
   .homepage-section.games-nearby {
     position: relative;
     top: -220px;
   }
 }
+
