@@ -117,7 +117,7 @@
   }
 }
 //Ipad Pro
-@media only screen and (max-width: 1024px) and (min-width: 1024px) {
+@media only screen and (max-width: 1024px) and (min-height: 1024px) {
   .home-form {
     position: relative;
     top: -320px;
@@ -164,4 +164,35 @@
     top: -220px;
   }
 }
-
+//Iphone
+@media only screen and (max-width: 375px) and (min-height: 812px) {
+  .home-form {
+    position: relative;
+    top: -150px;
+  }
+  .second-section {
+    position: relative;
+    top: -300px;
+  }
+  .text-right-card {
+    position: relative;
+    bottom: -32px;
+  }
+  // .img-home {
+  //   position: relative;
+  //   top: -70px;
+  // }
+  // .left-img {
+  //   position: relative;
+  //   top: -160px;
+  // }
+  // .features-container {
+  //   position: relative;
+  //   top: -150px;
+  // }
+  .homepage-section.games-nearby {
+    position: relative;
+    top: -250px;
+    padding-left: 50px;
+  }
+}
