@@ -167,7 +167,7 @@
   background-color: $green;
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 813px) {
   .menu-left {
     display: none;
   }
@@ -180,7 +180,7 @@
   }
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 813px) {
   .burgerleft {
     display: none;
   }
@@ -188,4 +188,16 @@
     display: none;
   }
 }
-
+//Iphone6V2
+@media only screen and (min-width: 667px) and (min-width: 375px) {
+  .logo{
+  position: relative;
+  // left: -20px;
+  }
+}
+//IphoneXV2
+@media only screen and (min-width: 812px) and (min-width: 375px) {
+  .logo{
+  position: relative;
+  }
+}
