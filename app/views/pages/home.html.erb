@@ -18,11 +18,11 @@
 <div class="homepage-section second-section">
   <!-- LA MADAME QUI JOUE AU GOLF -->
   <div class="left-img">
-    <%= image_tag "madame_qui_joue.svg", alt: "alttext" %>
+    <%= image_tag "madame_qui_joue.svg", class:"image-madame", alt: "alttext" %>
   </div>
   <!-- LES FEATURES -->
   <div class="features-container">
-    <h2>Golfing with buddies</h2>
+    <h2 class="title-features-container">Golfing with buddies</h2>
     <div class="features-cards">
       <div class="feature-card" style="margin-right: 32px;">
         <h3>Play soon and have fun</h3>
@@ -30,7 +30,7 @@
       </div>
       <div class="feature-card">
         <h3>Host a game</h3>
-        <p>Choose when, where and with whom. Find buddies that fits your personnality</p>
+        <p class="text-right-card">Choose when, where and with whom. Find buddies that fits your personnality</p>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@
 <div class="homepage-section games-nearby">
 <!-- TEST LOCATION -->
   <!-- DEBUTS DES CARDS NEARBY-GAMES -->
-  <h2> Featured games nearby <%= request.location.city %></h2>
+  <h2 class="title-games-nearby"> Featured games nearby <%= request.location.city %></h2>
   <div class="game-cards-container">
     <% @upcoming_games_nearby.first(3).each do |game| %>
       <% if game.privacy != "private" || (game.privacy == "private" && game.user.friends_with?(current_user)) %>

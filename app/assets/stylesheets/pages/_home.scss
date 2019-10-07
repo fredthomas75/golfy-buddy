@@ -12,8 +12,6 @@
   padding-left: 64px;
   width: 500px;
   position: relative;
-  // height: 300px;
-  // border: solid 3px green;
 }
 
 .home-form h1 {
@@ -75,14 +73,12 @@
   position: relative;
   left: -20vw;
   top: 56px;
-  // border: solid 3px blue;
 }
 
 .features-cards {
   width: 30vw;
   display: flex;
   margin-top: 32px;
-  // border: solid 3px blue;
 }
 
 .games-nearby {
@@ -98,27 +94,175 @@
       position: relative;
       left: 0px;
       top: 0px;
-      // border: solid 3px blue;
       }
     .features-cards {
       width: 70vw;
       display: flex;
       margin-top: 32px;
-      // border: solid 3px blue;
       }
     }
 
 @media only screen and (max-width: 764px) {
-  .home-form {
-    padding-left: 0px;
-    width: 500px;
-    position: relative;
-    top: -90px;
-  }
+  // .home-form {
+  //   padding-left: 0px;
+  //   width: 500px;
+  //   position: relative;
+  //   top: -90px;
+  // }
   .form-style {
   width: 50vw;
   }
   .img-home img {
     display: none;
+  }
+}
+//Ipad Pro
+@media only screen and (max-width: 1024px) and (min-height: 1024px) {
+  .home-form {
+    position: relative;
+    top: -320px;
+    left: -20px;
+  }
+  .img-home {
+    position: relative;
+    top: -90px;
+  }
+  .left-img {
+    position: relative;
+    top: -300px;
+  }
+  .features-container {
+    position: relative;
+    top: -300px;
+  }
+  .homepage-section.games-nearby {
+    position: relative;
+    top: -360px;
+  }
+}
+//Ipad
+@media only screen and (max-width: 768px) and (min-width: 768px) {
+  .home-form {
+    position: relative;
+    top: -200px;
+    left: -50px;
+  }
+  .img-home {
+    position: relative;
+    top: -70px;
+  }
+  .left-img {
+    position: relative;
+    top: -160px;
+  }
+  .features-container {
+    position: relative;
+    top: -150px;
+  }
+  .homepage-section.games-nearby {
+    position: relative;
+    top: -220px;
+  }
+}
+//IphoneXV1
+@media only screen and (max-width: 375px) and (min-height: 812px) {
+  .home-form {
+    position: relative;
+    top: -150px;
+    left: -65px;
+  }
+  .second-section {
+    position: relative;
+    top: -300px;
+  }
+  .text-right-card {
+    position: relative;
+    bottom: -32px;
+  }
+  .left-img {
+    position: relative;
+    top: -20px;
+  }
+  .homepage-section.games-nearby {
+    position: relative;
+    top: -200px;
+    padding-left: 50px;
+  }
+}
+//IphoneXV2
+@media only screen and (max-width: 812px) and (max-height: 375px) {
+  .home-form {
+    position: relative;
+    bottom: -100px;
+    left: -20px;
+  }
+  .img-home {
+    position: relative;
+    bottom: -100px;
+  }
+  .left-img {
+    position: relative;
+    bottom: -250px;
+  }
+  .title-features-container {
+    position: relative;
+    bottom: -210px;
+  }
+  .feature-card {
+    position: relative;
+    bottom: -200px;
+  }
+  .title-games-nearby {
+    position: relative;
+    bottom: -170px;
+  }
+}
+//IphonePlusV1
+@media only screen and (max-width: 414px) and (max-height: 736px) {
+  .home-form {
+    position: relative;
+    top: -100px;
+    left: -50px;
+  }
+  .text-right-card {
+    position: relative;
+    bottom: -32px;
+  }
+  .homepage-section.games-nearby {
+    padding-left: 50px;
+  }
+}
+//IphonePlusV2
+@media only screen and (max-width: 736px) and (max-height: 414px) {
+  .home-form {
+    position: relative;
+    bottom: -40px;
+    right: -30px;
+  }
+  .left-img {
+    position: relative;
+    bottom: -200px;
+  }
+  .image-madame{
+    width: 300px;
+  }
+  .features-container {
+    position: relative;
+    top: 180px;
+  }
+  .homepage-section.games-nearby {
+    position: relative;
+    top: 0px;
+  }
+}
+//Iphone6V2
+@media only screen and (max-width: 667px) and (max-height: 375px) {
+  .features-container {
+    position: relative;
+    top: 0px;
+  }
+  .title-games-nearby {
+    position: relative;
+    bottom: 0px;
   }
 }
