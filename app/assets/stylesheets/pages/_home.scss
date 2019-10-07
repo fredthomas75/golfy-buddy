@@ -243,10 +243,13 @@
     position: relative;
     bottom: -200px;
   }
+  .image-madame{
+    width: 300px;
+  }
   .features-container {
     position: relative;
-    left: 0px;
-    bottom: -150px;
+    // left: 0px;
+    top: 180px;
   }
   // .text-right-card {
   //   position: relative;
@@ -254,6 +257,6 @@
   // }
   .homepage-section.games-nearby {
     position: relative;
-    bottom: -200px;
+    top: 0px;
   }
 }
