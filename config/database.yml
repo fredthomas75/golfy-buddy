@@ -78,8 +78,20 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# Production is driven entirely by DATABASE_URL (Supabase).
+#
+# At RUNTIME, point DATABASE_URL at the Supabase connection pooler
+# (Supavisor / pgBouncer, port 6543, transaction mode):
+#   postgres://USER:PASSWORD@HOST.pooler.supabase.com:6543/postgres?sslmode=require
+#
+# Transaction-mode pooling does not support session-level prepared statements or
+# advisory locks, so both are disabled below (otherwise you get intermittent
+# `prepared statement "aN" already exists` errors).
+#
+# Run MIGRATIONS against the DIRECT connection (port 5432) via MIGRATE_DATABASE_URL
+# — see bin/render-build.sh.
 production:
   <<: *default
-  database: GOLFY-BUDDY_production
-  username: GOLFY-BUDDY
-  password: <%= ENV['GOLFY-BUDDY_DATABASE_PASSWORD'] %>
+  url: <%= ENV["DATABASE_URL"] %>
+  prepared_statements: false
+  advisory_locks: false

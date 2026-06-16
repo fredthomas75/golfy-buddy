@@ -13,3 +13,7 @@ node_modules
 yarn-error.log
 .byebug_history
 .env*
+!.env.example
+
+# Never commit the Rails master key — production decrypts via the RAILS_MASTER_KEY env var
+/config/master.key
