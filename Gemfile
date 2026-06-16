@@ -12,7 +12,7 @@ gem 'bootsnap', '~> 1.18', require: false
 # CSS via Dart Sass, both served through Sprockets.
 gem 'sprockets-rails'
 gem 'jsbundling-rails', '~> 1.3'
-gem 'cssbundling-rails', '~> 1.4'
+gem 'dartsass-sprockets'           # Dart Sass via Sprockets (sassc-rails replacement; keeps asset-url/font-url helpers)
 gem 'turbolinks', '~> 5.2'         # kept for now; Turbo migration is out of scope
 
 # --- Auth / authorization ---

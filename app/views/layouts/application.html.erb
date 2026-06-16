@@ -24,7 +24,6 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= favicon_link_tag asset_path('Logo_Cercle_GolfyBuddy.png') %>
   </head>
   <body>
@@ -34,8 +33,7 @@
       </div>
 
     <%= yield %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
+    <%= javascript_include_tag 'application', defer: true %>
     <!-- <%= render 'shared/flashes' %> Bug when decomment: flash messages display twice -->
     <div class="container">
       <% flash.each do |key, value| %>

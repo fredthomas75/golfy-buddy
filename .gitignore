@@ -7,9 +7,14 @@ tmp/*
 *.swp
 .DS_Store
 public/assets
+/public/uploads
 public/packs
 public/packs-test
 node_modules
+
+# esbuild / jsbundling output (built during assets:precompile)
+/app/assets/builds/*
+!/app/assets/builds/.keep
 yarn-error.log
 .byebug_history
 .env*

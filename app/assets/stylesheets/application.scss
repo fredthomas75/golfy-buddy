@@ -8,9 +8,12 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import 'chosen';
+
+// Vendor CSS from npm (resolved via node_modules on the Sprockets load path)
+@import "mapbox-gl/dist/mapbox-gl";
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
+@import "select2/dist/css/select2";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-

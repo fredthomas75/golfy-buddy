@@ -1,62 +1,24 @@
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-const isItAShowPage = () => {
-  if (window.location.href.match(/courses\/\d+/)) {
-    return true;
-  } else if (window.location.href.match(/games\/\d+/)) {
-    return true;
-  } else {
-    return false;
-  };
-};
+const isItAShowPage = () =>
+  /courses\/\d+/.test(window.location.href) || /games\/\d+/.test(window.location.href);
 
-const mapElement = document.getElementById('map');
-
-const buildMap = () => {
+const buildMap = (mapElement) => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-  // If href is a courses/show ou games/show
-  if (isItAShowPage() == true) {
-    return new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/light-v10',
-    });
-    // If href is Index of courses
-  } else {
-    return new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/light-v10',
-    });
-  }
+  return new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v10',
+  });
 };
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
-  markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  if (isItAShowPage() == true) {
+  markers.forEach((marker) => bounds.extend([marker.lng, marker.lat]));
+  if (isItAShowPage()) {
     map.fitBounds(bounds, { padding: 70, maxZoom: 11, duration: 0 });
   } else {
     map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
-  };
-};
-
-const initMapbox = () => {
-  if (mapElement) {
-    const map = buildMap();
-    const markers = JSON.parse(mapElement.dataset.markers);
-    addMarkersToMap(map, markers);
-    fitMapToMarkers(map, markers);
-    // SI INDEX DE COURSE
-    if (isItAShowPage() == false) {
-      map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
-    }
-    // IF SHOW DE GAME OR COURSE
-    if (isItAShowPage() == true) {
-      map.scrollZoom.disable();
-    }
-
-    // Controller - + de Zoom
-    map.addControl(new mapboxgl.NavigationControl());
   }
 };
 
@@ -71,19 +33,28 @@ const addMarkersToMap = (map, markers) => {
     element.style.width = '25px';
     element.style.height = '25px';
 
-    // If map display on games index
-    if (isItAShowPage() == false) {
-      new mapboxgl.Marker(element)
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
-        .addTo(map);
-    } else {
-      // Else if map display on another page
-      new mapboxgl.Marker(element)
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(map);
-    }
+    const mk = new mapboxgl.Marker(element).setLngLat([marker.lng, marker.lat]);
+    if (!isItAShowPage()) mk.setPopup(popup);
+    mk.addTo(map);
   });
+};
+
+// Looks up #map at call time so it works across Turbolinks navigations.
+const initMapbox = () => {
+  const mapElement = document.getElementById('map');
+  if (!mapElement) return;
+
+  const map = buildMap(mapElement);
+  const markers = JSON.parse(mapElement.dataset.markers);
+  addMarkersToMap(map, markers);
+  fitMapToMarkers(map, markers);
+
+  if (!isItAShowPage()) {
+    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
+  } else {
+    map.scrollZoom.disable();
+  }
+  map.addControl(new mapboxgl.NavigationControl());
 };
 
 export { initMapbox };
