@@ -1,0 +1,32 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Provision with: Render Dashboard → New → Blueprint (point at this repo).
+# All `sync: false` vars must be set in the Render dashboard (never committed).
+services:
+  - type: web
+    name: golfy-buddy
+    runtime: ruby
+    plan: free                 # "free" sleeps after 15 min idle; use "starter" (~$7/mo) for always-on
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    healthCheckPath: /users/sign_in
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: RAILS_SERVE_STATIC_FILES
+        value: "true"
+      - key: RAILS_LOG_TO_STDOUT
+        value: "true"
+      - key: RAILS_MAX_THREADS
+        value: "5"
+      - key: WEB_CONCURRENCY
+        value: "0"             # single Puma worker — fits the 512MB free instance
+      - key: RAILS_MASTER_KEY
+        sync: false            # config/master.key contents
+      - key: DATABASE_URL
+        sync: false            # Supabase POOLER url, port 6543 (transaction mode)
+      - key: MIGRATE_DATABASE_URL
+        sync: false            # Supabase DIRECT url, port 5432 (for db:migrate)
+      - key: MAPBOX_API_KEY
+        sync: false
+      - key: CLOUDINARY_URL
+        sync: false            # cloudinary://API_KEY:API_SECRET@CLOUD_NAME
